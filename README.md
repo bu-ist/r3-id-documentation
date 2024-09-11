@@ -1,5 +1,6 @@
-# [Project Name]
+# ID Documentation Theme
 
+A theme for Documentation sites for ID plugins, themes, and related products. 
 ---
 
 ## Setup instructions (delete after repository setup is complete)
