@@ -1,0 +1,58 @@
+export default {
+    "settings": {
+		"border": {
+			"customColor": false,
+			"customRadius": false,
+			"customStyle": false,
+			"customWidth": false
+		},
+		"color": {
+			"custom": false,
+			"customDuotone": false,
+			"customGradient": false,
+			"duotone": [],
+			"gradients": [],
+			"link": false,
+			"palette": [
+				{
+					"name": "BU Red",
+					"slug": "bu-red",
+					"color": "#cc0000"
+				}
+			]
+		},
+		"custom": {},
+		"layout": {
+			"contentSize": "800px",
+			"wideSize": "1000px"
+		},
+		"spacing": {
+			"customMargin": false,
+			"customPadding": false,
+			"units": [ "px", "em", "rem", "vh", "vw" ]
+		},
+		"typography": {
+			"customFontSize": false,
+			"customFontStyle": false,
+			"customFontWeight": false,
+			"customLineHeight": false,
+			"customTextDecorations": false,
+			"customTextTransforms": false,
+			"dropCap": false,
+			"fontFamilies": [],
+			"fontSizes": []
+		},
+		"blocks": {
+			"core/paragraph": {
+				"border": {},
+				"color": {},
+				"custom": {},
+				"layout": {},
+				"spacing": {},
+				"typography": {}
+			},
+			"core/heading": {},
+			"etc": {}
+		}
+	}
+}

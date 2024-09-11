@@ -1,0 +1,1 @@
+{"version":3,"file":"css/block-editor.css","mappings":"AAGA,KACC,iC","sources":["webpack://theme-slug/./src/scss/block-editor.scss"],"sourcesContent":["/**\n* Block editor only styles\n*/\nbody {\n\tborder: solid 20px yellow !important;\n}\n"],"names":[],"sourceRoot":""}

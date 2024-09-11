@@ -1,0 +1,1 @@
+{"version":3,"file":"css/editor-styles.css","mappings":"AAGA,KACC,kC","sources":["webpack://theme-slug/./src/scss/editor-styles.scss"],"sourcesContent":["/**\n* Editor only styles\n*/\nbody {\n\tborder: solid 20px green !important;\n}\n"],"names":[],"sourceRoot":""}

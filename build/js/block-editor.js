@@ -1,0 +1,2 @@
+!function(){"use strict";var e=window.wp.blocks;console.log("theme-slug js/block-editor.js has loaded and hates schnozberries oh so much."),(0,e.registerBlockCollection)("theme-slug",{title:"BU: Theme Starter Blocks Collection (JS)"})}();
+//# sourceMappingURL=block-editor.js.map

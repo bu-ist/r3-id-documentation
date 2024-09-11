@@ -1,0 +1,1 @@
+{"version":3,"file":"css/admin.css","mappings":"AAGA,KACC,uB","sources":["webpack://theme-slug/./src/scss/admin.scss"],"sourcesContent":["/**\n* Admin only styles\n*/\nbody {\n\tborder: solid 20px blue;\n}\n"],"names":[],"sourceRoot":""}

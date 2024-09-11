@@ -1,0 +1,1 @@
+{"version":3,"file":"js/classic-editor.js","mappings":"AAMAA,QAAQC,IAAK","sources":["webpack://theme-slug/./src/js/classic-editor.js"],"sourcesContent":["/**\n * Classic editor only scripts\n *\n * @package\n */\n\nconsole.log( 'theme-slug js/classic-editor.js has loaded and is very very tired.' );\n"],"names":["console","log"],"sourceRoot":""}

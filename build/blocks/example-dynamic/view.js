@@ -1,0 +1,1 @@
+console.log("Hello World! (from theme-slug example-dynamic view.js)");
