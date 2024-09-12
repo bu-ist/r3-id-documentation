@@ -1,7 +1,7 @@
 name: Copy issues from starter repo
 
 env: 
-  GH_TOKEN: ${{ secrets.CLONEISSUES }}
+  GH_TOKEN: ${{ secrets.TOKEN }}
   STARTER_REPO: https://github.com/bu-ist/id-github-setup
 
 on: 
