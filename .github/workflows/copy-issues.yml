@@ -42,7 +42,7 @@ jobs:
             id: new-issue
             uses: dacbd/create-issue-action@main
             with:
-              token: ${{ secrets.CLONEISSUES }}
+              token: ${{ secrets.TOKEN }}
               title: ${{ matrix.value.title }}
               body: ${{ matrix.value.body }}
               labels: ${{ matrix.value.labels }}
