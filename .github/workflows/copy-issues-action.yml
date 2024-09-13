@@ -11,4 +11,4 @@ jobs:
         token: ${{ github.TOKEN }}
         # You don't need this input if your repo
         # is a fork or generated from a template.
-        source_repo: bu-ist/id-github-setup
+        source_repo: bu-ist/bu-block-components
