@@ -6,7 +6,7 @@ jobs:
   copy-issues:
     runs-on: ubuntu-latest
     steps:
-    - uses: mtfoley/copy-issue-action@main
+    - uses: https://github.com/mtfoley/copy-issues-action@main
       with:
         # You don't need this input if your repo
         # is a fork or generated from a template.
