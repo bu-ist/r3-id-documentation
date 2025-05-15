@@ -2,7 +2,7 @@
 /**
  * Class to manage registration of blocks and assets within the editor.
  *
- * @package theme-slug
+ * @package r3-id-documentation
  */
 
 namespace BU\theme_slug\Blocks;

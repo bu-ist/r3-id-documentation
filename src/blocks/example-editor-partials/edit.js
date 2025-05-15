@@ -52,14 +52,14 @@ export default function Edit( props ) {
 				<div style={ { backgroundColor: attributes.color } }>
 					<RichText
 						className="wp-block--bu-block-example--editor-partials--title"
-						placeholder={ __( 'Callout Title', 'theme-slug' ) }
+						placeholder={ __( 'Callout Title', 'r3-id-documentation' ) }
 						tagName="h2"
 						onChange={ onChangeTitle }
 						value={ title }
 						allowedFormats={ [] }
 					/>
 					<RichText
-						placeholder={ __( 'Excerpt', 'theme-slug' ) }
+						placeholder={ __( 'Excerpt', 'r3-id-documentation' ) }
 						tagName="p"
 						classname="wp-block--bu-block-example--editor-partials--excerpt"
 						onChange={ onChangeExcerpt }

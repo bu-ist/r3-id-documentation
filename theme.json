@@ -70,8 +70,7 @@
       "customTextDecorations": false,
       "customTextTransforms": false,
       "dropCap": false,
-      "fontFamilies": [],
-      "fontSizes": []
+      "fontFamilies": []
     },
     "blocks": {
       "core/paragraph": {
@@ -90,7 +89,7 @@
     "elements": {
       "link": {
         "color": {
-          "text": "var(--wp--preset--color--primary)"
+          "text": "var(--bu-base-link-color,#0f69d7)"
         }
       }
     }

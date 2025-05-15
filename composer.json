@@ -1,5 +1,5 @@
 {
-  "name": "bu/theme-slug",
+  "name": "bu/r3-id-documentation",
   "description": "PHP utils needed for the project",
   "type": "project",
   "require-dev": {

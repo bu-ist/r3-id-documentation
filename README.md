@@ -2,45 +2,6 @@
 
 ---
 
-## Setup instructions (delete after repository setup is complete)
-
-- [ ] **CREATIVE DIRECTOR:** Please [import our standard label set](https://github.com/bu-ist/responsive-child-starter/wiki/Import-Labels).
-- [ ] **CREATIVE DIRECTOR:** Please provide a brief description of the purpose of the theme in the next section, then fill out the [project information](#project-information) section.
-  and set up a new [Github Project](https://github.com/bu-ist/responsive-child-starter/wiki/Set-up-Github-Projects).
-- [ ] **CREATIVE DIRECTOR:** Please set up a documentation site.
-    - Clone <http://wpdocs.bu.edu/> to <http://wpdocs.bu.edu/yoursitename>.
-- [ ] **CREATIVE DIRECTOR:** Please review [project information](#project-information) and see if any immediate changes are needed for your project.
----
-- [ ] **CREATIVE DIRECTOR AND DEVELOPER:** Choose a framework version to develop your work on. This repo will create a child theme using Responsive Framework 3x.
-- [ ] **CREATIVE DIRECTOR AND DEVELOPER:** Please review the Plugins section of Supported Technologies, and add or remove any plugins as needed for your theme.
----
-- [ ] **DEVELOPER:** Please [set up branch protections](https://sites.bu.edu/marcom-team/departments/interactive-design/interactive-design-workflow/development/git-repo-create-new/). Do not set up CodeClimate, as it is broken.
-- [ ] **DEVELOPER:** Please clean CHANGELOG.md and reset to 1.0.0, and remove notes for this repository.
-- [ ] **DEVELOPER:** Please review [supported technologies](#supported-technologies) and see if any immediate changes are needed for your project. Apply security updates on first install using `npm audit fix`, if any, and ensure the theme still compiles by running `@TODO command`.
-- [ ] **DEVELOPER** Please update `package.json` "name" field to match the repo
-- [ ] **DEVELOPER** Please update `phpcs.xml.dist` lines *34* and *42* to the repo's global prefix (usually the same as the repo name, or a shortend version)
-- [ ] **DEVELOPER** After running `npm install`, run `npm run lint:php-all` to get a list of initial issues to solve.
-- [ ] **DEVELOPER:** Please [set up branch protections](https://sites.bu.edu/marcom-team/departments/interactive-design/interactive-design-workflow/development/git-repo-create-new/). Do not set up CodeClimate, as it is broken.
-- [ ] **DEVELOPER:** Please clean CHANGELOG.md and reset to 1.0.0, and remove notes for this repository.
-- [ ] **DEVELOPER:** Find and replace all theme-specific code strings. These are case-sensitive and should not be limited to certain folders or file types as they exist in js, php, json, md, css/scss, dist, etc...
-    - `ThemeSlug` - [PascalCase](https://wiki.php.net/rfc/class-naming); used for php ClassNames
-    - `theme-slug` - lowecase-hyphen; used for text-domain, css class prefixes, phpdoc @package
-    - `theme_slug` - lowecase_underscore; used for cmb2 prefixes, php function prefixes, php namespaces (note: you may need to add/edit the php namespace variations in `/.phpcs.xml.dist` see: https://github.com/bu-ist/bu-id-block-utils/blob/develop/.phpcs.xml.dist#L34-L39)
-    - `THEME_SLUG` - UPPERCASE_UNDERSCORE; used for php constants
-- [ ] **DEVELOPER:** Please review [supported technologies](#supported-technologies) and see if any immediate changes are needed for your project. Apply security updates on first install using `npm audit fix`, if any, and ensure the theme still compiles by running `npm run build`.
-- [ ] **DEVELOPER:** Please review [development workflow](#development-workflow) and see if any immediate changes are needed for your project.
----
-- [ ] **ENTIRE TEAM:** Please review [project information](#project-information) together and approve.
-- [ ] **ENTIRE TEAM:** Please review [development workflow](#development-workflow) together and approve.
-
-You're ready for work! Go ahead and delete this section when all boxes are checked.
-
----
----
----
-
-A block-editor enabled starter template for child themes of Responsive Framework 3.
-
 **Contents:**
 
 - [Quick start](#quick-start)
@@ -73,95 +34,10 @@ This repo contains several optional files and folders that can speed up developm
 
 ---
 
-## Project information
-
-### Important links
-
-- [**Live**]()
-- [**Staging**]()
-- [**WP Docs**]()
-- [**ID Presents**]()
-- [**Webteam**]()
-- [**ActiveCollab**]()
-- [**Smartsheet**]()
-
-#### Information for Collaborators
-
-- [Getting Ready to Work with Boston University's WordPress Team](https://docs.google.com/document/d/1rKIYzcFiFiZaD6_Im-vbXMlfAuJ8C9GMSj1j91CtyI4/edit?usp=sharing)
-
-### Github Project Organization
-
-- This project uses [PLEASE CHOOSE: GITHUB PROJECTS OR GITHUB PROJECTS BETA]. See the project here: [PROJECT LINK HERE]
-- Boards you'll find:
-    - [PLEASE LIST IMPORTANT BOARDS]
-
-### Issue Tags & Columns, Assignees, etc
-
-- [ADD RELEVANT INFORMATION SPECIFIC TO YOUR WORKFLOW HERE]
-
----
-
-## Development workflow
-
-- [Git-Flow](https://www.git-tower.com/help/guides/integration/git-flow/) will be the workflow.
-
-### Pull requests
-
-- Pull requests should stay in `draft` status until they are actually ready for review.
-- Decide how to handle `code review` vs `functionality review`.
-
-### Branch structure
-
-- `main` & `develop` will be used, but _never_ directly committed to.
-- All changes should be in branches based off of `develop` and include the **issue #** when there is one. Examples:
-    - branches/18-repo-setup
-    - branches/29-foundational-styles
-    - branches/feature/53-glossary
-    - branches/hotfix/99-branding-explosion
-- Frontend vs Backend branches. Only when complex & necessary should we make seperate branches created for the **same feature/issue**.
-
-### Code review and CodeClimate
-
-- Code reviews are required to merge.
-- CodeClimate is not being used.
-
-### Environments
-
-- All active development will happen in team member sandboxes.
-- All code ready for review will be uploaded to the shared `id-presents` sandbox before review with the client.
-- All code that is merged to `develop` is ready to deploy to staging at any time.
-- All code that is released to staging will be done via release numbers.
-
----
-
-## Supported Technologies
-
-### Plugins and Framework Version
-
-Please remove any plugins you do not plan to support in this theme.
-
-- [BU Navigation](https://github.com/bu-ist/bu-navigation)
-- [BU Banners](https://github.com/bu-ist/bu-banners)
-- [BU Front End Library](https://github.com/bu-ist/bu-front-end-library)
-- [BU Profiles](https://github.com/bu-ist/bu-profiles/)
-- [BU Landing Pages](https://github.com/bu-ist/bu-landing-pages/)
-- [BU Program Pages](https://github.com/bu-ist/bu-program-pages)
-- [BU Filtering](https://github.com/bu-ist/bu-filtering)
-- [BU Post Details](https://github.com/bu-ist/bu-post-details)
-- [BU Sharing](https://github.com/bu-ist/bu-sharing)
-- [BU Slideshow](https://github.com/bu-ist/bu-slideshow)
-- [BU Text Widget](https://github.com/bu-ist/bu-text-widget)
-- [Course Feeds](https://github.com/bu-ist/course-feeds)
-- [cmb2](https://github.com/bu-ist/CMB2)
-- [Display Posts](https://github.com/bu-ist/display-posts)
-- Gutenberg in the following areas:
-    - [PLEASE LIST PAGES, SECTIONS, POST TYPES, ETC]
-- [BU PrePress](https://github.com/bu-ist/bu-prepress)
-- [BU Blocks](https://github.com/bu-ist/bu-blocks/)
-
 ### Package Management
 
 Please update this if you have a newer version of Node and can verify the theme compiles with it.
+
 | Name | Version | Purpose |
 |---|---|---|
 | node.js | 20 LTS | Support for npm |
@@ -234,15 +110,15 @@ If you've confirmed a file is uploading, but the CSS you expect to see still isn
 4. If you _still_ do not see the change, wait five minutes, and try again. Rarely, the issue will be with caching on the server side. Grab a coffee, come back, and give it one more try.
 5. If you're still not seeing the change here, it's time to ask for help. See if a designer or developer has a few minutes to help you out in the #interactive-design channel.
 
-
-
 # Linking to Foundation
 
 To create a local link with Responsive Foundation use:
+
 - NPM Link for Node 16 or lower
-- Yalc (https://github.com/wclr/yalc) for Node 16+ with NPM 7 or higher
+- Yalc (<https://github.com/wclr/yalc>) for Node 16+ with NPM 7 or higher
 
 ## Yalc
+
 Yalc acts as a local repository for your locally developed packages.
 
 ### Linking packages
@@ -251,11 +127,12 @@ Linking a package with yalc should not make changes to your package.json file in
 
 You will need two terminal windows and a local copy of Responsive Foundation repo with the 6.0 or greater version as well as this repo.
 
-#### In Responsive Foundation's terminal:
+#### In Responsive Foundation's terminal
+
 Run `npm run yalc:all` or better use the `npm run yalc:watch` script which will automate the process in Responsive Foundation. What you need to do in Foundation is have yalc publish each npm package you want to work on to the local repository store. So if you are making changes to burf-theme you'll want to ensure that yalc is publishing @bostonuniversity/burf-theme package and doing so every time you make a code change to it. That is where the `watch` script comes in handy as that will watch for changes and automatically publish updates to the package from your local repo files to the yalc local package repository on your machine.
 
+#### In Responsive Child Starter's terminal
 
-#### In Responsive Child Starter's terminal:
 Run `npx yalc link <package-name>`. For example `npx yalc link @bostonuniversity/burf-theme` will link up the burf-tools package to this repo so your
 local changes in burf-tools within Responsive Foundation will show up here in this repo. The normal `npm start` and `npm run build` commands should
 see your local changes to burf-tools and use that code. This will let you test out those code changes in this repo.
@@ -267,5 +144,6 @@ Each package from foundatioin will need to linked up separately as each is publi
 `npx yalc link @bostonuniversity/burf-tools`
 
 ### Unlinking packages
+
 1. Disconnect Yalc and unlink by running `npx yalc remove <package-name>` or `npx yalc remove --all` to remove everything. Make sure to do this before merging your code changes in as Yalc should only be used for local development. Once published this repo should use versioned dependencies published to NPM or Github.
 2. Run `npm install` again as your linked package may need to be reinstalled.

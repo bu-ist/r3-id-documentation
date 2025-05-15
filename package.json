@@ -1,20 +1,20 @@
 {
-  "name": "theme-slug",
+  "name": "r3-id-documentation",
   "version": "0.0.0",
   "description": "A block-editor enabled starter template for child themes of Responsive Framework 3.",
   "author": {
     "name": "Boston University",
-    "url": "https://www.bu.edu/marcom/"
+    "url": "https://github.com/bu-ist/r3-id-documentation"
   },
   "contributors": [
     "Your Name <you@bu.edu>"
   ],
   "license": "GPL-3.0-or-later",
   "keywords": [],
-  "homepage": "https://github.com/bu-ist/responsive-child-starter-3x-block-editor",
-  "repository": "https://github.com/bu-ist/responsive-child-starter-3x-block-editor",
+  "homepage": "https://github.com/bu-ist/r3-id-documentation",
+  "repository": "https://github.com/bu-ist/r3-id-documentation",
   "bugs": {
-    "url": "https://github.com/bu-ist/responsive-child-starter-3x-block-editor/issues"
+    "url": "https://github.com/bu-ist/r3-id-documentation/issues"
   },
   "private": true,
   "browserslist": [

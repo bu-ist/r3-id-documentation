@@ -1,0 +1,1 @@
+console.log("Hello World! (from r3-id-documentation example-dynamic view.js)");

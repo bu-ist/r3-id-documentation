@@ -2,7 +2,7 @@
 /**
  * Enqueue scripts and styles.
  *
- * @package theme-slug
+ * @package r3-id-documentation
  */
 
 namespace BU\theme_slug;

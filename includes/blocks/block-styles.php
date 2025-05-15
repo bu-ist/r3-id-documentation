@@ -7,7 +7,7 @@
  *
  * @link https://developer.bu.edu/gutenberg/handbook/block-styles/
  *
- * @package theme-slug
+ * @package r3-id-documentation
  */
 
 namespace BU\plugin_slug\Blocks;
@@ -21,21 +21,21 @@ register_block_style(
     'core/quote',
     array(
         'name'         => 'quote-php-style',
-        'label'        => __( 'PHP Style', 'theme-slug' ),
+        'label'        => __( 'PHP Style', 'r3-id-documentation' ),
     )
 );
 register_block_style(
     'core/quote',
     array(
         'name'         => 'quote-php-style-2',
-        'label'        => __( 'PHP Style 2', 'theme-slug' ),
+        'label'        => __( 'PHP Style 2', 'r3-id-documentation' ),
     )
 );
 register_block_style(
     'core/quote',
     array(
         'name'         => 'quote-php-style-3',
-        'label'        => __( 'PHP Style 3', 'theme-slug' ),
+        'label'        => __( 'PHP Style 3', 'r3-id-documentation' ),
     )
 );
 

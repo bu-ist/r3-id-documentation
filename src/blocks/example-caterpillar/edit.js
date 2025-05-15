@@ -70,7 +70,7 @@ export default function Edit( props ) {
 				<div className="wp-block--bu-block-example--caterpillar--container">
 					<RichText
 						className="wp-block--bu-block-example--caterpillar--title"
-						placeholder={ __( 'Callout Title', 'theme-slug' ) }
+						placeholder={ __( 'Callout Title', 'r3-id-documentation' ) }
 						tagName="h2"
 						onChange={ onChangeTitle }
 						value={ title }
@@ -96,7 +96,7 @@ export default function Edit( props ) {
 						) }
 					</div>
 					<RichText
-						placeholder={ __( 'Excerpt', 'theme-slug' ) }
+						placeholder={ __( 'Excerpt', 'r3-id-documentation' ) }
 						tagName="p"
 						classname="wp-block--bu-block-example--caterpillar--excerpt"
 						onChange={ onChangeExcerpt }

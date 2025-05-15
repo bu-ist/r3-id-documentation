@@ -20,4 +20,4 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-metadata/#view-script
  */
 
-console.log( 'Hello World! (from theme-slug example-dynamic view.js)' );
+console.log( 'Hello World! (from r3-id-documentation example-dynamic view.js)' );
