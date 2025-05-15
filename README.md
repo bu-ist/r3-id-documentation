@@ -1,6 +1,5 @@
-# ID Documentation Theme
+# [Project Name]
 
-A theme for Documentation sites for ID plugins, themes, and related products. 
 ---
 
 ## Setup instructions (delete after repository setup is complete)
@@ -167,6 +166,9 @@ Please update this if you have a newer version of Node and can verify the theme 
 |---|---|---|
 | node.js | 20 LTS | Support for npm |
 | npm | 8.3.1 | Package management. See package.json for a full list of packages. |
+| webpack | 5.95.0  | Capable of transforming, bundling, or packaging just about any resource or asset. |
+| sass-loader | 12.6.0 | Compiles SASS/SCSS to CSS. |
+| @wordpress/scripts | 27.9.0 | Reusable scripts tailored for WordPress development. |
 
 ### Frontend Dependencies
 
@@ -236,29 +238,34 @@ If you've confirmed a file is uploading, but the CSS you expect to see still isn
 
 # Linking to Foundation
 
-To create a local link with Responsive Foundation use: 
+To create a local link with Responsive Foundation use:
 - NPM Link for Node 16 or lower
 - Yalc (https://github.com/wclr/yalc) for Node 16+ with NPM 7 or higher
 
 ## Yalc
-Yalc acts as a local repository for your locally developed packages. 
+Yalc acts as a local repository for your locally developed packages.
 
 ### Linking packages
 
-Linking a package with yalc should not make changes to your package.json file in this repo. 
+Linking a package with yalc should not make changes to your package.json file in this repo.
 
 You will need two terminal windows and a local copy of Responsive Foundation repo with the 6.0 or greater version as well as this repo.
 
-#### In Responsive Foundation's terminal: 
-Run `yalc publish` or better use the `npm run watch` script which will automate the process in Responsive Foundation. What you need to do in Foundation is have yalc publish each npm package you want to work on to the local repository store. So if you are making changes to burf-theme you'll want to ensure that yalc is publishing @bostonuniversity/burf-theme package and doing so every time you make a code change to it. That is where the `watch` script comes in handy as that will watch for changes and automatically publish updates to the package from your local repo files to the yalc local package repository on your machine.
+#### In Responsive Foundation's terminal:
+Run `npm run yalc:all` or better use the `npm run yalc:watch` script which will automate the process in Responsive Foundation. What you need to do in Foundation is have yalc publish each npm package you want to work on to the local repository store. So if you are making changes to burf-theme you'll want to ensure that yalc is publishing @bostonuniversity/burf-theme package and doing so every time you make a code change to it. That is where the `watch` script comes in handy as that will watch for changes and automatically publish updates to the package from your local repo files to the yalc local package repository on your machine.
 
 
 #### In Responsive Child Starter's terminal:
 Run `npx yalc link <package-name>`. For example `npx yalc link @bostonuniversity/burf-theme` will link up the burf-tools package to this repo so your
 local changes in burf-tools within Responsive Foundation will show up here in this repo. The normal `npm start` and `npm run build` commands should
-see your local changes to burf-tools and use that code. This will let you test out those code changes in this repo. 
+see your local changes to burf-tools and use that code. This will let you test out those code changes in this repo.
+
+Each package from foundatioin will need to linked up separately as each is published to NPM as a separate package:
+`npx yalc link @bostonunversity/burf-base`
+`npx yalc link @bostonuniversity/burf-theme`
+`npx yalc link @bostonuniversity/burf-customizations`
+`npx yalc link @bostonuniversity/burf-tools`
 
 ### Unlinking packages
 1. Disconnect Yalc and unlink by running `npx yalc remove <package-name>` or `npx yalc remove --all` to remove everything. Make sure to do this before merging your code changes in as Yalc should only be used for local development. Once published this repo should use versioned dependencies published to NPM or Github.
 2. Run `npm install` again as your linked package may need to be reinstalled.
-

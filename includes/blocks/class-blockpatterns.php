@@ -39,6 +39,7 @@ class BlockPatterns {
 		global $wp_version;
 
 		add_action( 'init', array( $this, 'pattern_category' ) );
+		add_action( 'after_setup_theme', array( $this, 'core_patterns' ) );
 
 		if ( $wp_version < 6 ) {
 			add_action( 'init', array( $this, 'register_patterns' ) );
@@ -57,6 +58,9 @@ class BlockPatterns {
 	private function __wakeup() {
 	}
 
+	/**
+	 * Add custom pattern category.
+	 */
 	public function pattern_category() {
 		/**
 		 * Set up the category our block patterns will live in.
@@ -69,6 +73,18 @@ class BlockPatterns {
 		);
 	}
 
+	/**
+	 * Disable core & remote patterns.
+	 *
+	 */
+	public function core_patterns() {
+		remove_theme_support( 'core-block-patterns' );
+		add_filter( 'should_load_remote_block_patterns', '__return_false' );
+	}
+
+	/**
+	 * Register patterns automagically from the `/patterns/` folder.
+	 */
 	public function register_patterns() {
 		$default_headers = array(
 			'title'         => 'Title',

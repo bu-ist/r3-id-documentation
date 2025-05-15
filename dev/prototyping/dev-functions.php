@@ -65,7 +65,8 @@ function dev_sections() {
 		'r_before_opening_container_outer'  => false,
 		'r_after_opening_container_outer'   => false,
 		'r_before_opening_container_inner'  => false,
-		'r_after_opening_container_inner'   => false,
+		'r_after_opening_container_inner'   => true,
+		// 'r_after_opening_container_inner'   => false,
 
 		// Content hooks.
 		// Sidebar hooks.
@@ -102,6 +103,7 @@ function dev_sections() {
 		'comment_form'                      => false,
 
 		// Footer hooks.
+		// 'r_before_closing_container_inner'  => true,
 		'r_before_closing_container_inner'  => false,
 		'r_after_closing_container_inner'   => false,
 		'r_before_closing_container_outer'  => false,

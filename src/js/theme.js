@@ -7,9 +7,11 @@
  */
 
 // Import Foundation scripts.
-import { toggle } from '@bostonuniversity/burf-theme/js-dev/dist/toggle';
+import { toggle } from '@bostonuniversity/burf-theme/js/toggle';
 
 // Run JS scripts here.
 toggle();
 
-console.log( 'theme-slug js/theme.js has loaded and cannot wait to play the bongos.' );
+console.log(
+	'theme-slug js/theme.js has loaded and cannot wait to play the bongos.'
+);

@@ -89,17 +89,42 @@ if ( file_exists( __DIR__ . '/dev/prototyping/dev-functions.php' ) ) {
 	add_filter( 'after_setup_theme', 'dev_sections' );
 }
 
+
+
+
 /**
  * Theme Supports.
  */
 require_once 'includes/theme-support.php';
 
+
+// WP Docs menu
+// Example code for additional items:
+	//$wpdocs_menu[] = [
+		//  'id'    => '',
+		//  'title' => __( '', 'theme-slug' ),
+		//  'href'  => '',
+		//];
+add_filter(
+	'wpdocs_menu',
+	function ( $wpdocs_menu ) {
+		// Add additional menu items here.
+		return $wpdocs_menu;
+	}
+);
+
 /**
  * Enqueue theme scripts and styles.
  */
-require_once 'includes/enqueue-scripts.php';
+require_once 'includes/class-themeenqueues.php';
 
 /**
  * Blocks & Assets
  */
 require_once 'includes/blocks/functions.php';
+
+// Uncomment to unbundle plugin styles.
+// add_filter( 'plugin_slug_bundle_block_styles', '__return_false' );
+
+// Uncomment to remove decorative plugin styles.
+// add_filter( 'plugin_slug_decorative_block_styles', '__return_false' );

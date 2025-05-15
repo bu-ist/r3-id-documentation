@@ -1,34 +1,57 @@
 export default {
     "settings": {
 		"border": {
-			"customColor": false,
-			"customRadius": false,
-			"customStyle": false,
-			"customWidth": false
+			"customRadius": true,
+			// Additional border settings coming in Theme.json v2: https://developer.wordpress.org/block-editor/reference-guides/theme-json-reference/theme-json-v2/
 		},
 		"color": {
-			"custom": false,
-			"customDuotone": false,
-			"customGradient": false,
+			"custom": true,
+			"customDuotone": true,
+			"customGradient": true,
 			"duotone": [],
 			"gradients": [],
-			"link": false,
+			"link": true,
 			"palette": [
 				{
 					"name": "BU Red",
-					"slug": "bu-red",
+					"slug": "primary",
 					"color": "#cc0000"
+				},
+				{
+					"name": "Secondary",
+					"slug": "secondary",
+					"color": "#242629"
+				},
+				{
+					"name": "Grey",
+					"slug": "tertiary",
+					"color": "#6e6e6e"
+				},
+				{
+					"name": "Light Gray",
+					"slug": "quaternary",
+					"color": "#f4f6f8"
+				},
+				{
+					"name": "White",
+					"slug": "white",
+					"color": "#ffffff"
+				},
+				{
+					"name": "Black",
+					"slug": "black",
+					"color": "#000000"
 				}
 			]
 		},
 		"custom": {},
 		"layout": {
-			"contentSize": "800px",
-			"wideSize": "1000px"
+			"contentSize": "var(--bu--content--width-default-clamped)",
+			"wideSize": "var(--bu--content--width-wide-clamped)"
 		},
 		"spacing": {
-			"customMargin": false,
-			"customPadding": false,
+			"customMargin": true,
+			"customPadding": true,
 			"units": [ "px", "em", "rem", "vh", "vw" ]
 		},
 		"typography": {
@@ -39,8 +62,7 @@ export default {
 			"customTextDecorations": false,
 			"customTextTransforms": false,
 			"dropCap": false,
-			"fontFamilies": [],
-			"fontSizes": []
+			"fontFamilies": []
 		},
 		"blocks": {
 			"core/paragraph": {

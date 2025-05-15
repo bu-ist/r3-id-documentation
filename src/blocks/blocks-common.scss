@@ -7,13 +7,8 @@
 * for blocks that have some shared markup and elements.
 **/
 
-
 // Import our tools for variables and mixins.
-@import 'tools.scss';
+@import 'includes/tools';
 
 // Import all SCSS partials from the common folder.
-@import 'common/package';
-
-
-
-
+@import 'blocks-common/package';

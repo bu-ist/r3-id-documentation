@@ -1,11 +1,11 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "theme-slug/block-starter-dynamic",
+	"name": "theme-slug/example-dynamic",
 	"version": "0.1.0",
-	"title": "BU: Theme Starter 1",
+	"title": "BU Theme Starter Block: Example - Dynamic",
 	"category": "theme-slug-block-category",
-	"icon": "admin-site",
+	"icon": "smiley",
 	"description": "Example block using a dynamic template",
 	"example": {},
 	"supports": {

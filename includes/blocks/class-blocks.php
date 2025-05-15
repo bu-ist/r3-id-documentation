@@ -32,7 +32,7 @@ class Blocks {
 	public function setup() {
 		// Register Shared / Common styles.
 		wp_register_style(
-			RESPONSIVE_CHILD_THEME_DOMAIN . '-common-styles',
+			RESPONSIVE_CHILD_THEME_DOMAIN . '-blocks-common-styles',
 			RESPONSIVE_CHILD_THEME_URL . '/build/css/blocks/blocks-common.css',
 			array(),
 			filemtime( RESPONSIVE_CHILD_THEME_DIR . '/build/css/blocks/blocks-common.css' ),
@@ -45,12 +45,12 @@ class Blocks {
 		 * Dependency: The Block Common Styles so common/shared styles are enqueued before
 		 * the styles for the block, allowing the block styles to override the common styles.
 		 */
-		if ( THEME_SLUG_BLOCKS_BUNDLE ) {
+		if ( THEME_SLUG_BLOCKS_BUNDLED ) {
 			wp_register_style(
-				RESPONSIVE_CHILD_THEME_DOMAIN . '-bundled-styles',
-				RESPONSIVE_CHILD_THEME_URL . '/build/css/blocks/blocks-all.css',
-				array( RESPONSIVE_CHILD_THEME_DOMAIN . '-common-styles' ),
-				filemtime( RESPONSIVE_CHILD_THEME_DIR . '/build/css/blocks/blocks-all.css' ),
+				RESPONSIVE_CHILD_THEME_DOMAIN . '-blocks-bundled-styles',
+				RESPONSIVE_CHILD_THEME_URL . '/build/css/blocks/blocks-bundled.css',
+				array( RESPONSIVE_CHILD_THEME_DOMAIN . '-blocks-common-styles' ),
+				filemtime( RESPONSIVE_CHILD_THEME_DIR . '/build/css/blocks/blocks-bundled.css' ),
 				'all'
 			);
 		}
@@ -111,17 +111,16 @@ class Blocks {
 					};
 				}
 
-				if ( THEME_SLUG_BLOCKS_BUNDLE ) {
-					// Don't load a stylesheet for this block, as we are loading a single stylesheet
-					// with all block styles bundled together elsewhere.
+				if ( THEME_SLUG_BLOCKS_BUNDLED ) {
+					// Don't load a stylesheet for this block, as we are loading a single stylesheet with all block styles bundled together.
 					$block_options['style'] = RESPONSIVE_CHILD_THEME_DOMAIN . '-bundled-styles';
 				} else {
-					// @todo this shouldn't be hardcoded, right?
+					// Register individual block's stylesheets.
 					wp_register_style(
 						$block_folder_name . '-styles',
-						THEME_SLUG_BLOCKS_BUILD_URL . '/block-plugin-example/style-index.css',
-						array( RESPONSIVE_CHILD_THEME_DOMAIN . '-common-styles' ),
-						filemtime( THEME_SLUG_BLOCKS_BUILD_DIR . '/block-plugin-example/style-index.css' )
+						THEME_SLUG_BLOCKS_BUILD_URL . '/' . $block_folder_name . '/style-index.css',
+						array( RESPONSIVE_CHILD_THEME_DOMAIN . '-blocks-common-styles' ),
+						filemtime( THEME_SLUG_BLOCKS_BUILD_DIR . '/' . $block_folder_name . '/style-index.css' )
 					);
 
 					// Add the individual block's stylesheet to the arguments so WP registers.

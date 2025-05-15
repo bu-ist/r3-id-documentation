@@ -1,53 +1,69 @@
 // =================================================================
-// Responsive Content Area Variables
+// Content Area Variables and Maps
 // =================================================================
 
-/// The number of columns you would like to use in your layout.
-/// This controls the width of the content area vs. the sidebar.
-/// By default, setting this to 3 will make the sidebar take up 1 column,
-/// and the content area 2 columns.
-/// If you were to set this to 4, the sidebar would take up 1/4 of the space,
-/// while the content area would take up 3/4 of the space.
-/// By default, the number of supported widgets in your footer will match this number.
-/// @group grid
-/// @access public
-/// @since 1.2.0
+// CSS Variables
+// -----------------------------------------------------------------
+// --bu--content--padding-block: 1em;
+// --bu--content--padding-inline: 1rem;
+// --bu--content--margin-block: var(--bu--content--padding-block);
+// --bu--content--margin-inline: var(--bu--content--padding-inline);
+// --bu--content--column-gap: var(--bu--content--padding-inline);
+// --bu--content--row-gap: var(--bu--content--padding-block);
 
-// $number-columns:                            3;
+// --bu--content--width-default-base: 800px;
+// --bu--content--width-default-clamped: clamp( 0%, var(--bu--content--width-default-base), calc(100% - ( var(--bu--content--margin-inline) * 2 ) ) );
 
-/// Sets the margin width for content and footbar widgets.
-/// @group grid
-/// @access public
-/// @since 1.2.0
+// --bu--content--width-float-base: calc( var(--bu--content--width-default-base) * 0.5 );
+// --bu--content--width-float-clamped: clamp( 0%, var(--bu--content--width-float-base), calc(100% - ( var(--bu--content--margin-inline) * 2 ) ) );
 
-// $margin-width:                              5.2%;
+// --bu--content--width-nested-float-base: 50%;
+// --bu--content--width-nested-float-clamped: clamp( 0%, var(--bu--content--width-nested-float-base), calc(100% - ( var(--bu--content--margin-inline) * 2 ) ) );
 
-/// Controls the background color of the content.
-/// @group content
-/// @access public
-/// @since 1.0.0
+// --bu--content--width-wide-base: 1000px;
+// --bu--content--width-wide-clamped: clamp( 0%, var(--bu--content--width-wide-base), calc(100% - ( var( --bu--content--margin-inline ) * 2 ) ) );
 
-// $color-content-bg:                          $color-grayscale-f;
+// --bu--content--margin-offset: clamp(0%, 50% - ( var(--bu--content--width-default-clamped) * 0.5 ), 100%);
 
-/// The amount of padding to add to columns on mobile.
-/// @group grid
-/// @access public
-/// @since 1.2.0
+// Selector maps
+// -----------------------------------------------------------------
+// $frontend-selectors: (
+// 	"alignleft": ".alignleft",
+// 	"alignright": ".alignright",
+// 	"aligncenter": ".aligncenter",
+// 	"alignwide": ".alignwide",
+// 	"alignfull": ".alignfull",
+// );
 
-// $column-padding-bottom:                     10px;
-
-/// The amount of padding to add to columns on desktop.
-/// @group grid
-/// @access public
-/// @since 1.2.0
-
-// $column-padding-bottom-large-screen:        35px;
+// $editor-selectors: (
+// 	"alignleft": "[data-align='left']",
+// 	"alignright": "[data-align='right']",
+// 	"aligncenter": "[data-align='center']",
+// 	"alignwide": "[data-align='wide']",
+// 	"alignfull": "[data-align='full']",
+// );
 
 // =================================================================
-// Responsive Content Area Import
+// Content Area Import
 // =================================================================
 
 @import "burf-theme/layout/content-area";
+@import "burf-theme/content/gravity-forms";
+@import "burf-theme/content/blocks/audio";
+@import "burf-theme/content/blocks/button";
+@import "burf-theme/content/blocks/calendar";
+@import "burf-theme/content/blocks/column";
+@import "burf-theme/content/blocks/gallery";
+@import "burf-theme/content/blocks/image";
+@import "burf-theme/content/blocks/media-text";
+@import "burf-theme/content/blocks/post-date";
+@import "burf-theme/content/blocks/post-featured-image";
+@import "burf-theme/content/blocks/post-template";
+@import "burf-theme/content/blocks/pullquote";
+@import "burf-theme/content/blocks/rss";
+@import "burf-theme/content/blocks/table";
+@import "burf-theme/content/blocks/search";
+@import "burf-theme/content/blocks/separator";
 
 // =================================================================
 // Custom Content Area Styles

@@ -1,6 +1,9 @@
 /**
 * Block editor only styles
 */
-body {
-	border: solid 20px yellow !important;
-}
+// body {
+// 	border: solid 20px #ff0 !important;  // text styles for veryfying style sheet inclusion
+// }
+
+// Import all SCSS partials from the common folder.
+@import '../blocks/blocks-styles';

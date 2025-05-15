@@ -17,7 +17,7 @@
  * JavaScript running in the front-end, then you should delete this file and remove
  * the `viewScript` property from `block.json`.
  *
- * @link https://developer.wordpress.org/block-editor/reference-guides/block-api/block-metadata/#view-script
+ * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-metadata/#view-script
  */
 
 console.log( 'Hello World! (from theme-slug example-dynamic view.js)' );

@@ -1,6 +1,52 @@
-/**
-* Editor only styles
-*/
+// The following Block Editor styles are added to the block editor thru add_theme_support() with 
+// the the add_editor_style() function. In doing so they are prepended with the .editor-styles-wrapper 
+// class so as to only affect contents within the block editor and create pairity between the frontend 
+// and the editor. And so any partials imported to theme.scss which affect the content area and blocks 
+// there within should also be added to this sheet in a similar order.
+
+
+// =================================================================
+// Global and Base Styles
+// =================================================================
+
+@import "abstracts/config/breakpoints";
+@import "abstracts/mixins/mixins";
+@import "foundational/fonts";
+@import "foundational/normalize";
+@import "abstracts/config/typography";
+@import "foundational/tables";
+
+@import "widgets/widget-calendar";
+
+@import "burf-theme/mixins";
+@import "burf-theme/content/gravity-forms";
+@import "burf-theme/content/blocks/audio";
+@import "burf-theme/content/blocks/button";
+@import "burf-theme/content/blocks/calendar";
+@import "burf-theme/content/blocks/column";
+@import "burf-theme/content/blocks/gallery";
+@import "burf-theme/content/blocks/image";
+@import "burf-theme/content/blocks/media-text";
+@import "burf-theme/content/blocks/post-date";
+@import "burf-theme/content/blocks/post-featured-image";
+@import "burf-theme/content/blocks/post-template";
+@import "burf-theme/content/blocks/post-template-editor";
+@import "burf-theme/content/blocks/pullquote";
+@import "burf-theme/content/blocks/rss";
+@import "burf-theme/content/blocks/search";
+@import "burf-theme/content/blocks/table";
+@import "burf-theme/content/blocks/separator";
+
+
+//TO-DO: The following should be moved to Responsive Framework
 body {
-	border: solid 20px green !important;
+    @include contentarea-vertical-spacings;
+}
+
+.block-editor-block-list__layout.is-root-container {
+    @include contentarea-base-styles;
+    @include contentarea-alignment-styles( $editor-selectors );
+
+    @include image-block-editor-styles( $editor-selectors );
+    @include embed-block-editor-styles( $editor-selectors );
 }
