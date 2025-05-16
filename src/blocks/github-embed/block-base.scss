@@ -1,0 +1,9 @@
+/**
+ * SCSS partial that contains all of the base (structural) styles for this block.
+ */
+
+ @use './prism/prism.css';
+
+ .wp-block-bu-github-embed pre.line-numbers {
+	font-size: .75rem !important;
+}

@@ -1,0 +1,49 @@
+{
+	"$schema": "https://schemas.wp.org/wp/5.8/block.json",
+	"apiVersion": 2,
+	"name": "bu/github-embed",
+	"version": "0.1.0",
+	"title": "BU labs-plugin-blocks: Code",
+	"category": "text",
+	"description": "github-embed",
+	"example": {
+		"attributes": {
+			"message": "This is an attribute string!"
+		}
+	},
+	"attributes": {
+		"code": {
+			"type": "string"
+		},
+		"language": {
+			"type": "string"
+		},
+		"prismTheme": {
+			"type": "string"
+		},
+		"lines": {
+			"type": "string"
+		}
+	},
+	"supports": {},
+	"textdomain": "labs-plugin-blocks",
+	"attributes": {
+		"code": {
+			"type": "string"
+		},
+		"language": {
+			"type": "string"
+		},
+		"prismTheme": {
+			"type": "string"
+		},
+		"lines": {
+			"type": "string"
+		}
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"script": "file:./view.js"
+}

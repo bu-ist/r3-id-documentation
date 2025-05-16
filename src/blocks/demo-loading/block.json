@@ -1,0 +1,45 @@
+{
+	"$schema": "https://schemas.wp.org/wp/5.8/block.json",
+	"apiVersion": 2,
+	"name": "labs-plugin-blocks/demo-loading",
+	"version": "0.1.0",
+	"title": "demo-loading",
+	"category": "text",
+	"icon": "carrot",
+	"description": "demo-loading",
+	"example": {
+		"attributes": {
+			"text": "This is an attribute string!",
+			"shadow": "shadowfax!",
+			"className": "¿classNamebra?"
+		}
+	},
+	"attributes": {
+		"text": {
+			"type": "string",
+			"default": ""
+		},
+		"shadow": {
+			"type": "boolean",
+			"default": true
+		},
+		"className": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {},
+	"textdomain": "labs-plugin-blocks",
+	"attributes": {
+		"text": {
+			"type": "string"
+		},
+		"shadow": {
+			"type": "boolean"
+		},
+		"className": {
+			"type": "string"
+		}
+	},
+	"editorScript": "file:./index.js"
+}
