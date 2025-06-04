@@ -20,4 +20,4 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-metadata/#view-script
  */
 
-console.log( 'Hello World! (from r3-id-documentation example-caterpillar view.js)' );
+import './prism/prism.js';
