@@ -1,0 +1,1 @@
+console.log("r3-id-documentation js/admin.js has loaded and has to buy some new hats.");
