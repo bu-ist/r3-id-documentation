@@ -8,7 +8,7 @@
  *     $block (WP_Block): The block instance.
  *
  * @see https://github.com/WordPress/gutenberg/blob/trunk/docs/reference-guides/block-api/block-metadata.md#render
- * @package labs-plugin-blocks
+ * @package r3-id-documentation
  */
 
 $codeview = esc_url_raw( $attributes['code'] );
