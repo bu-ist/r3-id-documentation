@@ -1,12 +1,12 @@
 {
 	"$schema": "https://schemas.wp.org/wp/5.8/block.json",
 	"apiVersion": 2,
-	"name": "labs-plugin-blocks/demo-loading",
+	"name": "r3-id-documentation/loadingspinner-sandbox",
 	"version": "0.1.0",
-	"title": "demo-loading",
+	"title": "LoadingSpinner Sandbox",
 	"category": "text",
 	"icon": "carrot",
-	"description": "demo-loading",
+	"description": "LoadingSpinner Sandbox",
 	"example": {
 		"attributes": {
 			"text": "This is an attribute string!",
@@ -29,17 +29,6 @@
 		}
 	},
 	"supports": {},
-	"textdomain": "labs-plugin-blocks",
-	"attributes": {
-		"text": {
-			"type": "string"
-		},
-		"shadow": {
-			"type": "boolean"
-		},
-		"className": {
-			"type": "string"
-		}
-	},
+	"textdomain": "r3-id-documentation",
 	"editorScript": "file:./index.js"
 }

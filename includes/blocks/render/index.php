@@ -18,7 +18,7 @@ namespace BU\labs_theme_blocks\Blocks;
 function my_custom_render( $block_content, $block ) {
 
 	// For the block in question, render whatever you want, and pull any attrinute you need from $block['attrs'].
-	if ( $block['blockName'] === 'labs-plugin-blocks/plugin' ) {
+	if ( $block['blockName'] === 'r3-id-documentation/plugin' ) {
 
 		// We need to return data, not render it, so we stick everything into a output buffering.
 		ob_start();
@@ -27,7 +27,7 @@ function my_custom_render( $block_content, $block ) {
 		$attributes = $block['attrs'];
 
 		// Rather than putting all the code here, I just copied the original render file into this directory so we can make modifications there.
-		require_once 'labs-plugin-blocks_plugin.php';
+		require_once 'r3-id-documentation_plugin.php';
 
 		// Dump the output buffer into a variable, purge the output buffer, return the data.
 		$new_render = ob_get_contents();
