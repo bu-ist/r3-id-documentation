@@ -11,7 +11,7 @@
  * @package labs-plugin-blocks
  */
 
-$codeview = esc_url_raw( $attributes['githuburl'] );
+$codeview = esc_url_raw( $attributes['mdURL'] );
 $raw      = str_replace( 'https://github.com/', 'https://raw.githubusercontent.com/', $codeview );
 $raw      = str_replace( '/blob/', '/refs/heads/', $raw );
 
@@ -27,7 +27,7 @@ if ( ( 404 === wp_remote_retrieve_response_code( $response ) ) ) {
 	<p><a href="<?php echo esc_url( $codeview ); ?>">{view README.md github}</a></p>
 
 </div>
-<?php
+	<?php
 } else {
 	echo 'some other error... ' . esc_url( $raw );
 }

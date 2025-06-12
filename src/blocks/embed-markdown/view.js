@@ -26,7 +26,7 @@ const converter = new showdown.Converter();
 
 // @todo this only allows 1 per page; need to make it more modular
 document.addEventListener( 'DOMContentLoaded', function () {
-	const markdownEl = document.getElementById( 'markdown_raw' );
-	const markdownHtml = converter.makeHtml( markdownEl.value );
-	document.getElementById( 'markdown_html' ).innerHTML = markdownHtml;
+	// const markdownEl = document.getElementById( 'markdown_raw' );
+	// const markdownHtml = converter.makeHtml( markdownEl.value );
+	// document.getElementById( 'markdown_html' ).innerHTML = markdownHtml;
 } );

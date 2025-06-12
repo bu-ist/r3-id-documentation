@@ -12,7 +12,7 @@ import { registerBlockCollection } from '@wordpress/blocks';
  * @link https://github.com/godaddy-wordpress/coblocks/blob/e196c83d628e1139799ebf9ef94540578f430141/src/utils/helper.js
  */
 registerBlockCollection( 'r3-id-documentation', {
-	title: 'BU: Theme Starter Blocks Collection (JS)',
+	title: 'r3-id-documentation Collection (JS)',
 } );
 
 /**
@@ -21,4 +21,4 @@ registerBlockCollection( 'r3-id-documentation', {
 import '../blocks/block-styles';
 
 // Block variations.
-import '../blocks/variations';
+// import '../blocks/variations';

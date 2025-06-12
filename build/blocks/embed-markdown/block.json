@@ -1,26 +1,26 @@
 {
   "$schema": "https://schemas.wp.org/wp/5.8/block.json",
   "apiVersion": 2,
-  "name": "r3-id-documentation/github-readme",
+  "name": "bu/embed-markdown",
   "version": "0.1.0",
-  "title": "r3-id-documentation: Embed GitHub Readme",
-  "category": "text",
-  "description": "github-readme",
+  "title": "Embed Markdown",
+  "category": "r3-id-documentation",
+  "description": "embed-markdown",
   "example": {
     "attributes": {
-      "githuburl": "www bush"
+      "mdURL": "https://github.com/README.md"
     }
   },
   "attributes": {
-    "githuburl": {
+    "mdURL": {
       "type": "string"
     }
   },
   "supports": {},
-  "textdomain": "labs-plugin-blocks",
+  "textdomain": "r3-id-documentation",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
-  "style": "file:./style-index.css",
+  "style": "file:./style.css",
   "render": "file:./render.php",
   "script": "file:./view.js"
 }
