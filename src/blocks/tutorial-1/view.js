@@ -20,6 +20,10 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-metadata/#view-script
  */
 
+<<<<<<<< HEAD:src/blocks/tutorial-1/view.js
 console.log( 'I am isTheme!' );
 
 
+========
+import './prism/prism.js';
+>>>>>>>> 6b57d859e90ca222f168778ecf5413f68b7082a5:dev/code-examples/js.js
