@@ -1,0 +1,26 @@
+{
+	"$schema": "https://schemas.wp.org/wp/5.8/block.json",
+	"apiVersion": 2,
+	"name": "r3-id-documentation/github-readme",
+	"version": "0.1.0",
+	"title": "r3-id-documentation: Embed GitHub Readme",
+	"category": "r3-id-documentation",
+	"description": "github-readme",
+	"example": {
+		"attributes": {
+			"githuburl": "www bush"
+		}
+	},
+	"attributes": {
+		"githuburl": {
+			"type": "string"
+		}
+	},
+	"supports": {},
+	"textdomain": "r3-id-documentation",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style.css",
+	"render": "file:./render.php",
+	"script": "file:./view.js"
+}

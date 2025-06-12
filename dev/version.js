@@ -13,7 +13,9 @@ const minFile = 'build/css/theme.css';
 const cssHeader =
 	`@charset "UTF-8";
 /*
-Theme Name: Theme Name
+Theme Name: ` +
+	name +
+	`
 Theme URI: ` +
 	repository +
 	`
