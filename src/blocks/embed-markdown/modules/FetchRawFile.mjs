@@ -1,22 +1,42 @@
+/**
+ * Fetch the markdown file and convert it to HTML.
+ */
+
 import { useState, useEffect } from '@wordpress/element';
 
-export function FetchRawFile( { mdURL } ) {
+// Convert Markdown into HTML.
+import * as showdown from 'showdown';
+
+// This library parses an HTML string and converts it into React elements. It's safer than dangerouslySetInnerHTML because it handles sanitization. Install the library.
+import parse from 'html-react-parser';
+
+/**
+ * Fetch file contents.
+ * @param {string} filePath File to fetch.
+ */
+export function FetchRawFile( { filePath } ) {
 	const [ fileContent, setFileContent ] = useState( '' );
 	const [ error, setError ] = useState( null );
+	const converter = new showdown.Converter();
 
 	useEffect( () => {
-		if ( mdURL ) {
-			fetch( mdURL )
+		if ( filePath && 'md' === getExtension( filePath ) ) {
+			// convert GitHub ui view to raw
+			filePath = filePath.replace(
+				'/github.com/',
+				'/raw.githubusercontent.com/'
+			);
+			filePath = filePath.replace( '/blob/', '/' );
+
+			fetch( filePath )
 				.then( ( response ) => {
 					if ( ! response.ok ) {
 						console.error(
-							'Network response was not ok:',
+							'Network response was not OK:',
 							response
 						);
-						// this makes it stop working... need to handle better
-						// throw new Error( 'Network response was not ok:' );
 					}
-					return response.text(); // Use .text() to get raw text content
+					return response.text(); // Get raw text content
 				} )
 				.then( ( text ) => {
 					setFileContent( text );
@@ -26,19 +46,30 @@ export function FetchRawFile( { mdURL } ) {
 					console.error( 'Error fetching file:', error );
 				} );
 		} else {
-			setFileContent( 'no url' );
-			console.log( 'no url' );
+			setFileContent(
+				'Please provide a full URL to a .md file in the Inspector panel to the right →'
+			);
 		}
-	}, [ mdURL ] ); // This will run whenever the mdURL is changed.
+	}, [ filePath ] ); // This will run whenever the filePath is changed.
 
 	if ( error ) {
 		return (
 			<div>
-				Error fetching { mdURL }: { error.message }
+				Error fetching { filePath }: { error.message }
 			</div>
 		);
 	}
 
-	// Display the content in a preformatted block
-	return <pre>{ fileContent }</pre>;
+	// Convert md to html using Showdown.
+	const markdownHtml = converter.makeHtml( fileContent );
+
+	return <div>{ parse( markdownHtml ) }</div>;
+}
+
+/**
+ * Find extension of file.
+ * @param {string} filename File to check.
+ */
+function getExtension( filename ) {
+	return filename.toLowerCase().split( '.' ).pop();
 }

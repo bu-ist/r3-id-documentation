@@ -1,7 +1,11 @@
 /**
  * The following styles get applied inside the editor only.
  */
+
+// Import Block Styles
+@import 'style';
+
 .wp-block-bu-embed-markdown {
-	background-color: #f6f6f6;
-	color: #666;
+	opacity: .75;
+	cursor: context-menu;
 }

@@ -21,7 +21,7 @@ import Edit from './edit';
 import metadata from './block.json';
 
 // Update with the desired icon.
-import { ReactComponent as reactIcon } from '../common/icons/github.svg';
+import { ReactComponent as reactIcon } from '../common/icons/markdown.svg';
 
 /**
  * Every block starts by registering a new block type definition.

@@ -11,23 +11,21 @@
  * @package labs-plugin-blocks
  */
 
-$codeview = esc_url_raw( $attributes['mdURL'] );
-$raw      = str_replace( 'https://github.com/', 'https://raw.githubusercontent.com/', $codeview );
-$raw      = str_replace( '/blob/', '/refs/heads/', $raw );
+$mdURL = esc_url_raw( $attributes['mdURL'] );
+$raw   = str_replace( '/github.com/', '/raw.githubusercontent.com/', $mdURL );
+$raw   = str_replace( '/blob/', '/', $raw );
 
 $response = wp_remote_get( $raw );
 if ( ( 404 === wp_remote_retrieve_response_code( $response ) ) ) {
-	echo '404 ' . esc_url( $raw );
+	echo 'Cannot find ' . esc_url( $mdURL );
 } elseif ( is_array( $response ) && ( 200 === wp_remote_retrieve_response_code( $response ) ) && ( ! is_wp_error( $response ) ) ) {
 	?>
-<div <?php echo wp_kses_data( get_block_wrapper_attributes() ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+<article <?php echo wp_kses_data( get_block_wrapper_attributes() ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+	<div class="showdown"><?php echo esc_html( $response['body'] ); ?></div>
+	<p>Source: <a href="<?php echo esc_url( $mdURL ); ?>"><?php echo esc_url( $mdURL ); ?></a></p>
 
-	<textarea id="markdown_raw"><?php echo $response['body']; ?></textarea>
-	<div id="markdown_html">...</div>
-	<p><a href="<?php echo esc_url( $codeview ); ?>">{view README.md github}</a></p>
-
-</div>
-	<?php
+</article>
+<?php
 } else {
-	echo 'some other error... ' . esc_url( $raw );
+	echo 'Unable to display ' . esc_url( $mdURL );
 }
