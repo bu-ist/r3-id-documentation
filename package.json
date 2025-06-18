@@ -1,15 +1,15 @@
 {
   "name": "r3-id-documentation",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A block-editor enabled starter template for child themes of Responsive Framework 3.",
   "author": {
     "name": "Boston University",
     "url": "https://github.com/bu-ist/r3-id-documentation"
   },
   "contributors": [
-    "Your Name <you@bu.edu>"
+    "Tim King <timking@bu.edu>"
   ],
-  "license": "GPL-3.0-or-later",
+  "license": "GPL-2.0-or-later",
   "keywords": [],
   "homepage": "https://github.com/bu-ist/r3-id-documentation",
   "repository": "https://github.com/bu-ist/r3-id-documentation",
@@ -31,6 +31,7 @@
     ]
   },
   "devDependencies": {
+    "@bostonuniversity/block-imports": "https://github.com/bu-ist/block-imports#develop",
     "@bostonuniversity/burf-customizations": "^6.0.0-alpha.4",
     "@bostonuniversity/burf-tools": "^6.0.0-alpha.4",
     "@linthtml/linthtml": "^0.9.5",
