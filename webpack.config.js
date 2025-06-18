@@ -55,6 +55,11 @@ const blocksConfig = {
 					},
 				],
 			},
+			{
+				test: /\.mjs$/, // Match files with .mjs extension
+				include: /node_modules/, // Include node_modules if needed
+				type: 'javascript/auto', // Specify module type
+			},
 		],
 	},
 	stats: statsConfig,
