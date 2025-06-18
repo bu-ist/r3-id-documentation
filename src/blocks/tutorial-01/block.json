@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schemas.wp.org/wp/5.8/block.json",
+	"apiVersion": 2,
+	"name": "r3-id-documentation/tutorial-01",
+	"version": "0.0.0",
+	"title": "tutorial-01",
+	"category": "Documentation",
+	"icon": "carrot",
+	"description": "desc...",
+	"example": {
+		"attributes": {
+			"message": "This is an attribute string!"
+		}
+	},
+	"attributes": {
+		"myAttribute": {
+			"type": "string"
+		}
+	},
+	"supports": {},
+	"textdomain": "r3-id-documentation",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style.css",
+	"render": "file:./render.php",
+	"script": "file:./script.js"
+}
