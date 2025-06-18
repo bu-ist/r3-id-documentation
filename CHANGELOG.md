@@ -1,5 +1,9 @@
 # Changelog
 
+## FORTHCOMING
+
+- Adds `<Image>` sandbox block
+
 ## 0.1.0
 
 - Adds `<LoadingSpinner>` sandbox block

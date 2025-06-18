@@ -92,6 +92,27 @@ if ( file_exists( __DIR__ . '/dev/prototyping/dev-functions.php' ) ) {
 
 
 
+// // Ensure WordPress environment is loaded
+// require_once ABSPATH . 'wp-load.php';
+
+// // Get all attachments (media items)
+// $attachments = get_posts(
+//  array(
+//      'post_type'      => 'attachment',
+//      'posts_per_page' => 100, // Get all attachments
+//      'post_status'    => 'any', // Include attachments regardless of status
+//  )
+// );
+
+// // Loop through each attachment and delete it
+// foreach ( $attachments as $attachment ) {
+//  wp_delete_attachment( $attachment->ID, true ); // true for permanent deletion
+// }
+
+// echo 'All media items deleted.';
+
+
+
 /**
  * Theme Supports.
  */

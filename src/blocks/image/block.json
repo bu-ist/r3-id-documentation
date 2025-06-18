@@ -1,0 +1,77 @@
+{
+	"$schema": "https://schemas.wp.org/wp/5.8/block.json",
+	"apiVersion": 2,
+	"name": "r3-id-documentation/image",
+	"version": "0.1.0",
+	"title": "Image - Sandbox",
+	"category": "Documentation",
+	"icon": "carrot",
+	"description": "This block is used to explore and adjust the parameters sent to the <Image> Component.",
+	"example": {},
+	"attributes": {
+		"className": {
+			"type": "string",
+			"default": ""
+		},
+		"mediaId": {
+			"type": "string",
+			"default": ""
+		},
+		"size": {
+			"type": "string",
+			"default": "thumbnail"
+		},
+		"tag": {
+			"type": "string",
+			"enum": [ "img", "picture", "figure" ],
+			"default": "img"
+		},
+		"altSource": {
+			"type": "string",
+			"enum": [ "alt", "caption", "title", "description", "custom" ],
+			"default": "alt"
+		},
+		"onSelect": {
+			"type": "string",
+			"default": ""
+		},
+		"onRemove": {
+			"type": "string",
+			"default": ""
+		},
+		"focalPoint": {
+			"type": "array",
+			"default": "{ x: 0.5, y: 0.5 }"
+		},
+		"onChangeFocalPoint": {
+			"type": "string",
+			"default": ""
+		},
+		"labels": {
+			"type": "array",
+			"default": "{}"
+		},
+		"canEditImage": {
+			"type": "boolean",
+			"default": true
+		},
+		"canOverrideImage": {
+			"type": "boolean",
+			"default": true
+		},
+		"allowedTypes": {
+			"type": "string",
+			"default": "['image']"
+		},
+		"debug": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "r3-id-documentation",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css"
+}
