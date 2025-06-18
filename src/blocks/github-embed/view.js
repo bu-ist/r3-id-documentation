@@ -19,3 +19,5 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-metadata/#view-script
  */
+
+import './prism/prism.js';

@@ -1,0 +1,34 @@
+{
+  "$schema": "https://schemas.wp.org/wp/5.8/block.json",
+  "apiVersion": 2,
+  "name": "bu/github-embed",
+  "version": "0.1.0",
+  "title": "GitHub Code Block",
+  "category": "Documentation",
+  "description": "A custom block to display code from GitHub.",
+  "example": {
+    "attributes": {
+      "code": "This is an attribute string!",
+      "language": "This is an attribute string!",
+      "lines": "This is an attribute string!"
+    }
+  },
+  "attributes": {
+    "code": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string"
+    },
+    "lines": {
+      "type": "string"
+    }
+  },
+  "supports": {},
+  "textdomain": "r3-id-documentation",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style.css",
+  "render": "file:./render.php",
+  "script": "file:./view.js"
+}
