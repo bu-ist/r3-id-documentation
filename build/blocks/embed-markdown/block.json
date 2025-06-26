@@ -12,11 +12,21 @@
     }
   },
   "attributes": {
+    "anchor": {
+      "type": "string",
+      "default": ""
+    },
     "mdURL": {
       "type": "string"
     }
   },
-  "supports": {},
+  "supports": {
+    "anchor": true,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
   "textdomain": "r3-id-documentation",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",

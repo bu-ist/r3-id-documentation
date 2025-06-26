@@ -11,7 +11,11 @@ const converter = new showdown.Converter();
 
 document.addEventListener( 'DOMContentLoaded', function () {
 	document.querySelectorAll( '.showdown' ).forEach( ( mdElement ) => {
-		const markdownHtml = converter.makeHtml( mdElement.innerHTML );
-		mdElement.innerHTML = markdownHtml;
+		const markdownContent = mdElement.querySelector( 'script' );
+		if ( markdownContent ) {
+			mdElement.innerHTML = converter.makeHtml(
+				markdownContent.innerHTML
+			);
+		}
 	} );
 } );
