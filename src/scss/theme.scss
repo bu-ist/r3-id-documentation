@@ -16,12 +16,15 @@
 // Abstract and Foundational Styles
 // =================================================================
 
+// include BU base styles
+
+@forward "@bostonuniversity/base/styles";
+
 @import "burf-base/accessibility";
 @import "abstracts/config/breakpoints";
 @import "abstracts/mixins/mixins";
 @import "foundational/fonts";
 @import "foundational/icons";
-@import "foundational/normalize";
 @import "abstracts/config/typography";
 @import "foundational/grid";
 @import "foundational/tables";
@@ -72,7 +75,7 @@
 // Plugin: BU Banners
 // =================================================================
 
-// @import "plugins/bu-banners/banner";
+@import "plugins/bu-banners/banner";
 
 // =================================================================
 // Plugin: BU Profiles

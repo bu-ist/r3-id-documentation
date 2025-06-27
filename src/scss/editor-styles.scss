@@ -7,12 +7,11 @@
 
 // =================================================================
 // Global and Base Styles
-// =================================================================
+// ================================================================
 
 @import "abstracts/config/breakpoints";
 @import "abstracts/mixins/mixins";
 @import "foundational/fonts";
-@import "foundational/normalize";
 @import "abstracts/config/typography";
 @import "foundational/tables";
 
@@ -47,6 +46,7 @@ body {
     @include contentarea-base-styles;
     @include contentarea-alignment-styles( $editor-selectors );
 
+	@include contentarea-base-styles-editor-only;
     @include image-block-editor-styles( $editor-selectors );
     @include embed-block-editor-styles( $editor-selectors );
 }

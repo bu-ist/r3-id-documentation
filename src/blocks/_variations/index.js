@@ -7,4 +7,4 @@
 // import './*.js';
 import './people.js';
 
-console.log( 'HEY Variations are here' );
+console.log( 'HEY Plugin Variations are here' );
