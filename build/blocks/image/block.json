@@ -3,24 +3,12 @@
   "apiVersion": 2,
   "name": "r3-id-documentation/image",
   "version": "0.1.0",
-  "title": "Image - Sandbox",
+  "title": "<Image> Component - Playground",
   "category": "Documentation",
-  "icon": "carrot",
+  "icon": "format-image",
   "description": "This block is used to explore and adjust the parameters sent to the <Image> Component.",
   "example": {},
   "attributes": {
-    "className": {
-      "type": "string",
-      "default": ""
-    },
-    "mediaId": {
-      "type": "string",
-      "default": ""
-    },
-    "size": {
-      "type": "string",
-      "default": "thumbnail"
-    },
     "tag": {
       "type": "string",
       "enum": [
@@ -30,36 +18,17 @@
       ],
       "default": "img"
     },
+    "size": {
+      "type": "string",
+      "default": "thumbnail"
+    },
     "altSource": {
       "type": "string",
-      "enum": [
-        "alt",
-        "caption",
-        "title",
-        "description",
-        "custom"
-      ],
       "default": "alt"
     },
-    "onSelect": {
+    "allowedTypes": {
       "type": "string",
-      "default": ""
-    },
-    "onRemove": {
-      "type": "string",
-      "default": ""
-    },
-    "focalPoint": {
-      "type": "array",
-      "default": "{ x: 0.5, y: 0.5 }"
-    },
-    "onChangeFocalPoint": {
-      "type": "string",
-      "default": ""
-    },
-    "labels": {
-      "type": "array",
-      "default": "{}"
+      "default": "['image']"
     },
     "canEditImage": {
       "type": "boolean",
@@ -69,9 +38,33 @@
       "type": "boolean",
       "default": true
     },
-    "allowedTypes": {
+    "focalPoint": {
       "type": "string",
-      "default": "['image']"
+      "default": "{ x: 0.5, y: 0.5 }"
+    },
+    "mediaId": {
+      "type": "string",
+      "default": ""
+    },
+    "className": {
+      "type": "string",
+      "default": ""
+    },
+    "onSelect": {
+      "type": "string",
+      "default": ""
+    },
+    "onRemove": {
+      "type": "string",
+      "default": ""
+    },
+    "onChangeFocalPoint": {
+      "type": "string",
+      "default": ""
+    },
+    "labels": {
+      "type": "array",
+      "default": "{}"
     },
     "debug": {
       "type": "boolean",

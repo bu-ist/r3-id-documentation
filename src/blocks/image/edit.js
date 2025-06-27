@@ -51,7 +51,8 @@ export default function Edit( props ) {
 	const myOnChangeFocalPoint = ( cbf ) => {
 		console.log( cbf );
 	};
-	const someShit = { x: 0.15, y: 0.85 }; // needs to be array format, not string
+	const focalPointShit = { x: 0.15, y: 0.85 }; // needs to be array format, not string
+	const labelsShit = { title: 'my title', instructions: 'my instructions' };
 
 	return (
 		<>
@@ -61,6 +62,64 @@ export default function Edit( props ) {
 						Use these controls to adjust the parameters sent to the
 						Component:
 					</PanelRow>
+					<SelectControl
+						label="tag"
+						help="How should the media be output?"
+						value={ attributes.tag }
+						options={ [
+							{ label: 'figure', value: 'figure' },
+							{ label: 'img', value: 'img' },
+							{ label: 'picture', value: 'picture' },
+						] }
+						onChange={ ( tag ) => setAttributes( { tag } ) }
+					/>
+					<TextControl
+						label="size"
+						help="Use WordPress image size identifier: `thumbnail`, `medium`, `large`, `full`, `your-custom-size`..."
+						value={ attributes.size }
+						onChange={ ( size ) => setAttributes( { size } ) }
+					/>
+					<TextControl
+						label="altSource"
+						help="Where do we get the alternative text? Leave blank to allow users to enter their own text. To pull from the media object use `alt`, `caption`, `title`, or `description`."
+						value={ attributes.altSource }
+						onChange={ ( altSource ) =>
+							setAttributes( { altSource } )
+						}
+					/>
+					<TextControl
+						label="allowedTypes"
+						help="@todo"
+						value={ attributes.allowedTypes }
+						onChange={ ( allowedTypes ) =>
+							setAttributes( { allowedTypes } )
+						}
+					/>
+					<ToggleControl
+						label="canEditImage"
+						help="Can the user change the image?"
+						checked={ attributes.canEditImage }
+						onChange={ ( canEditImage ) =>
+							setAttributes( { canEditImage } )
+						}
+					/>
+					<ToggleControl
+						label="canOverrideImage"
+						help="Can the user change the image?"
+						checked={ attributes.canOverrideImage }
+						onChange={ ( canOverrideImage ) =>
+							setAttributes( { canOverrideImage } )
+						}
+					/>
+					<TextControl
+						label="focalPoint"
+						help="Set a specific focal point. Default is `{ x: 0.5, y: 0.5 }`. Use `false` to disable."
+						value={ attributes.focalPoint }
+						onChange={ ( focalPoint ) =>
+							setAttributes( { focalPoint } )
+						}
+					/>
+
 					<TextControl
 						label="className"
 						help="Class(es) to add to the component. Default is undefined."
@@ -74,31 +133,6 @@ export default function Edit( props ) {
 						help="@todo"
 						value={ attributes.mediaId }
 						onChange={ ( mediaId ) => setAttributes( { mediaId } ) }
-					/>
-					<TextControl
-						label="size"
-						help="thumbnail, medium, large, full, custom..."
-						value={ attributes.size }
-						onChange={ ( size ) => setAttributes( { size } ) }
-					/>
-					<SelectControl
-						label="tag"
-						help="@todo"
-						value={ attributes.tag }
-						options={ [
-							{ label: 'figure', value: 'figure' },
-							{ label: 'img', value: 'img' },
-							{ label: 'picture', value: 'picture' },
-						] }
-						onChange={ ( tag ) => setAttributes( { tag } ) }
-					/>
-					<TextControl
-						label="altSource"
-						help="alt, caption, title, description, custom..."
-						value={ attributes.altSource }
-						onChange={ ( altSource ) =>
-							setAttributes( { altSource } )
-						}
 					/>
 					<TextControl
 						label="onSelect"
@@ -117,14 +151,6 @@ export default function Edit( props ) {
 						}
 					/>
 					<TextControl
-						label="focalPoint"
-						help="@todo"
-						value={ attributes.focalPoint }
-						onChange={ ( focalPoint ) =>
-							setAttributes( { focalPoint } )
-						}
-					/>
-					<TextControl
 						label="onChangeFocalPoint"
 						help="@todo"
 						value={ attributes.onChangeFocalPoint }
@@ -134,33 +160,9 @@ export default function Edit( props ) {
 					/>
 					<TextControl
 						label="labels"
-						help="@todo"
+						help="@todo An object that can contain a title and instructions properties. These properties are passed to the placeholder component as label and instructions respectively. https://github.com/WordPress/gutenberg/blob/HEAD/packages/block-editor/src/components/media-placeholder/README.md"
 						value={ attributes.labels }
 						onChange={ ( labels ) => setAttributes( { labels } ) }
-					/>
-					<ToggleControl
-						label="canEditImage"
-						help="@todo"
-						checked={ attributes.canEditImage }
-						onChange={ ( canEditImage ) =>
-							setAttributes( { canEditImage } )
-						}
-					/>
-					<ToggleControl
-						label="canOverrideImage"
-						help="@todo"
-						checked={ attributes.canOverrideImage }
-						onChange={ ( canOverrideImage ) =>
-							setAttributes( { canOverrideImage } )
-						}
-					/>
-					<TextControl
-						label="allowedTypes"
-						help="@todo"
-						value={ attributes.allowedTypes }
-						onChange={ ( allowedTypes ) =>
-							setAttributes( { allowedTypes } )
-						}
 					/>
 					<ToggleControl
 						label="debug"
@@ -173,20 +175,25 @@ export default function Edit( props ) {
 
 			<div { ...useBlockProps() }>
 				<Image
-					className={ attributes.className }
-					mediaId={ 381606 }
-					size={ attributes.size }
+					// Setup
 					tag={ attributes.tag }
+					size={ attributes.size }
 					altSource={ attributes.altSource }
-					onSelect={ myOnSelect }
-					onRemove={ myOnRemove }
-					focalPoint={ someShit }
-					onChangeFocalPoint={ myOnChangeFocalPoint }
-					labels={ attributes.labels }
+					allowedTypes={ attributes.allowedTypes }
 					canEditImage={ attributes.canEditImage }
 					canOverrideImage={ attributes.canOverrideImage }
-					allowedTypes={ attributes.allowedTypes }
-					debug={ attributes.debug }
+					focalPoint={ focalPointShit }
+					// Basic
+					// 381607 or 381606
+					mediaId={ 381606 }
+					className={ attributes.className }
+					// Functions
+					onSelect={ myOnSelect }
+					onRemove={ myOnRemove }
+					onChangeFocalPoint={ myOnChangeFocalPoint }
+					// ??
+					labels={ labelsShit }
+					debug={ true }
 				/>
 			</div>
 		</>

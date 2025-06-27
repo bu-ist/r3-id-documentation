@@ -37,17 +37,25 @@ __webpack_require__.r(__webpack_exports__);
 
 /**
  * A loading spinner to be used to indicate some activity is occuring.
- *
- * @param {string} mediaObj todo.
- * @param {string} size     todo.
- * @param {string} density  todo.
- *
- * @return {Element} Element to render, in this case an DIV.
  */
 
 // External dependencies.
 
 
+// import { useSelect } from '@wordpress/data';
+// import { store as coreStore } from '@wordpress/core-data';
+
+// 	const media = useSelect(
+//   select => {
+//     const media = select(coreStore).getMedia(mediaId, { context: 'view' }); // undefined
+//     return media;
+//   },
+//   [mediaId]
+// )
+
+// if (!media) return <div>Loading... {mediaId}</div>;
+
+// return <div>...</div>;
 
 
 
@@ -62,125 +70,171 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * Returns the class list for the component based on the current settings.
  *
- * @param {string} className  Additional classes assigned to the component.
- * @param {string} text     If the component has loading text set.
- * @param {string} shadow    If the component has a shadow set.
+ * @param {string} className Additional classes assigned to the component.
  */
 const getClasses = className => classnames__WEBPACK_IMPORTED_MODULE_1__('bu-components-image', {
   [className]: className
 });
 
-// Export component.
+/**
+ * Export component.
+ *
+ * @param {string} className Additional classes assigned to the component.
+ * @param {string} mediaObj  todo.
+ * @param {string} size      todo.
+ * @param {string} density   todo.
+ *
+ * @param          props
+ * @return {Element} Element to render, in this case an DIV.
+ */
 const Image = props => {
   const {
-    className = undefined,
-    mediaId = undefined,
-    size = 'thumbnail',
-    tag = 'img',
-    altSource = 'alt',
-    onSelect = undefined,
-    onRemove = undefined,
     // https://developer.wordpress.org/block-editor/reference-guides/components/focal-point-picker/
+    allowedTypes = ['audio'],
+    altSource = 'alt',
+    canEditImage = true,
+    canOverrideImage = true,
+    className = undefined,
+    debug = false,
     focalPoint = {
       x: 0.5,
       y: 0.5
     },
+    labels = {
+      title: 'my title',
+      instructions: 'my instructions'
+    },
+    // {}
+    mediaId = undefined,
     onChangeFocalPoint = undefined,
-    labels = {},
-    canEditImage = true,
-    canOverrideImage = true,
-    allowedTypes = ['image'],
-    debug = false,
+    onRemove = undefined,
+    onSelect = undefined,
+    // srcset =
+    size = 'thumbnail',
+    tag = 'img',
     ...rest
   } = props;
-  const [initialFocalPoint, onChangeFocalPointState] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.useState)(focalPoint);
+
+  // STATES
+  // const [imageId, setImageId] = useState(mediaId);
+  const [imageFocalPoint, onChangeFocalPointState] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.useState)(focalPoint);
+  // console.log(imageId);
+  // setImageId(76);
+
+  // Is an image set already?
+  const hasImage = mediaId ? true : false;
+
+  /**
+   * Fetch the media object based on the `mediaId`.
+   *
+   * Returns Media object
+   */
+  const {
+    mediaObj,
+    isResolvingMedia,
+    hasResolvedMedia
+  } = (0,_index_js__WEBPACK_IMPORTED_MODULE_6__.useMedia)(mediaId);
+  console.log(mediaObj);
+  console.log(isResolvingMedia);
+  console.log(hasResolvedMedia);
+
+  // If Debug is set to true, output some helpful information to the console for block developers to utilize media object info in their block development.
+  if (debug) {
+    if (isResolvingMedia) {
+      console.log('Image Media Fetch in Progress: ', isResolvingMedia);
+    }
+    if (hasResolvedMedia) {
+      console.log('Image Media Fetched: ', mediaObj);
+    }
+  }
+
+  /**
+   * If media is being fetched, just show the spinner.
+   *
+   * @see https://github.com/bu-ist/block-imports/tree/develop/components/LoadingSpinner
+   */
+  if (isResolvingMedia) {
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index_js__WEBPACK_IMPORTED_MODULE_6__.LoadingSpinner, {
+      text: "Loading..."
+    });
+  }
+
+  /**
+   * If media is being fetched, just show the spinner.
+   *
+   * @see https://github.com/bu-ist/block-imports/tree/develop/components/LoadingSpinner
+   */
+  if (!mediaObj) {
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "mediaObj undefined for ", mediaId);
+  }
+
+  /**
+   * If there is no image set, and the user can't edit the image show placeholder.
+   *
+   * @see https://developer.wordpress.org/block-editor/reference-guides/components/Placeholder/
+   */
+  if (!hasImage && !canEditImage) {
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Placeholder, {
+      className: "bu-components-image-media-placeholder",
+      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_8__["default"],
+      label: "Placeholder",
+      withIllustration: true
+    });
+  }
+
+  /**
+   * If there is no image set, and the user can edit the image, show Media Placeholder.
+   *
+   * @see https://github.com/WordPress/gutenberg/blob/HEAD/packages/block-editor/src/components/media-placeholder/README.md
+   */
+  if (!hasImage && canEditImage) {
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.MediaPlaceholder, {
+      labels: labels,
+      onSelect: onSelect,
+      accept: "image/*",
+      multiple: false,
+      allowedTypes: allowedTypes
+    });
+  }
+
+  /**
+   * Fetch the image object based on the `mediaObj`. Let's get everything we need to display a specific size.
+   * @todo breaks if size doesn't exist
+   * @todo useState?
+   * Returns Media object
+   */
+  // console.log(mediaObj);
+  // console.log(size);
+  const imgObj = (0,_index_js__WEBPACK_IMPORTED_MODULE_6__.getImageData)(mediaObj, size);
+  if (!imgObj) {
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, mediaObj, " @ ", size, " does not seem to be an image, or the getImageData process failed... Sadness is all that I can provide.");
+  }
   const handleFocalPointPickerOnChange = focalPoint => {
     onChangeFocalPoint(focalPoint); // Call user supplied function
     onChangeFocalPointState(focalPoint); // Call state function
   };
 
-  // Is an image set already?
-  const hasImage = mediaId ? true : false;
-
   // If component has FocalPoint Handler Function show the focal picker.
   const displayFocalPointPicker = typeof onChangeFocalPoint === 'function';
   // console.log(typeof onChangeFocalPoint);
-
-  /**
-  * Fetch the media based on the attachment ID utilizing useSelect
-  *
-  * Returns Media object
-  */
-  const {
-    mediaObj,
-    isResolvingMedia,
-    hasResolvedMedia
-  } = (0,_index_js__WEBPACK_IMPORTED_MODULE_6__.fetchMedia)(mediaId);
-
-  // If Debug is set to true, output some helpful information to the
-  // console for block developers to utilize media object info in their block development.
-  if (debug) {
-    if (isResolvingMedia) {
-      console.log("Image Media Fetch in Progress: ", isResolvingMedia);
-    }
-    if (hasResolvedMedia) {
-      console.log("Image Media Fetched: ", mediaObj);
-    }
-  }
-
-  // If media is being fetched, just show the spinner.
-  if (isResolvingMedia) {
-    (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "isResolvingMedia");
-    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index_js__WEBPACK_IMPORTED_MODULE_6__.LoadingSpinner, {
-      text: "LoadingSpinner"
-    });
-  }
-
-  // If there is no image set, and the user can't edit the image show placeholder
-  if (!hasImage && !canEditImage) {
-    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "!hasImage && !canEditImage"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Placeholder, {
-      className: "bu-components-image-media-placeholder",
-      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_8__["default"],
-      label: "Placeholder",
-      withIllustration: true
-    }));
-  }
-
-  // If there is no image set, and the user can edit the image, show Media Placeholder
-  if (!hasImage && canEditImage) {
-    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "!hasImage && canEditImage"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.MediaPlaceholder, {
-      labels: labels,
-      onSelect: onSelect,
-      accept: "image",
-      multiple: false,
-      allowedTypes: allowedTypes
-    }));
-  }
-
-  // Let's get everything we need to display a specific size.
-  // @todo breaks if size doesn't exist
-  const imgObj = (0,_index_js__WEBPACK_IMPORTED_MODULE_6__.fetchImage)(mediaObj, size);
-  if (!imgObj) {
-    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, mediaObj, " @ ", size, " does not seem to be an image, or the fetchImage process failed... Sadness is all that I can provide.");
-  }
 
   // srcset
   const sources = [];
   if (tag === 'picture') {
     const srcset = {
       sources: [{
-        srcset: (0,_index_js__WEBPACK_IMPORTED_MODULE_6__.fetchImage)(mediaObj, 'medium').src,
+        srcset: (0,_index_js__WEBPACK_IMPORTED_MODULE_6__.getImageData)(mediaObj, 'medium').src,
         media: '(min-width: 600px)',
         type: imgObj.mime_type
       }, {
-        srcset: (0,_index_js__WEBPACK_IMPORTED_MODULE_6__.fetchImage)(mediaObj, 'large').src,
+        srcset: (0,_index_js__WEBPACK_IMPORTED_MODULE_6__.getImageData)(mediaObj, 'large').src,
         media: '(min-width: 300px)'
       }]
     };
     for (let i = 0; i < srcset.sources.length; i++) {
-      let source = srcset.sources[i];
+      const source = srcset.sources[i];
       sources.push((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("source", {
-        srcset: source.srcset,
+        srcSet: source.srcset,
         media: source.media,
         type: source.type
       }));
@@ -206,28 +260,29 @@ const Image = props => {
   /**
    *
    * TODO
-  *
-  *
-  *
-  The component should support the following use cases:
-  Display Size/dimensions - should control the width/height the component is displayed in the editor
-  Placeholder image - We may want to support passing in a custom placeholder image to display until the selected image is fetched?
-  Future ideas: Control over setting Src set to allow for customization of images at different breakpoints?
-  		√ className
-  	√ mediaId
-  	√ size
-  	√ tag
-  	√ altSource
-  	√ onSelect - send a function; should make this more clear
-  	√ onRemove - send a function; should make this more clear
-  	√ focalPoint - send array
-  	√ onChangeFocalPoint - send a function
-  labels - allow block developers to adjust the labels of the component UI
-  canEditImage - show picker???
-  	√ canOverrideImage - show or hide edit button
-  X seems to work just once allowedTypes // https://github.com/WordPress/gutenberg/blob/trunk/packages/block-editor/src/components/media-upload/README.md#allowedtypes
-  	√ debug
-  	*/
+   *
+   *
+   *
+    The component should support the following use cases:
+  	  Display Size/dimensions - should control the width/height the component is displayed in the editor
+  	  Placeholder image - We may want to support passing in a custom placeholder image to display until the selected image is fetched?
+  	  Future ideas: Control over setting Src set to allow for customization of images at different breakpoints?
+  	  fill out readme with all the notes...
+  	  √ className
+    √ mediaId
+    √ size
+    √ tag
+    √ altSource
+    √ onSelect - send a function; should make this more clear
+    √ onRemove - send a function; should make this more clear
+    √ focalPoint - send array
+    √ onChangeFocalPoint - send a function
+    labels - allow block developers to adjust the labels of the component UI
+    canEditImage - show picker???
+    √ canOverrideImage - show or hide edit button
+    X seems to work just once allowedTypes // https://github.com/WordPress/gutenberg/blob/trunk/packages/block-editor/src/components/media-upload/README.md#allowedtypes
+    √ debug
+  	 */
 
   // @todo does this work?
   if (displayFocalPointPicker) {
@@ -267,7 +322,7 @@ const Image = props => {
     className: "bu-components-image-media-edit-focalpoint",
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Focal Point Picker'),
     url: imgObj.src,
-    value: initialFocalPoint,
+    value: imageFocalPoint,
     onChange: handleFocalPointPickerOnChange
   })))), tag === 'picture' && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, "picture"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("picture", {
     className: getClasses(className),
@@ -363,23 +418,23 @@ const LoadingSpinner = props => {
 
 /***/ }),
 
-/***/ "../block-imports/hooks/fetchMedia/index.mjs":
-/*!***************************************************!*\
-  !*** ../block-imports/hooks/fetchMedia/index.mjs ***!
-  \***************************************************/
+/***/ "../block-imports/hooks/useMedia/index.mjs":
+/*!*************************************************!*\
+  !*** ../block-imports/hooks/useMedia/index.mjs ***!
+  \*************************************************/
 /***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   fetchMedia: function() { return /* binding */ fetchMedia; }
+/* harmony export */   useMedia: function() { return /* binding */ useMedia; }
 /* harmony export */ });
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
 /* harmony import */ var _wordpress_core_data__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/core-data */ "@wordpress/core-data");
 /**
- * fetchMedia
+ * useMedia
  *
- * @param {string} mediaId  The unique numerical identifier assigned to each image attachment in the media library.
+ * @param {string} mediaId The unique numerical identifier assigned to each image attachment in the media library.
  *
  * @return {Object} todo.
  */
@@ -387,22 +442,22 @@ __webpack_require__.r(__webpack_exports__);
 // External dependencies.
 
 
-function fetchMedia(mediaId) {
+function useMedia(id) {
   return (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_0__.useSelect)(select => {
     const {
       getMedia,
       isResolving,
       hasFinishedResolution
     } = select(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_1__.store);
-    const mediaParameters = [mediaId, {
-      context: "view"
+    const mediaParameters = [id, {
+      context: 'view'
     }];
     return {
-      mediaObj: getMedia(...mediaParameters),
-      isResolvingMedia: isResolving("getMedia", mediaParameters),
-      hasResolvedMedia: hasFinishedResolution("getMedia", mediaParameters)
+      media: getMedia(...mediaParameters),
+      isResolvingMedia: isResolving('getMedia', mediaParameters),
+      hasResolvedMedia: hasFinishedResolution('getMedia', mediaParameters)
     };
-  }, [mediaId]);
+  }, [id]);
 }
 
 /***/ }),
@@ -418,13 +473,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   Image: function() { return /* reexport safe */ _components_Image_index_mjs__WEBPACK_IMPORTED_MODULE_0__.Image; },
 /* harmony export */   LoadingSpinner: function() { return /* reexport safe */ _components_LoadingSpinner_index_mjs__WEBPACK_IMPORTED_MODULE_1__.LoadingSpinner; },
-/* harmony export */   fetchImage: function() { return /* reexport safe */ _utils_fetchImage_index_mjs__WEBPACK_IMPORTED_MODULE_3__.fetchImage; },
-/* harmony export */   fetchMedia: function() { return /* reexport safe */ _hooks_fetchMedia_index_mjs__WEBPACK_IMPORTED_MODULE_2__.fetchMedia; }
+/* harmony export */   getImageData: function() { return /* reexport safe */ _utils_getImageData_index_mjs__WEBPACK_IMPORTED_MODULE_3__.getImageData; },
+/* harmony export */   useMedia: function() { return /* reexport safe */ _hooks_useMedia_index_mjs__WEBPACK_IMPORTED_MODULE_2__.useMedia; }
 /* harmony export */ });
 /* harmony import */ var _components_Image_index_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Image/index.mjs */ "../block-imports/components/Image/index.mjs");
 /* harmony import */ var _components_LoadingSpinner_index_mjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/LoadingSpinner/index.mjs */ "../block-imports/components/LoadingSpinner/index.mjs");
-/* harmony import */ var _hooks_fetchMedia_index_mjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./hooks/fetchMedia/index.mjs */ "../block-imports/hooks/fetchMedia/index.mjs");
-/* harmony import */ var _utils_fetchImage_index_mjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils/fetchImage/index.mjs */ "../block-imports/utils/fetchImage/index.mjs");
+/* harmony import */ var _hooks_useMedia_index_mjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./hooks/useMedia/index.mjs */ "../block-imports/hooks/useMedia/index.mjs");
+/* harmony import */ var _utils_getImageData_index_mjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils/getImageData/index.mjs */ "../block-imports/utils/getImageData/index.mjs");
 // Components
 // export { AllowedBlocks } from './components/AllowedBlocks';
 // export { Background } from './components/Background';
@@ -464,10 +519,10 @@ __webpack_require__.r(__webpack_exports__);
 // export { useRequestData } from './hooks/useRequestData';
 
 
-
 // Utils
 // A utility function is a standard JavaScript function that performs a specific task and is not tied to any particular framework or library. Utility functions are often used for tasks like data formatting, calculations, or other operations that don't require access to React's state or lifecycle. They can be called from anywhere in your code, including within React components or hooks.
 // export { parseMedia } from './utils/parseMedia/index.mjs';
+
 
 /***/ }),
 
@@ -1947,28 +2002,28 @@ if (false) // removed by dead control flow
 
 /***/ }),
 
-/***/ "../block-imports/utils/fetchImage/index.mjs":
-/*!***************************************************!*\
-  !*** ../block-imports/utils/fetchImage/index.mjs ***!
-  \***************************************************/
+/***/ "../block-imports/utils/getImageData/index.mjs":
+/*!*****************************************************!*\
+  !*** ../block-imports/utils/getImageData/index.mjs ***!
+  \*****************************************************/
 /***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   fetchImage: function() { return /* binding */ fetchImage; }
+/* harmony export */   getImageData: function() { return /* binding */ getImageData; }
 /* harmony export */ });
 /**
  * Returns todo.
  *
- * @param {string} mediaObj  todo.
- * @param {string} size     todo.
- * @param {string} sizeFallback    todo.
+ * @param {string} mediaObj     todo.
+ * @param {string} size         todo.
+ * @param {string} sizeFallback todo.
  *
  * @return {Object} Simplified object containing image metadata.
  */
 
-function fetchImage(mediaObj, size = 'full', sizeFallback = false) {
+function getImageData(mediaObj, size = 'full', sizeFallback = false) {
   let sizeToFetch = '';
   if (mediaObj?.media_details?.sizes[size]) {
     sizeToFetch = size;
