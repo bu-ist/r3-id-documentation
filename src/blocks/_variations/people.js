@@ -142,11 +142,11 @@ const CONTENT = [
  * New `core/embed` block variation.
  */
 const blockPeople = {
-	name: 'responsi-section-people',
-	title: __( 'People Section', 'responsive-child-starter-3x-block' ),
+	name: 'starter-blocks-section-people',
+	title: __( 'Plugin People Section', 'bu-plugin-starter-blocks' ),
 	description: __(
 		'Show a section with a featured profile, four related profiles, and content.',
-		'r-questrom'
+		'bu-plugin-starter-blocks'
 	),
 	scope: [ 'inserter' ],
 	attributes: {

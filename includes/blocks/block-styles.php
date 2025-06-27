@@ -10,7 +10,7 @@
  * @package r3-id-documentation
  */
 
-namespace BU\plugin_slug\Blocks;
+namespace BU\r3_id_documentation\Blocks;
 
 /**
  * Register.
@@ -18,25 +18,25 @@ namespace BU\plugin_slug\Blocks;
  * @link https://developer.wordpress.org/reference/functions/register_block_style/
  */
 register_block_style(
-    'core/quote',
-    array(
-        'name'         => 'quote-php-style',
-        'label'        => __( 'PHP Style', 'r3-id-documentation' ),
-    )
+	'core/quote',
+	array(
+		'name'  => 'quote-php-style',
+		'label' => __( 'PHP Style', 'r3-id-documentation' ),
+	)
 );
 register_block_style(
-    'core/quote',
-    array(
-        'name'         => 'quote-php-style-2',
-        'label'        => __( 'PHP Style 2', 'r3-id-documentation' ),
-    )
+	'core/quote',
+	array(
+		'name'  => 'quote-php-style-2',
+		'label' => __( 'PHP Style 2', 'r3-id-documentation' ),
+	)
 );
 register_block_style(
-    'core/quote',
-    array(
-        'name'         => 'quote-php-style-3',
-        'label'        => __( 'PHP Style 3', 'r3-id-documentation' ),
-    )
+	'core/quote',
+	array(
+		'name'  => 'quote-php-style-3',
+		'label' => __( 'PHP Style 3', 'r3-id-documentation' ),
+	)
 );
 
 /**

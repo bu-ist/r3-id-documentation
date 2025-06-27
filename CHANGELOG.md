@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.0
+
+- Replaced all core theme files with latest `responsive-child-starter-3x-block-editor`
+
 ## 0.1.0
 
 - Adds `<LoadingSpinner>` sandbox block

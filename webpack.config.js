@@ -12,53 +12,36 @@
 
 const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
 const { mergeWithRules } = require( 'webpack-merge' );
-const path = require( 'path' );
 const CopyWebpackPlugin = require( 'copy-webpack-plugin' );
 const RemoveEmptyScriptsPlugin = require( 'webpack-remove-empty-scripts' );
 
 // Import our theme paths from a separate file that can be modified in the theme.
 const {
-	customIncludePaths,
 	themeEntryPoints,
 	sassCompiler,
 	statsConfig,
+	customSassOptions,
 } = require( './webpack.customizations' );
 
 /**
- * Config rules for the blocks build.
+ * Block Config for @wordpress/scripts & webpack
+ *
+ * Do not modify the entry points of this config as it uses the `getWebpackEntryPoints` function from wp-scripts that finds all blocks and block.json files and builds a list of entrypoints for webpack from that automagically.
  */
 const blocksConfig = {
-	/**
-	 * `module` determines how the different types of modules within a project will be treated.
-	 * @link https://webpack.js.org/configuration/module/
-	 */
 	module: {
-		/**
-		 * `rules` modify how the module is created. They can apply loaders to the module, or modify the parser.
-		 * @link https://webpack.js.org/configuration/module/#modulerules
-		 */
 		rules: [
 			{
 				test: /\.(sc|sa)ss$/,
 				use: [
 					{
 						loader: require.resolve( 'sass-loader' ),
-						// @link https://sass-lang.com/documentation/js-api/interfaces/options/
 						options: {
-							sassOptions: {
-								includePaths: customIncludePaths, // Adding our custom include paths so that
-								// outputStyle: 'compressed', // Determines the output format of the final CSS style.
-								quietDeps: true, // If this option is set to true, Sass won’t print warnings that are caused by dependencies.
-							},
+							sassOptions: customSassOptions,
 							implementation: require( sassCompiler ),
 						},
 					},
 				],
-			},
-			{
-				test: /\.mjs$/, // Match files with .mjs extension
-				include: /node_modules/, // Include node_modules if needed
-				type: 'javascript/auto', // Specify module type
 			},
 		],
 	},
@@ -66,21 +49,19 @@ const blocksConfig = {
 };
 
 /**
- * Config rules for the theme build.
+ * Block Styles Config for @wordpress/scripts & webpack
+ *
+ * Used to compile additional stylesheets for blocks such as Decorative Styles and Shared/Common styles.
+ * This config entirely replaces the default entry points from the @wordpress/scripts defaultConfig. This ensures
+ * that the blocks are not processed a second time.
  */
 const themeConfig = {
+	// Set devtool mode to sourcemap so we generate sourcemap files even for production builds.
+	devtool: 'source-map',
 	entry: {
 		...themeEntryPoints,
 	},
-	/**
-	 * `module` determines how the different types of modules within a project will be treated.
-	 * @link https://webpack.js.org/configuration/module/
-	 */
 	module: {
-		/**
-		 * `rules` modify how the module is created. They can apply loaders to the module, or modify the parser.
-		 * @link https://webpack.js.org/configuration/module/#modulerules
-		 */
 		rules: [
 			{
 				test: /\.(sc|sa)ss$/,
@@ -93,13 +74,8 @@ const themeConfig = {
 					},
 					{
 						loader: require.resolve( 'sass-loader' ),
-						// @link https://sass-lang.com/documentation/js-api/interfaces/options/
 						options: {
-							sassOptions: {
-								includePaths: customIncludePaths,
-								// outputStyle: 'compressed', // Determines the output format of the final CSS style.
-								quietDeps: true, // If this option is set to true, Sass won’t print warnings that are caused by dependencies.
-							},
+							sassOptions: customSassOptions,
 							sourceMap: true, // Set sourceMap to true so we generate a map even for prod builds.
 							implementation: require( sassCompiler ),
 						},
@@ -108,10 +84,6 @@ const themeConfig = {
 			},
 		],
 	},
-	/**
-	 * `stats` lets you precisely control what bundle information gets displayed.
-	 * @link https://webpack.js.org/configuration/stats/#stats-presets
-	 */
 	stats: statsConfig,
 	plugins: [
 		// Grab the defaultConfig's plugins array and filter it to remove what we don't need.
