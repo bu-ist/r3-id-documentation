@@ -17,9 +17,9 @@ if ( ! empty( $attributes['anchor'] ) ) {
 }
 
 // Convert GitHub webapp URLs to raw markdown URLs.
-$mdURL = esc_url_raw( $attributes['mdURL'] );
-$raw   = str_replace( '/github.com/', '/raw.githubusercontent.com/', $mdURL );
-$raw   = str_replace( '/blob/', '/', $raw );
+$md_url = esc_url_raw( $attributes['mdURL'] );
+$raw    = str_replace( '/github.com/', '/raw.githubusercontent.com/', $md_url );
+$raw    = str_replace( '/blob/', '/', $raw );
 
 $response = wp_remote_get( $raw );
 
@@ -27,24 +27,24 @@ if ( is_array( $response ) && ( 200 === wp_remote_retrieve_response_code( $respo
 	?>
 <article <?php echo $attributes['anchor'] ? 'id="' . esc_attr( $attributes['anchor'] ) . '"' : ''; ?> <?php echo wp_kses_data( get_block_wrapper_attributes() ); ?>>
 	<div class="showdown">
-		<script type="text/plain"><?php echo $response['body']; ?></script>
+		<script type="text/plain"><?php echo $response['body']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></script>
 	</div>
-	<p class="source">Source: <a href="<?php echo esc_url( $mdURL ); ?>"><?php echo esc_url( $mdURL ); ?></a></p>
+	<p class="source">Source: <a href="<?php echo esc_url( $md_url ); ?>"><?php echo esc_url( $md_url ); ?></a></p>
 </article>
-<?php
+	<?php
 } else {
 	?>
 <div class="notice notice-error">
-	<p>Unable to display markdown: <a href="<?php echo esc_url( $mdURL ); ?>"><?php echo esc_url( $mdURL ); ?></a></p>
+	<p>Unable to display markdown: <a href="<?php echo esc_url( $md_url ); ?>"><?php echo esc_url( $md_url ); ?></a></p>
 	<?php
-	if ( current_user_can( 'administrator' ) ) {
+	if ( current_user_can( 'manage_options' ) ) {
 		echo '<pre>';
-		echo 'wp_remote_retrieve_response_code: ' . wp_remote_retrieve_response_code( $response ) . PHP_EOL;
-		echo 'is_wp_error: ' . is_wp_error( $response ) . PHP_EOL;
-		print_r( $response );
+		echo 'wp_remote_retrieve_response_code: ' . wp_remote_retrieve_response_code( $response ) . PHP_EOL; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo 'is_wp_error: ' . is_wp_error( $response ) . PHP_EOL; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		print_r( $response ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r
 		echo '</pre>';
 	}
 	?>
 </div>
-<?php
+	<?php
 }

@@ -23,8 +23,8 @@ import './editor.scss';
 
 // Import WP assets.
 import {
+	TextControl, // https://developer.wordpress.org/block-editor/reference-guides/components/text-control/
 	PanelBody,
-	TextareaControl, // https://developer.wordpress.org/block-editor/reference-guides/components/text-control/
 } from '@wordpress/components';
 
 import { FetchRawFile } from './modules/FetchRawFile.mjs';
@@ -46,13 +46,14 @@ export default function Edit( props ) {
 		<>
 			<InspectorControls>
 				<PanelBody title={ __( 'Markdown File' ) }>
-					<TextareaControl
+					<TextControl
 						label="Full URL to markdown file:"
 						help="EX: https://github.com/README.md"
 						onChange={ ( value ) =>
 							setAttributes( { mdURL: value } )
 						}
 						value={ mdURL }
+						type="url"
 					/>
 				</PanelBody>
 			</InspectorControls>
