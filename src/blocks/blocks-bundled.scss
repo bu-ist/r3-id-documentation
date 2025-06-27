@@ -14,7 +14,6 @@
 * are used on the page.
 */
 
-@import 'includes/tools';
+@import '_includes/styles/tools';
 
-// Import Block Styles
-@import 'embed-markdown/style';
+// Import block base styles from each block folder.

@@ -16,7 +16,7 @@
 		<?php esc_html_e( 'Hello from tutorial-01!', 'r3-id-documentation' ); ?>
 		<?php
 			// if ( ! empty( $attributes['title'] ) ) {
-			//	echo esc_html( $attributes['title'] );
+			//  echo esc_html( $attributes['title'] );
 			// }
 		?>
 	</div>
