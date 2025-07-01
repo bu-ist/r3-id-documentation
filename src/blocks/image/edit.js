@@ -184,8 +184,8 @@ export default function Edit( props ) {
 					canOverrideImage={ attributes.canOverrideImage }
 					focalPoint={ focalPointShit }
 					// Basic
-					// 381607 or 381606
-					mediaId={ 381606 }
+					// 381625 or 381626
+					mediaId={ attributes.mediaId }
 					className={ attributes.className }
 					// Functions
 					onSelect={ myOnSelect }
