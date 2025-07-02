@@ -1,6 +1,6 @@
 {
   "name": "r3-id-documentation",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "A block-editor enabled starter template for child themes of Responsive Framework 3.",
   "author": {
     "name": "Boston University",
@@ -31,15 +31,17 @@
     ]
   },
   "devDependencies": {
+    "@bostonuniversity/base": "^0.1.3-alpha.2",
     "@bostonuniversity/block-imports": "git@github.com:bu-ist/block-imports.git",
-    "@bostonuniversity/burf-customizations": "^6.0.0-alpha.4",
-    "@bostonuniversity/burf-tools": "^6.0.0-alpha.4",
+    "@bostonuniversity/burf-customizations": "^6.0.0-alpha.6",
+    "@bostonuniversity/burf-tools": "^6.0.0-alpha.6",
     "@linthtml/linthtml": "^0.9.5",
     "@wordpress/scripts": "^27.1.0",
     "@wordpress/stylelint-config": "^21.33.0",
     "browserify": "^17.0.0",
     "browserify-shim": "^3.8.16",
     "html-linter": "^1.1.1",
+    "html-react-parser": "^5.2.5",
     "node-wp-i18n": "^1.2.7",
     "nodemon": "^3.0.2",
     "npm-run-all": "^4.1.5",
@@ -69,7 +71,7 @@
     "lint:css": "wp-scripts lint-style",
     "lint:html": "linthtml '**!(node_modules|build|vendor)/*.php'",
     "lint:js": "wp-scripts lint-js",
-    "lint:js:fix": "wp-scripts lint-js --fix",
+    "lint:js:fix": "wp-scripts lint-js --fix --ignore-pattern '/dev/'",
     "lint:md": "wp-scripts lint-md-docs",
     "lint:php": "dev/phpcs/lint-modified.sh",
     "lint:php:all": "dev/phpcs/lint-all.sh",

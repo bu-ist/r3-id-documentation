@@ -5,5 +5,9 @@
 // 	border: solid 20px #ff0 !important;  // text styles for veryfying style sheet inclusion
 // }
 
+//@forward "base/styles";
+
 // Import all SCSS partials from the common folder.
 @import '../blocks/blocks-styles';
+
+

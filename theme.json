@@ -10,46 +10,82 @@
       "custom": true,
       "customDuotone": true,
       "customGradient": true,
-      "duotone": [],
-      "gradients": [],
       "link": true,
       "palette": [
         {
           "name": "BU Red",
-          "slug": "primary",
-          "color": "#cc0000"
+          "slug": "theme-color-bu",
+          "color": "var(--theme-color-bu,#c00)"
         },
         {
-          "name": "Secondary",
-          "slug": "secondary",
-          "color": "#242629"
+          "name": "BU Red Dark",
+          "slug": "theme-color-bu-dark",
+          "color": "var(--theme-color-bu,#800000)"
         },
         {
-          "name": "Grey",
-          "slug": "tertiary",
-          "color": "#6e6e6e"
+          "name": "Light",
+          "slug": "theme-color-light",
+          "color": "var(--theme-color-light,#F4F6F8)"
         },
         {
-          "name": "Light Gray",
-          "slug": "quaternary",
-          "color": "#f4f6f8"
+          "name": "Light Accent",
+          "slug": "theme-color-light-accent",
+          "color": "var(--theme-color-light-accent,#DBE2E8)"
+        },
+        {
+          "name": "Dark",
+          "slug": "theme-color-dark",
+          "color": "var(--theme-color-dark,#292929)"
+        },
+        {
+          "name": "Dark Accent",
+          "slug": "theme-color-dark-accent",
+          "color": "var(--theme-color-dark-accent,#16191B)"
+        },
+        {
+          "name": "Link",
+          "slug": "theme-color-link",
+          "color": "var(--theme-color-link,#0f69d7)"
+        },
+        {
+          "name": "Link on Dark",
+          "slug": "theme-color-link-dark",
+          "color": "var(--theme-color-link-dark,#4DA6FF)"
         },
         {
           "name": "White",
-          "slug": "white",
-          "color": "#ffffff"
+          "slug": "theme-color-white",
+          "color": "var(--theme-color-white,#FFF)"
         },
         {
           "name": "Black",
-          "slug": "black",
-          "color": "#000000"
+          "slug": "theme-color-black",
+          "color": "var(--theme-color-link-dark,#000)"
         }
-      ]
+      ],
+      "gradients": [
+        {
+          "name": "BU Red Gradient",
+          "slug": "bu-gradient",
+          "gradient": "linear-gradient(to bottom,var(--theme-color-bu,#c00) 0%,var(--theme-color-bu,#800000) 100%)"
+        },
+        {
+          "name": "Light Gradient",
+          "slug": "light-gradient",
+          "gradient": "linear-gradient(to bottom,var(--theme-color-light,#F4F6F8) 0%,var(--theme-color-light-accent,#DBE2E8) 100%)"
+        },
+        {
+          "name": "Dark Gradient",
+          "slug": "dark-gradient",
+          "gradient": "linear-gradient(to bottom,var(--theme-color-dark,#292929) 0%,var(--theme-color-dark-accent,#16191B) 100%)"
+        }
+      ],
+      "duotone": []
     },
     "custom": {},
     "layout": {
-      "contentSize": "var(--bu--content--width-default-clamped)",
-      "wideSize": "var(--bu--content--width-wide-clamped)"
+      "contentSize": "var(--bu-container-max-inline-size--content)",
+      "wideSize": "var(--bu-container-max-inline-size--wide)"
     },
     "spacing": {
       "customMargin": true,
@@ -70,7 +106,44 @@
       "customTextDecorations": false,
       "customTextTransforms": false,
       "dropCap": false,
-      "fontFamilies": []
+      "fontFamilies": [],
+      "fontSizes": [
+        {
+          "slug": "extra-small",
+          "size": "var(--bu-font-size-xs,clamp(0.8rem,0.17vw + 0.76rem,0.89rem))",
+          "name": "Extra small"
+        },
+        {
+          "slug": "small",
+          "size": "var(--bu-font-size-sm,clamp(1rem,0.34vw + 0.91rem,1.19rem))",
+          "name": "Small"
+        },
+        {
+          "slug": "medium",
+          "size": "var(--bu-font-size-md,clamp(1.25rem,0.61vw + 1.1rem,1.58rem))",
+          "name": "Medium"
+        },
+        {
+          "slug": "large",
+          "size": "var(--bu-font-size-lg,clamp(1.56rem,1vw + 1.31rem,2.11rem))",
+          "name": "Large"
+        },
+        {
+          "slug": "x-large",
+          "size": "var(--bu-font-size-xl,clamp(1.95rem,1.56vw + 1.56rem,2.81rem))",
+          "name": "Extra Large"
+        },
+        {
+          "slug": "xx-large",
+          "size": "var(--bu-font-size-xxl,clamp(2.44rem,2.38vw + 1.85rem,3.75rem))",
+          "name": "2X Large"
+        },
+        {
+          "slug": "xxx-large",
+          "size": "var(--bu-font-size-xxxl,clamp(3.05rem,3.54vw + 2.17rem,5rem))",
+          "name": "3X Large"
+        }
+      ]
     },
     "blocks": {
       "core/paragraph": {

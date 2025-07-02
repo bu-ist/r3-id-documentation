@@ -5,7 +5,7 @@
  * @package r3-id-documentation
  */
 
-namespace BU\theme_slug;
+namespace BU\r3_id_documentation;
 
 /**
  * Class Assets
@@ -42,12 +42,20 @@ class ThemeEnqueues {
 		wp_dequeue_style( 'responsive-framework' );
 		wp_dequeue_style( 'responsive-framework-ie' );
 
+		// Enqueue the main stylesheet for the theme.
+		wp_enqueue_style(
+			'normalize',
+			R3_ID_DOCUMENTATION_URL . '/build/css/normalize.css',
+			array(),
+			R3_ID_DOCUMENTATION_VERSION,
+		);
+
 		// Enqueue the Main stylesheet for the plugin if needed for non-block styles.
 		wp_enqueue_style(
-			RESPONSIVE_CHILD_THEME_DOMAIN,
-			RESPONSIVE_CHILD_THEME_URL . '/build/css/theme.css',
+			R3_ID_DOCUMENTATION_DOMAIN,
+			R3_ID_DOCUMENTATION_URL . '/build/css/theme.css',
 			array(),
-			RESPONSIVE_CHILD_THEME_VERSION,
+			R3_ID_DOCUMENTATION_VERSION,
 		);
 	}
 
@@ -58,12 +66,12 @@ class ThemeEnqueues {
 	 */
 	public function frontend_scripts() {
 
-		if ( file_exists( RESPONSIVE_CHILD_THEME_DIR . '/build/js/theme.js' ) ) {
-			$asset_file = include RESPONSIVE_CHILD_THEME_DIR . '/build/js/theme.asset.php';
+		if ( file_exists( R3_ID_DOCUMENTATION_DIR . '/build/js/theme.js' ) ) {
+			$asset_file = include R3_ID_DOCUMENTATION_DIR . '/build/js/theme.asset.php';
 
 			wp_enqueue_script(
-				RESPONSIVE_CHILD_THEME_DOMAIN,
-				RESPONSIVE_CHILD_THEME_URL . '/build/js/theme.js',
+				R3_ID_DOCUMENTATION_DOMAIN,
+				R3_ID_DOCUMENTATION_URL . '/build/js/theme.js',
 				$asset_file['dependencies'],
 				$asset_file['version'],
 				array(
@@ -80,12 +88,12 @@ class ThemeEnqueues {
 	 */
 	public function admin_styles() {
 
-		// Enqueue the Main stylesheet for the plugin if needed for non-block styles.
+		// Enqueue the admin stylesheet for the theme.
 		wp_enqueue_style(
-			RESPONSIVE_CHILD_THEME_DOMAIN . '-admin',
-			RESPONSIVE_CHILD_THEME_URL . '/build/css/admin.css',
+			R3_ID_DOCUMENTATION_DOMAIN . '-admin',
+			R3_ID_DOCUMENTATION_URL . '/build/css/admin.css',
 			array(),
-			RESPONSIVE_CHILD_THEME_VERSION,
+			R3_ID_DOCUMENTATION_VERSION,
 		);
 	}
 
@@ -97,7 +105,8 @@ class ThemeEnqueues {
 	public function tinymce_styles() {
 
 		add_theme_support( 'editor-styles' );
-		add_editor_style( RESPONSIVE_CHILD_THEME_URL . '/build/css/editor-styles.css' );
+		add_editor_style( R3_ID_DOCUMENTATION_URL . '/build/css/normalize.css' );
+		add_editor_style( R3_ID_DOCUMENTATION_URL . '/build/css/editor-styles.css' );
 	}
 
 	/**
@@ -107,12 +116,12 @@ class ThemeEnqueues {
 	 */
 	public function admin_scripts() {
 
-		if ( file_exists( RESPONSIVE_CHILD_THEME_DIR . '/build/js/admin.js' ) ) {
-			$asset_file = include RESPONSIVE_CHILD_THEME_DIR . '/build/js/admin.asset.php';
+		if ( file_exists( R3_ID_DOCUMENTATION_DIR . '/build/js/admin.js' ) ) {
+			$asset_file = include R3_ID_DOCUMENTATION_DIR . '/build/js/admin.asset.php';
 
 			wp_enqueue_script(
-				RESPONSIVE_CHILD_THEME_DOMAIN . '-admin',
-				RESPONSIVE_CHILD_THEME_URL . '/build/js/admin.js',
+				R3_ID_DOCUMENTATION_DOMAIN . '-admin',
+				R3_ID_DOCUMENTATION_URL . '/build/js/admin.js',
 				$asset_file['dependencies'],
 				$asset_file['version'],
 				array(
@@ -142,20 +151,20 @@ class ThemeEnqueues {
 			return false;
 		}
 
-		if ( ! $current_screen->is_block_editor && in_array( $pagenow, array( 'post.php', 'post-new.php' ) ) ) {
+		if ( ! $current_screen->is_block_editor && in_array( $pagenow, array( 'post.php', 'post-new.php' ), true ) ) {
 			wp_enqueue_style(
-				RESPONSIVE_CHILD_THEME_DOMAIN . '-classic-editor',
-				RESPONSIVE_CHILD_THEME_URL . '/build/css/classic-editor.css',
+				R3_ID_DOCUMENTATION_DOMAIN . '-classic-editor',
+				R3_ID_DOCUMENTATION_URL . '/build/css/classic-editor.css',
 				array(),
-				RESPONSIVE_CHILD_THEME_VERSION,
+				R3_ID_DOCUMENTATION_VERSION,
 			);
 
-			if ( file_exists( RESPONSIVE_CHILD_THEME_DIR . '/build/js/classic-editor.js' ) ) {
-				$asset_file = include RESPONSIVE_CHILD_THEME_DIR . '/build/js/classic-editor.asset.php';
+			if ( file_exists( R3_ID_DOCUMENTATION_DIR . '/build/js/classic-editor.js' ) ) {
+				$asset_file = include R3_ID_DOCUMENTATION_DIR . '/build/js/classic-editor.asset.php';
 
 				wp_enqueue_script(
-					RESPONSIVE_CHILD_THEME_DOMAIN . '-classic-editor',
-					RESPONSIVE_CHILD_THEME_URL . '/build/js/classic-editor.js',
+					R3_ID_DOCUMENTATION_DOMAIN . '-classic-editor',
+					R3_ID_DOCUMENTATION_URL . '/build/js/classic-editor.js',
 					$asset_file['dependencies'],
 					$asset_file['version'],
 					array(
@@ -168,4 +177,4 @@ class ThemeEnqueues {
 }
 
 // Initialize the class.
-$plugin_enqueues = new ThemeEnqueues();
+$theme_enqueues = new ThemeEnqueues();
