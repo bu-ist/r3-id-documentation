@@ -4,7 +4,7 @@
   "name": "r3-id-documentation/loadingspinner",
   "version": "0.1.0",
   "title": "LoadingSpinner - Sandbox",
-  "category": "Documentation",
+  "category": "r3-id-documentation-block-category",
   "icon": "update",
   "description": "This block is used to explore and adjust the parameters sent to the <LoadingSpinner> Component.",
   "example": {

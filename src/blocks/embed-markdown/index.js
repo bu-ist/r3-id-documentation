@@ -15,14 +15,13 @@ import { registerBlockType } from '@wordpress/blocks';
 import './style.scss';
 
 /**
- * Contains the React component responsible for rendering the block’s editing user interface, allowing users to interact with and customize the block’s content and settings in the Block Editor.
+ * Internal dependencies
  */
 import Edit from './edit';
-
-/**
- * Bring in values defined in block.json.
- */
 import metadata from './block.json';
+
+// Update with the desired icon.
+import { ReactComponent as reactIcon } from '../common/icons/markdown.svg';
 
 /**
  * Every block starts by registering a new block type definition.
@@ -32,5 +31,5 @@ import metadata from './block.json';
 registerBlockType( metadata.name, {
 	edit: Edit,
 	save: ( { attributes } ) => null,
-	icon: metadata.icon,
+	icon: { src: reactIcon, foreground: '#cc0000' },
 } );
