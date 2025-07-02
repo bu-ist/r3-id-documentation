@@ -555,7 +555,7 @@ function getImageData(mediaObj, size = 'full', sizeFallback = false) {
 /***/ (function(module) {
 
 "use strict";
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/wp/5.8/block.json","apiVersion":2,"name":"r3-id-documentation/loadingspinner","version":"0.1.0","title":"LoadingSpinner - Sandbox","category":"Documentation","icon":"update","description":"This block is used to explore and adjust the parameters sent to the <LoadingSpinner> Component.","example":{"attributes":{"text":"Loading Message...","shadow":"Shadow is yes!","className":"¿classNamebra?"}},"attributes":{"text":{"type":"string","default":""},"shadow":{"type":"boolean","default":true},"className":{"type":"string","default":""}},"supports":{},"textdomain":"r3-id-documentation","editorScript":"file:./index.js","editorStyle":"file:./index.css"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/wp/5.8/block.json","apiVersion":2,"name":"r3-id-documentation/loadingspinner","version":"0.1.0","title":"<LoadingSpinner> Component - Playground","category":"r3-id-documentation-pattern-category","icon":"update","description":"This block is used to explore and adjust the parameters sent to the <LoadingSpinner> Component.","example":{"attributes":{"text":"Loading Message...","shadow":"Shadow is yes!","className":"¿classNamebra?"}},"attributes":{"text":{"type":"string","default":""},"shadow":{"type":"boolean","default":true},"className":{"type":"string","default":""}},"supports":{},"textdomain":"r3-id-documentation","editorScript":"file:./index.js","editorStyle":"file:./index.css"}');
 
 /***/ }),
 

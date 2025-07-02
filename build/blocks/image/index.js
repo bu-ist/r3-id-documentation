@@ -555,7 +555,7 @@ function getImageData(mediaObj, size = 'full', sizeFallback = false) {
 /***/ (function(module) {
 
 "use strict";
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/wp/5.8/block.json","apiVersion":2,"name":"r3-id-documentation/image","version":"0.1.0","title":"<Image> Component - Playground","category":"Documentation","icon":"format-image","description":"This block is used to explore and adjust the parameters sent to the <Image> Component.","example":{},"attributes":{"tag":{"type":"string","enum":["img","picture","figure"],"default":"img"},"size":{"type":"string","default":"thumbnail"},"altSource":{"type":"string","default":"alt"},"allowedTypes":{"type":"string","default":"[\'image\']"},"canEditImage":{"type":"boolean","default":true},"canOverrideImage":{"type":"boolean","default":true},"focalPoint":{"type":"string","default":"{ x: 0.5, y: 0.5 }"},"mediaId":{"type":"string","default":""},"className":{"type":"string","default":""},"onSelect":{"type":"string","default":""},"onRemove":{"type":"string","default":""},"onChangeFocalPoint":{"type":"string","default":""},"labels":{"type":"array","default":"{}"},"debug":{"type":"boolean","default":false}},"supports":{"html":false},"textdomain":"r3-id-documentation","editorScript":"file:./index.js","editorStyle":"file:./index.css"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/wp/5.8/block.json","apiVersion":2,"name":"r3-id-documentation/image","version":"0.1.0","title":"<Image> Component - Playground","category":"r3-id-documentation-pattern-category","icon":"format-image","description":"This block is used to explore and adjust the parameters sent to the <Image> Component.","example":{},"attributes":{"tag":{"type":"string","enum":["img","picture","figure"],"default":"img"},"size":{"type":"string","default":"thumbnail"},"altSource":{"type":"string","default":"alt"},"allowedTypes":{"type":"string","default":"[\'image\']"},"canEditImage":{"type":"boolean","default":true},"canOverrideImage":{"type":"boolean","default":true},"focalPoint":{"type":"string","default":"{ x: 0.5, y: 0.5 }"},"mediaId":{"type":"string","default":""},"className":{"type":"string","default":""},"onSelect":{"type":"string","default":""},"onRemove":{"type":"string","default":""},"onChangeFocalPoint":{"type":"string","default":""},"labels":{"type":"array","default":"{}"},"debug":{"type":"boolean","default":false}},"supports":{"html":false},"textdomain":"r3-id-documentation","editorScript":"file:./index.js","editorStyle":"file:./index.css"}');
 
 /***/ }),
 
@@ -578,7 +578,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _bostonuniversity_block_imports__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @bostonuniversity/block-imports */ "../block-imports/index.js");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_core_data__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/core-data */ "@wordpress/core-data");
+/* harmony import */ var _wordpress_core_data__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _bostonuniversity_block_imports__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @bostonuniversity/block-imports */ "../block-imports/index.js");
 
 /**
  * Image Demo
@@ -596,6 +600,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // Import WP stuff.
+
 
 
 
@@ -642,6 +647,17 @@ function Edit(props) {
     title: 'my title',
     instructions: 'my instructions'
   };
+
+  // const media = useSelect( ( select ) => {
+  // 	const mediaObj = select( coreStore ).getMedia( 381626, {
+  // 		context: 'view',
+  // 	} ); // undefined
+  // 	return mediaObj;
+  // }, [] );
+
+  const media = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useSelect)(select => select('core').getMedia(381626), []);
+  console.log(media);
+  console.log('^^^');
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Block Configurator')
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, "Use these controls to adjust the parameters sent to the Component:"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
@@ -754,7 +770,7 @@ function Edit(props) {
     })
   }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)()
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_bostonuniversity_block_imports__WEBPACK_IMPORTED_MODULE_4__.Image
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_bostonuniversity_block_imports__WEBPACK_IMPORTED_MODULE_6__.Image
   // Setup
   , {
     tag: attributes.tag,
