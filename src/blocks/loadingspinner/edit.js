@@ -29,7 +29,6 @@ import './editor.scss';
  * @return {Element} Element to render, in this case an image.
  */
 export default function Edit( props ) {
-
 	const { attributes } = props;
 	const { text, shadow, className } = attributes;
 

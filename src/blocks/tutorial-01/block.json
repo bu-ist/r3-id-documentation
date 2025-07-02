@@ -4,7 +4,7 @@
 	"name": "r3-id-documentation/tutorial-01",
 	"version": "0.0.0",
 	"title": "tutorial-01",
-	"category": "Documentation",
+	"category": "r3-id-documentation-block-category",
 	"icon": "carrot",
 	"description": "desc...",
 	"example": {

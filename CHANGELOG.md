@@ -2,7 +2,10 @@
 
 ## FORTHCOMING
 
+## 0.3.0
+
 - Added Embed Markdown block
+- Fixed block category bug
 
 ## 0.2.0
 

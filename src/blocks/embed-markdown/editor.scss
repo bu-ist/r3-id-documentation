@@ -2,7 +2,10 @@
  * The following styles get applied inside the editor only.
  */
 
-.wp-block-bu-embed-markdown {
-	opacity: .75;
+.wp-block-r3-id-documentation-embed-markdown {
 	cursor: context-menu;
+}
+
+.wp-block-r3-id-documentation-embed-markdown script {
+	display: block;
 }

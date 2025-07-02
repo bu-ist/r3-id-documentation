@@ -57,10 +57,16 @@ export default function Edit( props ) {
 					/>
 				</PanelBody>
 			</InspectorControls>
-			<div { ...useBlockProps() }>
-				<FetchRawFile filePath={ mdURL } />
-				Source: <a href={ mdURL }>{ mdURL }</a>
-			</div>
+			<article { ...useBlockProps() }>
+				<div className="showdown">
+					<script type="text/plain">
+						<FetchRawFile filePath={ mdURL } />
+					</script>
+				</div>
+				<p className="source">
+					Source: <a href={ mdURL }>{ mdURL }</a>
+				</p>
+			</article>
 		</>
 	);
 }

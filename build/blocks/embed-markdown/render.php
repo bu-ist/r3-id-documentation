@@ -23,11 +23,21 @@ $raw    = str_replace( '/blob/', '/', $raw );
 
 $response = wp_remote_get( $raw );
 
+// Create the block wrapper attributes.
+$block_wrapper_attributes = array();
+// Add ID attribute if anchor is set.
+if ( ! empty( $attributes['anchor'] ) ) {
+	$block_wrapper_attributes['id'] = esc_attr( $attributes['anchor'] );
+}
+
 if ( is_array( $response ) && ( 200 === wp_remote_retrieve_response_code( $response ) ) && ( ! is_wp_error( $response ) ) ) {
+	// @todo This should be improved, it's just a proof of concept at the moment. Regex the original `md`, eg: `![alt text](Isolated.png "Title")`
+	// https://www.phpliveregex.com/#tab-preg-replace
+	$body_image_hotpatch = preg_replace( '/!\[(.+)\]\((.+)\)/', '![$1](' . dirname( $md_url ) . '/$2)', $response['body'] );
 	?>
-<article <?php echo $attributes['anchor'] ? 'id="' . esc_attr( $attributes['anchor'] ) . '"' : ''; ?> <?php echo wp_kses_data( get_block_wrapper_attributes() ); ?>>
+<article <?php echo wp_kses_data( get_block_wrapper_attributes() ); ?>>
 	<div class="showdown">
-		<script type="text/plain"><?php echo $response['body']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></script>
+		<script type="text/plain"><?php echo $body_image_hotpatch; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></script>
 	</div>
 	<p class="source">Source: <a href="<?php echo esc_url( $md_url ); ?>"><?php echo esc_url( $md_url ); ?></a></p>
 </article>

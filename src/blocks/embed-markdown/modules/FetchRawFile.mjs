@@ -54,16 +54,16 @@ export function FetchRawFile( { filePath } ) {
 
 	if ( error ) {
 		return (
-			<div>
+			<>
 				Error fetching { filePath }: { error.message }
-			</div>
+			</>
 		);
 	}
 
 	// Convert md to html using Showdown.
 	const markdownHtml = converter.makeHtml( fileContent );
 
-	return <div>{ parse( markdownHtml ) }</div>;
+	return <>{ parse( markdownHtml ) }</>;
 }
 
 /**

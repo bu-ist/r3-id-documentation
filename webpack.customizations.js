@@ -59,8 +59,15 @@ const customSassOptions = {
 	includePaths: customIncludePaths, // Adding our custom include paths.
 	// outputStyle: 'compressed', // Determines the output format of the final CSS style.
 	quietDeps: true, // If this option is set to true, Sass won’t print warnings that are caused by dependencies.
-	silenceDeprecations: ['legacy-js-api', 'global-builtin', 'import', 'slash-div', 'color-functions', 'color-4-api'],
-}
+	silenceDeprecations: [
+		'legacy-js-api',
+		'global-builtin',
+		'import',
+		'slash-div',
+		'color-functions',
+		'color-4-api',
+	],
+};
 
 /**
  * The stats option lets you precisely control what bundle information gets displayed. This can be a nice middle ground if you don't want to use quiet or noInfo because you want some bundle information, but not all of it.

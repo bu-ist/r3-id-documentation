@@ -6,7 +6,7 @@ See <https://github.com/bu-ist/r3-id-documentation/issues/290> for initial task.
 
 ## Known Issues
 
-- Images do not load
+- Image loading is hit or miss. This will need to be revisited.
 - Might be nice to add a domain filter and an extension filter to FetchRawFile.mjs
 - Might be nice to make FetchRawFile.mjs a common library
 - As the content is external, it might distrupt accessibility
