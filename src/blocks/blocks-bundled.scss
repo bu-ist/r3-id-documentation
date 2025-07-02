@@ -17,3 +17,5 @@
 @import '_includes/styles/tools';
 
 // Import block base styles from each block folder.
+@import 'embed-markdown/block-base.scss';
+@import 'tutorial-01/block-base.scss';

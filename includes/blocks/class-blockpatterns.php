@@ -38,7 +38,7 @@ class BlockPatterns {
 	protected function __construct() {
 		global $wp_version;
 
-		add_action( 'init', array( $this, 'pattern_category' ) );
+		add_action( 'init', array( $this, 'pattern_category' ), 5 ); // Fire just a little earlier to ensure categoies are registered.
 		add_action( 'after_setup_theme', array( $this, 'core_patterns' ) );
 
 		if ( $wp_version < 6 ) {
@@ -69,7 +69,7 @@ class BlockPatterns {
 		 */
 		register_block_pattern_category(
 			R3_ID_DOCUMENTATION_DOMAIN . '-pattern-category',
-			array( 'label' => __( 'BU: Theme Starter Custom Patterns', 'r3-id-documentation' ) )
+			array( 'label' => __( 'r3-id-documentation pattern_category (PHP)', 'r3-id-documentation' ) )
 		);
 	}
 

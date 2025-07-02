@@ -1,5 +1,12 @@
 # Changelog
 
+## FORTHCOMING
+
+## 0.3.0
+
+- Added Embed Markdown block
+- Fixed block category bug
+
 ## 0.2.0
 
 - Replaced all core theme files with latest `responsive-child-starter-3x-block-editor`
