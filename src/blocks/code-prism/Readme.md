@@ -4,7 +4,7 @@ A custom block to display code. See <https://github.com/bu-ist/r3-id-documentati
 
 To use:
 
-- Enter code or the GitHub URL of the file for the code explorer (eg: <https://github.com/bu-ist/r3-id-documentation/blob/timk/codeblock/src/blocks/github-embed/Readme.md>)
+- Enter code or the GitHub URL of the file for the code explorer (eg: <https://github.com/bu-ist/r3-id-documentation/blob/timk/codeblock/src/blocks/code-prism/Readme.md>)
 - Select the langage in the inspector.
 - Optionally, select lines to highlight, see <https://prismjs.com/plugins/line-highlight/> for formatting.
 

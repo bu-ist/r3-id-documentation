@@ -6,15 +6,13 @@
 import { __ } from '@wordpress/i18n';
 
 // Import WP assets.
-import {
-	InspectorControls,
-	useBlockProps,
-} from '@wordpress/block-editor';
+import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
 
 // You should avoid this, but we're using it here because the code rendering is complicated...
 import ServerSideRender from '@wordpress/server-side-render';
 
 import {
+	ToggleControl,
 	PanelBody,
 	TextareaControl,
 	TextControl, // https://developer.wordpress.org/block-editor/reference-guides/components/text-control/
@@ -40,20 +38,31 @@ import './editor.scss';
  */
 export default function Edit( props ) {
 	const { attributes, setAttributes } = props;
-	const { code, language, lines } = attributes;
+	const { remoteSource, code, url, language, lines } = attributes;
 
 	return (
 		<>
 			<InspectorControls>
 				<PanelBody title={ __( 'Code Settings' ) } initialOpen={ true }>
-					<TextareaControl
-						label="Paste code or full URL to github. Note, this does not work with private repos."
-						help="EX: https://github.com/README.md"
+					<ToggleControl
+						label="remoteSource"
+						help="true for GitHub, false for code-paste"
+						checked={ remoteSource }
 						onChange={ ( value ) =>
-							setAttributes( { code: value } )
+							setAttributes( { remoteSource: value } )
 						}
-						value={ code }
 					/>
+					{ remoteSource && (
+						<TextControl
+							label="Paste full URL to github. Note, this does not work with private repos."
+							help="EX: https://github.com/README.md"
+							onChange={ ( value ) =>
+								setAttributes( { url: value } )
+							}
+							value={ url }
+							type="url"
+						/>
+					) }
 					<SelectControl
 						label="Language"
 						value={ language }
@@ -82,16 +91,29 @@ export default function Edit( props ) {
 				</PanelBody>
 			</InspectorControls>
 
-			<div { ...useBlockProps() }>
-				<ServerSideRender
-					block="bu/github-embed"
-					attributes={ {
-						code,
-						language,
-						lines,
-					} }
-				/>
-			</div>
+			<article { ...useBlockProps() }>
+				{ ! remoteSource && (
+					<TextareaControl
+						label="Paste code here."
+						help="EX: <p>its html</p>"
+						onChange={ ( value ) =>
+							setAttributes( { code: value } )
+						}
+						value={ code }
+					/>
+				) }
+				{ remoteSource && (
+					<ServerSideRender
+						block="r3-id-documentation/code-prism"
+						attributes={ {
+							code,
+							url,
+							language,
+							lines,
+						} }
+					/>
+				) }
+			</article>
 		</>
 	);
 }

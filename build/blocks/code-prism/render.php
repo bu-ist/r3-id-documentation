@@ -11,38 +11,53 @@
  * @package r3-id-documentation
  */
 
-
-if ( filter_var( $attributes['code'], FILTER_VALIDATE_URL ) ) {
-	$raw_url  = esc_url_raw( $attributes['code'] );
+if ( $attributes['code'] ) {
+	// @todo allow for code paste?
+		$has_code = true;
+	$code         = $attributes['code'];
+} elseif ( $attributes['url'] ) {
+	$raw_url  = esc_url_raw( $attributes['url'] );
 	$raw_url  = str_replace( '/github.com/', '/raw.githubusercontent.com/', $raw_url );
 	$raw_url  = str_replace( '/blob/', '/refs/heads/', $raw_url );
 	$response = wp_remote_get( $raw_url );
 
 	if ( is_array( $response ) && ( 200 === wp_remote_retrieve_response_code( $response ) ) && ( ! is_wp_error( $response ) ) ) {
-		$code = $response['body'];
+		$has_code = true;
+		$code     = $response['body'];
 	} else {
-		echo 'Error: Unable to fetch ' . $raw_url;
+		$has_code     = false;
+		$code_message = 'Error: Unable to fetch ' . $raw_url;
 	}
 } else {
-	$code = $attributes['code'];
+	$has_code     = false;
+	$code_message = 'Error: No code provided!';
 }
 
-if ( $code ) {
-	?>
-<div <?php echo wp_kses_data( get_block_wrapper_attributes() ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+// Create the block wrapper attributes.
+$block_wrapper_attributes = array();
+// Add ID attribute if anchor is set.
+if ( ! empty( $attributes['anchor'] ) ) {
+	$block_wrapper_attributes['id'] = esc_attr( $attributes['anchor'] );
+}
 
+?>
+<article <?php echo wp_kses_data( get_block_wrapper_attributes() ); ?>>
+	<?php
+	if ( $has_code ) {
+		?>
 	<pre class="line-numbers" data-line="<?php echo esc_attr( $attributes['lines'] ); ?>">
 		<code class="match-braces language-<?php echo esc_attr( $attributes['language'] ); ?>" data-prismjs-copy="Copy <?php echo esc_attr( $attributes['language'] ); ?>">
 			<script type="text/plain"><?php echo $code; ?></script>
 		</code>
 	</pre>
-	<?php
-	if ( $raw_url ) {
-		?>
-	<p>Source: <a href="<?php echo esc_url_raw( $raw_url ); ?>"><?php echo esc_url( $raw_url ); ?></a></p>
-	<?php } ?>
-</div>
-	<?php
-} else {
-	echo 'Error: No code provided!';
-}
+		<?php
+		if ( $raw_url ) {
+			?>
+	<p class="wp-block-r3-id-documentation-code-prism-source"><strong>Source:</strong> <a href="<?php echo esc_url_raw( $raw_url ); ?>"><?php echo esc_url( $raw_url ); ?></a></p>
+			<?php
+		}
+	} else {
+		echo esc_html( $code_message );
+	}
+	?>
+</article>

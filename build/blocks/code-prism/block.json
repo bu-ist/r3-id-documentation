@@ -1,0 +1,48 @@
+{
+  "$schema": "https://schemas.wp.org/wp/5.8/block.json",
+  "apiVersion": 2,
+  "name": "r3-id-documentation/code-prism",
+  "version": "0.1.0",
+  "title": "Fancy Code Block",
+  "category": "r3-id-documentation-block-category",
+  "description": "Displays code samples. Code can be entered directly or embedded from Github.",
+  "example": {
+    "attributes": {
+      "code": "<p>its html</p>",
+      "url": "https://github.com/example.js",
+      "language": "js",
+      "lines": "2-6"
+    }
+  },
+  "attributes": {
+    "remoteSource": {
+      "type": "boolean",
+      "default": false
+    },
+    "url": {
+      "type": "string"
+    },
+    "code": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string"
+    },
+    "lines": {
+      "type": "string"
+    }
+  },
+  "supports": {
+    "anchor": true,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "textdomain": "r3-id-documentation",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php",
+  "script": "file:./view.js"
+}
