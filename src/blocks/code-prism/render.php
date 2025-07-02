@@ -25,12 +25,12 @@ if ( $attributes['code'] ) {
 		$has_code = true;
 		$code     = $response['body'];
 	} else {
-		$has_code     = false;
-		$code_message = 'Error: Unable to fetch ' . $raw_url;
+		$has_code      = false;
+		$error_message = 'Error: Unable to fetch ' . $raw_url;
 	}
 } else {
-	$has_code     = false;
-	$code_message = 'Error: No code provided!';
+	$has_code      = false;
+	$error_message = 'Error: No code provided!';
 }
 
 // Create the block wrapper attributes.
@@ -57,7 +57,7 @@ if ( ! empty( $attributes['anchor'] ) ) {
 			<?php
 		}
 	} else {
-		echo esc_html( $code_message );
+		echo esc_html( $error_message );
 	}
 	?>
 </article>
