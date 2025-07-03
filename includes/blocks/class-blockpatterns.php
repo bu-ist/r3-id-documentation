@@ -5,7 +5,7 @@
  * @package r3-id-documentation
  */
 
-namespace BU\theme_slug\Blocks;
+namespace BU\r3_id_documentation\Blocks;
 
 use WP_Block_Patterns_Registry;
 
@@ -38,7 +38,7 @@ class BlockPatterns {
 	protected function __construct() {
 		global $wp_version;
 
-		add_action( 'init', array( $this, 'pattern_category' ) );
+		add_action( 'init', array( $this, 'pattern_category' ), 5 ); // Fire just a little earlier to ensure categoies are registered.
 		add_action( 'after_setup_theme', array( $this, 'core_patterns' ) );
 
 		if ( $wp_version < 6 ) {
@@ -68,8 +68,8 @@ class BlockPatterns {
 		 * @link https://developer.wordpress.org/reference/functions/register_block_pattern_category/
 		 */
 		register_block_pattern_category(
-			RESPONSIVE_CHILD_THEME_DOMAIN . '-pattern-category',
-			array( 'label' => __( 'BU: Theme Starter Custom Patterns', 'r3-id-documentation' ) )
+			R3_ID_DOCUMENTATION_DOMAIN . '-pattern-category',
+			array( 'label' => __( 'r3-id-documentation pattern_category (PHP)', 'r3-id-documentation' ) )
 		);
 	}
 

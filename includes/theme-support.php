@@ -9,7 +9,7 @@
  * @link https://github.com/bu-ist/id-gutenberg/issues/95
  */
 
-namespace BU\theme_slug;
+namespace BU\r3_id_documentation;
 
 /**
  * BU defined defaults, change according to your requirements. Many of these support optional extra arguments.
