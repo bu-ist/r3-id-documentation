@@ -100,34 +100,51 @@ const Image = props => {
 
   // Is an image set already?
   const hasImage = mediaId ? true : false;
-  const media = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.useSelect)(select => {
-    const mediaObj = select(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_3__.store).getMedia(mediaId, {
+  console.log(hasImage);
+  console.log('^hasImage^');
+  const mediaObj = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.useSelect)(select => {
+    const mediaObj = select(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_3__.store).getMedia(381626, {
       context: 'view'
     }); // undefined
     return mediaObj;
-  }, [mediaId]);
-  if (!media) {
-    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, "Loading... ", mediaId);
-  }
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, "loadededee... ", media);
-  // removed by dead control flow
-{}
-  // removed by dead control flow
-{}
-  // removed by dead control flow
-{}
+  }, []);
 
-  // Get the media object.
-  // removed by dead control flow
-{}
-  // removed by dead control flow
-{}
-  // removed by dead control flow
-{}
+  // const media = useSelect(
+  // 	( select ) => select( 'core' ).getMedia( 381626 ),
+  // 	[]
+  // );
+  console.log(mediaObj);
+  console.log('^^^');
 
-  // JUST END IT ALREADY
-  // removed by dead control flow
-{}
+  // const media = useSelect(
+  // 	( select ) => {
+  // 		const mediaObj = select( coreStore ).getMedia( mediaId, {
+  // 			context: 'view',
+  // 		} ); // undefined
+  // 		return mediaObj;
+  // 	},
+  // 	[ mediaId ]
+  // );
+
+  // if ( ! media ) {
+  // 	return <div>Loading... { mediaId }</div>;
+  // }
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, "loadededee... ", mediaObj);
+
+  // const { mediaObj, isResolvingMedia, hasResolvedMedia } =
+  // 	useMedia( mediaId );
+  // console.log( 'mediaObj is ' );
+  // console.log( mediaObj );
+
+  // // Get the media object.
+  // const { sadfasdf } = useSelect( ( select ) => ( {
+  // 	image: select( coreStore ).getMedia( [ 381626, { context: 'view' } ] ),
+  // } ) );
+  // console.log( 'useSelect is ' );
+  // console.log( sadfasdf );
+
+  // // JUST END IT ALREADY
+  // return <div>nargs</div>;
 };
 // npx wp-scripts lint-js ./utils --fix
 

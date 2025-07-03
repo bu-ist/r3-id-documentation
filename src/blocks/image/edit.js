@@ -57,20 +57,6 @@ export default function Edit( props ) {
 	const focalPointShit = { x: 0.15, y: 0.85 }; // needs to be array format, not string
 	const labelsShit = { title: 'my title', instructions: 'my instructions' };
 
-	// const media = useSelect( ( select ) => {
-	// 	const mediaObj = select( coreStore ).getMedia( 381626, {
-	// 		context: 'view',
-	// 	} ); // undefined
-	// 	return mediaObj;
-	// }, [] );
-
-	const media = useSelect(
-		( select ) => select( 'core' ).getMedia( 381626 ),
-		[]
-	);
-	console.log( media );
-	console.log( '^^^' );
-
 	return (
 		<>
 			<InspectorControls>
