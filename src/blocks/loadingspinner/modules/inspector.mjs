@@ -25,7 +25,11 @@ export const LoadingSpinnerInspectorControls = ( {
 
 	return (
 		<InspectorControls>
-			<PanelBody title={ __( 'Block Configurator' ) }>
+			<PanelBody
+				title={ __( 'Block Configurator' ) }
+				initialOpen={ true }
+				className="props"
+			>
 				<PanelRow>
 					<strong>
 						Use these controls to adjust the parameters sent to the
@@ -37,21 +41,18 @@ export const LoadingSpinnerInspectorControls = ( {
 					help="Text that appears before the spinner image. Default is undefined."
 					value={ text }
 					onChange={ ( text ) => setAttributes( { text } ) }
-					className="props"
 				/>
 				<ToggleControl
 					label="shadow"
 					help="Show a shadow under the text? Default is true."
 					checked={ shadow }
 					onChange={ ( shadow ) => setAttributes( { shadow } ) }
-					className="props"
 				/>
 				<TextControl
 					label="className"
 					help="Class(es) to add to the component. Default is undefined."
 					value={ className }
 					onChange={ ( className ) => setAttributes( { className } ) }
-					className="props"
 				/>
 			</PanelBody>
 		</InspectorControls>

@@ -1,0 +1,19 @@
+/**
+ * The following styles get applied inside the editor only.
+ */
+
+.editor-styles-wrapper .line-numbers {
+	cursor: context-menu;
+}
+
+.editor-styles-wrapper .line-numbers+p {
+	margin-top: -4rem;
+}
+
+.line-numbers code,
+.line-numbers script {
+	width: 100%;
+	display: block;
+	height: auto;
+	white-space: break-spaces;
+}
