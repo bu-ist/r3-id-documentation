@@ -2,6 +2,8 @@
 
 ## FORTHCOMING
 
+## 0.4.0
+
 - Adds GitHub Code Block block
 
 ## 0.3.0
