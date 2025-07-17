@@ -39,7 +39,7 @@ if ( is_array( $response ) && ( 200 === wp_remote_retrieve_response_code( $respo
 	<div class="showdown">
 		<script type="text/plain"><?php echo $body_image_hotpatch; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></script>
 	</div>
-	<p class="source">Source: <a href="<?php echo esc_url( $md_url ); ?>"><?php echo esc_url( $md_url ); ?></a></p>
+	<p class="wp-block-r3-id-documentation-embed-markdown-source"><strong>Source:</strong> <a href="<?php echo esc_url( $md_url ); ?>"><?php echo esc_url( $md_url ); ?></a></p>
 </article>
 	<?php
 } else {

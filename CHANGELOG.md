@@ -2,14 +2,18 @@
 
 ## FORTHCOMING
 
+## 0.4.0
+
+- Adds GitHub Code Block block
+
 ## 0.3.0
 
-- Added Embed Markdown block
-- Fixed block category bug
+- Adds Embed Markdown block
+- Fixes block category bug
 
 ## 0.2.0
 
-- Replaced all core theme files with latest `responsive-child-starter-3x-block-editor`
+- Replaces all core theme files with latest `responsive-child-starter-3x-block-editor`
 
 ## 0.1.0
 

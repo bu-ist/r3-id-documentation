@@ -63,8 +63,8 @@ export default function Edit( props ) {
 						<FetchRawFile filePath={ mdURL } />
 					</script>
 				</div>
-				<p className="source">
-					Source: <a href={ mdURL }>{ mdURL }</a>
+				<p className="wp-block-r3-id-documentation-embed-markdown-source">
+					<strong>Source:</strong> <a href={ mdURL }>{ mdURL }</a>
 				</p>
 			</article>
 		</>
