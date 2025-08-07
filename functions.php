@@ -19,10 +19,11 @@ require_once 'constants.php';
  * These lines include the dev/prototyping templates development hooks for use in
  * designing sections rapidly.
  */
-if ( file_exists( __DIR__ . '/dev/prototyping/dev-functions.php' ) ) {
-	include_once 'dev/prototyping/dev-functions.php';
-	add_filter( 'after_setup_theme', 'dev_sections' );
-}
+// if ( file_exists( __DIR__ . '/dev/prototyping/dev-functions.php' ) ) {
+//  // define( 'RESPONSIVE_ENABLE_ALL_DEV_HOOKS', true );
+//  include_once 'dev/prototyping/dev-functions.php';
+//  add_filter( 'after_setup_theme', 'dev_sections' );
+// }
 
 /**
  * Theme Supports.
@@ -57,3 +58,76 @@ require_once 'includes/class-themeenqueues.php';
  * Blocks & Assets
  */
 require_once 'includes/blocks/functions.php';
+
+/**
+ * DEMO BREAD
+ */
+function attach_breadcrumbs() {
+	// get_template_part(
+	//  string $slug,
+	//  string | null $name = null,
+	//  array $args         = array(
+	//      'menu' => 'menu ID, slug, name, or object',
+	//  )
+	// ): void | false
+	// https://developer.wordpress.org/reference/functions/get_template_part/
+	get_template_part(
+		'template-parts/nav',
+		'crumbs',
+		array(
+			'menu' => '37961',
+		)
+	);
+}
+add_action( 'r_before_opening_article', __NAMESPACE__ . '\\attach_breadcrumbs' );
+
+/**
+ * Create department taxonomy for profiles.
+ *
+ * @author Tim King <timking@bu.edu>
+ */
+function create_taxonomies() {
+	$args_status = array(
+		'hierarchical'      => true,
+		'labels'            => array(
+			'name'              => _x( 'Statuses', 'taxonomy general name', 'r3-studenthealth' ),
+			'singular_name'     => _x( 'Status', 'taxonomy singular name', 'r3-studenthealth' ),
+			'search_items'      => __( 'Search Regions', 'r3-studenthealth' ),
+			'all_items'         => __( 'All Statuses', 'r3-studenthealth' ),
+			'parent_item'       => __( 'Parent Status', 'r3-studenthealth' ),
+			'parent_item_colon' => __( 'Parent Status:', 'r3-studenthealth' ),
+			'edit_item'         => __( 'Edit Status', 'r3-studenthealth' ),
+			'update_item'       => __( 'Update Status', 'r3-studenthealth' ),
+			'add_new_item'      => __( 'Add New Statuses', 'r3-studenthealth' ),
+			'new_item_name'     => __( 'New Status', 'r3-studenthealth' ),
+			'menu_name'         => __( 'Statuses', 'r3-studenthealth' ),
+		),
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'query_var'         => true,
+		'rewrite'           => array( 'slug' => 'status' ),
+	);
+	register_taxonomy( 'status', array( 'page' ), $args_status );
+	$args_assignee = array(
+		'hierarchical'      => true,
+		'labels'            => array(
+			'name'              => _x( 'Assignees', 'taxonomy general name', 'r3-studenthealth' ),
+			'singular_name'     => _x( 'Assignee', 'taxonomy singular name', 'r3-studenthealth' ),
+			'search_items'      => __( 'Search Regions', 'r3-studenthealth' ),
+			'all_items'         => __( 'All Assignees', 'r3-studenthealth' ),
+			'parent_item'       => __( 'Parent Assignee', 'r3-studenthealth' ),
+			'parent_item_colon' => __( 'Parent Assignee:', 'r3-studenthealth' ),
+			'edit_item'         => __( 'Edit Assignee', 'r3-studenthealth' ),
+			'update_item'       => __( 'Update Assignee', 'r3-studenthealth' ),
+			'add_new_item'      => __( 'Add New Assignees', 'r3-studenthealth' ),
+			'new_item_name'     => __( 'New Assignee', 'r3-studenthealth' ),
+			'menu_name'         => __( 'Assignees', 'r3-studenthealth' ),
+		),
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'query_var'         => true,
+		'rewrite'           => array( 'slug' => 'assignee' ),
+	);
+	register_taxonomy( 'assignee', array( 'page' ), $args_assignee );
+}
+add_action( 'init', __NAMESPACE__ . '\\create_taxonomies' );
