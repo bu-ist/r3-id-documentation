@@ -62,24 +62,12 @@ require_once 'includes/blocks/functions.php';
 /**
  * DEMO BREAD
  */
-function attach_breadcrumbs() {
-	// get_template_part(
-	//  string $slug,
-	//  string | null $name = null,
-	//  array $args         = array(
-	//      'menu' => 'menu ID, slug, name, or object',
-	//  )
-	// ): void | false
-	// https://developer.wordpress.org/reference/functions/get_template_part/
-	get_template_part(
-		'template-parts/nav',
-		'crumbs',
-		array(
-			'menu' => '37961',
-		)
-	);
+function attach_breadcrumbs_theme() {
+	echo 'r_before_opening_article';
+	\BU\Plugins\BU_Responsive_Customizations\Breadcrumbs\attach_breadcrumbs();
 }
-add_action( 'r_before_opening_article', __NAMESPACE__ . '\\attach_breadcrumbs' );
+add_action( 'r_before_opening_article', __NAMESPACE__ . '\\attach_breadcrumbs_theme' );
+add_action( 'r_after_opening_article', 'BU\Plugins\BU_Responsive_Customizations\Breadcrumbs\attach_breadcrumbs' );
 
 /**
  * Create department taxonomy for profiles.
@@ -90,17 +78,17 @@ function create_taxonomies() {
 	$args_status = array(
 		'hierarchical'      => true,
 		'labels'            => array(
-			'name'              => _x( 'Statuses', 'taxonomy general name', 'r3-studenthealth' ),
-			'singular_name'     => _x( 'Status', 'taxonomy singular name', 'r3-studenthealth' ),
-			'search_items'      => __( 'Search Regions', 'r3-studenthealth' ),
-			'all_items'         => __( 'All Statuses', 'r3-studenthealth' ),
-			'parent_item'       => __( 'Parent Status', 'r3-studenthealth' ),
-			'parent_item_colon' => __( 'Parent Status:', 'r3-studenthealth' ),
-			'edit_item'         => __( 'Edit Status', 'r3-studenthealth' ),
-			'update_item'       => __( 'Update Status', 'r3-studenthealth' ),
-			'add_new_item'      => __( 'Add New Statuses', 'r3-studenthealth' ),
-			'new_item_name'     => __( 'New Status', 'r3-studenthealth' ),
-			'menu_name'         => __( 'Statuses', 'r3-studenthealth' ),
+			'name'              => _x( 'Statuses', 'taxonomy general name', 'r3-id-documentation' ),
+			'singular_name'     => _x( 'Status', 'taxonomy singular name', 'r3-id-documentation' ),
+			'search_items'      => __( 'Search Regions', 'r3-id-documentation' ),
+			'all_items'         => __( 'All Statuses', 'r3-id-documentation' ),
+			'parent_item'       => __( 'Parent Status', 'r3-id-documentation' ),
+			'parent_item_colon' => __( 'Parent Status:', 'r3-id-documentation' ),
+			'edit_item'         => __( 'Edit Status', 'r3-id-documentation' ),
+			'update_item'       => __( 'Update Status', 'r3-id-documentation' ),
+			'add_new_item'      => __( 'Add New Statuses', 'r3-id-documentation' ),
+			'new_item_name'     => __( 'New Status', 'r3-id-documentation' ),
+			'menu_name'         => __( 'Statuses', 'r3-id-documentation' ),
 		),
 		'show_ui'           => true,
 		'show_admin_column' => true,
@@ -111,17 +99,17 @@ function create_taxonomies() {
 	$args_assignee = array(
 		'hierarchical'      => true,
 		'labels'            => array(
-			'name'              => _x( 'Assignees', 'taxonomy general name', 'r3-studenthealth' ),
-			'singular_name'     => _x( 'Assignee', 'taxonomy singular name', 'r3-studenthealth' ),
-			'search_items'      => __( 'Search Regions', 'r3-studenthealth' ),
-			'all_items'         => __( 'All Assignees', 'r3-studenthealth' ),
-			'parent_item'       => __( 'Parent Assignee', 'r3-studenthealth' ),
-			'parent_item_colon' => __( 'Parent Assignee:', 'r3-studenthealth' ),
-			'edit_item'         => __( 'Edit Assignee', 'r3-studenthealth' ),
-			'update_item'       => __( 'Update Assignee', 'r3-studenthealth' ),
-			'add_new_item'      => __( 'Add New Assignees', 'r3-studenthealth' ),
-			'new_item_name'     => __( 'New Assignee', 'r3-studenthealth' ),
-			'menu_name'         => __( 'Assignees', 'r3-studenthealth' ),
+			'name'              => _x( 'Assignees', 'taxonomy general name', 'r3-id-documentation' ),
+			'singular_name'     => _x( 'Assignee', 'taxonomy singular name', 'r3-id-documentation' ),
+			'search_items'      => __( 'Search Regions', 'r3-id-documentation' ),
+			'all_items'         => __( 'All Assignees', 'r3-id-documentation' ),
+			'parent_item'       => __( 'Parent Assignee', 'r3-id-documentation' ),
+			'parent_item_colon' => __( 'Parent Assignee:', 'r3-id-documentation' ),
+			'edit_item'         => __( 'Edit Assignee', 'r3-id-documentation' ),
+			'update_item'       => __( 'Update Assignee', 'r3-id-documentation' ),
+			'add_new_item'      => __( 'Add New Assignees', 'r3-id-documentation' ),
+			'new_item_name'     => __( 'New Assignee', 'r3-id-documentation' ),
+			'menu_name'         => __( 'Assignees', 'r3-id-documentation' ),
 		),
 		'show_ui'           => true,
 		'show_admin_column' => true,
