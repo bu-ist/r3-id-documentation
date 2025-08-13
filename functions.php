@@ -20,7 +20,7 @@ require_once 'constants.php';
  * designing sections rapidly.
  */
 // if ( file_exists( __DIR__ . '/dev/prototyping/dev-functions.php' ) ) {
-//  // define( 'RESPONSIVE_ENABLE_ALL_DEV_HOOKS', true );
+//  define( 'RESPONSIVE_ENABLE_ALL_DEV_HOOKS', true );
 //  include_once 'dev/prototyping/dev-functions.php';
 //  add_filter( 'after_setup_theme', 'dev_sections' );
 // }
@@ -63,11 +63,11 @@ require_once 'includes/blocks/functions.php';
  * DEMO BREAD
  */
 function attach_breadcrumbs_theme() {
-	echo 'r_before_opening_article';
 	\BU\Plugins\BU_Responsive_Customizations\Breadcrumbs\attach_breadcrumbs();
 }
+add_action( 'r_after_opening_body_tag', __NAMESPACE__ . '\\attach_breadcrumbs_theme' );
 add_action( 'r_before_opening_article', __NAMESPACE__ . '\\attach_breadcrumbs_theme' );
-add_action( 'r_after_opening_article', 'BU\Plugins\BU_Responsive_Customizations\Breadcrumbs\attach_breadcrumbs' );
+add_action( 'r_before_footer_brand_assets', 'BU\Plugins\BU_Responsive_Customizations\Breadcrumbs\attach_breadcrumbs' );
 
 /**
  * Create department taxonomy for profiles.
