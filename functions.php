@@ -62,12 +62,12 @@ require_once 'includes/blocks/functions.php';
 /**
  * DEMO BREAD
  */
-function attach_breadcrumbs_theme() {
-	\BU\Plugins\BU_Responsive_Customizations\Breadcrumbs\attach_breadcrumbs();
+function display_breadcrumbs_theme() {
+	\BU\Plugins\BU_Responsive_Customizations\Breadcrumbs\display_breadcrumbs();
 }
-add_action( 'r_after_opening_body_tag', __NAMESPACE__ . '\\attach_breadcrumbs_theme' );
-add_action( 'r_before_opening_article', __NAMESPACE__ . '\\attach_breadcrumbs_theme' );
-add_action( 'r_before_footer_brand_assets', 'BU\Plugins\BU_Responsive_Customizations\Breadcrumbs\attach_breadcrumbs' );
+add_action( 'r_after_opening_body_tag', __NAMESPACE__ . '\\display_breadcrumbs_theme' );
+add_action( 'r_before_opening_article', __NAMESPACE__ . '\\display_breadcrumbs_theme' );
+add_action( 'r_before_footer_brand_assets', 'BU\Plugins\BU_Responsive_Customizations\Breadcrumbs\display_breadcrumbs' );
 
 /**
  * Create department taxonomy for profiles.
@@ -91,11 +91,12 @@ function create_taxonomies() {
 			'menu_name'         => __( 'Statuses', 'r3-id-documentation' ),
 		),
 		'show_ui'           => true,
+		'public'            => true,
+		'show_in_rest'      => true,
 		'show_admin_column' => true,
 		'query_var'         => true,
-		'rewrite'           => array( 'slug' => 'status' ),
 	);
-	register_taxonomy( 'status', array( 'page' ), $args_status );
+	register_taxonomy( 'status-is-a-reserved-term', array( 'page' ), $args_status );
 	$args_assignee = array(
 		'hierarchical'      => true,
 		'labels'            => array(
@@ -112,9 +113,10 @@ function create_taxonomies() {
 			'menu_name'         => __( 'Assignees', 'r3-id-documentation' ),
 		),
 		'show_ui'           => true,
+		'public'            => true,
+		'show_in_rest'      => true,
 		'show_admin_column' => true,
 		'query_var'         => true,
-		'rewrite'           => array( 'slug' => 'assignee' ),
 	);
 	register_taxonomy( 'assignee', array( 'page' ), $args_assignee );
 }
