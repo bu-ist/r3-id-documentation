@@ -1,0 +1,14 @@
+/**
+ * SCSS partial that contains all of the base (structural) styles for this block.
+ */
+
+@use './prism/prism.css';
+
+.wp-block-r3-id-documentation-code-prism pre.line-numbers {
+	font-size: .75rem !important;
+}
+
+// @todo need to make this not hardcoded
+pre[class*=language-].line-numbers {
+	max-width: 800px;
+}

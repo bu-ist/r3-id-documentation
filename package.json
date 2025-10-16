@@ -1,6 +1,6 @@
 {
   "name": "r3-id-documentation",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "A block-editor enabled starter template for child themes of Responsive Framework 3.",
   "author": {
     "name": "Boston University",
@@ -59,9 +59,10 @@
     "check-engines": "wp-scripts check-engines",
     "check-licenses": "wp-scripts check-licenses",
     "__DEVELOPMENT__": "===================================================================",
-    "start": "npm-run-all --parallel watch:scripts watch:theme",
-    "watch:scripts": "wp-scripts start",
+    "start": "NODE_ENV=development npm-run-all --parallel watch:scripts watch:theme",
+    "watch:scripts": "wp-scripts start  --color | grep -v '^    at ' || true",
     "watch:theme": "nodemon --watch src/theme-json dev/theme-json/compile.mjs",
+    "watch:verbose": "wp-scripts start",
     "__BLOCKS__": "=========================================================================",
     "new-id-block": "cd src/blocks && npx @wordpress/create-block@latest --template @bostonuniversity/create-block-templates --no-plugin",
     "new-wp-block": "cd src/blocks && npx @wordpress/create-block@latest --no-plugin",
@@ -80,13 +81,14 @@
     "test:e2e": "wp-scripts test-e2e",
     "test:unit": "wp-scripts test-unit-js",
     "__BUILD__": "=========================================================================",
-    "build": "npm-run-all build:theme build:scripts build:i18n build:version",
+    "build": "NODE_ENV=development npm-run-all build:theme build:scripts build:i18n build:version",
+    "build:verbose": "wp-scripts build",
+    "build:theme": "node --trace-warnings dev/theme-json/compile.mjs",
+    "build:scripts": "wp-scripts build --color | grep -v '^    at ' || true",
+    "build:i18n": "npm-run-all build:clean build:wpi18n build:wpmakepot",
     "build:clean": "rimraf languages/*",
     "build:wpi18n": "wpi18n addtextdomain",
     "build:wpmakepot": "wpi18n makepot --domain-path languages",
-    "build:i18n": "npm-run-all build:clean build:wpi18n build:wpmakepot",
-    "build:scripts": "wp-scripts build",
-    "build:theme": "node --trace-warnings dev/theme-json/compile.mjs",
     "build:version": "node dev/version.js"
   }
 }
