@@ -56,8 +56,6 @@ const blocksConfig = {
  * that the blocks are not processed a second time.
  */
 const themeConfig = {
-	// Set devtool mode to sourcemap so we generate sourcemap files even for production builds.
-	devtool: 'source-map',
 	entry: {
 		...themeEntryPoints,
 	},
@@ -69,14 +67,12 @@ const themeConfig = {
 					{
 						loader: require.resolve( 'css-loader' ),
 						options: {
-							sourceMap: true, // Set sourceMap to true so we generate a map even for prod builds.
 						},
 					},
 					{
 						loader: require.resolve( 'sass-loader' ),
 						options: {
 							sassOptions: customSassOptions,
-							sourceMap: true, // Set sourceMap to true so we generate a map even for prod builds.
 							implementation: require( sassCompiler ),
 						},
 					},

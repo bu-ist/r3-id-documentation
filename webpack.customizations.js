@@ -77,28 +77,8 @@ const customSassOptions = {
  * @see https://webpack.js.org/configuration/stats/
  */
 const statsConfig = {
-	preset: 'verbose', // Output everything.
-	// Settings below will modify the preset output.
-	errors: true, // Show errors.
-	warnings: false, // Hide warnings.
+	preset: 'errors-warnings', // Output everything.
 	colors: true, // Use colors for better readability.
-	modules: false, // Hide module details.
-	chunks: false, // Hide chunk details.
-	chunkGroups: false,
-	assets: false, // Hide "assets by path" details.
-	entrypoints: true, // Hide the entry points with the corresponding bundles.
-	logging: 'none',
-	publicPath: false,
-	// @todo these are all ignored? the stack trace is too damn long and clutters the build
-	errorsSpace: 5,
-	errorStack: false,
-	errorDetails: false,
-	warningsSpace: 5,
-	reasonsSpace: 5,
-	nestedModulesSpace: 5,
-	modulesSpace: 5,
-	chunkModulesSpace: 5,
-	assetsSpace: 5,
 };
 
 /**
