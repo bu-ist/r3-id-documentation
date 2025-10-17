@@ -32,6 +32,11 @@ const blocksConfig = {
 	module: {
 		rules: [
 			{
+				test: /\.mjs$/,
+				loader: 'babel-loader',
+				exclude: /node_modules\/(?!(@bostonuniversity)\/).*/,
+			},
+			{
 				test: /\.(sc|sa)ss$/,
 				use: [
 					{
