@@ -6,6 +6,10 @@
 
 - Adds GitHub Code Block block
 
+- Adds `<Image>` sandbox block
+
+## FORTHCOMING
+
 ## 0.3.0
 
 - Adds Embed Markdown block
