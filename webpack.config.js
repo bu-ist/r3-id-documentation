@@ -29,6 +29,7 @@ const {
  * Do not modify the entry points of this config as it uses the `getWebpackEntryPoints` function from wp-scripts that finds all blocks and block.json files and builds a list of entrypoints for webpack from that automagically.
  */
 const blocksConfig = {
+	devtool: 'source-map', // Always build the sourcemap, even for production.
 	module: {
 		rules: [
 			{
@@ -40,8 +41,15 @@ const blocksConfig = {
 				test: /\.(sc|sa)ss$/,
 				use: [
 					{
+						loader: require.resolve( 'css-loader' ),
+						options: {
+							sourceMap: true, // Always build the sourcemap, even for production.
+						},
+					},
+					{
 						loader: require.resolve( 'sass-loader' ),
 						options: {
+							sourceMap: true, // Always build the sourcemap, even for production.
 							sassOptions: customSassOptions,
 							implementation: require( sassCompiler ),
 						},
@@ -64,6 +72,7 @@ const themeConfig = {
 	entry: {
 		...themeEntryPoints,
 	},
+	devtool: 'source-map', // Always build the sourcemap, even for production.
 	module: {
 		rules: [
 			{
@@ -72,11 +81,13 @@ const themeConfig = {
 					{
 						loader: require.resolve( 'css-loader' ),
 						options: {
+							sourceMap: true, // Always build the sourcemap, even for production.
 						},
 					},
 					{
 						loader: require.resolve( 'sass-loader' ),
 						options: {
+							sourceMap: true, // Always build the sourcemap, even for production.
 							sassOptions: customSassOptions,
 							implementation: require( sassCompiler ),
 						},
@@ -103,6 +114,7 @@ const themeConfig = {
  */
 module.exports = [
 	mergeWithRules( {
+		devtool: 'replace',
 		module: {
 			rules: {
 				test: 'match',
@@ -116,6 +128,7 @@ module.exports = [
 	} )( defaultConfig, blocksConfig ),
 	mergeWithRules( {
 		entry: 'merge',
+		devtool: 'replace',
 		module: {
 			rules: {
 				test: 'match',
