@@ -8,12 +8,7 @@
 import { useBlockProps } from '@wordpress/block-editor';
 
 // Import our stuff.
-// import { Footer } from '@bostonuniversity/block-imports'; // builds but 130; ideal
-import { LoadingSpinner } from '@bostonuniversity/block-imports'; // builds and works! ideal
-// import { LoadingSpinner } from '@bostonuniversity/block-imports/components/LoadingSpinner.js'; // builds but 130
-// import { LoadingSpinner } from './modules/index.mjs'; // local works
-// import { Footer } from '@bostonuniversity/block-imports/token'; // gives Module parse failed: Unexpected token; fixed with babel
-// import { Footer } from '@bostonuniversity/block-imports/compiled'; // builds but 130
+import { LoadingSpinner } from '@bostonuniversity/block-imports';
 import { LoadingSpinnerInspectorControls } from './modules/inspector.mjs';
 
 /**
@@ -45,7 +40,6 @@ export default function Edit( props ) {
 				shadow={ shadow } // Default is true.
 				className={ className }
 			/>
-			{/* <Footer>sdf</Footer> */}
 		</div>
 	);
 }
