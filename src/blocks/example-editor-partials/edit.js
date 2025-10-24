@@ -13,7 +13,7 @@ import { __ } from '@wordpress/i18n';
  */
 import { useBlockProps, RichText } from '@wordpress/block-editor';
 
-import { EditorPartialsInspectorControls } from './editor-partials/inspector';
+import { EditorPartialsInspectorControls } from './modules/inspector';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
