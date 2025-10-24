@@ -1,0 +1,16 @@
+{
+	"$schema": "https://schemas.wp.org/wp/5.8/block.json",
+	"apiVersion": 2,
+	"name": "labs-plugin-blocks/demo-image",
+	"version": "0.1.0",
+	"title": "demo-image",
+	"category": "text",
+	"icon": "carrot",
+	"description": "demo-image",
+	"example": {},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "labs-plugin-blocks",
+	"editorScript": "file:./index.js"
+}
