@@ -1,0 +1,25 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "r3-id-documentation/inspector-panel",
+  "version": "0.1.0",
+  "title": "Example: InspectorPanel",
+  "category": "text",
+  "icon": "text",
+  "description": "Example block using <InspectorPanel>.",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "textField": {
+      "type": "string"
+    }
+  },
+  "textdomain": "r3-id-documentation",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php",
+  "viewScript": "file:./view.js"
+}

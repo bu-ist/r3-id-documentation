@@ -63,7 +63,12 @@ require_once 'includes/blocks/functions.php';
  * DEMO BREAD
  */
 function display_breadcrumbs_theme() {
-	\BU\Plugins\BU_Responsive_Customizations\Breadcrumbs\display_breadcrumbs();
+	if ( function_exists( '\BU\Plugins\BU_Responsive_Customizations\Breadcrumbs\display_breadcrumbs' ) ) {
+		\BU\Plugins\BU_Responsive_Customizations\Breadcrumbs\display_breadcrumbs();
+	} else {
+		// @todo this is for dev, remove it later...
+		echo 'Your Breadcrumbs are stale! Please make sure you are using the latest 5.8 BU_Responsive_Customizations.';
+	}
 }
 add_action( 'r_after_opening_body_tag', __NAMESPACE__ . '\\display_breadcrumbs_theme' );
 add_action( 'r_before_opening_article', __NAMESPACE__ . '\\display_breadcrumbs_theme' );
