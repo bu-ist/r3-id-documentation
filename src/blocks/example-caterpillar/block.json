@@ -1,0 +1,25 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "r3-id-documentation/caterpillar",
+	"version": "0.1.0",
+	"title": "Example: Caterpillar",
+	"category": "r3-id-documentation-block-category",
+	"icon": "ellipsis",
+	"description": "Example block using insects.",
+	"example": {},
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"textField": {
+			"type": "string"
+		}
+	},
+	"textdomain": "r3-id-documentation",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"viewScript": "file:./view.js"
+}
