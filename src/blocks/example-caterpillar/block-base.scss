@@ -1,0 +1,17 @@
+
+/**
+ * SCSS partial that contains all of the base (structural) styles for this block.
+ */
+ .wp-block--bu-block-example--caterpillar {
+	background-color: #21759b;
+	color: #fff;
+	padding: 10px;
+
+	p {
+		border-width: var(--r3-id-documentation-border-width );
+	}
+
+	.wp-block--bu-block-example--caterpillar--title {
+		color: purple;
+	}
+}

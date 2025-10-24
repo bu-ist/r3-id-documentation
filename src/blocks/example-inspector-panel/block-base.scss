@@ -1,0 +1,17 @@
+
+/**
+ * SCSS partial that contains all of the base (structural) styles for this block.
+ */
+ .wp-block--labs-plugin-blocks-inspector-panel {
+	background-color: #21759b;
+	color: #fff;
+	padding: 10px;
+
+	p {
+		border-width: var(--labs-plugin-blocks-border-width );
+	}
+
+	.wp-block--labs-plugin-blocks-inspector-panel--title {
+		color: purple;
+	}
+}

@@ -71,8 +71,7 @@ const themeConfig = {
 				use: [
 					{
 						loader: require.resolve( 'css-loader' ),
-						options: {
-						},
+						options: {},
 					},
 					{
 						loader: require.resolve( 'sass-loader' ),
