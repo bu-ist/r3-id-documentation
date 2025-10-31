@@ -1,2 +1,9322 @@
-!function(){var e,t={84:function(e,t,r){"use strict";var n,a=this&&this.__extends||(n=function(e,t){return n=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(e,t){e.__proto__=t}||function(e,t){for(var r in t)Object.prototype.hasOwnProperty.call(t,r)&&(e[r]=t[r])},n(e,t)},function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Class extends value "+String(t)+" is not a constructor or null");function __(){this.constructor=e}n(e,t),e.prototype=null===t?Object.create(t):(__.prototype=t.prototype,new __)}),o=this&&this.__assign||function(){return o=Object.assign||function(e){for(var t,r=1,n=arguments.length;r<n;r++)for(var a in t=arguments[r])Object.prototype.hasOwnProperty.call(t,a)&&(e[a]=t[a]);return e},o.apply(this,arguments)};Object.defineProperty(t,"__esModule",{value:!0}),t.cloneNode=t.hasChildren=t.isDocument=t.isDirective=t.isComment=t.isText=t.isCDATA=t.isTag=t.Element=t.Document=t.CDATA=t.NodeWithChildren=t.ProcessingInstruction=t.Comment=t.Text=t.DataNode=t.Node=void 0;var i=r(413),s=function(){function e(){this.parent=null,this.prev=null,this.next=null,this.startIndex=null,this.endIndex=null}return Object.defineProperty(e.prototype,"parentNode",{get:function(){return this.parent},set:function(e){this.parent=e},enumerable:!1,configurable:!0}),Object.defineProperty(e.prototype,"previousSibling",{get:function(){return this.prev},set:function(e){this.prev=e},enumerable:!1,configurable:!0}),Object.defineProperty(e.prototype,"nextSibling",{get:function(){return this.next},set:function(e){this.next=e},enumerable:!1,configurable:!0}),e.prototype.cloneNode=function(e){return void 0===e&&(e=!1),k(this,e)},e}();t.Node=s;var l=function(e){function t(t){var r=e.call(this)||this;return r.data=t,r}return a(t,e),Object.defineProperty(t.prototype,"nodeValue",{get:function(){return this.data},set:function(e){this.data=e},enumerable:!1,configurable:!0}),t}(s);t.DataNode=l;var c=function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.type=i.ElementType.Text,t}return a(t,e),Object.defineProperty(t.prototype,"nodeType",{get:function(){return 3},enumerable:!1,configurable:!0}),t}(l);t.Text=c;var u=function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.type=i.ElementType.Comment,t}return a(t,e),Object.defineProperty(t.prototype,"nodeType",{get:function(){return 8},enumerable:!1,configurable:!0}),t}(l);t.Comment=u;var d=function(e){function t(t,r){var n=e.call(this,r)||this;return n.name=t,n.type=i.ElementType.Directive,n}return a(t,e),Object.defineProperty(t.prototype,"nodeType",{get:function(){return 1},enumerable:!1,configurable:!0}),t}(l);t.ProcessingInstruction=d;var p=function(e){function t(t){var r=e.call(this)||this;return r.children=t,r}return a(t,e),Object.defineProperty(t.prototype,"firstChild",{get:function(){var e;return null!==(e=this.children[0])&&void 0!==e?e:null},enumerable:!1,configurable:!0}),Object.defineProperty(t.prototype,"lastChild",{get:function(){return this.children.length>0?this.children[this.children.length-1]:null},enumerable:!1,configurable:!0}),Object.defineProperty(t.prototype,"childNodes",{get:function(){return this.children},set:function(e){this.children=e},enumerable:!1,configurable:!0}),t}(s);t.NodeWithChildren=p;var h=function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.type=i.ElementType.CDATA,t}return a(t,e),Object.defineProperty(t.prototype,"nodeType",{get:function(){return 4},enumerable:!1,configurable:!0}),t}(p);t.CDATA=h;var f=function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.type=i.ElementType.Root,t}return a(t,e),Object.defineProperty(t.prototype,"nodeType",{get:function(){return 9},enumerable:!1,configurable:!0}),t}(p);t.Document=f;var m=function(e){function t(t,r,n,a){void 0===n&&(n=[]),void 0===a&&(a="script"===t?i.ElementType.Script:"style"===t?i.ElementType.Style:i.ElementType.Tag);var o=e.call(this,n)||this;return o.name=t,o.attribs=r,o.type=a,o}return a(t,e),Object.defineProperty(t.prototype,"nodeType",{get:function(){return 1},enumerable:!1,configurable:!0}),Object.defineProperty(t.prototype,"tagName",{get:function(){return this.name},set:function(e){this.name=e},enumerable:!1,configurable:!0}),Object.defineProperty(t.prototype,"attributes",{get:function(){var e=this;return Object.keys(this.attribs).map(function(t){var r,n;return{name:t,value:e.attribs[t],namespace:null===(r=e["x-attribsNamespace"])||void 0===r?void 0:r[t],prefix:null===(n=e["x-attribsPrefix"])||void 0===n?void 0:n[t]}})},enumerable:!1,configurable:!0}),t}(p);function g(e){return(0,i.isTag)(e)}function _(e){return e.type===i.ElementType.CDATA}function b(e){return e.type===i.ElementType.Text}function w(e){return e.type===i.ElementType.Comment}function y(e){return e.type===i.ElementType.Directive}function v(e){return e.type===i.ElementType.Root}function k(e,t){var r;if(void 0===t&&(t=!1),b(e))r=new c(e.data);else if(w(e))r=new u(e.data);else if(g(e)){var n=t?x(e.children):[],a=new m(e.name,o({},e.attribs),n);n.forEach(function(e){return e.parent=a}),null!=e.namespace&&(a.namespace=e.namespace),e["x-attribsNamespace"]&&(a["x-attribsNamespace"]=o({},e["x-attribsNamespace"])),e["x-attribsPrefix"]&&(a["x-attribsPrefix"]=o({},e["x-attribsPrefix"])),r=a}else if(_(e)){n=t?x(e.children):[];var i=new h(n);n.forEach(function(e){return e.parent=i}),r=i}else if(v(e)){n=t?x(e.children):[];var s=new f(n);n.forEach(function(e){return e.parent=s}),e["x-mode"]&&(s["x-mode"]=e["x-mode"]),r=s}else{if(!y(e))throw new Error("Not implemented yet: ".concat(e.type));var l=new d(e.name,e.data);null!=e["x-name"]&&(l["x-name"]=e["x-name"],l["x-publicId"]=e["x-publicId"],l["x-systemId"]=e["x-systemId"]),r=l}return r.startIndex=e.startIndex,r.endIndex=e.endIndex,null!=e.sourceCodeLocation&&(r.sourceCodeLocation=e.sourceCodeLocation),r}function x(e){for(var t=e.map(function(e){return k(e,!0)}),r=1;r<t.length;r++)t[r].prev=t[r-1],t[r-1].next=t[r];return t}t.Element=m,t.isTag=g,t.isCDATA=_,t.isText=b,t.isComment=w,t.isDirective=y,t.isDocument=v,t.hasChildren=function(e){return Object.prototype.hasOwnProperty.call(e,"children")},t.cloneNode=k},133:function(e,t,r){"use strict";var n=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=function(e,t){let r=null;if(!e||"string"!=typeof e)return r;const n=(0,a.default)(e),o="function"==typeof t;return n.forEach(e=>{if("declaration"!==e.type)return;const{property:n,value:a}=e;o?t(n,a,e):a&&(r=r||{},r[n]=a)}),r};const a=n(r(788))},210:function(e,t,r){"use strict";function n(e,t,r,n,a,o,i){this.acceptsBooleans=2===t||3===t||4===t,this.attributeName=n,this.attributeNamespace=a,this.mustUseProperty=r,this.propertyName=e,this.type=t,this.sanitizeURL=o,this.removeEmptyString=i}const a={};["children","dangerouslySetInnerHTML","defaultValue","defaultChecked","innerHTML","suppressContentEditableWarning","suppressHydrationWarning","style"].forEach(e=>{a[e]=new n(e,0,!1,e,null,!1,!1)}),[["acceptCharset","accept-charset"],["className","class"],["htmlFor","for"],["httpEquiv","http-equiv"]].forEach(([e,t])=>{a[e]=new n(e,1,!1,t,null,!1,!1)}),["contentEditable","draggable","spellCheck","value"].forEach(e=>{a[e]=new n(e,2,!1,e.toLowerCase(),null,!1,!1)}),["autoReverse","externalResourcesRequired","focusable","preserveAlpha"].forEach(e=>{a[e]=new n(e,2,!1,e,null,!1,!1)}),["allowFullScreen","async","autoFocus","autoPlay","controls","default","defer","disabled","disablePictureInPicture","disableRemotePlayback","formNoValidate","hidden","loop","noModule","noValidate","open","playsInline","readOnly","required","reversed","scoped","seamless","itemScope"].forEach(e=>{a[e]=new n(e,3,!1,e.toLowerCase(),null,!1,!1)}),["checked","multiple","muted","selected"].forEach(e=>{a[e]=new n(e,3,!0,e,null,!1,!1)}),["capture","download"].forEach(e=>{a[e]=new n(e,4,!1,e,null,!1,!1)}),["cols","rows","size","span"].forEach(e=>{a[e]=new n(e,6,!1,e,null,!1,!1)}),["rowSpan","start"].forEach(e=>{a[e]=new n(e,5,!1,e.toLowerCase(),null,!1,!1)});const o=/[\-\:]([a-z])/g,i=e=>e[1].toUpperCase();["accent-height","alignment-baseline","arabic-form","baseline-shift","cap-height","clip-path","clip-rule","color-interpolation","color-interpolation-filters","color-profile","color-rendering","dominant-baseline","enable-background","fill-opacity","fill-rule","flood-color","flood-opacity","font-family","font-size","font-size-adjust","font-stretch","font-style","font-variant","font-weight","glyph-name","glyph-orientation-horizontal","glyph-orientation-vertical","horiz-adv-x","horiz-origin-x","image-rendering","letter-spacing","lighting-color","marker-end","marker-mid","marker-start","overline-position","overline-thickness","paint-order","panose-1","pointer-events","rendering-intent","shape-rendering","stop-color","stop-opacity","strikethrough-position","strikethrough-thickness","stroke-dasharray","stroke-dashoffset","stroke-linecap","stroke-linejoin","stroke-miterlimit","stroke-opacity","stroke-width","text-anchor","text-decoration","text-rendering","underline-position","underline-thickness","unicode-bidi","unicode-range","units-per-em","v-alphabetic","v-hanging","v-ideographic","v-mathematical","vector-effect","vert-adv-y","vert-origin-x","vert-origin-y","word-spacing","writing-mode","xmlns:xlink","x-height"].forEach(e=>{const t=e.replace(o,i);a[t]=new n(t,1,!1,e,null,!1,!1)}),["xlink:actuate","xlink:arcrole","xlink:role","xlink:show","xlink:title","xlink:type"].forEach(e=>{const t=e.replace(o,i);a[t]=new n(t,1,!1,e,"http://www.w3.org/1999/xlink",!1,!1)}),["xml:base","xml:lang","xml:space"].forEach(e=>{const t=e.replace(o,i);a[t]=new n(t,1,!1,e,"http://www.w3.org/XML/1998/namespace",!1,!1)}),["tabIndex","crossOrigin"].forEach(e=>{a[e]=new n(e,1,!1,e.toLowerCase(),null,!1,!1)}),a.xlinkHref=new n("xlinkHref",1,!1,"xlink:href","http://www.w3.org/1999/xlink",!0,!1),["src","href","action","formAction"].forEach(e=>{a[e]=new n(e,1,!1,e.toLowerCase(),null,!0,!0)});const{CAMELCASE:s,SAME:l,possibleStandardNames:c}=r(811),u=RegExp.prototype.test.bind(new RegExp("^(data|aria)-[:A-Z_a-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$")),d=Object.keys(c).reduce((e,t)=>{const r=c[t];return r===l?e[t]=t:r===s?e[t.toLowerCase()]=t:e[t]=r,e},{});t.BOOLEAN=3,t.BOOLEANISH_STRING=2,t.NUMERIC=5,t.OVERLOADED_BOOLEAN=4,t.POSITIVE_NUMERIC=6,t.RESERVED=0,t.STRING=1,t.getPropertyInfo=function(e){return a.hasOwnProperty(e)?a[e]:null},t.isCustomAttribute=u,t.possibleStandardNames=d},229:function(e,t,r){"use strict";var n=(this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}})(r(133)),a=r(917);function o(e,t){var r={};return e&&"string"==typeof e?((0,n.default)(e,function(e,n){e&&n&&(r[(0,a.camelCase)(e,t)]=n)}),r):r}o.default=o,e.exports=o},270:function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.CARRIAGE_RETURN_PLACEHOLDER_REGEX=t.CARRIAGE_RETURN_PLACEHOLDER=t.CARRIAGE_RETURN_REGEX=t.CARRIAGE_RETURN=t.CASE_SENSITIVE_TAG_NAMES_MAP=t.CASE_SENSITIVE_TAG_NAMES=void 0,t.CASE_SENSITIVE_TAG_NAMES=["animateMotion","animateTransform","clipPath","feBlend","feColorMatrix","feComponentTransfer","feComposite","feConvolveMatrix","feDiffuseLighting","feDisplacementMap","feDropShadow","feFlood","feFuncA","feFuncB","feFuncG","feFuncR","feGaussianBlur","feImage","feMerge","feMergeNode","feMorphology","feOffset","fePointLight","feSpecularLighting","feSpotLight","feTile","feTurbulence","foreignObject","linearGradient","radialGradient","textPath"],t.CASE_SENSITIVE_TAG_NAMES_MAP=t.CASE_SENSITIVE_TAG_NAMES.reduce(function(e,t){return e[t.toLowerCase()]=t,e},{}),t.CARRIAGE_RETURN="\r",t.CARRIAGE_RETURN_REGEX=new RegExp(t.CARRIAGE_RETURN,"g"),t.CARRIAGE_RETURN_PLACEHOLDER="__HTML_DOM_PARSER_CARRIAGE_RETURN_PLACEHOLDER_".concat(Date.now(),"__"),t.CARRIAGE_RETURN_PLACEHOLDER_REGEX=new RegExp(t.CARRIAGE_RETURN_PLACEHOLDER,"g")},308:function(e,t,r){"use strict";var n=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=function e(t,r){void 0===r&&(r={});for(var n=[],a="function"==typeof r.replace,c=r.transform||i.returnFirstArg,u=r.library||s,d=u.cloneElement,p=u.createElement,h=u.isValidElement,f=t.length,m=0;m<f;m++){var g=t[m];if(a){var _=r.replace(g,m);if(h(_)){f>1&&(_=d(_,{key:_.key||m})),n.push(c(_,g,m));continue}}if("text"!==g.type){var b=g,w={};l(b)?((0,i.setStyleProp)(b.attribs.style,b.attribs),w=b.attribs):b.attribs&&(w=(0,o.default)(b.attribs,b.name));var y=void 0;switch(g.type){case"script":case"style":g.children[0]&&(w.dangerouslySetInnerHTML={__html:g.children[0].data});break;case"tag":"textarea"===g.name&&g.children[0]?w.defaultValue=g.children[0].data:g.children&&g.children.length&&(y=e(g.children,r));break;default:continue}f>1&&(w.key=m),n.push(c(p(g.name,w,y),g,m))}else{var v=!g.data.trim().length;if(v&&g.parent&&!(0,i.canTextBeChildOfNode)(g.parent))continue;if(r.trim&&v)continue;n.push(c(g.data,g,m))}}return 1===n.length?n[0]:n};var a=r(609),o=n(r(840)),i=r(958),s={cloneElement:a.cloneElement,createElement:a.createElement,isValidElement:a.isValidElement};function l(e){return i.PRESERVE_CUSTOM_ATTRIBUTES&&"tag"===e.type&&(0,i.isCustomComponent)(e.name,e.attribs)}},313:function(e,t,r){"use strict";var n=window.wp.blocks,a=window.wp.i18n,o=window.wp.blockEditor,i=window.wp.components,s=window.wp.element,l=r(552),c=r(442),u=c.default||c;function d({filePath:e}){const[t,r]=(0,s.useState)(""),[n,a]=(0,s.useState)(null),o=new l.Converter;if((0,s.useEffect)(()=>{e&&"md"===e.toLowerCase().split(".").pop()?(e=(e=e.replace("/github.com/","/raw.githubusercontent.com/")).replace("/blob/","/"),fetch(e).then(e=>(e.ok||console.error("Network response was not OK:",e),e.text())).then(e=>{r(e)}).catch(e=>{a(e),console.error("Error fetching file:",e)})):r("Please provide a full URL to a .md file in the Inspector panel to the right →")},[e]),n)return React.createElement(React.Fragment,null,"Error fetching ",e,": ",n.message);const i=o.makeHtml(t);return React.createElement(React.Fragment,null,u(i))}var p,h=JSON.parse('{"UU":"r3-id-documentation/embed-markdown"}'),f=r(609);function m(){return m=Object.assign?Object.assign.bind():function(e){for(var t=1;t<arguments.length;t++){var r=arguments[t];for(var n in r)({}).hasOwnProperty.call(r,n)&&(e[n]=r[n])}return e},m.apply(null,arguments)}(0,n.registerBlockType)(h.UU,{edit:function(e){const{attributes:t,setAttributes:r}=e,{mdURL:n}=t;return React.createElement(React.Fragment,null,React.createElement(o.InspectorControls,null,React.createElement(i.PanelBody,{title:(0,a.__)("Markdown File")},React.createElement(i.TextControl,{label:"Full URL to markdown file:",help:"EX: https://github.com/README.md",onChange:e=>r({mdURL:e}),value:n,type:"url"}))),React.createElement("article",(0,o.useBlockProps)(),React.createElement("div",{className:"showdown"},React.createElement("script",{type:"text/plain"},React.createElement(d,{filePath:n}))),React.createElement("p",{className:"wp-block-r3-id-documentation-embed-markdown-source"},React.createElement("strong",null,"Source:")," ",React.createElement("a",{href:n},n))))},save:({attributes:e})=>null,icon:{src:e=>f.createElement("svg",m({width:24,height:24,viewBox:"0 0 24 24",xmlns:"http://www.w3.org/2000/svg"},e),p||(p=f.createElement("g",null,f.createElement("path",{fill:"none",d:"M0 0h24v24H0z"}),f.createElement("path",{fillRule:"nonzero",d:"M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm1 2v14h16V5H4zm3 10.5H5v-7h2l2 2 2-2h2v7h-2v-4l-2 2-2-2v4zm11-3h2l-3 3-3-3h2v-4h2v4z"})))),foreground:"#cc0000"}})},326:function(e,t,r){"use strict";var n=this&&this.__createBinding||(Object.create?function(e,t,r,n){void 0===n&&(n=r);var a=Object.getOwnPropertyDescriptor(t,r);a&&!("get"in a?!t.__esModule:a.writable||a.configurable)||(a={enumerable:!0,get:function(){return t[r]}}),Object.defineProperty(e,n,a)}:function(e,t,r,n){void 0===n&&(n=r),e[n]=t[r]}),a=this&&this.__exportStar||function(e,t){for(var r in e)"default"===r||Object.prototype.hasOwnProperty.call(t,r)||n(t,e,r)};Object.defineProperty(t,"__esModule",{value:!0}),t.DomHandler=void 0;var o=r(413),i=r(84);a(r(84),t);var s={withStartIndices:!1,withEndIndices:!1,xmlMode:!1},l=function(){function e(e,t,r){this.dom=[],this.root=new i.Document(this.dom),this.done=!1,this.tagStack=[this.root],this.lastNode=null,this.parser=null,"function"==typeof t&&(r=t,t=s),"object"==typeof e&&(t=e,e=void 0),this.callback=null!=e?e:null,this.options=null!=t?t:s,this.elementCB=null!=r?r:null}return e.prototype.onparserinit=function(e){this.parser=e},e.prototype.onreset=function(){this.dom=[],this.root=new i.Document(this.dom),this.done=!1,this.tagStack=[this.root],this.lastNode=null,this.parser=null},e.prototype.onend=function(){this.done||(this.done=!0,this.parser=null,this.handleCallback(null))},e.prototype.onerror=function(e){this.handleCallback(e)},e.prototype.onclosetag=function(){this.lastNode=null;var e=this.tagStack.pop();this.options.withEndIndices&&(e.endIndex=this.parser.endIndex),this.elementCB&&this.elementCB(e)},e.prototype.onopentag=function(e,t){var r=this.options.xmlMode?o.ElementType.Tag:void 0,n=new i.Element(e,t,void 0,r);this.addNode(n),this.tagStack.push(n)},e.prototype.ontext=function(e){var t=this.lastNode;if(t&&t.type===o.ElementType.Text)t.data+=e,this.options.withEndIndices&&(t.endIndex=this.parser.endIndex);else{var r=new i.Text(e);this.addNode(r),this.lastNode=r}},e.prototype.oncomment=function(e){if(this.lastNode&&this.lastNode.type===o.ElementType.Comment)this.lastNode.data+=e;else{var t=new i.Comment(e);this.addNode(t),this.lastNode=t}},e.prototype.oncommentend=function(){this.lastNode=null},e.prototype.oncdatastart=function(){var e=new i.Text(""),t=new i.CDATA([e]);this.addNode(t),e.parent=t,this.lastNode=e},e.prototype.oncdataend=function(){this.lastNode=null},e.prototype.onprocessinginstruction=function(e,t){var r=new i.ProcessingInstruction(e,t);this.addNode(r)},e.prototype.handleCallback=function(e){if("function"==typeof this.callback)this.callback(e,this.dom);else if(e)throw e},e.prototype.addNode=function(e){var t=this.tagStack[this.tagStack.length-1],r=t.children[t.children.length-1];this.options.withStartIndices&&(e.startIndex=this.parser.startIndex),this.options.withEndIndices&&(e.endIndex=this.parser.endIndex),t.children.push(e),r&&(e.prev=r,r.next=e),e.parent=t,this.lastNode=null},e}();t.DomHandler=l,t.default=l},413:function(e,t){"use strict";var r;Object.defineProperty(t,"__esModule",{value:!0}),t.Doctype=t.CDATA=t.Tag=t.Style=t.Script=t.Comment=t.Directive=t.Text=t.Root=t.isTag=t.ElementType=void 0,function(e){e.Root="root",e.Text="text",e.Directive="directive",e.Comment="comment",e.Script="script",e.Style="style",e.Tag="tag",e.CDATA="cdata",e.Doctype="doctype"}(r=t.ElementType||(t.ElementType={})),t.isTag=function(e){return e.type===r.Tag||e.type===r.Script||e.type===r.Style},t.Root=r.Root,t.Text=r.Text,t.Directive=r.Directive,t.Comment=r.Comment,t.Script=r.Script,t.Style=r.Style,t.Tag=r.Tag,t.CDATA=r.CDATA,t.Doctype=r.Doctype},442:function(e,t,r){"use strict";var n=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.htmlToDOM=t.domToReact=t.attributesToProps=t.Text=t.ProcessingInstruction=t.Element=t.Comment=void 0,t.default=function(e,t){if("string"!=typeof e)throw new TypeError("First argument must be a string");return e?(0,i.default)((0,a.default)(e,(null==t?void 0:t.htmlparser2)||l),t):[]};var a=n(r(471));t.htmlToDOM=a.default;var o=n(r(840));t.attributesToProps=o.default;var i=n(r(308));t.domToReact=i.default;var s=r(326);Object.defineProperty(t,"Comment",{enumerable:!0,get:function(){return s.Comment}}),Object.defineProperty(t,"Element",{enumerable:!0,get:function(){return s.Element}}),Object.defineProperty(t,"ProcessingInstruction",{enumerable:!0,get:function(){return s.ProcessingInstruction}}),Object.defineProperty(t,"Text",{enumerable:!0,get:function(){return s.Text}});var l={lowerCaseAttributeNames:!1}},471:function(e,t,r){"use strict";var n=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=function(e){if("string"!=typeof e)throw new TypeError("First argument must be a string");if(!e)return[];var t=e.match(i),r=t?t[1]:void 0;return(0,o.formatDOM)((0,a.default)(e),null,r)};var a=n(r(496)),o=r(731),i=/<(![a-zA-Z\s]+)>/},496:function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=function(e){var t,r,p=(e=(0,n.escapeSpecialCharacters)(e)).match(s),h=p&&p[1]?p[1].toLowerCase():"";switch(h){case a:var f=d(e);return l.test(e)||null===(t=null==(_=f.querySelector(o))?void 0:_.parentNode)||void 0===t||t.removeChild(_),c.test(e)||null===(r=null==(_=f.querySelector(i))?void 0:_.parentNode)||void 0===r||r.removeChild(_),f.querySelectorAll(a);case o:case i:var g=u(e).querySelectorAll(h);return c.test(e)&&l.test(e)?g[0].parentNode.childNodes:g;default:return m?m(e):(_=u(e,i).querySelector(i)).childNodes;var _}};var n=r(731),a="html",o="head",i="body",s=/<([a-zA-Z]+[0-9]?)/,l=/<head[^]*>/i,c=/<body[^]*>/i,u=function(e,t){throw new Error("This browser does not support `document.implementation.createHTMLDocument`")},d=function(e,t){throw new Error("This browser does not support `DOMParser.prototype.parseFromString`")},p="object"==typeof window&&window.DOMParser;if("function"==typeof p){var h=new p;u=d=function(e,t){return t&&(e="<".concat(t,">").concat(e,"</").concat(t,">")),h.parseFromString(e,"text/html")}}if("object"==typeof document&&document.implementation){var f=document.implementation.createHTMLDocument();u=function(e,t){if(t){var r=f.documentElement.querySelector(t);return r&&(r.innerHTML=e),f}return f.documentElement.innerHTML=e,f}}var m,g="object"==typeof document&&document.createElement("template");g&&g.content&&(m=function(e){return g.innerHTML=e,g.content.childNodes})},552:function(e,t,r){var n;(function(){function a(e){"use strict";var t={omitExtraWLInCodeBlocks:{defaultValue:!1,describe:"Omit the default extra whiteline added to code blocks",type:"boolean"},noHeaderId:{defaultValue:!1,describe:"Turn on/off generated header id",type:"boolean"},prefixHeaderId:{defaultValue:!1,describe:"Add a prefix to the generated header ids. Passing a string will prefix that string to the header id. Setting to true will add a generic 'section-' prefix",type:"string"},rawPrefixHeaderId:{defaultValue:!1,describe:'Setting this option to true will prevent showdown from modifying the prefix. This might result in malformed IDs (if, for instance, the " char is used in the prefix)',type:"boolean"},ghCompatibleHeaderId:{defaultValue:!1,describe:"Generate header ids compatible with github style (spaces are replaced with dashes, a bunch of non alphanumeric chars are removed)",type:"boolean"},rawHeaderId:{defaultValue:!1,describe:"Remove only spaces, ' and \" from generated header ids (including prefixes), replacing them with dashes (-). WARNING: This might result in malformed ids",type:"boolean"},headerLevelStart:{defaultValue:!1,describe:"The header blocks level start",type:"integer"},parseImgDimensions:{defaultValue:!1,describe:"Turn on/off image dimension parsing",type:"boolean"},simplifiedAutoLink:{defaultValue:!1,describe:"Turn on/off GFM autolink style",type:"boolean"},excludeTrailingPunctuationFromURLs:{defaultValue:!1,describe:"Excludes trailing punctuation from links generated with autoLinking",type:"boolean"},literalMidWordUnderscores:{defaultValue:!1,describe:"Parse midword underscores as literal underscores",type:"boolean"},literalMidWordAsterisks:{defaultValue:!1,describe:"Parse midword asterisks as literal asterisks",type:"boolean"},strikethrough:{defaultValue:!1,describe:"Turn on/off strikethrough support",type:"boolean"},tables:{defaultValue:!1,describe:"Turn on/off tables support",type:"boolean"},tablesHeaderId:{defaultValue:!1,describe:"Add an id to table headers",type:"boolean"},ghCodeBlocks:{defaultValue:!0,describe:"Turn on/off GFM fenced code blocks support",type:"boolean"},tasklists:{defaultValue:!1,describe:"Turn on/off GFM tasklist support",type:"boolean"},smoothLivePreview:{defaultValue:!1,describe:"Prevents weird effects in live previews due to incomplete input",type:"boolean"},smartIndentationFix:{defaultValue:!1,describe:"Tries to smartly fix indentation in es6 strings",type:"boolean"},disableForced4SpacesIndentedSublists:{defaultValue:!1,describe:"Disables the requirement of indenting nested sublists by 4 spaces",type:"boolean"},simpleLineBreaks:{defaultValue:!1,describe:"Parses simple line breaks as <br> (GFM Style)",type:"boolean"},requireSpaceBeforeHeadingText:{defaultValue:!1,describe:"Makes adding a space between `#` and the header text mandatory (GFM Style)",type:"boolean"},ghMentions:{defaultValue:!1,describe:"Enables github @mentions",type:"boolean"},ghMentionsLink:{defaultValue:"https://github.com/{u}",describe:"Changes the link generated by @mentions. Only applies if ghMentions option is enabled.",type:"string"},encodeEmails:{defaultValue:!0,describe:"Encode e-mail addresses through the use of Character Entities, transforming ASCII e-mail addresses into its equivalent decimal entities",type:"boolean"},openLinksInNewWindow:{defaultValue:!1,describe:"Open all links in new windows",type:"boolean"},backslashEscapesHTMLTags:{defaultValue:!1,describe:"Support for HTML Tag escaping. ex: <div>foo</div>",type:"boolean"},emoji:{defaultValue:!1,describe:"Enable emoji support. Ex: `this is a :smile: emoji`",type:"boolean"},underline:{defaultValue:!1,describe:"Enable support for underline. Syntax is double or triple underscores: `__underline word__`. With this option enabled, underscores no longer parses into `<em>` and `<strong>`",type:"boolean"},ellipsis:{defaultValue:!0,describe:"Replaces three dots with the ellipsis unicode character",type:"boolean"},completeHTMLDocument:{defaultValue:!1,describe:"Outputs a complete html document, including `<html>`, `<head>` and `<body>` tags",type:"boolean"},metadata:{defaultValue:!1,describe:"Enable support for document metadata (defined at the top of the document between `«««` and `»»»` or between `---` and `---`).",type:"boolean"},splitAdjacentBlockquotes:{defaultValue:!1,describe:"Split adjacent blockquote blocks",type:"boolean"}};if(!1===e)return JSON.parse(JSON.stringify(t));var r={};for(var n in t)t.hasOwnProperty(n)&&(r[n]=t[n].defaultValue);return r}var o={},i={},s={},l=a(!0),c="vanilla",u={github:{omitExtraWLInCodeBlocks:!0,simplifiedAutoLink:!0,excludeTrailingPunctuationFromURLs:!0,literalMidWordUnderscores:!0,strikethrough:!0,tables:!0,tablesHeaderId:!0,ghCodeBlocks:!0,tasklists:!0,disableForced4SpacesIndentedSublists:!0,simpleLineBreaks:!0,requireSpaceBeforeHeadingText:!0,ghCompatibleHeaderId:!0,ghMentions:!0,backslashEscapesHTMLTags:!0,emoji:!0,splitAdjacentBlockquotes:!0},original:{noHeaderId:!0,ghCodeBlocks:!1},ghost:{omitExtraWLInCodeBlocks:!0,parseImgDimensions:!0,simplifiedAutoLink:!0,excludeTrailingPunctuationFromURLs:!0,literalMidWordUnderscores:!0,strikethrough:!0,tables:!0,tablesHeaderId:!0,ghCodeBlocks:!0,tasklists:!0,smoothLivePreview:!0,simpleLineBreaks:!0,requireSpaceBeforeHeadingText:!0,ghMentions:!1,encodeEmails:!0},vanilla:a(!0),allOn:function(){"use strict";var e=a(!0),t={};for(var r in e)e.hasOwnProperty(r)&&(t[r]=!0);return t}()};function d(e,t){"use strict";var r=t?"Error in "+t+" extension->":"Error in unnamed extension",n={valid:!0,error:""};o.helper.isArray(e)||(e=[e]);for(var a=0;a<e.length;++a){var i=r+" sub-extension "+a+": ",s=e[a];if("object"!=typeof s)return n.valid=!1,n.error=i+"must be an object, but "+typeof s+" given",n;if(!o.helper.isString(s.type))return n.valid=!1,n.error=i+'property "type" must be a string, but '+typeof s.type+" given",n;var l=s.type=s.type.toLowerCase();if("language"===l&&(l=s.type="lang"),"html"===l&&(l=s.type="output"),"lang"!==l&&"output"!==l&&"listener"!==l)return n.valid=!1,n.error=i+"type "+l+' is not recognized. Valid values: "lang/language", "output/html" or "listener"',n;if("listener"===l){if(o.helper.isUndefined(s.listeners))return n.valid=!1,n.error=i+'. Extensions of type "listener" must have a property called "listeners"',n}else if(o.helper.isUndefined(s.filter)&&o.helper.isUndefined(s.regex))return n.valid=!1,n.error=i+l+' extensions must define either a "regex" property or a "filter" method',n;if(s.listeners){if("object"!=typeof s.listeners)return n.valid=!1,n.error=i+'"listeners" property must be an object but '+typeof s.listeners+" given",n;for(var c in s.listeners)if(s.listeners.hasOwnProperty(c)&&"function"!=typeof s.listeners[c])return n.valid=!1,n.error=i+'"listeners" property must be an hash of [event name]: [callback]. listeners.'+c+" must be a function but "+typeof s.listeners[c]+" given",n}if(s.filter){if("function"!=typeof s.filter)return n.valid=!1,n.error=i+'"filter" must be a function, but '+typeof s.filter+" given",n}else if(s.regex){if(o.helper.isString(s.regex)&&(s.regex=new RegExp(s.regex,"g")),!(s.regex instanceof RegExp))return n.valid=!1,n.error=i+'"regex" property must either be a string or a RegExp object, but '+typeof s.regex+" given",n;if(o.helper.isUndefined(s.replace))return n.valid=!1,n.error=i+'"regex" extensions must implement a replace string or function',n}}return n}function p(e,t){"use strict";return"¨E"+t.charCodeAt(0)+"E"}o.helper={},o.extensions={},o.setOption=function(e,t){"use strict";return l[e]=t,this},o.getOption=function(e){"use strict";return l[e]},o.getOptions=function(){"use strict";return l},o.resetOptions=function(){"use strict";l=a(!0)},o.setFlavor=function(e){"use strict";if(!u.hasOwnProperty(e))throw Error(e+" flavor was not found");o.resetOptions();var t=u[e];for(var r in c=e,t)t.hasOwnProperty(r)&&(l[r]=t[r])},o.getFlavor=function(){"use strict";return c},o.getFlavorOptions=function(e){"use strict";if(u.hasOwnProperty(e))return u[e]},o.getDefaultOptions=function(e){"use strict";return a(e)},o.subParser=function(e,t){"use strict";if(o.helper.isString(e)){if(void 0===t){if(i.hasOwnProperty(e))return i[e];throw Error("SubParser named "+e+" not registered!")}i[e]=t}},o.extension=function(e,t){"use strict";if(!o.helper.isString(e))throw Error("Extension 'name' must be a string");if(e=o.helper.stdExtName(e),o.helper.isUndefined(t)){if(!s.hasOwnProperty(e))throw Error("Extension named "+e+" is not registered!");return s[e]}"function"==typeof t&&(t=t()),o.helper.isArray(t)||(t=[t]);var r=d(t,e);if(!r.valid)throw Error(r.error);s[e]=t},o.getAllExtensions=function(){"use strict";return s},o.removeExtension=function(e){"use strict";delete s[e]},o.resetExtensions=function(){"use strict";s={}},o.validateExtension=function(e){"use strict";var t=d(e,null);return!!t.valid||(console.warn(t.error),!1)},o.hasOwnProperty("helper")||(o.helper={}),o.helper.isString=function(e){"use strict";return"string"==typeof e||e instanceof String},o.helper.isFunction=function(e){"use strict";return e&&"[object Function]"==={}.toString.call(e)},o.helper.isArray=function(e){"use strict";return Array.isArray(e)},o.helper.isUndefined=function(e){"use strict";return void 0===e},o.helper.forEach=function(e,t){"use strict";if(o.helper.isUndefined(e))throw new Error("obj param is required");if(o.helper.isUndefined(t))throw new Error("callback param is required");if(!o.helper.isFunction(t))throw new Error("callback param must be a function/closure");if("function"==typeof e.forEach)e.forEach(t);else if(o.helper.isArray(e))for(var r=0;r<e.length;r++)t(e[r],r,e);else{if("object"!=typeof e)throw new Error("obj does not seem to be an array or an iterable object");for(var n in e)e.hasOwnProperty(n)&&t(e[n],n,e)}},o.helper.stdExtName=function(e){"use strict";return e.replace(/[_?*+\/\\.^-]/g,"").replace(/\s/g,"").toLowerCase()},o.helper.escapeCharactersCallback=p,o.helper.escapeCharacters=function(e,t,r){"use strict";var n="(["+t.replace(/([\[\]\\])/g,"\\$1")+"])";r&&(n="\\\\"+n);var a=new RegExp(n,"g");return e.replace(a,p)},o.helper.unescapeHTMLEntities=function(e){"use strict";return e.replace(/&quot;/g,'"').replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&amp;/g,"&")};var h=function(e,t,r,n){"use strict";var a,o,i,s,l,c=n||"",u=c.indexOf("g")>-1,d=new RegExp(t+"|"+r,"g"+c.replace(/g/g,"")),p=new RegExp(t,c.replace(/g/g,"")),h=[];do{for(a=0;i=d.exec(e);)if(p.test(i[0]))a++||(s=(o=d.lastIndex)-i[0].length);else if(a&&! --a){l=i.index+i[0].length;var f={left:{start:s,end:o},match:{start:o,end:i.index},right:{start:i.index,end:l},wholeMatch:{start:s,end:l}};if(h.push(f),!u)return h}}while(a&&(d.lastIndex=o));return h};o.helper.matchRecursiveRegExp=function(e,t,r,n){"use strict";for(var a=h(e,t,r,n),o=[],i=0;i<a.length;++i)o.push([e.slice(a[i].wholeMatch.start,a[i].wholeMatch.end),e.slice(a[i].match.start,a[i].match.end),e.slice(a[i].left.start,a[i].left.end),e.slice(a[i].right.start,a[i].right.end)]);return o},o.helper.replaceRecursiveRegExp=function(e,t,r,n,a){"use strict";if(!o.helper.isFunction(t)){var i=t;t=function(){return i}}var s=h(e,r,n,a),l=e,c=s.length;if(c>0){var u=[];0!==s[0].wholeMatch.start&&u.push(e.slice(0,s[0].wholeMatch.start));for(var d=0;d<c;++d)u.push(t(e.slice(s[d].wholeMatch.start,s[d].wholeMatch.end),e.slice(s[d].match.start,s[d].match.end),e.slice(s[d].left.start,s[d].left.end),e.slice(s[d].right.start,s[d].right.end))),d<c-1&&u.push(e.slice(s[d].wholeMatch.end,s[d+1].wholeMatch.start));s[c-1].wholeMatch.end<e.length&&u.push(e.slice(s[c-1].wholeMatch.end)),l=u.join("")}return l},o.helper.regexIndexOf=function(e,t,r){"use strict";if(!o.helper.isString(e))throw"InvalidArgumentError: first parameter of showdown.helper.regexIndexOf function must be a string";if(t instanceof RegExp==0)throw"InvalidArgumentError: second parameter of showdown.helper.regexIndexOf function must be an instance of RegExp";var n=e.substring(r||0).search(t);return n>=0?n+(r||0):n},o.helper.splitAtIndex=function(e,t){"use strict";if(!o.helper.isString(e))throw"InvalidArgumentError: first parameter of showdown.helper.regexIndexOf function must be a string";return[e.substring(0,t),e.substring(t)]},o.helper.encodeEmailAddress=function(e){"use strict";var t=[function(e){return"&#"+e.charCodeAt(0)+";"},function(e){return"&#x"+e.charCodeAt(0).toString(16)+";"},function(e){return e}];return e.replace(/./g,function(e){if("@"===e)e=t[Math.floor(2*Math.random())](e);else{var r=Math.random();e=r>.9?t[2](e):r>.45?t[1](e):t[0](e)}return e})},o.helper.padEnd=function(e,t,r){"use strict";return t|=0,r=String(r||" "),e.length>t?String(e):((t-=e.length)>r.length&&(r+=r.repeat(t/r.length)),String(e)+r.slice(0,t))},"undefined"==typeof console&&(console={warn:function(e){"use strict";alert(e)},log:function(e){"use strict";alert(e)},error:function(e){"use strict";throw e}}),o.helper.regexes={asteriskDashAndColon:/([*_:~])/g},o.helper.emojis={"+1":"👍","-1":"👎",100:"💯",1234:"🔢","1st_place_medal":"🥇","2nd_place_medal":"🥈","3rd_place_medal":"🥉","8ball":"🎱",a:"🅰️",ab:"🆎",abc:"🔤",abcd:"🔡",accept:"🉑",aerial_tramway:"🚡",airplane:"✈️",alarm_clock:"⏰",alembic:"⚗️",alien:"👽",ambulance:"🚑",amphora:"🏺",anchor:"⚓️",angel:"👼",anger:"💢",angry:"😠",anguished:"😧",ant:"🐜",apple:"🍎",aquarius:"♒️",aries:"♈️",arrow_backward:"◀️",arrow_double_down:"⏬",arrow_double_up:"⏫",arrow_down:"⬇️",arrow_down_small:"🔽",arrow_forward:"▶️",arrow_heading_down:"⤵️",arrow_heading_up:"⤴️",arrow_left:"⬅️",arrow_lower_left:"↙️",arrow_lower_right:"↘️",arrow_right:"➡️",arrow_right_hook:"↪️",arrow_up:"⬆️",arrow_up_down:"↕️",arrow_up_small:"🔼",arrow_upper_left:"↖️",arrow_upper_right:"↗️",arrows_clockwise:"🔃",arrows_counterclockwise:"🔄",art:"🎨",articulated_lorry:"🚛",artificial_satellite:"🛰",astonished:"😲",athletic_shoe:"👟",atm:"🏧",atom_symbol:"⚛️",avocado:"🥑",b:"🅱️",baby:"👶",baby_bottle:"🍼",baby_chick:"🐤",baby_symbol:"🚼",back:"🔙",bacon:"🥓",badminton:"🏸",baggage_claim:"🛄",baguette_bread:"🥖",balance_scale:"⚖️",balloon:"🎈",ballot_box:"🗳",ballot_box_with_check:"☑️",bamboo:"🎍",banana:"🍌",bangbang:"‼️",bank:"🏦",bar_chart:"📊",barber:"💈",baseball:"⚾️",basketball:"🏀",basketball_man:"⛹️",basketball_woman:"⛹️&zwj;♀️",bat:"🦇",bath:"🛀",bathtub:"🛁",battery:"🔋",beach_umbrella:"🏖",bear:"🐻",bed:"🛏",bee:"🐝",beer:"🍺",beers:"🍻",beetle:"🐞",beginner:"🔰",bell:"🔔",bellhop_bell:"🛎",bento:"🍱",biking_man:"🚴",bike:"🚲",biking_woman:"🚴&zwj;♀️",bikini:"👙",biohazard:"☣️",bird:"🐦",birthday:"🎂",black_circle:"⚫️",black_flag:"🏴",black_heart:"🖤",black_joker:"🃏",black_large_square:"⬛️",black_medium_small_square:"◾️",black_medium_square:"◼️",black_nib:"✒️",black_small_square:"▪️",black_square_button:"🔲",blonde_man:"👱",blonde_woman:"👱&zwj;♀️",blossom:"🌼",blowfish:"🐡",blue_book:"📘",blue_car:"🚙",blue_heart:"💙",blush:"😊",boar:"🐗",boat:"⛵️",bomb:"💣",book:"📖",bookmark:"🔖",bookmark_tabs:"📑",books:"📚",boom:"💥",boot:"👢",bouquet:"💐",bowing_man:"🙇",bow_and_arrow:"🏹",bowing_woman:"🙇&zwj;♀️",bowling:"🎳",boxing_glove:"🥊",boy:"👦",bread:"🍞",bride_with_veil:"👰",bridge_at_night:"🌉",briefcase:"💼",broken_heart:"💔",bug:"🐛",building_construction:"🏗",bulb:"💡",bullettrain_front:"🚅",bullettrain_side:"🚄",burrito:"🌯",bus:"🚌",business_suit_levitating:"🕴",busstop:"🚏",bust_in_silhouette:"👤",busts_in_silhouette:"👥",butterfly:"🦋",cactus:"🌵",cake:"🍰",calendar:"📆",call_me_hand:"🤙",calling:"📲",camel:"🐫",camera:"📷",camera_flash:"📸",camping:"🏕",cancer:"♋️",candle:"🕯",candy:"🍬",canoe:"🛶",capital_abcd:"🔠",capricorn:"♑️",car:"🚗",card_file_box:"🗃",card_index:"📇",card_index_dividers:"🗂",carousel_horse:"🎠",carrot:"🥕",cat:"🐱",cat2:"🐈",cd:"💿",chains:"⛓",champagne:"🍾",chart:"💹",chart_with_downwards_trend:"📉",chart_with_upwards_trend:"📈",checkered_flag:"🏁",cheese:"🧀",cherries:"🍒",cherry_blossom:"🌸",chestnut:"🌰",chicken:"🐔",children_crossing:"🚸",chipmunk:"🐿",chocolate_bar:"🍫",christmas_tree:"🎄",church:"⛪️",cinema:"🎦",circus_tent:"🎪",city_sunrise:"🌇",city_sunset:"🌆",cityscape:"🏙",cl:"🆑",clamp:"🗜",clap:"👏",clapper:"🎬",classical_building:"🏛",clinking_glasses:"🥂",clipboard:"📋",clock1:"🕐",clock10:"🕙",clock1030:"🕥",clock11:"🕚",clock1130:"🕦",clock12:"🕛",clock1230:"🕧",clock130:"🕜",clock2:"🕑",clock230:"🕝",clock3:"🕒",clock330:"🕞",clock4:"🕓",clock430:"🕟",clock5:"🕔",clock530:"🕠",clock6:"🕕",clock630:"🕡",clock7:"🕖",clock730:"🕢",clock8:"🕗",clock830:"🕣",clock9:"🕘",clock930:"🕤",closed_book:"📕",closed_lock_with_key:"🔐",closed_umbrella:"🌂",cloud:"☁️",cloud_with_lightning:"🌩",cloud_with_lightning_and_rain:"⛈",cloud_with_rain:"🌧",cloud_with_snow:"🌨",clown_face:"🤡",clubs:"♣️",cocktail:"🍸",coffee:"☕️",coffin:"⚰️",cold_sweat:"😰",comet:"☄️",computer:"💻",computer_mouse:"🖱",confetti_ball:"🎊",confounded:"😖",confused:"😕",congratulations:"㊗️",construction:"🚧",construction_worker_man:"👷",construction_worker_woman:"👷&zwj;♀️",control_knobs:"🎛",convenience_store:"🏪",cookie:"🍪",cool:"🆒",policeman:"👮",copyright:"©️",corn:"🌽",couch_and_lamp:"🛋",couple:"👫",couple_with_heart_woman_man:"💑",couple_with_heart_man_man:"👨&zwj;❤️&zwj;👨",couple_with_heart_woman_woman:"👩&zwj;❤️&zwj;👩",couplekiss_man_man:"👨&zwj;❤️&zwj;💋&zwj;👨",couplekiss_man_woman:"💏",couplekiss_woman_woman:"👩&zwj;❤️&zwj;💋&zwj;👩",cow:"🐮",cow2:"🐄",cowboy_hat_face:"🤠",crab:"🦀",crayon:"🖍",credit_card:"💳",crescent_moon:"🌙",cricket:"🏏",crocodile:"🐊",croissant:"🥐",crossed_fingers:"🤞",crossed_flags:"🎌",crossed_swords:"⚔️",crown:"👑",cry:"😢",crying_cat_face:"😿",crystal_ball:"🔮",cucumber:"🥒",cupid:"💘",curly_loop:"➰",currency_exchange:"💱",curry:"🍛",custard:"🍮",customs:"🛃",cyclone:"🌀",dagger:"🗡",dancer:"💃",dancing_women:"👯",dancing_men:"👯&zwj;♂️",dango:"🍡",dark_sunglasses:"🕶",dart:"🎯",dash:"💨",date:"📅",deciduous_tree:"🌳",deer:"🦌",department_store:"🏬",derelict_house:"🏚",desert:"🏜",desert_island:"🏝",desktop_computer:"🖥",male_detective:"🕵️",diamond_shape_with_a_dot_inside:"💠",diamonds:"♦️",disappointed:"😞",disappointed_relieved:"😥",dizzy:"💫",dizzy_face:"😵",do_not_litter:"🚯",dog:"🐶",dog2:"🐕",dollar:"💵",dolls:"🎎",dolphin:"🐬",door:"🚪",doughnut:"🍩",dove:"🕊",dragon:"🐉",dragon_face:"🐲",dress:"👗",dromedary_camel:"🐪",drooling_face:"🤤",droplet:"💧",drum:"🥁",duck:"🦆",dvd:"📀","e-mail":"📧",eagle:"🦅",ear:"👂",ear_of_rice:"🌾",earth_africa:"🌍",earth_americas:"🌎",earth_asia:"🌏",egg:"🥚",eggplant:"🍆",eight_pointed_black_star:"✴️",eight_spoked_asterisk:"✳️",electric_plug:"🔌",elephant:"🐘",email:"✉️",end:"🔚",envelope_with_arrow:"📩",euro:"💶",european_castle:"🏰",european_post_office:"🏤",evergreen_tree:"🌲",exclamation:"❗️",expressionless:"😑",eye:"👁",eye_speech_bubble:"👁&zwj;🗨",eyeglasses:"👓",eyes:"👀",face_with_head_bandage:"🤕",face_with_thermometer:"🤒",fist_oncoming:"👊",factory:"🏭",fallen_leaf:"🍂",family_man_woman_boy:"👪",family_man_boy:"👨&zwj;👦",family_man_boy_boy:"👨&zwj;👦&zwj;👦",family_man_girl:"👨&zwj;👧",family_man_girl_boy:"👨&zwj;👧&zwj;👦",family_man_girl_girl:"👨&zwj;👧&zwj;👧",family_man_man_boy:"👨&zwj;👨&zwj;👦",family_man_man_boy_boy:"👨&zwj;👨&zwj;👦&zwj;👦",family_man_man_girl:"👨&zwj;👨&zwj;👧",family_man_man_girl_boy:"👨&zwj;👨&zwj;👧&zwj;👦",family_man_man_girl_girl:"👨&zwj;👨&zwj;👧&zwj;👧",family_man_woman_boy_boy:"👨&zwj;👩&zwj;👦&zwj;👦",family_man_woman_girl:"👨&zwj;👩&zwj;👧",family_man_woman_girl_boy:"👨&zwj;👩&zwj;👧&zwj;👦",family_man_woman_girl_girl:"👨&zwj;👩&zwj;👧&zwj;👧",family_woman_boy:"👩&zwj;👦",family_woman_boy_boy:"👩&zwj;👦&zwj;👦",family_woman_girl:"👩&zwj;👧",family_woman_girl_boy:"👩&zwj;👧&zwj;👦",family_woman_girl_girl:"👩&zwj;👧&zwj;👧",family_woman_woman_boy:"👩&zwj;👩&zwj;👦",family_woman_woman_boy_boy:"👩&zwj;👩&zwj;👦&zwj;👦",family_woman_woman_girl:"👩&zwj;👩&zwj;👧",family_woman_woman_girl_boy:"👩&zwj;👩&zwj;👧&zwj;👦",family_woman_woman_girl_girl:"👩&zwj;👩&zwj;👧&zwj;👧",fast_forward:"⏩",fax:"📠",fearful:"😨",feet:"🐾",female_detective:"🕵️&zwj;♀️",ferris_wheel:"🎡",ferry:"⛴",field_hockey:"🏑",file_cabinet:"🗄",file_folder:"📁",film_projector:"📽",film_strip:"🎞",fire:"🔥",fire_engine:"🚒",fireworks:"🎆",first_quarter_moon:"🌓",first_quarter_moon_with_face:"🌛",fish:"🐟",fish_cake:"🍥",fishing_pole_and_fish:"🎣",fist_raised:"✊",fist_left:"🤛",fist_right:"🤜",flags:"🎏",flashlight:"🔦",fleur_de_lis:"⚜️",flight_arrival:"🛬",flight_departure:"🛫",floppy_disk:"💾",flower_playing_cards:"🎴",flushed:"😳",fog:"🌫",foggy:"🌁",football:"🏈",footprints:"👣",fork_and_knife:"🍴",fountain:"⛲️",fountain_pen:"🖋",four_leaf_clover:"🍀",fox_face:"🦊",framed_picture:"🖼",free:"🆓",fried_egg:"🍳",fried_shrimp:"🍤",fries:"🍟",frog:"🐸",frowning:"😦",frowning_face:"☹️",frowning_man:"🙍&zwj;♂️",frowning_woman:"🙍",middle_finger:"🖕",fuelpump:"⛽️",full_moon:"🌕",full_moon_with_face:"🌝",funeral_urn:"⚱️",game_die:"🎲",gear:"⚙️",gem:"💎",gemini:"♊️",ghost:"👻",gift:"🎁",gift_heart:"💝",girl:"👧",globe_with_meridians:"🌐",goal_net:"🥅",goat:"🐐",golf:"⛳️",golfing_man:"🏌️",golfing_woman:"🏌️&zwj;♀️",gorilla:"🦍",grapes:"🍇",green_apple:"🍏",green_book:"📗",green_heart:"💚",green_salad:"🥗",grey_exclamation:"❕",grey_question:"❔",grimacing:"😬",grin:"😁",grinning:"😀",guardsman:"💂",guardswoman:"💂&zwj;♀️",guitar:"🎸",gun:"🔫",haircut_woman:"💇",haircut_man:"💇&zwj;♂️",hamburger:"🍔",hammer:"🔨",hammer_and_pick:"⚒",hammer_and_wrench:"🛠",hamster:"🐹",hand:"✋",handbag:"👜",handshake:"🤝",hankey:"💩",hatched_chick:"🐥",hatching_chick:"🐣",headphones:"🎧",hear_no_evil:"🙉",heart:"❤️",heart_decoration:"💟",heart_eyes:"😍",heart_eyes_cat:"😻",heartbeat:"💓",heartpulse:"💗",hearts:"♥️",heavy_check_mark:"✔️",heavy_division_sign:"➗",heavy_dollar_sign:"💲",heavy_heart_exclamation:"❣️",heavy_minus_sign:"➖",heavy_multiplication_x:"✖️",heavy_plus_sign:"➕",helicopter:"🚁",herb:"🌿",hibiscus:"🌺",high_brightness:"🔆",high_heel:"👠",hocho:"🔪",hole:"🕳",honey_pot:"🍯",horse:"🐴",horse_racing:"🏇",hospital:"🏥",hot_pepper:"🌶",hotdog:"🌭",hotel:"🏨",hotsprings:"♨️",hourglass:"⌛️",hourglass_flowing_sand:"⏳",house:"🏠",house_with_garden:"🏡",houses:"🏘",hugs:"🤗",hushed:"😯",ice_cream:"🍨",ice_hockey:"🏒",ice_skate:"⛸",icecream:"🍦",id:"🆔",ideograph_advantage:"🉐",imp:"👿",inbox_tray:"📥",incoming_envelope:"📨",tipping_hand_woman:"💁",information_source:"ℹ️",innocent:"😇",interrobang:"⁉️",iphone:"📱",izakaya_lantern:"🏮",jack_o_lantern:"🎃",japan:"🗾",japanese_castle:"🏯",japanese_goblin:"👺",japanese_ogre:"👹",jeans:"👖",joy:"😂",joy_cat:"😹",joystick:"🕹",kaaba:"🕋",key:"🔑",keyboard:"⌨️",keycap_ten:"🔟",kick_scooter:"🛴",kimono:"👘",kiss:"💋",kissing:"😗",kissing_cat:"😽",kissing_closed_eyes:"😚",kissing_heart:"😘",kissing_smiling_eyes:"😙",kiwi_fruit:"🥝",koala:"🐨",koko:"🈁",label:"🏷",large_blue_circle:"🔵",large_blue_diamond:"🔷",large_orange_diamond:"🔶",last_quarter_moon:"🌗",last_quarter_moon_with_face:"🌜",latin_cross:"✝️",laughing:"😆",leaves:"🍃",ledger:"📒",left_luggage:"🛅",left_right_arrow:"↔️",leftwards_arrow_with_hook:"↩️",lemon:"🍋",leo:"♌️",leopard:"🐆",level_slider:"🎚",libra:"♎️",light_rail:"🚈",link:"🔗",lion:"🦁",lips:"👄",lipstick:"💄",lizard:"🦎",lock:"🔒",lock_with_ink_pen:"🔏",lollipop:"🍭",loop:"➿",loud_sound:"🔊",loudspeaker:"📢",love_hotel:"🏩",love_letter:"💌",low_brightness:"🔅",lying_face:"🤥",m:"Ⓜ️",mag:"🔍",mag_right:"🔎",mahjong:"🀄️",mailbox:"📫",mailbox_closed:"📪",mailbox_with_mail:"📬",mailbox_with_no_mail:"📭",man:"👨",man_artist:"👨&zwj;🎨",man_astronaut:"👨&zwj;🚀",man_cartwheeling:"🤸&zwj;♂️",man_cook:"👨&zwj;🍳",man_dancing:"🕺",man_facepalming:"🤦&zwj;♂️",man_factory_worker:"👨&zwj;🏭",man_farmer:"👨&zwj;🌾",man_firefighter:"👨&zwj;🚒",man_health_worker:"👨&zwj;⚕️",man_in_tuxedo:"🤵",man_judge:"👨&zwj;⚖️",man_juggling:"🤹&zwj;♂️",man_mechanic:"👨&zwj;🔧",man_office_worker:"👨&zwj;💼",man_pilot:"👨&zwj;✈️",man_playing_handball:"🤾&zwj;♂️",man_playing_water_polo:"🤽&zwj;♂️",man_scientist:"👨&zwj;🔬",man_shrugging:"🤷&zwj;♂️",man_singer:"👨&zwj;🎤",man_student:"👨&zwj;🎓",man_teacher:"👨&zwj;🏫",man_technologist:"👨&zwj;💻",man_with_gua_pi_mao:"👲",man_with_turban:"👳",tangerine:"🍊",mans_shoe:"👞",mantelpiece_clock:"🕰",maple_leaf:"🍁",martial_arts_uniform:"🥋",mask:"😷",massage_woman:"💆",massage_man:"💆&zwj;♂️",meat_on_bone:"🍖",medal_military:"🎖",medal_sports:"🏅",mega:"📣",melon:"🍈",memo:"📝",men_wrestling:"🤼&zwj;♂️",menorah:"🕎",mens:"🚹",metal:"🤘",metro:"🚇",microphone:"🎤",microscope:"🔬",milk_glass:"🥛",milky_way:"🌌",minibus:"🚐",minidisc:"💽",mobile_phone_off:"📴",money_mouth_face:"🤑",money_with_wings:"💸",moneybag:"💰",monkey:"🐒",monkey_face:"🐵",monorail:"🚝",moon:"🌔",mortar_board:"🎓",mosque:"🕌",motor_boat:"🛥",motor_scooter:"🛵",motorcycle:"🏍",motorway:"🛣",mount_fuji:"🗻",mountain:"⛰",mountain_biking_man:"🚵",mountain_biking_woman:"🚵&zwj;♀️",mountain_cableway:"🚠",mountain_railway:"🚞",mountain_snow:"🏔",mouse:"🐭",mouse2:"🐁",movie_camera:"🎥",moyai:"🗿",mrs_claus:"🤶",muscle:"💪",mushroom:"🍄",musical_keyboard:"🎹",musical_note:"🎵",musical_score:"🎼",mute:"🔇",nail_care:"💅",name_badge:"📛",national_park:"🏞",nauseated_face:"🤢",necktie:"👔",negative_squared_cross_mark:"❎",nerd_face:"🤓",neutral_face:"😐",new:"🆕",new_moon:"🌑",new_moon_with_face:"🌚",newspaper:"📰",newspaper_roll:"🗞",next_track_button:"⏭",ng:"🆖",no_good_man:"🙅&zwj;♂️",no_good_woman:"🙅",night_with_stars:"🌃",no_bell:"🔕",no_bicycles:"🚳",no_entry:"⛔️",no_entry_sign:"🚫",no_mobile_phones:"📵",no_mouth:"😶",no_pedestrians:"🚷",no_smoking:"🚭","non-potable_water":"🚱",nose:"👃",notebook:"📓",notebook_with_decorative_cover:"📔",notes:"🎶",nut_and_bolt:"🔩",o:"⭕️",o2:"🅾️",ocean:"🌊",octopus:"🐙",oden:"🍢",office:"🏢",oil_drum:"🛢",ok:"🆗",ok_hand:"👌",ok_man:"🙆&zwj;♂️",ok_woman:"🙆",old_key:"🗝",older_man:"👴",older_woman:"👵",om:"🕉",on:"🔛",oncoming_automobile:"🚘",oncoming_bus:"🚍",oncoming_police_car:"🚔",oncoming_taxi:"🚖",open_file_folder:"📂",open_hands:"👐",open_mouth:"😮",open_umbrella:"☂️",ophiuchus:"⛎",orange_book:"📙",orthodox_cross:"☦️",outbox_tray:"📤",owl:"🦉",ox:"🐂",package:"📦",page_facing_up:"📄",page_with_curl:"📃",pager:"📟",paintbrush:"🖌",palm_tree:"🌴",pancakes:"🥞",panda_face:"🐼",paperclip:"📎",paperclips:"🖇",parasol_on_ground:"⛱",parking:"🅿️",part_alternation_mark:"〽️",partly_sunny:"⛅️",passenger_ship:"🛳",passport_control:"🛂",pause_button:"⏸",peace_symbol:"☮️",peach:"🍑",peanuts:"🥜",pear:"🍐",pen:"🖊",pencil2:"✏️",penguin:"🐧",pensive:"😔",performing_arts:"🎭",persevere:"😣",person_fencing:"🤺",pouting_woman:"🙎",phone:"☎️",pick:"⛏",pig:"🐷",pig2:"🐖",pig_nose:"🐽",pill:"💊",pineapple:"🍍",ping_pong:"🏓",pisces:"♓️",pizza:"🍕",place_of_worship:"🛐",plate_with_cutlery:"🍽",play_or_pause_button:"⏯",point_down:"👇",point_left:"👈",point_right:"👉",point_up:"☝️",point_up_2:"👆",police_car:"🚓",policewoman:"👮&zwj;♀️",poodle:"🐩",popcorn:"🍿",post_office:"🏣",postal_horn:"📯",postbox:"📮",potable_water:"🚰",potato:"🥔",pouch:"👝",poultry_leg:"🍗",pound:"💷",rage:"😡",pouting_cat:"😾",pouting_man:"🙎&zwj;♂️",pray:"🙏",prayer_beads:"📿",pregnant_woman:"🤰",previous_track_button:"⏮",prince:"🤴",princess:"👸",printer:"🖨",purple_heart:"💜",purse:"👛",pushpin:"📌",put_litter_in_its_place:"🚮",question:"❓",rabbit:"🐰",rabbit2:"🐇",racehorse:"🐎",racing_car:"🏎",radio:"📻",radio_button:"🔘",radioactive:"☢️",railway_car:"🚃",railway_track:"🛤",rainbow:"🌈",rainbow_flag:"🏳️&zwj;🌈",raised_back_of_hand:"🤚",raised_hand_with_fingers_splayed:"🖐",raised_hands:"🙌",raising_hand_woman:"🙋",raising_hand_man:"🙋&zwj;♂️",ram:"🐏",ramen:"🍜",rat:"🐀",record_button:"⏺",recycle:"♻️",red_circle:"🔴",registered:"®️",relaxed:"☺️",relieved:"😌",reminder_ribbon:"🎗",repeat:"🔁",repeat_one:"🔂",rescue_worker_helmet:"⛑",restroom:"🚻",revolving_hearts:"💞",rewind:"⏪",rhinoceros:"🦏",ribbon:"🎀",rice:"🍚",rice_ball:"🍙",rice_cracker:"🍘",rice_scene:"🎑",right_anger_bubble:"🗯",ring:"💍",robot:"🤖",rocket:"🚀",rofl:"🤣",roll_eyes:"🙄",roller_coaster:"🎢",rooster:"🐓",rose:"🌹",rosette:"🏵",rotating_light:"🚨",round_pushpin:"📍",rowing_man:"🚣",rowing_woman:"🚣&zwj;♀️",rugby_football:"🏉",running_man:"🏃",running_shirt_with_sash:"🎽",running_woman:"🏃&zwj;♀️",sa:"🈂️",sagittarius:"♐️",sake:"🍶",sandal:"👡",santa:"🎅",satellite:"📡",saxophone:"🎷",school:"🏫",school_satchel:"🎒",scissors:"✂️",scorpion:"🦂",scorpius:"♏️",scream:"😱",scream_cat:"🙀",scroll:"📜",seat:"💺",secret:"㊙️",see_no_evil:"🙈",seedling:"🌱",selfie:"🤳",shallow_pan_of_food:"🥘",shamrock:"☘️",shark:"🦈",shaved_ice:"🍧",sheep:"🐑",shell:"🐚",shield:"🛡",shinto_shrine:"⛩",ship:"🚢",shirt:"👕",shopping:"🛍",shopping_cart:"🛒",shower:"🚿",shrimp:"🦐",signal_strength:"📶",six_pointed_star:"🔯",ski:"🎿",skier:"⛷",skull:"💀",skull_and_crossbones:"☠️",sleeping:"😴",sleeping_bed:"🛌",sleepy:"😪",slightly_frowning_face:"🙁",slightly_smiling_face:"🙂",slot_machine:"🎰",small_airplane:"🛩",small_blue_diamond:"🔹",small_orange_diamond:"🔸",small_red_triangle:"🔺",small_red_triangle_down:"🔻",smile:"😄",smile_cat:"😸",smiley:"😃",smiley_cat:"😺",smiling_imp:"😈",smirk:"😏",smirk_cat:"😼",smoking:"🚬",snail:"🐌",snake:"🐍",sneezing_face:"🤧",snowboarder:"🏂",snowflake:"❄️",snowman:"⛄️",snowman_with_snow:"☃️",sob:"😭",soccer:"⚽️",soon:"🔜",sos:"🆘",sound:"🔉",space_invader:"👾",spades:"♠️",spaghetti:"🍝",sparkle:"❇️",sparkler:"🎇",sparkles:"✨",sparkling_heart:"💖",speak_no_evil:"🙊",speaker:"🔈",speaking_head:"🗣",speech_balloon:"💬",speedboat:"🚤",spider:"🕷",spider_web:"🕸",spiral_calendar:"🗓",spiral_notepad:"🗒",spoon:"🥄",squid:"🦑",stadium:"🏟",star:"⭐️",star2:"🌟",star_and_crescent:"☪️",star_of_david:"✡️",stars:"🌠",station:"🚉",statue_of_liberty:"🗽",steam_locomotive:"🚂",stew:"🍲",stop_button:"⏹",stop_sign:"🛑",stopwatch:"⏱",straight_ruler:"📏",strawberry:"🍓",stuck_out_tongue:"😛",stuck_out_tongue_closed_eyes:"😝",stuck_out_tongue_winking_eye:"😜",studio_microphone:"🎙",stuffed_flatbread:"🥙",sun_behind_large_cloud:"🌥",sun_behind_rain_cloud:"🌦",sun_behind_small_cloud:"🌤",sun_with_face:"🌞",sunflower:"🌻",sunglasses:"😎",sunny:"☀️",sunrise:"🌅",sunrise_over_mountains:"🌄",surfing_man:"🏄",surfing_woman:"🏄&zwj;♀️",sushi:"🍣",suspension_railway:"🚟",sweat:"😓",sweat_drops:"💦",sweat_smile:"😅",sweet_potato:"🍠",swimming_man:"🏊",swimming_woman:"🏊&zwj;♀️",symbols:"🔣",synagogue:"🕍",syringe:"💉",taco:"🌮",tada:"🎉",tanabata_tree:"🎋",taurus:"♉️",taxi:"🚕",tea:"🍵",telephone_receiver:"📞",telescope:"🔭",tennis:"🎾",tent:"⛺️",thermometer:"🌡",thinking:"🤔",thought_balloon:"💭",ticket:"🎫",tickets:"🎟",tiger:"🐯",tiger2:"🐅",timer_clock:"⏲",tipping_hand_man:"💁&zwj;♂️",tired_face:"😫",tm:"™️",toilet:"🚽",tokyo_tower:"🗼",tomato:"🍅",tongue:"👅",top:"🔝",tophat:"🎩",tornado:"🌪",trackball:"🖲",tractor:"🚜",traffic_light:"🚥",train:"🚋",train2:"🚆",tram:"🚊",triangular_flag_on_post:"🚩",triangular_ruler:"📐",trident:"🔱",triumph:"😤",trolleybus:"🚎",trophy:"🏆",tropical_drink:"🍹",tropical_fish:"🐠",truck:"🚚",trumpet:"🎺",tulip:"🌷",tumbler_glass:"🥃",turkey:"🦃",turtle:"🐢",tv:"📺",twisted_rightwards_arrows:"🔀",two_hearts:"💕",two_men_holding_hands:"👬",two_women_holding_hands:"👭",u5272:"🈹",u5408:"🈴",u55b6:"🈺",u6307:"🈯️",u6708:"🈷️",u6709:"🈶",u6e80:"🈵",u7121:"🈚️",u7533:"🈸",u7981:"🈲",u7a7a:"🈳",umbrella:"☔️",unamused:"😒",underage:"🔞",unicorn:"🦄",unlock:"🔓",up:"🆙",upside_down_face:"🙃",v:"✌️",vertical_traffic_light:"🚦",vhs:"📼",vibration_mode:"📳",video_camera:"📹",video_game:"🎮",violin:"🎻",virgo:"♍️",volcano:"🌋",volleyball:"🏐",vs:"🆚",vulcan_salute:"🖖",walking_man:"🚶",walking_woman:"🚶&zwj;♀️",waning_crescent_moon:"🌘",waning_gibbous_moon:"🌖",warning:"⚠️",wastebasket:"🗑",watch:"⌚️",water_buffalo:"🐃",watermelon:"🍉",wave:"👋",wavy_dash:"〰️",waxing_crescent_moon:"🌒",wc:"🚾",weary:"😩",wedding:"💒",weight_lifting_man:"🏋️",weight_lifting_woman:"🏋️&zwj;♀️",whale:"🐳",whale2:"🐋",wheel_of_dharma:"☸️",wheelchair:"♿️",white_check_mark:"✅",white_circle:"⚪️",white_flag:"🏳️",white_flower:"💮",white_large_square:"⬜️",white_medium_small_square:"◽️",white_medium_square:"◻️",white_small_square:"▫️",white_square_button:"🔳",wilted_flower:"🥀",wind_chime:"🎐",wind_face:"🌬",wine_glass:"🍷",wink:"😉",wolf:"🐺",woman:"👩",woman_artist:"👩&zwj;🎨",woman_astronaut:"👩&zwj;🚀",woman_cartwheeling:"🤸&zwj;♀️",woman_cook:"👩&zwj;🍳",woman_facepalming:"🤦&zwj;♀️",woman_factory_worker:"👩&zwj;🏭",woman_farmer:"👩&zwj;🌾",woman_firefighter:"👩&zwj;🚒",woman_health_worker:"👩&zwj;⚕️",woman_judge:"👩&zwj;⚖️",woman_juggling:"🤹&zwj;♀️",woman_mechanic:"👩&zwj;🔧",woman_office_worker:"👩&zwj;💼",woman_pilot:"👩&zwj;✈️",woman_playing_handball:"🤾&zwj;♀️",woman_playing_water_polo:"🤽&zwj;♀️",woman_scientist:"👩&zwj;🔬",woman_shrugging:"🤷&zwj;♀️",woman_singer:"👩&zwj;🎤",woman_student:"👩&zwj;🎓",woman_teacher:"👩&zwj;🏫",woman_technologist:"👩&zwj;💻",woman_with_turban:"👳&zwj;♀️",womans_clothes:"👚",womans_hat:"👒",women_wrestling:"🤼&zwj;♀️",womens:"🚺",world_map:"🗺",worried:"😟",wrench:"🔧",writing_hand:"✍️",x:"❌",yellow_heart:"💛",yen:"💴",yin_yang:"☯️",yum:"😋",zap:"⚡️",zipper_mouth_face:"🤐",zzz:"💤",octocat:'<img alt=":octocat:" height="20" width="20" align="absmiddle" src="https://assets-cdn.github.com/images/icons/emoji/octocat.png">',showdown:"<span style=\"font-family: 'Anonymous Pro', monospace; text-decoration: underline; text-decoration-style: dashed; text-decoration-color: #3e8b8a;text-underline-position: under;\">S</span>"},o.Converter=function(e){"use strict";var t={},r=[],n=[],a={},i=c,p={parsed:{},raw:"",format:""};function h(e,t){if(t=t||null,o.helper.isString(e)){if(t=e=o.helper.stdExtName(e),o.extensions[e])return console.warn("DEPRECATION WARNING: "+e+" is an old extension that uses a deprecated loading method.Please inform the developer that the extension should be updated!"),void function(e,t){"function"==typeof e&&(e=e(new o.Converter)),o.helper.isArray(e)||(e=[e]);var a=d(e,t);if(!a.valid)throw Error(a.error);for(var i=0;i<e.length;++i)switch(e[i].type){case"lang":r.push(e[i]);break;case"output":n.push(e[i]);break;default:throw Error("Extension loader error: Type unrecognized!!!")}}(o.extensions[e],e);if(o.helper.isUndefined(s[e]))throw Error('Extension "'+e+'" could not be loaded. It was either not found or is not a valid extension.');e=s[e]}"function"==typeof e&&(e=e()),o.helper.isArray(e)||(e=[e]);var a=d(e,t);if(!a.valid)throw Error(a.error);for(var i=0;i<e.length;++i){switch(e[i].type){case"lang":r.push(e[i]);break;case"output":n.push(e[i])}if(e[i].hasOwnProperty("listeners"))for(var l in e[i].listeners)e[i].listeners.hasOwnProperty(l)&&f(l,e[i].listeners[l])}}function f(e,t){if(!o.helper.isString(e))throw Error("Invalid argument in converter.listen() method: name must be a string, but "+typeof e+" given");if("function"!=typeof t)throw Error("Invalid argument in converter.listen() method: callback must be a function, but "+typeof t+" given");a.hasOwnProperty(e)||(a[e]=[]),a[e].push(t)}!function(){for(var r in e=e||{},l)l.hasOwnProperty(r)&&(t[r]=l[r]);if("object"!=typeof e)throw Error("Converter expects the passed parameter to be an object, but "+typeof e+" was passed instead.");for(var n in e)e.hasOwnProperty(n)&&(t[n]=e[n]);t.extensions&&o.helper.forEach(t.extensions,h)}(),this._dispatch=function(e,t,r,n){if(a.hasOwnProperty(e))for(var o=0;o<a[e].length;++o){var i=a[e][o](e,t,this,r,n);i&&void 0!==i&&(t=i)}return t},this.listen=function(e,t){return f(e,t),this},this.makeHtml=function(e){if(!e)return e;var a={gHtmlBlocks:[],gHtmlMdBlocks:[],gHtmlSpans:[],gUrls:{},gTitles:{},gDimensions:{},gListLevel:0,hashLinkCounts:{},langExtensions:r,outputModifiers:n,converter:this,ghCodeBlocks:[],metadata:{parsed:{},raw:"",format:""}};return e=(e=(e=(e=(e=e.replace(/¨/g,"¨T")).replace(/\$/g,"¨D")).replace(/\r\n/g,"\n")).replace(/\r/g,"\n")).replace(/\u00A0/g,"&nbsp;"),t.smartIndentationFix&&(e=function(e){var t=e.match(/^\s*/)[0].length,r=new RegExp("^\\s{0,"+t+"}","gm");return e.replace(r,"")}(e)),e="\n\n"+e+"\n\n",e=(e=o.subParser("detab")(e,t,a)).replace(/^[ \t]+$/gm,""),o.helper.forEach(r,function(r){e=o.subParser("runExtension")(r,e,t,a)}),e=o.subParser("metadata")(e,t,a),e=o.subParser("hashPreCodeTags")(e,t,a),e=o.subParser("githubCodeBlocks")(e,t,a),e=o.subParser("hashHTMLBlocks")(e,t,a),e=o.subParser("hashCodeTags")(e,t,a),e=o.subParser("stripLinkDefinitions")(e,t,a),e=o.subParser("blockGamut")(e,t,a),e=o.subParser("unhashHTMLSpans")(e,t,a),e=(e=(e=o.subParser("unescapeSpecialChars")(e,t,a)).replace(/¨D/g,"$$")).replace(/¨T/g,"¨"),e=o.subParser("completeHTMLDocument")(e,t,a),o.helper.forEach(n,function(r){e=o.subParser("runExtension")(r,e,t,a)}),p=a.metadata,e},this.makeMarkdown=this.makeMd=function(e,t){if(e=(e=(e=e.replace(/\r\n/g,"\n")).replace(/\r/g,"\n")).replace(/>[ \t]+</,">¨NBSP;<"),!t){if(!window||!window.document)throw new Error("HTMLParser is undefined. If in a webworker or nodejs environment, you need to provide a WHATWG DOM and HTML such as JSDOM");t=window.document}var r=t.createElement("div");r.innerHTML=e;var n={preList:function(e){for(var t=e.querySelectorAll("pre"),r=[],n=0;n<t.length;++n)if(1===t[n].childElementCount&&"code"===t[n].firstChild.tagName.toLowerCase()){var a=t[n].firstChild.innerHTML.trim(),i=t[n].firstChild.getAttribute("data-language")||"";if(""===i)for(var s=t[n].firstChild.className.split(" "),l=0;l<s.length;++l){var c=s[l].match(/^language-(.+)$/);if(null!==c){i=c[1];break}}a=o.helper.unescapeHTMLEntities(a),r.push(a),t[n].outerHTML='<precode language="'+i+'" precodenum="'+n.toString()+'"></precode>'}else r.push(t[n].innerHTML),t[n].innerHTML="",t[n].setAttribute("prenum",n.toString());return r}(r)};!function e(t){for(var r=0;r<t.childNodes.length;++r){var n=t.childNodes[r];3===n.nodeType?/\S/.test(n.nodeValue)||/^[ ]+$/.test(n.nodeValue)?(n.nodeValue=n.nodeValue.split("\n").join(" "),n.nodeValue=n.nodeValue.replace(/(\s)+/g,"$1")):(t.removeChild(n),--r):1===n.nodeType&&e(n)}}(r);for(var a=r.childNodes,i="",s=0;s<a.length;s++)i+=o.subParser("makeMarkdown.node")(a[s],n);return i},this.setOption=function(e,r){t[e]=r},this.getOption=function(e){return t[e]},this.getOptions=function(){return t},this.addExtension=function(e,t){h(e,t=t||null)},this.useExtension=function(e){h(e)},this.setFlavor=function(e){if(!u.hasOwnProperty(e))throw Error(e+" flavor was not found");var r=u[e];for(var n in i=e,r)r.hasOwnProperty(n)&&(t[n]=r[n])},this.getFlavor=function(){return i},this.removeExtension=function(e){o.helper.isArray(e)||(e=[e]);for(var t=0;t<e.length;++t){for(var a=e[t],i=0;i<r.length;++i)r[i]===a&&r.splice(i,1);for(var s=0;s<n.length;++s)n[s]===a&&n.splice(s,1)}},this.getAllExtensions=function(){return{language:r,output:n}},this.getMetadata=function(e){return e?p.raw:p.parsed},this.getMetadataFormat=function(){return p.format},this._setMetadataPair=function(e,t){p.parsed[e]=t},this._setMetadataFormat=function(e){p.format=e},this._setMetadataRaw=function(e){p.raw=e}},o.subParser("anchors",function(e,t,r){"use strict";var n=function(e,n,a,i,s,l,c){if(o.helper.isUndefined(c)&&(c=""),a=a.toLowerCase(),e.search(/\(<?\s*>? ?(['"].*['"])?\)$/m)>-1)i="";else if(!i){if(a||(a=n.toLowerCase().replace(/ ?\n/g," ")),i="#"+a,o.helper.isUndefined(r.gUrls[a]))return e;i=r.gUrls[a],o.helper.isUndefined(r.gTitles[a])||(c=r.gTitles[a])}var u='<a href="'+(i=i.replace(o.helper.regexes.asteriskDashAndColon,o.helper.escapeCharactersCallback))+'"';return""!==c&&null!==c&&(u+=' title="'+(c=(c=c.replace(/"/g,"&quot;")).replace(o.helper.regexes.asteriskDashAndColon,o.helper.escapeCharactersCallback))+'"'),t.openLinksInNewWindow&&!/^#/.test(i)&&(u+=' rel="noopener noreferrer" target="¨E95Eblank"'),u+">"+n+"</a>"};return e=(e=(e=(e=(e=r.converter._dispatch("anchors.before",e,t,r)).replace(/\[((?:\[[^\]]*]|[^\[\]])*)] ?(?:\n *)?\[(.*?)]()()()()/g,n)).replace(/\[((?:\[[^\]]*]|[^\[\]])*)]()[ \t]*\([ \t]?<([^>]*)>(?:[ \t]*((["'])([^"]*?)\5))?[ \t]?\)/g,n)).replace(/\[((?:\[[^\]]*]|[^\[\]])*)]()[ \t]*\([ \t]?<?([\S]+?(?:\([\S]*?\)[\S]*?)?)>?(?:[ \t]*((["'])([^"]*?)\5))?[ \t]?\)/g,n)).replace(/\[([^\[\]]+)]()()()()()/g,n),t.ghMentions&&(e=e.replace(/(^|\s)(\\)?(@([a-z\d]+(?:[a-z\d.-]+?[a-z\d]+)*))/gim,function(e,r,n,a,i){if("\\"===n)return r+a;if(!o.helper.isString(t.ghMentionsLink))throw new Error("ghMentionsLink option must be a string");var s=t.ghMentionsLink.replace(/\{u}/g,i),l="";return t.openLinksInNewWindow&&(l=' rel="noopener noreferrer" target="¨E95Eblank"'),r+'<a href="'+s+'"'+l+">"+a+"</a>"})),r.converter._dispatch("anchors.after",e,t,r)});var f=/([*~_]+|\b)(((https?|ftp|dict):\/\/|www\.)[^'">\s]+?\.[^'">\s]+?)()(\1)?(?=\s|$)(?!["<>])/gi,m=/([*~_]+|\b)(((https?|ftp|dict):\/\/|www\.)[^'">\s]+\.[^'">\s]+?)([.!?,()\[\]])?(\1)?(?=\s|$)(?!["<>])/gi,g=/()<(((https?|ftp|dict):\/\/|www\.)[^'">\s]+)()>()/gi,_=/(^|\s)(?:mailto:)?([A-Za-z0-9!#$%&'*+-/=?^_`{|}~.]+@[-a-z0-9]+(\.[-a-z0-9]+)*\.[a-z]+)(?=$|\s)/gim,b=/<()(?:mailto:)?([-.\w]+@[-a-z0-9]+(\.[-a-z0-9]+)*\.[a-z]+)>/gi,w=function(e){"use strict";return function(t,r,n,a,i,s,l){var c=n=n.replace(o.helper.regexes.asteriskDashAndColon,o.helper.escapeCharactersCallback),u="",d="",p=r||"",h=l||"";return/^www\./i.test(n)&&(n=n.replace(/^www\./i,"http://www.")),e.excludeTrailingPunctuationFromURLs&&s&&(u=s),e.openLinksInNewWindow&&(d=' rel="noopener noreferrer" target="¨E95Eblank"'),p+'<a href="'+n+'"'+d+">"+c+"</a>"+u+h}},y=function(e,t){"use strict";return function(r,n,a){var i="mailto:";return n=n||"",a=o.subParser("unescapeSpecialChars")(a,e,t),e.encodeEmails?(i=o.helper.encodeEmailAddress(i+a),a=o.helper.encodeEmailAddress(a)):i+=a,n+'<a href="'+i+'">'+a+"</a>"}};o.subParser("autoLinks",function(e,t,r){"use strict";return e=(e=(e=r.converter._dispatch("autoLinks.before",e,t,r)).replace(g,w(t))).replace(b,y(t,r)),r.converter._dispatch("autoLinks.after",e,t,r)}),o.subParser("simplifiedAutoLinks",function(e,t,r){"use strict";return t.simplifiedAutoLink?(e=r.converter._dispatch("simplifiedAutoLinks.before",e,t,r),e=(e=t.excludeTrailingPunctuationFromURLs?e.replace(m,w(t)):e.replace(f,w(t))).replace(_,y(t,r)),e=r.converter._dispatch("simplifiedAutoLinks.after",e,t,r)):e}),o.subParser("blockGamut",function(e,t,r){"use strict";return e=r.converter._dispatch("blockGamut.before",e,t,r),e=o.subParser("blockQuotes")(e,t,r),e=o.subParser("headers")(e,t,r),e=o.subParser("horizontalRule")(e,t,r),e=o.subParser("lists")(e,t,r),e=o.subParser("codeBlocks")(e,t,r),e=o.subParser("tables")(e,t,r),e=o.subParser("hashHTMLBlocks")(e,t,r),e=o.subParser("paragraphs")(e,t,r),r.converter._dispatch("blockGamut.after",e,t,r)}),o.subParser("blockQuotes",function(e,t,r){"use strict";e=r.converter._dispatch("blockQuotes.before",e,t,r),e+="\n\n";var n=/(^ {0,3}>[ \t]?.+\n(.+\n)*\n*)+/gm;return t.splitAdjacentBlockquotes&&(n=/^ {0,3}>[\s\S]*?(?:\n\n)/gm),e=e.replace(n,function(e){return e=(e=(e=e.replace(/^[ \t]*>[ \t]?/gm,"")).replace(/¨0/g,"")).replace(/^[ \t]+$/gm,""),e=o.subParser("githubCodeBlocks")(e,t,r),e=(e=(e=o.subParser("blockGamut")(e,t,r)).replace(/(^|\n)/g,"$1  ")).replace(/(\s*<pre>[^\r]+?<\/pre>)/gm,function(e,t){var r=t;return(r=r.replace(/^  /gm,"¨0")).replace(/¨0/g,"")}),o.subParser("hashBlock")("<blockquote>\n"+e+"\n</blockquote>",t,r)}),r.converter._dispatch("blockQuotes.after",e,t,r)}),o.subParser("codeBlocks",function(e,t,r){"use strict";return e=r.converter._dispatch("codeBlocks.before",e,t,r),e=(e=(e+="¨0").replace(/(?:\n\n|^)((?:(?:[ ]{4}|\t).*\n+)+)(\n*[ ]{0,3}[^ \t\n]|(?=¨0))/g,function(e,n,a){var i=n,s=a,l="\n";return i=o.subParser("outdent")(i,t,r),i=o.subParser("encodeCode")(i,t,r),i=(i=(i=o.subParser("detab")(i,t,r)).replace(/^\n+/g,"")).replace(/\n+$/g,""),t.omitExtraWLInCodeBlocks&&(l=""),i="<pre><code>"+i+l+"</code></pre>",o.subParser("hashBlock")(i,t,r)+s})).replace(/¨0/,""),r.converter._dispatch("codeBlocks.after",e,t,r)}),o.subParser("codeSpans",function(e,t,r){"use strict";return void 0===(e=r.converter._dispatch("codeSpans.before",e,t,r))&&(e=""),e=e.replace(/(^|[^\\])(`+)([^\r]*?[^`])\2(?!`)/gm,function(e,n,a,i){var s=i;return s=(s=s.replace(/^([ \t]*)/g,"")).replace(/[ \t]*$/g,""),s=n+"<code>"+(s=o.subParser("encodeCode")(s,t,r))+"</code>",o.subParser("hashHTMLSpans")(s,t,r)}),r.converter._dispatch("codeSpans.after",e,t,r)}),o.subParser("completeHTMLDocument",function(e,t,r){"use strict";if(!t.completeHTMLDocument)return e;e=r.converter._dispatch("completeHTMLDocument.before",e,t,r);var n="html",a="<!DOCTYPE HTML>\n",o="",i='<meta charset="utf-8">\n',s="",l="";for(var c in void 0!==r.metadata.parsed.doctype&&(a="<!DOCTYPE "+r.metadata.parsed.doctype+">\n","html"!==(n=r.metadata.parsed.doctype.toString().toLowerCase())&&"html5"!==n||(i='<meta charset="utf-8">')),r.metadata.parsed)if(r.metadata.parsed.hasOwnProperty(c))switch(c.toLowerCase()){case"doctype":break;case"title":o="<title>"+r.metadata.parsed.title+"</title>\n";break;case"charset":i="html"===n||"html5"===n?'<meta charset="'+r.metadata.parsed.charset+'">\n':'<meta name="charset" content="'+r.metadata.parsed.charset+'">\n';break;case"language":case"lang":s=' lang="'+r.metadata.parsed[c]+'"',l+='<meta name="'+c+'" content="'+r.metadata.parsed[c]+'">\n';break;default:l+='<meta name="'+c+'" content="'+r.metadata.parsed[c]+'">\n'}return e=a+"<html"+s+">\n<head>\n"+o+i+l+"</head>\n<body>\n"+e.trim()+"\n</body>\n</html>",r.converter._dispatch("completeHTMLDocument.after",e,t,r)}),o.subParser("detab",function(e,t,r){"use strict";return e=(e=(e=(e=(e=(e=r.converter._dispatch("detab.before",e,t,r)).replace(/\t(?=\t)/g,"    ")).replace(/\t/g,"¨A¨B")).replace(/¨B(.+?)¨A/g,function(e,t){for(var r=t,n=4-r.length%4,a=0;a<n;a++)r+=" ";return r})).replace(/¨A/g,"    ")).replace(/¨B/g,""),r.converter._dispatch("detab.after",e,t,r)}),o.subParser("ellipsis",function(e,t,r){"use strict";return t.ellipsis?(e=(e=r.converter._dispatch("ellipsis.before",e,t,r)).replace(/\.\.\./g,"…"),e=r.converter._dispatch("ellipsis.after",e,t,r)):e}),o.subParser("emoji",function(e,t,r){"use strict";return t.emoji?(e=(e=r.converter._dispatch("emoji.before",e,t,r)).replace(/:([\S]+?):/g,function(e,t){return o.helper.emojis.hasOwnProperty(t)?o.helper.emojis[t]:e}),r.converter._dispatch("emoji.after",e,t,r)):e}),o.subParser("encodeAmpsAndAngles",function(e,t,r){"use strict";return e=(e=(e=(e=(e=r.converter._dispatch("encodeAmpsAndAngles.before",e,t,r)).replace(/&(?!#?[xX]?(?:[0-9a-fA-F]+|\w+);)/g,"&amp;")).replace(/<(?![a-z\/?$!])/gi,"&lt;")).replace(/</g,"&lt;")).replace(/>/g,"&gt;"),r.converter._dispatch("encodeAmpsAndAngles.after",e,t,r)}),o.subParser("encodeBackslashEscapes",function(e,t,r){"use strict";return e=(e=(e=r.converter._dispatch("encodeBackslashEscapes.before",e,t,r)).replace(/\\(\\)/g,o.helper.escapeCharactersCallback)).replace(/\\([`*_{}\[\]()>#+.!~=|:-])/g,o.helper.escapeCharactersCallback),r.converter._dispatch("encodeBackslashEscapes.after",e,t,r)}),o.subParser("encodeCode",function(e,t,r){"use strict";return e=(e=r.converter._dispatch("encodeCode.before",e,t,r)).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/([*_{}\[\]\\=~-])/g,o.helper.escapeCharactersCallback),r.converter._dispatch("encodeCode.after",e,t,r)}),o.subParser("escapeSpecialCharsWithinTagAttributes",function(e,t,r){"use strict";return e=(e=(e=r.converter._dispatch("escapeSpecialCharsWithinTagAttributes.before",e,t,r)).replace(/<\/?[a-z\d_:-]+(?:[\s]+[\s\S]+?)?>/gi,function(e){return e.replace(/(.)<\/?code>(?=.)/g,"$1`").replace(/([\\`*_~=|])/g,o.helper.escapeCharactersCallback)})).replace(/<!(--(?:(?:[^>-]|-[^>])(?:[^-]|-[^-])*)--)>/gi,function(e){return e.replace(/([\\`*_~=|])/g,o.helper.escapeCharactersCallback)}),r.converter._dispatch("escapeSpecialCharsWithinTagAttributes.after",e,t,r)}),o.subParser("githubCodeBlocks",function(e,t,r){"use strict";return t.ghCodeBlocks?(e=r.converter._dispatch("githubCodeBlocks.before",e,t,r),e=(e=(e+="¨0").replace(/(?:^|\n)(?: {0,3})(```+|~~~+)(?: *)([^\s`~]*)\n([\s\S]*?)\n(?: {0,3})\1/g,function(e,n,a,i){var s=t.omitExtraWLInCodeBlocks?"":"\n";return i=o.subParser("encodeCode")(i,t,r),i="<pre><code"+(a?' class="'+a+" language-"+a+'"':"")+">"+(i=(i=(i=o.subParser("detab")(i,t,r)).replace(/^\n+/g,"")).replace(/\n+$/g,""))+s+"</code></pre>",i=o.subParser("hashBlock")(i,t,r),"\n\n¨G"+(r.ghCodeBlocks.push({text:e,codeblock:i})-1)+"G\n\n"})).replace(/¨0/,""),r.converter._dispatch("githubCodeBlocks.after",e,t,r)):e}),o.subParser("hashBlock",function(e,t,r){"use strict";return e=(e=r.converter._dispatch("hashBlock.before",e,t,r)).replace(/(^\n+|\n+$)/g,""),e="\n\n¨K"+(r.gHtmlBlocks.push(e)-1)+"K\n\n",r.converter._dispatch("hashBlock.after",e,t,r)}),o.subParser("hashCodeTags",function(e,t,r){"use strict";return e=r.converter._dispatch("hashCodeTags.before",e,t,r),e=o.helper.replaceRecursiveRegExp(e,function(e,n,a,i){var s=a+o.subParser("encodeCode")(n,t,r)+i;return"¨C"+(r.gHtmlSpans.push(s)-1)+"C"},"<code\\b[^>]*>","</code>","gim"),r.converter._dispatch("hashCodeTags.after",e,t,r)}),o.subParser("hashElement",function(e,t,r){"use strict";return function(e,t){var n=t;return n=(n=(n=n.replace(/\n\n/g,"\n")).replace(/^\n/,"")).replace(/\n+$/g,""),"\n\n¨K"+(r.gHtmlBlocks.push(n)-1)+"K\n\n"}}),o.subParser("hashHTMLBlocks",function(e,t,r){"use strict";e=r.converter._dispatch("hashHTMLBlocks.before",e,t,r);var n=["pre","div","h1","h2","h3","h4","h5","h6","blockquote","table","dl","ol","ul","script","noscript","form","fieldset","iframe","math","style","section","header","footer","nav","article","aside","address","audio","canvas","figure","hgroup","output","video","p"],a=function(e,t,n,a){var o=e;return-1!==n.search(/\bmarkdown\b/)&&(o=n+r.converter.makeHtml(t)+a),"\n\n¨K"+(r.gHtmlBlocks.push(o)-1)+"K\n\n"};t.backslashEscapesHTMLTags&&(e=e.replace(/\\<(\/?[^>]+?)>/g,function(e,t){return"&lt;"+t+"&gt;"}));for(var i=0;i<n.length;++i)for(var s,l=new RegExp("^ {0,3}(<"+n[i]+"\\b[^>]*>)","im"),c="<"+n[i]+"\\b[^>]*>",u="</"+n[i]+">";-1!==(s=o.helper.regexIndexOf(e,l));){var d=o.helper.splitAtIndex(e,s),p=o.helper.replaceRecursiveRegExp(d[1],a,c,u,"im");if(p===d[1])break;e=d[0].concat(p)}return e=e.replace(/(\n {0,3}(<(hr)\b([^<>])*?\/?>)[ \t]*(?=\n{2,}))/g,o.subParser("hashElement")(e,t,r)),e=(e=o.helper.replaceRecursiveRegExp(e,function(e){return"\n\n¨K"+(r.gHtmlBlocks.push(e)-1)+"K\n\n"},"^ {0,3}\x3c!--","--\x3e","gm")).replace(/(?:\n\n)( {0,3}(?:<([?%])[^\r]*?\2>)[ \t]*(?=\n{2,}))/g,o.subParser("hashElement")(e,t,r)),r.converter._dispatch("hashHTMLBlocks.after",e,t,r)}),o.subParser("hashHTMLSpans",function(e,t,r){"use strict";function n(e){return"¨C"+(r.gHtmlSpans.push(e)-1)+"C"}return e=(e=(e=(e=(e=r.converter._dispatch("hashHTMLSpans.before",e,t,r)).replace(/<[^>]+?\/>/gi,function(e){return n(e)})).replace(/<([^>]+?)>[\s\S]*?<\/\1>/g,function(e){return n(e)})).replace(/<([^>]+?)\s[^>]+?>[\s\S]*?<\/\1>/g,function(e){return n(e)})).replace(/<[^>]+?>/gi,function(e){return n(e)}),r.converter._dispatch("hashHTMLSpans.after",e,t,r)}),o.subParser("unhashHTMLSpans",function(e,t,r){"use strict";e=r.converter._dispatch("unhashHTMLSpans.before",e,t,r);for(var n=0;n<r.gHtmlSpans.length;++n){for(var a=r.gHtmlSpans[n],o=0;/¨C(\d+)C/.test(a);){var i=RegExp.$1;if(a=a.replace("¨C"+i+"C",r.gHtmlSpans[i]),10===o){console.error("maximum nesting of 10 spans reached!!!");break}++o}e=e.replace("¨C"+n+"C",a)}return r.converter._dispatch("unhashHTMLSpans.after",e,t,r)}),o.subParser("hashPreCodeTags",function(e,t,r){"use strict";return e=r.converter._dispatch("hashPreCodeTags.before",e,t,r),e=o.helper.replaceRecursiveRegExp(e,function(e,n,a,i){var s=a+o.subParser("encodeCode")(n,t,r)+i;return"\n\n¨G"+(r.ghCodeBlocks.push({text:e,codeblock:s})-1)+"G\n\n"},"^ {0,3}<pre\\b[^>]*>\\s*<code\\b[^>]*>","^ {0,3}</code>\\s*</pre>","gim"),r.converter._dispatch("hashPreCodeTags.after",e,t,r)}),o.subParser("headers",function(e,t,r){"use strict";e=r.converter._dispatch("headers.before",e,t,r);var n=isNaN(parseInt(t.headerLevelStart))?1:parseInt(t.headerLevelStart),a=t.smoothLivePreview?/^(.+)[ \t]*\n={2,}[ \t]*\n+/gm:/^(.+)[ \t]*\n=+[ \t]*\n+/gm,i=t.smoothLivePreview?/^(.+)[ \t]*\n-{2,}[ \t]*\n+/gm:/^(.+)[ \t]*\n-+[ \t]*\n+/gm;e=(e=e.replace(a,function(e,a){var i=o.subParser("spanGamut")(a,t,r),s=t.noHeaderId?"":' id="'+l(a)+'"',c="<h"+n+s+">"+i+"</h"+n+">";return o.subParser("hashBlock")(c,t,r)})).replace(i,function(e,a){var i=o.subParser("spanGamut")(a,t,r),s=t.noHeaderId?"":' id="'+l(a)+'"',c=n+1,u="<h"+c+s+">"+i+"</h"+c+">";return o.subParser("hashBlock")(u,t,r)});var s=t.requireSpaceBeforeHeadingText?/^(#{1,6})[ \t]+(.+?)[ \t]*#*\n+/gm:/^(#{1,6})[ \t]*(.+?)[ \t]*#*\n+/gm;function l(e){var n,a;if(t.customizedHeaderId){var i=e.match(/\{([^{]+?)}\s*$/);i&&i[1]&&(e=i[1])}return n=e,a=o.helper.isString(t.prefixHeaderId)?t.prefixHeaderId:!0===t.prefixHeaderId?"section-":"",t.rawPrefixHeaderId||(n=a+n),n=t.ghCompatibleHeaderId?n.replace(/ /g,"-").replace(/&amp;/g,"").replace(/¨T/g,"").replace(/¨D/g,"").replace(/[&+$,\/:;=?@"#{}|^¨~\[\]`\\*)(%.!'<>]/g,"").toLowerCase():t.rawHeaderId?n.replace(/ /g,"-").replace(/&amp;/g,"&").replace(/¨T/g,"¨").replace(/¨D/g,"$").replace(/["']/g,"-").toLowerCase():n.replace(/[^\w]/g,"").toLowerCase(),t.rawPrefixHeaderId&&(n=a+n),r.hashLinkCounts[n]?n=n+"-"+r.hashLinkCounts[n]++:r.hashLinkCounts[n]=1,n}return e=e.replace(s,function(e,a,i){var s=i;t.customizedHeaderId&&(s=i.replace(/\s?\{([^{]+?)}\s*$/,""));var c=o.subParser("spanGamut")(s,t,r),u=t.noHeaderId?"":' id="'+l(i)+'"',d=n-1+a.length,p="<h"+d+u+">"+c+"</h"+d+">";return o.subParser("hashBlock")(p,t,r)}),r.converter._dispatch("headers.after",e,t,r)}),o.subParser("horizontalRule",function(e,t,r){"use strict";e=r.converter._dispatch("horizontalRule.before",e,t,r);var n=o.subParser("hashBlock")("<hr />",t,r);return e=(e=(e=e.replace(/^ {0,2}( ?-){3,}[ \t]*$/gm,n)).replace(/^ {0,2}( ?\*){3,}[ \t]*$/gm,n)).replace(/^ {0,2}( ?_){3,}[ \t]*$/gm,n),r.converter._dispatch("horizontalRule.after",e,t,r)}),o.subParser("images",function(e,t,r){"use strict";function n(e,t,n,a,i,s,l,c){var u=r.gUrls,d=r.gTitles,p=r.gDimensions;if(n=n.toLowerCase(),c||(c=""),e.search(/\(<?\s*>? ?(['"].*['"])?\)$/m)>-1)a="";else if(""===a||null===a){if(""!==n&&null!==n||(n=t.toLowerCase().replace(/ ?\n/g," ")),a="#"+n,o.helper.isUndefined(u[n]))return e;a=u[n],o.helper.isUndefined(d[n])||(c=d[n]),o.helper.isUndefined(p[n])||(i=p[n].width,s=p[n].height)}t=t.replace(/"/g,"&quot;").replace(o.helper.regexes.asteriskDashAndColon,o.helper.escapeCharactersCallback);var h='<img src="'+(a=a.replace(o.helper.regexes.asteriskDashAndColon,o.helper.escapeCharactersCallback))+'" alt="'+t+'"';return c&&o.helper.isString(c)&&(h+=' title="'+(c=c.replace(/"/g,"&quot;").replace(o.helper.regexes.asteriskDashAndColon,o.helper.escapeCharactersCallback))+'"'),i&&s&&(h+=' width="'+(i="*"===i?"auto":i)+'"',h+=' height="'+(s="*"===s?"auto":s)+'"'),h+" />"}return e=(e=(e=(e=(e=(e=r.converter._dispatch("images.before",e,t,r)).replace(/!\[([^\]]*?)] ?(?:\n *)?\[([\s\S]*?)]()()()()()/g,n)).replace(/!\[([^\]]*?)][ \t]*()\([ \t]?<?(data:.+?\/.+?;base64,[A-Za-z0-9+/=\n]+?)>?(?: =([*\d]+[A-Za-z%]{0,4})x([*\d]+[A-Za-z%]{0,4}))?[ \t]*(?:(["'])([^"]*?)\6)?[ \t]?\)/g,function(e,t,r,a,o,i,s,l){return n(e,t,r,a=a.replace(/\s/g,""),o,i,0,l)})).replace(/!\[([^\]]*?)][ \t]*()\([ \t]?<([^>]*)>(?: =([*\d]+[A-Za-z%]{0,4})x([*\d]+[A-Za-z%]{0,4}))?[ \t]*(?:(?:(["'])([^"]*?)\6))?[ \t]?\)/g,n)).replace(/!\[([^\]]*?)][ \t]*()\([ \t]?<?([\S]+?(?:\([\S]*?\)[\S]*?)?)>?(?: =([*\d]+[A-Za-z%]{0,4})x([*\d]+[A-Za-z%]{0,4}))?[ \t]*(?:(["'])([^"]*?)\6)?[ \t]?\)/g,n)).replace(/!\[([^\[\]]+)]()()()()()/g,n),r.converter._dispatch("images.after",e,t,r)}),o.subParser("italicsAndBold",function(e,t,r){"use strict";function n(e,t,r){return t+e+r}return e=r.converter._dispatch("italicsAndBold.before",e,t,r),e=t.literalMidWordUnderscores?(e=(e=e.replace(/\b___(\S[\s\S]*?)___\b/g,function(e,t){return n(t,"<strong><em>","</em></strong>")})).replace(/\b__(\S[\s\S]*?)__\b/g,function(e,t){return n(t,"<strong>","</strong>")})).replace(/\b_(\S[\s\S]*?)_\b/g,function(e,t){return n(t,"<em>","</em>")}):(e=(e=e.replace(/___(\S[\s\S]*?)___/g,function(e,t){return/\S$/.test(t)?n(t,"<strong><em>","</em></strong>"):e})).replace(/__(\S[\s\S]*?)__/g,function(e,t){return/\S$/.test(t)?n(t,"<strong>","</strong>"):e})).replace(/_([^\s_][\s\S]*?)_/g,function(e,t){return/\S$/.test(t)?n(t,"<em>","</em>"):e}),e=t.literalMidWordAsterisks?(e=(e=e.replace(/([^*]|^)\B\*\*\*(\S[\s\S]*?)\*\*\*\B(?!\*)/g,function(e,t,r){return n(r,t+"<strong><em>","</em></strong>")})).replace(/([^*]|^)\B\*\*(\S[\s\S]*?)\*\*\B(?!\*)/g,function(e,t,r){return n(r,t+"<strong>","</strong>")})).replace(/([^*]|^)\B\*(\S[\s\S]*?)\*\B(?!\*)/g,function(e,t,r){return n(r,t+"<em>","</em>")}):(e=(e=e.replace(/\*\*\*(\S[\s\S]*?)\*\*\*/g,function(e,t){return/\S$/.test(t)?n(t,"<strong><em>","</em></strong>"):e})).replace(/\*\*(\S[\s\S]*?)\*\*/g,function(e,t){return/\S$/.test(t)?n(t,"<strong>","</strong>"):e})).replace(/\*([^\s*][\s\S]*?)\*/g,function(e,t){return/\S$/.test(t)?n(t,"<em>","</em>"):e}),r.converter._dispatch("italicsAndBold.after",e,t,r)}),o.subParser("lists",function(e,t,r){"use strict";function n(e,n){r.gListLevel++,e=e.replace(/\n{2,}$/,"\n");var a=/(\n)?(^ {0,3})([*+-]|\d+[.])[ \t]+((\[(x|X| )?])?[ \t]*[^\r]+?(\n{1,2}))(?=\n*(¨0| {0,3}([*+-]|\d+[.])[ \t]+))/gm,i=/\n[ \t]*\n(?!¨0)/.test(e+="¨0");return t.disableForced4SpacesIndentedSublists&&(a=/(\n)?(^ {0,3})([*+-]|\d+[.])[ \t]+((\[(x|X| )?])?[ \t]*[^\r]+?(\n{1,2}))(?=\n*(¨0|\2([*+-]|\d+[.])[ \t]+))/gm),e=(e=e.replace(a,function(e,n,a,s,l,c,u){u=u&&""!==u.trim();var d=o.subParser("outdent")(l,t,r),p="";return c&&t.tasklists&&(p=' class="task-list-item" style="list-style-type: none;"',d=d.replace(/^[ \t]*\[(x|X| )?]/m,function(){var e='<input type="checkbox" disabled style="margin: 0px 0.35em 0.25em -1.6em; vertical-align: middle;"';return u&&(e+=" checked"),e+">"})),d=d.replace(/^([-*+]|\d\.)[ \t]+[\S\n ]*/g,function(e){return"¨A"+e}),n||d.search(/\n{2,}/)>-1?(d=o.subParser("githubCodeBlocks")(d,t,r),d=o.subParser("blockGamut")(d,t,r)):(d=(d=o.subParser("lists")(d,t,r)).replace(/\n$/,""),d=(d=o.subParser("hashHTMLBlocks")(d,t,r)).replace(/\n\n+/g,"\n\n"),d=i?o.subParser("paragraphs")(d,t,r):o.subParser("spanGamut")(d,t,r)),"<li"+p+">"+(d=d.replace("¨A",""))+"</li>\n"})).replace(/¨0/g,""),r.gListLevel--,n&&(e=e.replace(/\s+$/,"")),e}function a(e,t){if("ol"===t){var r=e.match(/^ *(\d+)\./);if(r&&"1"!==r[1])return' start="'+r[1]+'"'}return""}function i(e,r,o){var i=t.disableForced4SpacesIndentedSublists?/^ ?\d+\.[ \t]/gm:/^ {0,3}\d+\.[ \t]/gm,s=t.disableForced4SpacesIndentedSublists?/^ ?[*+-][ \t]/gm:/^ {0,3}[*+-][ \t]/gm,l="ul"===r?i:s,c="";if(-1!==e.search(l))!function t(u){var d=u.search(l),p=a(e,r);-1!==d?(c+="\n\n<"+r+p+">\n"+n(u.slice(0,d),!!o)+"</"+r+">\n",l="ul"==(r="ul"===r?"ol":"ul")?i:s,t(u.slice(d))):c+="\n\n<"+r+p+">\n"+n(u,!!o)+"</"+r+">\n"}(e);else{var u=a(e,r);c="\n\n<"+r+u+">\n"+n(e,!!o)+"</"+r+">\n"}return c}return e=r.converter._dispatch("lists.before",e,t,r),e+="¨0",e=(e=r.gListLevel?e.replace(/^(( {0,3}([*+-]|\d+[.])[ \t]+)[^\r]+?(¨0|\n{2,}(?=\S)(?![ \t]*(?:[*+-]|\d+[.])[ \t]+)))/gm,function(e,t,r){return i(t,r.search(/[*+-]/g)>-1?"ul":"ol",!0)}):e.replace(/(\n\n|^\n?)(( {0,3}([*+-]|\d+[.])[ \t]+)[^\r]+?(¨0|\n{2,}(?=\S)(?![ \t]*(?:[*+-]|\d+[.])[ \t]+)))/gm,function(e,t,r,n){return i(r,n.search(/[*+-]/g)>-1?"ul":"ol",!1)})).replace(/¨0/,""),r.converter._dispatch("lists.after",e,t,r)}),o.subParser("metadata",function(e,t,r){"use strict";if(!t.metadata)return e;function n(e){r.metadata.raw=e,(e=(e=e.replace(/&/g,"&amp;").replace(/"/g,"&quot;")).replace(/\n {4}/g," ")).replace(/^([\S ]+): +([\s\S]+?)$/gm,function(e,t,n){return r.metadata.parsed[t]=n,""})}return e=(e=(e=(e=r.converter._dispatch("metadata.before",e,t,r)).replace(/^\s*«««+(\S*?)\n([\s\S]+?)\n»»»+\n/,function(e,t,r){return n(r),"¨M"})).replace(/^\s*---+(\S*?)\n([\s\S]+?)\n---+\n/,function(e,t,a){return t&&(r.metadata.format=t),n(a),"¨M"})).replace(/¨M/g,""),r.converter._dispatch("metadata.after",e,t,r)}),o.subParser("outdent",function(e,t,r){"use strict";return e=(e=(e=r.converter._dispatch("outdent.before",e,t,r)).replace(/^(\t|[ ]{1,4})/gm,"¨0")).replace(/¨0/g,""),r.converter._dispatch("outdent.after",e,t,r)}),o.subParser("paragraphs",function(e,t,r){"use strict";for(var n=(e=(e=(e=r.converter._dispatch("paragraphs.before",e,t,r)).replace(/^\n+/g,"")).replace(/\n+$/g,"")).split(/\n{2,}/g),a=[],i=n.length,s=0;s<i;s++){var l=n[s];l.search(/¨(K|G)(\d+)\1/g)>=0?a.push(l):l.search(/\S/)>=0&&(l=(l=o.subParser("spanGamut")(l,t,r)).replace(/^([ \t]*)/g,"<p>"),l+="</p>",a.push(l))}for(i=a.length,s=0;s<i;s++){for(var c="",u=a[s],d=!1;/¨(K|G)(\d+)\1/.test(u);){var p=RegExp.$1,h=RegExp.$2;c=(c="K"===p?r.gHtmlBlocks[h]:d?o.subParser("encodeCode")(r.ghCodeBlocks[h].text,t,r):r.ghCodeBlocks[h].codeblock).replace(/\$/g,"$$$$"),u=u.replace(/(\n\n)?¨(K|G)\d+\2(\n\n)?/,c),/^<pre\b[^>]*>\s*<code\b[^>]*>/.test(u)&&(d=!0)}a[s]=u}return e=(e=(e=a.join("\n")).replace(/^\n+/g,"")).replace(/\n+$/g,""),r.converter._dispatch("paragraphs.after",e,t,r)}),o.subParser("runExtension",function(e,t,r,n){"use strict";if(e.filter)t=e.filter(t,n.converter,r);else if(e.regex){var a=e.regex;a instanceof RegExp||(a=new RegExp(a,"g")),t=t.replace(a,e.replace)}return t}),o.subParser("spanGamut",function(e,t,r){"use strict";return e=r.converter._dispatch("spanGamut.before",e,t,r),e=o.subParser("codeSpans")(e,t,r),e=o.subParser("escapeSpecialCharsWithinTagAttributes")(e,t,r),e=o.subParser("encodeBackslashEscapes")(e,t,r),e=o.subParser("images")(e,t,r),e=o.subParser("anchors")(e,t,r),e=o.subParser("autoLinks")(e,t,r),e=o.subParser("simplifiedAutoLinks")(e,t,r),e=o.subParser("emoji")(e,t,r),e=o.subParser("underline")(e,t,r),e=o.subParser("italicsAndBold")(e,t,r),e=o.subParser("strikethrough")(e,t,r),e=o.subParser("ellipsis")(e,t,r),e=o.subParser("hashHTMLSpans")(e,t,r),e=o.subParser("encodeAmpsAndAngles")(e,t,r),t.simpleLineBreaks?/\n\n¨K/.test(e)||(e=e.replace(/\n+/g,"<br />\n")):e=e.replace(/  +\n/g,"<br />\n"),r.converter._dispatch("spanGamut.after",e,t,r)}),o.subParser("strikethrough",function(e,t,r){"use strict";return t.strikethrough&&(e=(e=r.converter._dispatch("strikethrough.before",e,t,r)).replace(/(?:~){2}([\s\S]+?)(?:~){2}/g,function(e,n){return function(e){return t.simplifiedAutoLink&&(e=o.subParser("simplifiedAutoLinks")(e,t,r)),"<del>"+e+"</del>"}(n)}),e=r.converter._dispatch("strikethrough.after",e,t,r)),e}),o.subParser("stripLinkDefinitions",function(e,t,r){"use strict";var n=function(n,a,i,s,l,c,u){return a=a.toLowerCase(),e.toLowerCase().split(a).length-1<2?n:(i.match(/^data:.+?\/.+?;base64,/)?r.gUrls[a]=i.replace(/\s/g,""):r.gUrls[a]=o.subParser("encodeAmpsAndAngles")(i,t,r),c?c+u:(u&&(r.gTitles[a]=u.replace(/"|'/g,"&quot;")),t.parseImgDimensions&&s&&l&&(r.gDimensions[a]={width:s,height:l}),""))};return e=(e=(e=(e+="¨0").replace(/^ {0,3}\[([^\]]+)]:[ \t]*\n?[ \t]*<?(data:.+?\/.+?;base64,[A-Za-z0-9+/=\n]+?)>?(?: =([*\d]+[A-Za-z%]{0,4})x([*\d]+[A-Za-z%]{0,4}))?[ \t]*\n?[ \t]*(?:(\n*)["|'(](.+?)["|')][ \t]*)?(?:\n\n|(?=¨0)|(?=\n\[))/gm,n)).replace(/^ {0,3}\[([^\]]+)]:[ \t]*\n?[ \t]*<?([^>\s]+)>?(?: =([*\d]+[A-Za-z%]{0,4})x([*\d]+[A-Za-z%]{0,4}))?[ \t]*\n?[ \t]*(?:(\n*)["|'(](.+?)["|')][ \t]*)?(?:\n+|(?=¨0))/gm,n)).replace(/¨0/,"")}),o.subParser("tables",function(e,t,r){"use strict";if(!t.tables)return e;function n(e){return/^:[ \t]*--*$/.test(e)?' style="text-align:left;"':/^--*[ \t]*:[ \t]*$/.test(e)?' style="text-align:right;"':/^:[ \t]*--*[ \t]*:$/.test(e)?' style="text-align:center;"':""}function a(e,n){var a="";return e=e.trim(),(t.tablesHeaderId||t.tableHeaderId)&&(a=' id="'+e.replace(/ /g,"_").toLowerCase()+'"'),"<th"+a+n+">"+(e=o.subParser("spanGamut")(e,t,r))+"</th>\n"}function i(e,n){return"<td"+n+">"+o.subParser("spanGamut")(e,t,r)+"</td>\n"}function s(e){var s,l=e.split("\n");for(s=0;s<l.length;++s)/^ {0,3}\|/.test(l[s])&&(l[s]=l[s].replace(/^ {0,3}\|/,"")),/\|[ \t]*$/.test(l[s])&&(l[s]=l[s].replace(/\|[ \t]*$/,"")),l[s]=o.subParser("codeSpans")(l[s],t,r);var c=l[0].split("|").map(function(e){return e.trim()}),u=l[1].split("|").map(function(e){return e.trim()}),d=[],p=[],h=[],f=[];for(l.shift(),l.shift(),s=0;s<l.length;++s)""!==l[s].trim()&&d.push(l[s].split("|").map(function(e){return e.trim()}));if(c.length<u.length)return e;for(s=0;s<u.length;++s)h.push(n(u[s]));for(s=0;s<c.length;++s)o.helper.isUndefined(h[s])&&(h[s]=""),p.push(a(c[s],h[s]));for(s=0;s<d.length;++s){for(var m=[],g=0;g<p.length;++g)o.helper.isUndefined(d[s][g]),m.push(i(d[s][g],h[g]));f.push(m)}return function(e,t){for(var r="<table>\n<thead>\n<tr>\n",n=e.length,a=0;a<n;++a)r+=e[a];for(r+="</tr>\n</thead>\n<tbody>\n",a=0;a<t.length;++a){r+="<tr>\n";for(var o=0;o<n;++o)r+=t[a][o];r+="</tr>\n"}return r+"</tbody>\n</table>\n"}(p,f)}return e=(e=(e=(e=r.converter._dispatch("tables.before",e,t,r)).replace(/\\(\|)/g,o.helper.escapeCharactersCallback)).replace(/^ {0,3}\|?.+\|.+\n {0,3}\|?[ \t]*:?[ \t]*(?:[-=]){2,}[ \t]*:?[ \t]*\|[ \t]*:?[ \t]*(?:[-=]){2,}[\s\S]+?(?:\n\n|¨0)/gm,s)).replace(/^ {0,3}\|.+\|[ \t]*\n {0,3}\|[ \t]*:?[ \t]*(?:[-=]){2,}[ \t]*:?[ \t]*\|[ \t]*\n( {0,3}\|.+\|[ \t]*\n)*(?:\n|¨0)/gm,s),r.converter._dispatch("tables.after",e,t,r)}),o.subParser("underline",function(e,t,r){"use strict";return t.underline?(e=r.converter._dispatch("underline.before",e,t,r),e=(e=t.literalMidWordUnderscores?(e=e.replace(/\b___(\S[\s\S]*?)___\b/g,function(e,t){return"<u>"+t+"</u>"})).replace(/\b__(\S[\s\S]*?)__\b/g,function(e,t){return"<u>"+t+"</u>"}):(e=e.replace(/___(\S[\s\S]*?)___/g,function(e,t){return/\S$/.test(t)?"<u>"+t+"</u>":e})).replace(/__(\S[\s\S]*?)__/g,function(e,t){return/\S$/.test(t)?"<u>"+t+"</u>":e})).replace(/(_)/g,o.helper.escapeCharactersCallback),e=r.converter._dispatch("underline.after",e,t,r)):e}),o.subParser("unescapeSpecialChars",function(e,t,r){"use strict";return e=(e=r.converter._dispatch("unescapeSpecialChars.before",e,t,r)).replace(/¨E(\d+)E/g,function(e,t){var r=parseInt(t);return String.fromCharCode(r)}),r.converter._dispatch("unescapeSpecialChars.after",e,t,r)}),o.subParser("makeMarkdown.blockquote",function(e,t){"use strict";var r="";if(e.hasChildNodes())for(var n=e.childNodes,a=n.length,i=0;i<a;++i){var s=o.subParser("makeMarkdown.node")(n[i],t);""!==s&&(r+=s)}return"> "+(r=r.trim()).split("\n").join("\n> ")}),o.subParser("makeMarkdown.codeBlock",function(e,t){"use strict";var r=e.getAttribute("language"),n=e.getAttribute("precodenum");return"```"+r+"\n"+t.preList[n]+"\n```"}),o.subParser("makeMarkdown.codeSpan",function(e){"use strict";return"`"+e.innerHTML+"`"}),o.subParser("makeMarkdown.emphasis",function(e,t){"use strict";var r="";if(e.hasChildNodes()){r+="*";for(var n=e.childNodes,a=n.length,i=0;i<a;++i)r+=o.subParser("makeMarkdown.node")(n[i],t);r+="*"}return r}),o.subParser("makeMarkdown.header",function(e,t,r){"use strict";var n=new Array(r+1).join("#"),a="";if(e.hasChildNodes()){a=n+" ";for(var i=e.childNodes,s=i.length,l=0;l<s;++l)a+=o.subParser("makeMarkdown.node")(i[l],t)}return a}),o.subParser("makeMarkdown.hr",function(){"use strict";return"---"}),o.subParser("makeMarkdown.image",function(e){"use strict";var t="";return e.hasAttribute("src")&&(t+="!["+e.getAttribute("alt")+"](",t+="<"+e.getAttribute("src")+">",e.hasAttribute("width")&&e.hasAttribute("height")&&(t+=" ="+e.getAttribute("width")+"x"+e.getAttribute("height")),e.hasAttribute("title")&&(t+=' "'+e.getAttribute("title")+'"'),t+=")"),t}),o.subParser("makeMarkdown.links",function(e,t){"use strict";var r="";if(e.hasChildNodes()&&e.hasAttribute("href")){var n=e.childNodes,a=n.length;r="[";for(var i=0;i<a;++i)r+=o.subParser("makeMarkdown.node")(n[i],t);r+="](",r+="<"+e.getAttribute("href")+">",e.hasAttribute("title")&&(r+=' "'+e.getAttribute("title")+'"'),r+=")"}return r}),o.subParser("makeMarkdown.list",function(e,t,r){"use strict";var n="";if(!e.hasChildNodes())return"";for(var a=e.childNodes,i=a.length,s=e.getAttribute("start")||1,l=0;l<i;++l)void 0!==a[l].tagName&&"li"===a[l].tagName.toLowerCase()&&(n+=("ol"===r?s.toString()+". ":"- ")+o.subParser("makeMarkdown.listItem")(a[l],t),++s);return(n+="\n\x3c!-- --\x3e\n").trim()}),o.subParser("makeMarkdown.listItem",function(e,t){"use strict";for(var r="",n=e.childNodes,a=n.length,i=0;i<a;++i)r+=o.subParser("makeMarkdown.node")(n[i],t);return/\n$/.test(r)?r=r.split("\n").join("\n    ").replace(/^ {4}$/gm,"").replace(/\n\n+/g,"\n\n"):r+="\n",r}),o.subParser("makeMarkdown.node",function(e,t,r){"use strict";r=r||!1;var n="";if(3===e.nodeType)return o.subParser("makeMarkdown.txt")(e,t);if(8===e.nodeType)return"\x3c!--"+e.data+"--\x3e\n\n";if(1!==e.nodeType)return"";switch(e.tagName.toLowerCase()){case"h1":r||(n=o.subParser("makeMarkdown.header")(e,t,1)+"\n\n");break;case"h2":r||(n=o.subParser("makeMarkdown.header")(e,t,2)+"\n\n");break;case"h3":r||(n=o.subParser("makeMarkdown.header")(e,t,3)+"\n\n");break;case"h4":r||(n=o.subParser("makeMarkdown.header")(e,t,4)+"\n\n");break;case"h5":r||(n=o.subParser("makeMarkdown.header")(e,t,5)+"\n\n");break;case"h6":r||(n=o.subParser("makeMarkdown.header")(e,t,6)+"\n\n");break;case"p":r||(n=o.subParser("makeMarkdown.paragraph")(e,t)+"\n\n");break;case"blockquote":r||(n=o.subParser("makeMarkdown.blockquote")(e,t)+"\n\n");break;case"hr":r||(n=o.subParser("makeMarkdown.hr")(e,t)+"\n\n");break;case"ol":r||(n=o.subParser("makeMarkdown.list")(e,t,"ol")+"\n\n");break;case"ul":r||(n=o.subParser("makeMarkdown.list")(e,t,"ul")+"\n\n");break;case"precode":r||(n=o.subParser("makeMarkdown.codeBlock")(e,t)+"\n\n");break;case"pre":r||(n=o.subParser("makeMarkdown.pre")(e,t)+"\n\n");break;case"table":r||(n=o.subParser("makeMarkdown.table")(e,t)+"\n\n");break;case"code":n=o.subParser("makeMarkdown.codeSpan")(e,t);break;case"em":case"i":n=o.subParser("makeMarkdown.emphasis")(e,t);break;case"strong":case"b":n=o.subParser("makeMarkdown.strong")(e,t);break;case"del":n=o.subParser("makeMarkdown.strikethrough")(e,t);break;case"a":n=o.subParser("makeMarkdown.links")(e,t);break;case"img":n=o.subParser("makeMarkdown.image")(e,t);break;default:n=e.outerHTML+"\n\n"}return n}),o.subParser("makeMarkdown.paragraph",function(e,t){"use strict";var r="";if(e.hasChildNodes())for(var n=e.childNodes,a=n.length,i=0;i<a;++i)r+=o.subParser("makeMarkdown.node")(n[i],t);return r.trim()}),o.subParser("makeMarkdown.pre",function(e,t){"use strict";var r=e.getAttribute("prenum");return"<pre>"+t.preList[r]+"</pre>"}),o.subParser("makeMarkdown.strikethrough",function(e,t){"use strict";var r="";if(e.hasChildNodes()){r+="~~";for(var n=e.childNodes,a=n.length,i=0;i<a;++i)r+=o.subParser("makeMarkdown.node")(n[i],t);r+="~~"}return r}),o.subParser("makeMarkdown.strong",function(e,t){"use strict";var r="";if(e.hasChildNodes()){r+="**";for(var n=e.childNodes,a=n.length,i=0;i<a;++i)r+=o.subParser("makeMarkdown.node")(n[i],t);r+="**"}return r}),o.subParser("makeMarkdown.table",function(e,t){"use strict";var r,n,a="",i=[[],[]],s=e.querySelectorAll("thead>tr>th"),l=e.querySelectorAll("tbody>tr");for(r=0;r<s.length;++r){var c=o.subParser("makeMarkdown.tableCell")(s[r],t),u="---";if(s[r].hasAttribute("style"))switch(s[r].getAttribute("style").toLowerCase().replace(/\s/g,"")){case"text-align:left;":u=":---";break;case"text-align:right;":u="---:";break;case"text-align:center;":u=":---:"}i[0][r]=c.trim(),i[1][r]=u}for(r=0;r<l.length;++r){var d=i.push([])-1,p=l[r].getElementsByTagName("td");for(n=0;n<s.length;++n){var h=" ";void 0!==p[n]&&(h=o.subParser("makeMarkdown.tableCell")(p[n],t)),i[d].push(h)}}var f=3;for(r=0;r<i.length;++r)for(n=0;n<i[r].length;++n){var m=i[r][n].length;m>f&&(f=m)}for(r=0;r<i.length;++r){for(n=0;n<i[r].length;++n)1===r?":"===i[r][n].slice(-1)?i[r][n]=o.helper.padEnd(i[r][n].slice(-1),f-1,"-")+":":i[r][n]=o.helper.padEnd(i[r][n],f,"-"):i[r][n]=o.helper.padEnd(i[r][n],f);a+="| "+i[r].join(" | ")+" |\n"}return a.trim()}),o.subParser("makeMarkdown.tableCell",function(e,t){"use strict";var r="";if(!e.hasChildNodes())return"";for(var n=e.childNodes,a=n.length,i=0;i<a;++i)r+=o.subParser("makeMarkdown.node")(n[i],t,!0);return r.trim()}),o.subParser("makeMarkdown.txt",function(e){"use strict";var t=e.nodeValue;return t=(t=t.replace(/ +/g," ")).replace(/¨NBSP;/g," "),(t=(t=(t=(t=(t=(t=(t=(t=o.helper.unescapeHTMLEntities(t)).replace(/([*_~|`])/g,"\\$1")).replace(/^(\s*)>/g,"\\$1>")).replace(/^#/gm,"\\#")).replace(/^(\s*)([-=]{3,})(\s*)$/,"$1\\$2$3")).replace(/^( {0,3}\d+)\./gm,"$1\\.")).replace(/^( {0,3})([+-])/gm,"$1\\$2")).replace(/]([\s]*)\(/g,"\\]$1\\(")).replace(/^ {0,3}\[([\S \t]*?)]:/gm,"\\[$1]:")}),void 0===(n=function(){"use strict";return o}.call(t,r,t,e))||(e.exports=n)}).call(this)},609:function(e){"use strict";e.exports=window.React},699:function(e,t,r){"use strict";var n,a=this&&this.__extends||(n=function(e,t){return n=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(e,t){e.__proto__=t}||function(e,t){for(var r in t)Object.prototype.hasOwnProperty.call(t,r)&&(e[r]=t[r])},n(e,t)},function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Class extends value "+String(t)+" is not a constructor or null");function __(){this.constructor=e}n(e,t),e.prototype=null===t?Object.create(t):(__.prototype=t.prototype,new __)}),o=this&&this.__assign||function(){return o=Object.assign||function(e){for(var t,r=1,n=arguments.length;r<n;r++)for(var a in t=arguments[r])Object.prototype.hasOwnProperty.call(t,a)&&(e[a]=t[a]);return e},o.apply(this,arguments)};Object.defineProperty(t,"__esModule",{value:!0}),t.cloneNode=t.hasChildren=t.isDocument=t.isDirective=t.isComment=t.isText=t.isCDATA=t.isTag=t.Element=t.Document=t.CDATA=t.NodeWithChildren=t.ProcessingInstruction=t.Comment=t.Text=t.DataNode=t.Node=void 0;var i=r(413),s=function(){function e(){this.parent=null,this.prev=null,this.next=null,this.startIndex=null,this.endIndex=null}return Object.defineProperty(e.prototype,"parentNode",{get:function(){return this.parent},set:function(e){this.parent=e},enumerable:!1,configurable:!0}),Object.defineProperty(e.prototype,"previousSibling",{get:function(){return this.prev},set:function(e){this.prev=e},enumerable:!1,configurable:!0}),Object.defineProperty(e.prototype,"nextSibling",{get:function(){return this.next},set:function(e){this.next=e},enumerable:!1,configurable:!0}),e.prototype.cloneNode=function(e){return void 0===e&&(e=!1),k(this,e)},e}();t.Node=s;var l=function(e){function t(t){var r=e.call(this)||this;return r.data=t,r}return a(t,e),Object.defineProperty(t.prototype,"nodeValue",{get:function(){return this.data},set:function(e){this.data=e},enumerable:!1,configurable:!0}),t}(s);t.DataNode=l;var c=function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.type=i.ElementType.Text,t}return a(t,e),Object.defineProperty(t.prototype,"nodeType",{get:function(){return 3},enumerable:!1,configurable:!0}),t}(l);t.Text=c;var u=function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.type=i.ElementType.Comment,t}return a(t,e),Object.defineProperty(t.prototype,"nodeType",{get:function(){return 8},enumerable:!1,configurable:!0}),t}(l);t.Comment=u;var d=function(e){function t(t,r){var n=e.call(this,r)||this;return n.name=t,n.type=i.ElementType.Directive,n}return a(t,e),Object.defineProperty(t.prototype,"nodeType",{get:function(){return 1},enumerable:!1,configurable:!0}),t}(l);t.ProcessingInstruction=d;var p=function(e){function t(t){var r=e.call(this)||this;return r.children=t,r}return a(t,e),Object.defineProperty(t.prototype,"firstChild",{get:function(){var e;return null!==(e=this.children[0])&&void 0!==e?e:null},enumerable:!1,configurable:!0}),Object.defineProperty(t.prototype,"lastChild",{get:function(){return this.children.length>0?this.children[this.children.length-1]:null},enumerable:!1,configurable:!0}),Object.defineProperty(t.prototype,"childNodes",{get:function(){return this.children},set:function(e){this.children=e},enumerable:!1,configurable:!0}),t}(s);t.NodeWithChildren=p;var h=function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.type=i.ElementType.CDATA,t}return a(t,e),Object.defineProperty(t.prototype,"nodeType",{get:function(){return 4},enumerable:!1,configurable:!0}),t}(p);t.CDATA=h;var f=function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.type=i.ElementType.Root,t}return a(t,e),Object.defineProperty(t.prototype,"nodeType",{get:function(){return 9},enumerable:!1,configurable:!0}),t}(p);t.Document=f;var m=function(e){function t(t,r,n,a){void 0===n&&(n=[]),void 0===a&&(a="script"===t?i.ElementType.Script:"style"===t?i.ElementType.Style:i.ElementType.Tag);var o=e.call(this,n)||this;return o.name=t,o.attribs=r,o.type=a,o}return a(t,e),Object.defineProperty(t.prototype,"nodeType",{get:function(){return 1},enumerable:!1,configurable:!0}),Object.defineProperty(t.prototype,"tagName",{get:function(){return this.name},set:function(e){this.name=e},enumerable:!1,configurable:!0}),Object.defineProperty(t.prototype,"attributes",{get:function(){var e=this;return Object.keys(this.attribs).map(function(t){var r,n;return{name:t,value:e.attribs[t],namespace:null===(r=e["x-attribsNamespace"])||void 0===r?void 0:r[t],prefix:null===(n=e["x-attribsPrefix"])||void 0===n?void 0:n[t]}})},enumerable:!1,configurable:!0}),t}(p);function g(e){return(0,i.isTag)(e)}function _(e){return e.type===i.ElementType.CDATA}function b(e){return e.type===i.ElementType.Text}function w(e){return e.type===i.ElementType.Comment}function y(e){return e.type===i.ElementType.Directive}function v(e){return e.type===i.ElementType.Root}function k(e,t){var r;if(void 0===t&&(t=!1),b(e))r=new c(e.data);else if(w(e))r=new u(e.data);else if(g(e)){var n=t?x(e.children):[],a=new m(e.name,o({},e.attribs),n);n.forEach(function(e){return e.parent=a}),null!=e.namespace&&(a.namespace=e.namespace),e["x-attribsNamespace"]&&(a["x-attribsNamespace"]=o({},e["x-attribsNamespace"])),e["x-attribsPrefix"]&&(a["x-attribsPrefix"]=o({},e["x-attribsPrefix"])),r=a}else if(_(e)){n=t?x(e.children):[];var i=new h(n);n.forEach(function(e){return e.parent=i}),r=i}else if(v(e)){n=t?x(e.children):[];var s=new f(n);n.forEach(function(e){return e.parent=s}),e["x-mode"]&&(s["x-mode"]=e["x-mode"]),r=s}else{if(!y(e))throw new Error("Not implemented yet: ".concat(e.type));var l=new d(e.name,e.data);null!=e["x-name"]&&(l["x-name"]=e["x-name"],l["x-publicId"]=e["x-publicId"],l["x-systemId"]=e["x-systemId"]),r=l}return r.startIndex=e.startIndex,r.endIndex=e.endIndex,null!=e.sourceCodeLocation&&(r.sourceCodeLocation=e.sourceCodeLocation),r}function x(e){for(var t=e.map(function(e){return k(e,!0)}),r=1;r<t.length;r++)t[r].prev=t[r-1],t[r-1].next=t[r];return t}t.Element=m,t.isTag=g,t.isCDATA=_,t.isText=b,t.isComment=w,t.isDirective=y,t.isDocument=v,t.hasChildren=function(e){return Object.prototype.hasOwnProperty.call(e,"children")},t.cloneNode=k},731:function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.formatAttributes=o,t.escapeSpecialCharacters=function(e){return e.replace(a.CARRIAGE_RETURN_REGEX,a.CARRIAGE_RETURN_PLACEHOLDER)},t.revertEscapedCharacters=s,t.formatDOM=function e(t,r,a){void 0===r&&(r=null);for(var l,c=[],u=0,d=t.length;u<d;u++){var p=t[u];switch(p.nodeType){case 1:var h=i(p.nodeName);(l=new n.Element(h,o(p.attributes))).children=e("template"===h?p.content.childNodes:p.childNodes,l);break;case 3:l=new n.Text(s(p.nodeValue));break;case 8:l=new n.Comment(p.nodeValue);break;default:continue}var f=c[u-1]||null;f&&(f.next=l),l.parent=r,l.prev=f,l.next=null,c.push(l)}return a&&((l=new n.ProcessingInstruction(a.substring(0,a.indexOf(" ")).toLowerCase(),a)).next=c[0]||null,l.parent=r,c.unshift(l),c[1]&&(c[1].prev=c[0])),c};var n=r(899),a=r(270);function o(e){for(var t={},r=0,n=e.length;r<n;r++){var a=e[r];t[a.name]=a.value}return t}function i(e){return function(e){return a.CASE_SENSITIVE_TAG_NAMES_MAP[e]}(e=e.toLowerCase())||e}function s(e){return e.replace(a.CARRIAGE_RETURN_PLACEHOLDER_REGEX,a.CARRIAGE_RETURN)}},788:function(e){var t=/\/\*[^*]*\*+([^/*][^*]*\*+)*\//g,r=/\n/g,n=/^\s*/,a=/^(\*?[-#/*\\\w]+(\[[0-9a-z_-]+\])?)\s*/,o=/^:\s*/,i=/^((?:'(?:\\'|.)*?'|"(?:\\"|.)*?"|\([^)]*?\)|[^};])+)/,s=/^[;\s]*/,l=/^\s+|\s+$/g,c="";function u(e){return e?e.replace(l,c):c}e.exports=function(e,l){if("string"!=typeof e)throw new TypeError("First argument must be a string");if(!e)return[];l=l||{};var d=1,p=1;function h(e){var t=e.match(r);t&&(d+=t.length);var n=e.lastIndexOf("\n");p=~n?e.length-n:p+e.length}function f(){var e={line:d,column:p};return function(t){return t.position=new m(e),w(),t}}function m(e){this.start=e,this.end={line:d,column:p},this.source=l.source}m.prototype.content=e;var g=[];function _(t){var r=new Error(l.source+":"+d+":"+p+": "+t);if(r.reason=t,r.filename=l.source,r.line=d,r.column=p,r.source=e,!l.silent)throw r;g.push(r)}function b(t){var r=t.exec(e);if(r){var n=r[0];return h(n),e=e.slice(n.length),r}}function w(){b(n)}function y(e){var t;for(e=e||[];t=v();)!1!==t&&e.push(t);return e}function v(){var t=f();if("/"==e.charAt(0)&&"*"==e.charAt(1)){for(var r=2;c!=e.charAt(r)&&("*"!=e.charAt(r)||"/"!=e.charAt(r+1));)++r;if(r+=2,c===e.charAt(r-1))return _("End of comment missing");var n=e.slice(2,r-2);return p+=2,h(n),e=e.slice(r),p+=2,t({type:"comment",comment:n})}}function k(){var e=f(),r=b(a);if(r){if(v(),!b(o))return _("property missing ':'");var n=b(i),l=e({type:"declaration",property:u(r[0].replace(t,c)),value:n?u(n[0].replace(t,c)):c});return b(s),l}}return w(),function(){var e,t=[];for(y(t);e=k();)!1!==e&&(t.push(e),y(t));return t}()}},811:function(e,t){t.SAME=0,t.CAMELCASE=1,t.possibleStandardNames={accept:0,acceptCharset:1,"accept-charset":"acceptCharset",accessKey:1,action:0,allowFullScreen:1,alt:0,as:0,async:0,autoCapitalize:1,autoComplete:1,autoCorrect:1,autoFocus:1,autoPlay:1,autoSave:1,capture:0,cellPadding:1,cellSpacing:1,challenge:0,charSet:1,checked:0,children:0,cite:0,class:"className",classID:1,className:1,cols:0,colSpan:1,content:0,contentEditable:1,contextMenu:1,controls:0,controlsList:1,coords:0,crossOrigin:1,dangerouslySetInnerHTML:1,data:0,dateTime:1,default:0,defaultChecked:1,defaultValue:1,defer:0,dir:0,disabled:0,disablePictureInPicture:1,disableRemotePlayback:1,download:0,draggable:0,encType:1,enterKeyHint:1,for:"htmlFor",form:0,formMethod:1,formAction:1,formEncType:1,formNoValidate:1,formTarget:1,frameBorder:1,headers:0,height:0,hidden:0,high:0,href:0,hrefLang:1,htmlFor:1,httpEquiv:1,"http-equiv":"httpEquiv",icon:0,id:0,innerHTML:1,inputMode:1,integrity:0,is:0,itemID:1,itemProp:1,itemRef:1,itemScope:1,itemType:1,keyParams:1,keyType:1,kind:0,label:0,lang:0,list:0,loop:0,low:0,manifest:0,marginWidth:1,marginHeight:1,max:0,maxLength:1,media:0,mediaGroup:1,method:0,min:0,minLength:1,multiple:0,muted:0,name:0,noModule:1,nonce:0,noValidate:1,open:0,optimum:0,pattern:0,placeholder:0,playsInline:1,poster:0,preload:0,profile:0,radioGroup:1,readOnly:1,referrerPolicy:1,rel:0,required:0,reversed:0,role:0,rows:0,rowSpan:1,sandbox:0,scope:0,scoped:0,scrolling:0,seamless:0,selected:0,shape:0,size:0,sizes:0,span:0,spellCheck:1,src:0,srcDoc:1,srcLang:1,srcSet:1,start:0,step:0,style:0,summary:0,tabIndex:1,target:0,title:0,type:0,useMap:1,value:0,width:0,wmode:0,wrap:0,about:0,accentHeight:1,"accent-height":"accentHeight",accumulate:0,additive:0,alignmentBaseline:1,"alignment-baseline":"alignmentBaseline",allowReorder:1,alphabetic:0,amplitude:0,arabicForm:1,"arabic-form":"arabicForm",ascent:0,attributeName:1,attributeType:1,autoReverse:1,azimuth:0,baseFrequency:1,baselineShift:1,"baseline-shift":"baselineShift",baseProfile:1,bbox:0,begin:0,bias:0,by:0,calcMode:1,capHeight:1,"cap-height":"capHeight",clip:0,clipPath:1,"clip-path":"clipPath",clipPathUnits:1,clipRule:1,"clip-rule":"clipRule",color:0,colorInterpolation:1,"color-interpolation":"colorInterpolation",colorInterpolationFilters:1,"color-interpolation-filters":"colorInterpolationFilters",colorProfile:1,"color-profile":"colorProfile",colorRendering:1,"color-rendering":"colorRendering",contentScriptType:1,contentStyleType:1,cursor:0,cx:0,cy:0,d:0,datatype:0,decelerate:0,descent:0,diffuseConstant:1,direction:0,display:0,divisor:0,dominantBaseline:1,"dominant-baseline":"dominantBaseline",dur:0,dx:0,dy:0,edgeMode:1,elevation:0,enableBackground:1,"enable-background":"enableBackground",end:0,exponent:0,externalResourcesRequired:1,fill:0,fillOpacity:1,"fill-opacity":"fillOpacity",fillRule:1,"fill-rule":"fillRule",filter:0,filterRes:1,filterUnits:1,floodOpacity:1,"flood-opacity":"floodOpacity",floodColor:1,"flood-color":"floodColor",focusable:0,fontFamily:1,"font-family":"fontFamily",fontSize:1,"font-size":"fontSize",fontSizeAdjust:1,"font-size-adjust":"fontSizeAdjust",fontStretch:1,"font-stretch":"fontStretch",fontStyle:1,"font-style":"fontStyle",fontVariant:1,"font-variant":"fontVariant",fontWeight:1,"font-weight":"fontWeight",format:0,from:0,fx:0,fy:0,g1:0,g2:0,glyphName:1,"glyph-name":"glyphName",glyphOrientationHorizontal:1,"glyph-orientation-horizontal":"glyphOrientationHorizontal",glyphOrientationVertical:1,"glyph-orientation-vertical":"glyphOrientationVertical",glyphRef:1,gradientTransform:1,gradientUnits:1,hanging:0,horizAdvX:1,"horiz-adv-x":"horizAdvX",horizOriginX:1,"horiz-origin-x":"horizOriginX",ideographic:0,imageRendering:1,"image-rendering":"imageRendering",in2:0,in:0,inlist:0,intercept:0,k1:0,k2:0,k3:0,k4:0,k:0,kernelMatrix:1,kernelUnitLength:1,kerning:0,keyPoints:1,keySplines:1,keyTimes:1,lengthAdjust:1,letterSpacing:1,"letter-spacing":"letterSpacing",lightingColor:1,"lighting-color":"lightingColor",limitingConeAngle:1,local:0,markerEnd:1,"marker-end":"markerEnd",markerHeight:1,markerMid:1,"marker-mid":"markerMid",markerStart:1,"marker-start":"markerStart",markerUnits:1,markerWidth:1,mask:0,maskContentUnits:1,maskUnits:1,mathematical:0,mode:0,numOctaves:1,offset:0,opacity:0,operator:0,order:0,orient:0,orientation:0,origin:0,overflow:0,overlinePosition:1,"overline-position":"overlinePosition",overlineThickness:1,"overline-thickness":"overlineThickness",paintOrder:1,"paint-order":"paintOrder",panose1:0,"panose-1":"panose1",pathLength:1,patternContentUnits:1,patternTransform:1,patternUnits:1,pointerEvents:1,"pointer-events":"pointerEvents",points:0,pointsAtX:1,pointsAtY:1,pointsAtZ:1,prefix:0,preserveAlpha:1,preserveAspectRatio:1,primitiveUnits:1,property:0,r:0,radius:0,refX:1,refY:1,renderingIntent:1,"rendering-intent":"renderingIntent",repeatCount:1,repeatDur:1,requiredExtensions:1,requiredFeatures:1,resource:0,restart:0,result:0,results:0,rotate:0,rx:0,ry:0,scale:0,security:0,seed:0,shapeRendering:1,"shape-rendering":"shapeRendering",slope:0,spacing:0,specularConstant:1,specularExponent:1,speed:0,spreadMethod:1,startOffset:1,stdDeviation:1,stemh:0,stemv:0,stitchTiles:1,stopColor:1,"stop-color":"stopColor",stopOpacity:1,"stop-opacity":"stopOpacity",strikethroughPosition:1,"strikethrough-position":"strikethroughPosition",strikethroughThickness:1,"strikethrough-thickness":"strikethroughThickness",string:0,stroke:0,strokeDasharray:1,"stroke-dasharray":"strokeDasharray",strokeDashoffset:1,"stroke-dashoffset":"strokeDashoffset",strokeLinecap:1,"stroke-linecap":"strokeLinecap",strokeLinejoin:1,"stroke-linejoin":"strokeLinejoin",strokeMiterlimit:1,"stroke-miterlimit":"strokeMiterlimit",strokeWidth:1,"stroke-width":"strokeWidth",strokeOpacity:1,"stroke-opacity":"strokeOpacity",suppressContentEditableWarning:1,suppressHydrationWarning:1,surfaceScale:1,systemLanguage:1,tableValues:1,targetX:1,targetY:1,textAnchor:1,"text-anchor":"textAnchor",textDecoration:1,"text-decoration":"textDecoration",textLength:1,textRendering:1,"text-rendering":"textRendering",to:0,transform:0,typeof:0,u1:0,u2:0,underlinePosition:1,"underline-position":"underlinePosition",underlineThickness:1,"underline-thickness":"underlineThickness",unicode:0,unicodeBidi:1,"unicode-bidi":"unicodeBidi",unicodeRange:1,"unicode-range":"unicodeRange",unitsPerEm:1,"units-per-em":"unitsPerEm",unselectable:0,vAlphabetic:1,"v-alphabetic":"vAlphabetic",values:0,vectorEffect:1,"vector-effect":"vectorEffect",version:0,vertAdvY:1,"vert-adv-y":"vertAdvY",vertOriginX:1,"vert-origin-x":"vertOriginX",vertOriginY:1,"vert-origin-y":"vertOriginY",vHanging:1,"v-hanging":"vHanging",vIdeographic:1,"v-ideographic":"vIdeographic",viewBox:1,viewTarget:1,visibility:0,vMathematical:1,"v-mathematical":"vMathematical",vocab:0,widths:0,wordSpacing:1,"word-spacing":"wordSpacing",writingMode:1,"writing-mode":"writingMode",x1:0,x2:0,x:0,xChannelSelector:1,xHeight:1,"x-height":"xHeight",xlinkActuate:1,"xlink:actuate":"xlinkActuate",xlinkArcrole:1,"xlink:arcrole":"xlinkArcrole",xlinkHref:1,"xlink:href":"xlinkHref",xlinkRole:1,"xlink:role":"xlinkRole",xlinkShow:1,"xlink:show":"xlinkShow",xlinkTitle:1,"xlink:title":"xlinkTitle",xlinkType:1,"xlink:type":"xlinkType",xmlBase:1,"xml:base":"xmlBase",xmlLang:1,"xml:lang":"xmlLang",xmlns:0,"xml:space":"xmlSpace",xmlnsXlink:1,"xmlns:xlink":"xmlnsXlink",xmlSpace:1,y1:0,y2:0,y:0,yChannelSelector:1,z:0,zoomAndPan:1}},840:function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=function(e,t){void 0===e&&(e={});var r={},c=Boolean(e.type&&s[e.type]);for(var u in e){var d=e[u];if((0,n.isCustomAttribute)(u))r[u]=d;else{var p=u.toLowerCase(),h=l(p);if(h){var f=(0,n.getPropertyInfo)(h);switch(o.includes(h)&&i.includes(t)&&!c&&(h=l("default"+p)),r[h]=d,f&&f.type){case n.BOOLEAN:r[h]=!0;break;case n.OVERLOADED_BOOLEAN:""===d&&(r[h]=!0)}}else a.PRESERVE_CUSTOM_ATTRIBUTES&&(r[u]=d)}}return(0,a.setStyleProp)(e.style,r),r};var n=r(210),a=r(958),o=["checked","value"],i=["input","select","textarea"],s={reset:!0,submit:!0};function l(e){return n.possibleStandardNames[e]}},899:function(e,t,r){"use strict";var n=this&&this.__createBinding||(Object.create?function(e,t,r,n){void 0===n&&(n=r);var a=Object.getOwnPropertyDescriptor(t,r);a&&!("get"in a?!t.__esModule:a.writable||a.configurable)||(a={enumerable:!0,get:function(){return t[r]}}),Object.defineProperty(e,n,a)}:function(e,t,r,n){void 0===n&&(n=r),e[n]=t[r]}),a=this&&this.__exportStar||function(e,t){for(var r in e)"default"===r||Object.prototype.hasOwnProperty.call(t,r)||n(t,e,r)};Object.defineProperty(t,"__esModule",{value:!0}),t.DomHandler=void 0;var o=r(413),i=r(699);a(r(699),t);var s={withStartIndices:!1,withEndIndices:!1,xmlMode:!1},l=function(){function e(e,t,r){this.dom=[],this.root=new i.Document(this.dom),this.done=!1,this.tagStack=[this.root],this.lastNode=null,this.parser=null,"function"==typeof t&&(r=t,t=s),"object"==typeof e&&(t=e,e=void 0),this.callback=null!=e?e:null,this.options=null!=t?t:s,this.elementCB=null!=r?r:null}return e.prototype.onparserinit=function(e){this.parser=e},e.prototype.onreset=function(){this.dom=[],this.root=new i.Document(this.dom),this.done=!1,this.tagStack=[this.root],this.lastNode=null,this.parser=null},e.prototype.onend=function(){this.done||(this.done=!0,this.parser=null,this.handleCallback(null))},e.prototype.onerror=function(e){this.handleCallback(e)},e.prototype.onclosetag=function(){this.lastNode=null;var e=this.tagStack.pop();this.options.withEndIndices&&(e.endIndex=this.parser.endIndex),this.elementCB&&this.elementCB(e)},e.prototype.onopentag=function(e,t){var r=this.options.xmlMode?o.ElementType.Tag:void 0,n=new i.Element(e,t,void 0,r);this.addNode(n),this.tagStack.push(n)},e.prototype.ontext=function(e){var t=this.lastNode;if(t&&t.type===o.ElementType.Text)t.data+=e,this.options.withEndIndices&&(t.endIndex=this.parser.endIndex);else{var r=new i.Text(e);this.addNode(r),this.lastNode=r}},e.prototype.oncomment=function(e){if(this.lastNode&&this.lastNode.type===o.ElementType.Comment)this.lastNode.data+=e;else{var t=new i.Comment(e);this.addNode(t),this.lastNode=t}},e.prototype.oncommentend=function(){this.lastNode=null},e.prototype.oncdatastart=function(){var e=new i.Text(""),t=new i.CDATA([e]);this.addNode(t),e.parent=t,this.lastNode=e},e.prototype.oncdataend=function(){this.lastNode=null},e.prototype.onprocessinginstruction=function(e,t){var r=new i.ProcessingInstruction(e,t);this.addNode(r)},e.prototype.handleCallback=function(e){if("function"==typeof this.callback)this.callback(e,this.dom);else if(e)throw e},e.prototype.addNode=function(e){var t=this.tagStack[this.tagStack.length-1],r=t.children[t.children.length-1];this.options.withStartIndices&&(e.startIndex=this.parser.startIndex),this.options.withEndIndices&&(e.endIndex=this.parser.endIndex),t.children.push(e),r&&(e.prev=r,r.next=e),e.parent=t,this.lastNode=null},e}();t.DomHandler=l,t.default=l},917:function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.camelCase=void 0;var r=/^--[a-zA-Z0-9_-]+$/,n=/-([a-z])/g,a=/^[^-]+$/,o=/^-(webkit|moz|ms|o|khtml)-/,i=/^-(ms)-/,s=function(e,t){return t.toUpperCase()},l=function(e,t){return"".concat(t,"-")};t.camelCase=function(e,t){return void 0===t&&(t={}),function(e){return!e||a.test(e)||r.test(e)}(e)?e:(e=e.toLowerCase(),(e=t.reactCompat?e.replace(i,l):e.replace(o,l)).replace(n,s))}},958:function(e,t,r){"use strict";var n=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.returnFirstArg=t.canTextBeChildOfNode=t.ELEMENTS_WITH_NO_TEXT_CHILDREN=t.PRESERVE_CUSTOM_ATTRIBUTES=void 0,t.isCustomComponent=function(e,t){return e.includes("-")?!i.has(e):Boolean(t&&"string"==typeof t.is)},t.setStyleProp=function(e,t){if("string"==typeof e)if(e.trim())try{t.style=(0,o.default)(e,s)}catch(e){t.style={}}else t.style={}};var a=r(609),o=n(r(229)),i=new Set(["annotation-xml","color-profile","font-face","font-face-src","font-face-uri","font-face-format","font-face-name","missing-glyph"]),s={reactCompat:!0};t.PRESERVE_CUSTOM_ATTRIBUTES=Number(a.version.split(".")[0])>=16,t.ELEMENTS_WITH_NO_TEXT_CHILDREN=new Set(["tr","tbody","thead","tfoot","colgroup","table","head","html","frameset"]),t.canTextBeChildOfNode=function(e){return!t.ELEMENTS_WITH_NO_TEXT_CHILDREN.has(e.name)},t.returnFirstArg=function(e){return e}}},r={};function n(e){var a=r[e];if(void 0!==a)return a.exports;var o=r[e]={exports:{}};return t[e].call(o.exports,o,o.exports,n),o.exports}n.m=t,e=[],n.O=function(t,r,a,o){if(!r){var i=1/0;for(u=0;u<e.length;u++){r=e[u][0],a=e[u][1],o=e[u][2];for(var s=!0,l=0;l<r.length;l++)(!1&o||i>=o)&&Object.keys(n.O).every(function(e){return n.O[e](r[l])})?r.splice(l--,1):(s=!1,o<i&&(i=o));if(s){e.splice(u--,1);var c=a();void 0!==c&&(t=c)}}return t}o=o||0;for(var u=e.length;u>0&&e[u-1][2]>o;u--)e[u]=e[u-1];e[u]=[r,a,o]},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},function(){var e={942:0,594:0};n.O.j=function(t){return 0===e[t]};var t=function(t,r){var a,o,i=r[0],s=r[1],l=r[2],c=0;if(i.some(function(t){return 0!==e[t]})){for(a in s)n.o(s,a)&&(n.m[a]=s[a]);if(l)var u=l(n)}for(t&&t(r);c<i.length;c++)o=i[c],n.o(e,o)&&e[o]&&e[o][0](),e[o]=0;return n.O(u)},r=self.webpackChunkr3_id_documentation=self.webpackChunkr3_id_documentation||[];r.forEach(t.bind(null,0)),r.push=t.bind(null,r.push.bind(r))}();var a=n.O(void 0,[594],function(){return n(313)});a=n.O(a)}();
+/******/ (function() { // webpackBootstrap
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./node_modules/domelementtype/lib/index.js":
+/*!**************************************************!*\
+  !*** ./node_modules/domelementtype/lib/index.js ***!
+  \**************************************************/
+/***/ (function(__unused_webpack_module, exports) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.Doctype = exports.CDATA = exports.Tag = exports.Style = exports.Script = exports.Comment = exports.Directive = exports.Text = exports.Root = exports.isTag = exports.ElementType = void 0;
+/** Types of elements found in htmlparser2's DOM */
+var ElementType;
+(function (ElementType) {
+    /** Type for the root element of a document */
+    ElementType["Root"] = "root";
+    /** Type for Text */
+    ElementType["Text"] = "text";
+    /** Type for <? ... ?> */
+    ElementType["Directive"] = "directive";
+    /** Type for <!-- ... --> */
+    ElementType["Comment"] = "comment";
+    /** Type for <script> tags */
+    ElementType["Script"] = "script";
+    /** Type for <style> tags */
+    ElementType["Style"] = "style";
+    /** Type for Any tag */
+    ElementType["Tag"] = "tag";
+    /** Type for <![CDATA[ ... ]]> */
+    ElementType["CDATA"] = "cdata";
+    /** Type for <!doctype ...> */
+    ElementType["Doctype"] = "doctype";
+})(ElementType = exports.ElementType || (exports.ElementType = {}));
+/**
+ * Tests whether an element is a tag or not.
+ *
+ * @param elem Element to test
+ */
+function isTag(elem) {
+    return (elem.type === ElementType.Tag ||
+        elem.type === ElementType.Script ||
+        elem.type === ElementType.Style);
+}
+exports.isTag = isTag;
+// Exports for backwards compatibility
+/** Type for the root element of a document */
+exports.Root = ElementType.Root;
+/** Type for Text */
+exports.Text = ElementType.Text;
+/** Type for <? ... ?> */
+exports.Directive = ElementType.Directive;
+/** Type for <!-- ... --> */
+exports.Comment = ElementType.Comment;
+/** Type for <script> tags */
+exports.Script = ElementType.Script;
+/** Type for <style> tags */
+exports.Style = ElementType.Style;
+/** Type for Any tag */
+exports.Tag = ElementType.Tag;
+/** Type for <![CDATA[ ... ]]> */
+exports.CDATA = ElementType.CDATA;
+/** Type for <!doctype ...> */
+exports.Doctype = ElementType.Doctype;
+
+
+/***/ }),
+
+/***/ "./node_modules/html-dom-parser/lib/client/constants.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/html-dom-parser/lib/client/constants.js ***!
+  \**************************************************************/
+/***/ (function(__unused_webpack_module, exports) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CARRIAGE_RETURN_PLACEHOLDER_REGEX = exports.CARRIAGE_RETURN_PLACEHOLDER = exports.CARRIAGE_RETURN_REGEX = exports.CARRIAGE_RETURN = exports.CASE_SENSITIVE_TAG_NAMES_MAP = exports.CASE_SENSITIVE_TAG_NAMES = void 0;
+/**
+ * SVG elements are case-sensitive.
+ *
+ * @see https://developer.mozilla.org/docs/Web/SVG/Element#svg_elements_a_to_z
+ */
+exports.CASE_SENSITIVE_TAG_NAMES = [
+    'animateMotion',
+    'animateTransform',
+    'clipPath',
+    'feBlend',
+    'feColorMatrix',
+    'feComponentTransfer',
+    'feComposite',
+    'feConvolveMatrix',
+    'feDiffuseLighting',
+    'feDisplacementMap',
+    'feDropShadow',
+    'feFlood',
+    'feFuncA',
+    'feFuncB',
+    'feFuncG',
+    'feFuncR',
+    'feGaussianBlur',
+    'feImage',
+    'feMerge',
+    'feMergeNode',
+    'feMorphology',
+    'feOffset',
+    'fePointLight',
+    'feSpecularLighting',
+    'feSpotLight',
+    'feTile',
+    'feTurbulence',
+    'foreignObject',
+    'linearGradient',
+    'radialGradient',
+    'textPath',
+];
+exports.CASE_SENSITIVE_TAG_NAMES_MAP = exports.CASE_SENSITIVE_TAG_NAMES.reduce(function (accumulator, tagName) {
+    accumulator[tagName.toLowerCase()] = tagName;
+    return accumulator;
+}, {});
+exports.CARRIAGE_RETURN = '\r';
+exports.CARRIAGE_RETURN_REGEX = new RegExp(exports.CARRIAGE_RETURN, 'g');
+exports.CARRIAGE_RETURN_PLACEHOLDER = "__HTML_DOM_PARSER_CARRIAGE_RETURN_PLACEHOLDER_".concat(Date.now(), "__");
+exports.CARRIAGE_RETURN_PLACEHOLDER_REGEX = new RegExp(exports.CARRIAGE_RETURN_PLACEHOLDER, 'g');
+//# sourceMappingURL=constants.js.map
+
+/***/ }),
+
+/***/ "./node_modules/html-dom-parser/lib/client/domparser.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/html-dom-parser/lib/client/domparser.js ***!
+  \**************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports["default"] = domparser;
+var utilities_1 = __webpack_require__(/*! ./utilities */ "./node_modules/html-dom-parser/lib/client/utilities.js");
+// constants
+var HTML = 'html';
+var HEAD = 'head';
+var BODY = 'body';
+var FIRST_TAG_REGEX = /<([a-zA-Z]+[0-9]?)/; // e.g., <h1>
+// match-all-characters in case of newlines (DOTALL)
+var HEAD_TAG_REGEX = /<head[^]*>/i;
+var BODY_TAG_REGEX = /<body[^]*>/i;
+// falls back to `parseFromString` if `createHTMLDocument` cannot be used
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+var parseFromDocument = function (html, tagName) {
+    /* istanbul ignore next */
+    throw new Error('This browser does not support `document.implementation.createHTMLDocument`');
+};
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+var parseFromString = function (html, tagName) {
+    /* istanbul ignore next */
+    throw new Error('This browser does not support `DOMParser.prototype.parseFromString`');
+};
+var DOMParser = typeof window === 'object' && window.DOMParser;
+/**
+ * DOMParser (performance: slow).
+ *
+ * @see https://developer.mozilla.org/docs/Web/API/DOMParser#Parsing_an_SVG_or_HTML_document
+ */
+if (typeof DOMParser === 'function') {
+    var domParser_1 = new DOMParser();
+    var mimeType_1 = 'text/html';
+    /**
+     * Creates an HTML document using `DOMParser.parseFromString`.
+     *
+     * @param html - The HTML string.
+     * @param tagName - The element to render the HTML (with 'body' as fallback).
+     * @returns - Document.
+     */
+    parseFromString = function (html, tagName) {
+        if (tagName) {
+            /* istanbul ignore next */
+            html = "<".concat(tagName, ">").concat(html, "</").concat(tagName, ">");
+        }
+        return domParser_1.parseFromString(html, mimeType_1);
+    };
+    parseFromDocument = parseFromString;
+}
+/**
+ * DOMImplementation (performance: fair).
+ *
+ * @see https://developer.mozilla.org/docs/Web/API/DOMImplementation/createHTMLDocument
+ */
+if (typeof document === 'object' && document.implementation) {
+    var htmlDocument_1 = document.implementation.createHTMLDocument();
+    /**
+     * Use HTML document created by `document.implementation.createHTMLDocument`.
+     *
+     * @param html - The HTML string.
+     * @param tagName - The element to render the HTML (with 'body' as fallback).
+     * @returns - Document
+     */
+    parseFromDocument = function (html, tagName) {
+        if (tagName) {
+            var element = htmlDocument_1.documentElement.querySelector(tagName);
+            if (element) {
+                element.innerHTML = html;
+            }
+            return htmlDocument_1;
+        }
+        htmlDocument_1.documentElement.innerHTML = html;
+        return htmlDocument_1;
+    };
+}
+/**
+ * Template (performance: fast).
+ *
+ * @see https://developer.mozilla.org/docs/Web/HTML/Element/template
+ */
+var template = typeof document === 'object' && document.createElement('template');
+var parseFromTemplate;
+if (template && template.content) {
+    /**
+     * Uses a template element (content fragment) to parse HTML.
+     *
+     * @param html - HTML string.
+     * @returns - Nodes.
+     */
+    parseFromTemplate = function (html) {
+        template.innerHTML = html;
+        return template.content.childNodes;
+    };
+}
+/**
+ * Parses HTML string to DOM nodes.
+ *
+ * @param html - HTML markup.
+ * @returns - DOM nodes.
+ */
+function domparser(html) {
+    var _a, _b;
+    // Escape special characters before parsing
+    html = (0, utilities_1.escapeSpecialCharacters)(html);
+    var match = html.match(FIRST_TAG_REGEX);
+    var firstTagName = match && match[1] ? match[1].toLowerCase() : '';
+    switch (firstTagName) {
+        case HTML: {
+            var doc = parseFromString(html);
+            // the created document may come with filler head/body elements,
+            // so make sure to remove them if they don't actually exist
+            if (!HEAD_TAG_REGEX.test(html)) {
+                var element = doc.querySelector(HEAD);
+                (_a = element === null || element === void 0 ? void 0 : element.parentNode) === null || _a === void 0 ? void 0 : _a.removeChild(element);
+            }
+            if (!BODY_TAG_REGEX.test(html)) {
+                var element = doc.querySelector(BODY);
+                (_b = element === null || element === void 0 ? void 0 : element.parentNode) === null || _b === void 0 ? void 0 : _b.removeChild(element);
+            }
+            return doc.querySelectorAll(HTML);
+        }
+        case HEAD:
+        case BODY: {
+            var elements = parseFromDocument(html).querySelectorAll(firstTagName);
+            // if there's a sibling element, then return both elements
+            if (BODY_TAG_REGEX.test(html) && HEAD_TAG_REGEX.test(html)) {
+                return elements[0].parentNode.childNodes;
+            }
+            return elements;
+        }
+        // low-level tag or text
+        default: {
+            if (parseFromTemplate) {
+                return parseFromTemplate(html);
+            }
+            var element = parseFromDocument(html, BODY).querySelector(BODY);
+            return element.childNodes;
+        }
+    }
+}
+//# sourceMappingURL=domparser.js.map
+
+/***/ }),
+
+/***/ "./node_modules/html-dom-parser/lib/client/html-to-dom.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/html-dom-parser/lib/client/html-to-dom.js ***!
+  \****************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports["default"] = HTMLDOMParser;
+var domparser_1 = __importDefault(__webpack_require__(/*! ./domparser */ "./node_modules/html-dom-parser/lib/client/domparser.js"));
+var utilities_1 = __webpack_require__(/*! ./utilities */ "./node_modules/html-dom-parser/lib/client/utilities.js");
+var DIRECTIVE_REGEX = /<(![a-zA-Z\s]+)>/; // e.g., <!doctype html>
+/**
+ * Parses HTML string to DOM nodes in browser.
+ *
+ * @param html - HTML markup.
+ * @returns - DOM elements.
+ */
+function HTMLDOMParser(html) {
+    if (typeof html !== 'string') {
+        throw new TypeError('First argument must be a string');
+    }
+    if (!html) {
+        return [];
+    }
+    // match directive
+    var match = html.match(DIRECTIVE_REGEX);
+    var directive = match ? match[1] : undefined;
+    return (0, utilities_1.formatDOM)((0, domparser_1.default)(html), null, directive);
+}
+//# sourceMappingURL=html-to-dom.js.map
+
+/***/ }),
+
+/***/ "./node_modules/html-dom-parser/lib/client/utilities.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/html-dom-parser/lib/client/utilities.js ***!
+  \**************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.formatAttributes = formatAttributes;
+exports.escapeSpecialCharacters = escapeSpecialCharacters;
+exports.revertEscapedCharacters = revertEscapedCharacters;
+exports.formatDOM = formatDOM;
+var domhandler_1 = __webpack_require__(/*! domhandler */ "./node_modules/html-dom-parser/node_modules/domhandler/lib/index.js");
+var constants_1 = __webpack_require__(/*! ./constants */ "./node_modules/html-dom-parser/lib/client/constants.js");
+/**
+ * Gets case-sensitive tag name.
+ *
+ * @param tagName - Tag name in lowercase.
+ * @returns - Case-sensitive tag name.
+ */
+function getCaseSensitiveTagName(tagName) {
+    return constants_1.CASE_SENSITIVE_TAG_NAMES_MAP[tagName];
+}
+/**
+ * Formats DOM attributes to a hash map.
+ *
+ * @param attributes - List of attributes.
+ * @returns - Map of attribute name to value.
+ */
+function formatAttributes(attributes) {
+    var map = {};
+    var index = 0;
+    var attributesLength = attributes.length;
+    // `NamedNodeMap` is array-like
+    for (; index < attributesLength; index++) {
+        var attribute = attributes[index];
+        map[attribute.name] = attribute.value;
+    }
+    return map;
+}
+/**
+ * Corrects the tag name if it is case-sensitive (SVG).
+ * Otherwise, returns the lowercase tag name (HTML).
+ *
+ * @param tagName - Lowercase tag name.
+ * @returns - Formatted tag name.
+ */
+function formatTagName(tagName) {
+    tagName = tagName.toLowerCase();
+    var caseSensitiveTagName = getCaseSensitiveTagName(tagName);
+    if (caseSensitiveTagName) {
+        return caseSensitiveTagName;
+    }
+    return tagName;
+}
+/**
+ * Escapes special characters before parsing.
+ *
+ * @param html - The HTML string.
+ * @returns - HTML string with escaped special characters.
+ */
+function escapeSpecialCharacters(html) {
+    return html.replace(constants_1.CARRIAGE_RETURN_REGEX, constants_1.CARRIAGE_RETURN_PLACEHOLDER);
+}
+/**
+ * Reverts escaped special characters back to actual characters.
+ *
+ * @param text - The text with escaped characters.
+ * @returns - Text with escaped characters reverted.
+ */
+function revertEscapedCharacters(text) {
+    return text.replace(constants_1.CARRIAGE_RETURN_PLACEHOLDER_REGEX, constants_1.CARRIAGE_RETURN);
+}
+/**
+ * Transforms DOM nodes to `domhandler` nodes.
+ *
+ * @param nodes - DOM nodes.
+ * @param parent - Parent node.
+ * @param directive - Directive.
+ * @returns - Nodes.
+ */
+function formatDOM(nodes, parent, directive) {
+    if (parent === void 0) { parent = null; }
+    var domNodes = [];
+    var current;
+    var index = 0;
+    var nodesLength = nodes.length;
+    for (; index < nodesLength; index++) {
+        var node = nodes[index];
+        // set the node data given the type
+        switch (node.nodeType) {
+            case 1: {
+                var tagName = formatTagName(node.nodeName);
+                // script, style, or tag
+                current = new domhandler_1.Element(tagName, formatAttributes(node.attributes));
+                current.children = formatDOM(
+                // template children are on content
+                tagName === 'template'
+                    ? node.content.childNodes
+                    : node.childNodes, current);
+                break;
+            }
+            case 3:
+                current = new domhandler_1.Text(revertEscapedCharacters(node.nodeValue));
+                break;
+            case 8:
+                current = new domhandler_1.Comment(node.nodeValue);
+                break;
+            default:
+                continue;
+        }
+        // set previous node next
+        var prev = domNodes[index - 1] || null;
+        if (prev) {
+            prev.next = current;
+        }
+        // set properties for current node
+        current.parent = parent;
+        current.prev = prev;
+        current.next = null;
+        domNodes.push(current);
+    }
+    if (directive) {
+        current = new domhandler_1.ProcessingInstruction(directive.substring(0, directive.indexOf(' ')).toLowerCase(), directive);
+        current.next = domNodes[0] || null;
+        current.parent = parent;
+        domNodes.unshift(current);
+        if (domNodes[1]) {
+            domNodes[1].prev = domNodes[0];
+        }
+    }
+    return domNodes;
+}
+//# sourceMappingURL=utilities.js.map
+
+/***/ }),
+
+/***/ "./node_modules/html-dom-parser/node_modules/domhandler/lib/index.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/html-dom-parser/node_modules/domhandler/lib/index.js ***!
+  \***************************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.DomHandler = void 0;
+var domelementtype_1 = __webpack_require__(/*! domelementtype */ "./node_modules/domelementtype/lib/index.js");
+var node_js_1 = __webpack_require__(/*! ./node.js */ "./node_modules/html-dom-parser/node_modules/domhandler/lib/node.js");
+__exportStar(__webpack_require__(/*! ./node.js */ "./node_modules/html-dom-parser/node_modules/domhandler/lib/node.js"), exports);
+// Default options
+var defaultOpts = {
+    withStartIndices: false,
+    withEndIndices: false,
+    xmlMode: false,
+};
+var DomHandler = /** @class */ (function () {
+    /**
+     * @param callback Called once parsing has completed.
+     * @param options Settings for the handler.
+     * @param elementCB Callback whenever a tag is closed.
+     */
+    function DomHandler(callback, options, elementCB) {
+        /** The elements of the DOM */
+        this.dom = [];
+        /** The root element for the DOM */
+        this.root = new node_js_1.Document(this.dom);
+        /** Indicated whether parsing has been completed. */
+        this.done = false;
+        /** Stack of open tags. */
+        this.tagStack = [this.root];
+        /** A data node that is still being written to. */
+        this.lastNode = null;
+        /** Reference to the parser instance. Used for location information. */
+        this.parser = null;
+        // Make it possible to skip arguments, for backwards-compatibility
+        if (typeof options === "function") {
+            elementCB = options;
+            options = defaultOpts;
+        }
+        if (typeof callback === "object") {
+            options = callback;
+            callback = undefined;
+        }
+        this.callback = callback !== null && callback !== void 0 ? callback : null;
+        this.options = options !== null && options !== void 0 ? options : defaultOpts;
+        this.elementCB = elementCB !== null && elementCB !== void 0 ? elementCB : null;
+    }
+    DomHandler.prototype.onparserinit = function (parser) {
+        this.parser = parser;
+    };
+    // Resets the handler back to starting state
+    DomHandler.prototype.onreset = function () {
+        this.dom = [];
+        this.root = new node_js_1.Document(this.dom);
+        this.done = false;
+        this.tagStack = [this.root];
+        this.lastNode = null;
+        this.parser = null;
+    };
+    // Signals the handler that parsing is done
+    DomHandler.prototype.onend = function () {
+        if (this.done)
+            return;
+        this.done = true;
+        this.parser = null;
+        this.handleCallback(null);
+    };
+    DomHandler.prototype.onerror = function (error) {
+        this.handleCallback(error);
+    };
+    DomHandler.prototype.onclosetag = function () {
+        this.lastNode = null;
+        var elem = this.tagStack.pop();
+        if (this.options.withEndIndices) {
+            elem.endIndex = this.parser.endIndex;
+        }
+        if (this.elementCB)
+            this.elementCB(elem);
+    };
+    DomHandler.prototype.onopentag = function (name, attribs) {
+        var type = this.options.xmlMode ? domelementtype_1.ElementType.Tag : undefined;
+        var element = new node_js_1.Element(name, attribs, undefined, type);
+        this.addNode(element);
+        this.tagStack.push(element);
+    };
+    DomHandler.prototype.ontext = function (data) {
+        var lastNode = this.lastNode;
+        if (lastNode && lastNode.type === domelementtype_1.ElementType.Text) {
+            lastNode.data += data;
+            if (this.options.withEndIndices) {
+                lastNode.endIndex = this.parser.endIndex;
+            }
+        }
+        else {
+            var node = new node_js_1.Text(data);
+            this.addNode(node);
+            this.lastNode = node;
+        }
+    };
+    DomHandler.prototype.oncomment = function (data) {
+        if (this.lastNode && this.lastNode.type === domelementtype_1.ElementType.Comment) {
+            this.lastNode.data += data;
+            return;
+        }
+        var node = new node_js_1.Comment(data);
+        this.addNode(node);
+        this.lastNode = node;
+    };
+    DomHandler.prototype.oncommentend = function () {
+        this.lastNode = null;
+    };
+    DomHandler.prototype.oncdatastart = function () {
+        var text = new node_js_1.Text("");
+        var node = new node_js_1.CDATA([text]);
+        this.addNode(node);
+        text.parent = node;
+        this.lastNode = text;
+    };
+    DomHandler.prototype.oncdataend = function () {
+        this.lastNode = null;
+    };
+    DomHandler.prototype.onprocessinginstruction = function (name, data) {
+        var node = new node_js_1.ProcessingInstruction(name, data);
+        this.addNode(node);
+    };
+    DomHandler.prototype.handleCallback = function (error) {
+        if (typeof this.callback === "function") {
+            this.callback(error, this.dom);
+        }
+        else if (error) {
+            throw error;
+        }
+    };
+    DomHandler.prototype.addNode = function (node) {
+        var parent = this.tagStack[this.tagStack.length - 1];
+        var previousSibling = parent.children[parent.children.length - 1];
+        if (this.options.withStartIndices) {
+            node.startIndex = this.parser.startIndex;
+        }
+        if (this.options.withEndIndices) {
+            node.endIndex = this.parser.endIndex;
+        }
+        parent.children.push(node);
+        if (previousSibling) {
+            node.prev = previousSibling;
+            previousSibling.next = node;
+        }
+        node.parent = parent;
+        this.lastNode = null;
+    };
+    return DomHandler;
+}());
+exports.DomHandler = DomHandler;
+exports["default"] = DomHandler;
+
+
+/***/ }),
+
+/***/ "./node_modules/html-dom-parser/node_modules/domhandler/lib/node.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/html-dom-parser/node_modules/domhandler/lib/node.js ***!
+  \**************************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.cloneNode = exports.hasChildren = exports.isDocument = exports.isDirective = exports.isComment = exports.isText = exports.isCDATA = exports.isTag = exports.Element = exports.Document = exports.CDATA = exports.NodeWithChildren = exports.ProcessingInstruction = exports.Comment = exports.Text = exports.DataNode = exports.Node = void 0;
+var domelementtype_1 = __webpack_require__(/*! domelementtype */ "./node_modules/domelementtype/lib/index.js");
+/**
+ * This object will be used as the prototype for Nodes when creating a
+ * DOM-Level-1-compliant structure.
+ */
+var Node = /** @class */ (function () {
+    function Node() {
+        /** Parent of the node */
+        this.parent = null;
+        /** Previous sibling */
+        this.prev = null;
+        /** Next sibling */
+        this.next = null;
+        /** The start index of the node. Requires `withStartIndices` on the handler to be `true. */
+        this.startIndex = null;
+        /** The end index of the node. Requires `withEndIndices` on the handler to be `true. */
+        this.endIndex = null;
+    }
+    Object.defineProperty(Node.prototype, "parentNode", {
+        // Read-write aliases for properties
+        /**
+         * Same as {@link parent}.
+         * [DOM spec](https://dom.spec.whatwg.org)-compatible alias.
+         */
+        get: function () {
+            return this.parent;
+        },
+        set: function (parent) {
+            this.parent = parent;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Node.prototype, "previousSibling", {
+        /**
+         * Same as {@link prev}.
+         * [DOM spec](https://dom.spec.whatwg.org)-compatible alias.
+         */
+        get: function () {
+            return this.prev;
+        },
+        set: function (prev) {
+            this.prev = prev;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Node.prototype, "nextSibling", {
+        /**
+         * Same as {@link next}.
+         * [DOM spec](https://dom.spec.whatwg.org)-compatible alias.
+         */
+        get: function () {
+            return this.next;
+        },
+        set: function (next) {
+            this.next = next;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    /**
+     * Clone this node, and optionally its children.
+     *
+     * @param recursive Clone child nodes as well.
+     * @returns A clone of the node.
+     */
+    Node.prototype.cloneNode = function (recursive) {
+        if (recursive === void 0) { recursive = false; }
+        return cloneNode(this, recursive);
+    };
+    return Node;
+}());
+exports.Node = Node;
+/**
+ * A node that contains some data.
+ */
+var DataNode = /** @class */ (function (_super) {
+    __extends(DataNode, _super);
+    /**
+     * @param data The content of the data node
+     */
+    function DataNode(data) {
+        var _this = _super.call(this) || this;
+        _this.data = data;
+        return _this;
+    }
+    Object.defineProperty(DataNode.prototype, "nodeValue", {
+        /**
+         * Same as {@link data}.
+         * [DOM spec](https://dom.spec.whatwg.org)-compatible alias.
+         */
+        get: function () {
+            return this.data;
+        },
+        set: function (data) {
+            this.data = data;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return DataNode;
+}(Node));
+exports.DataNode = DataNode;
+/**
+ * Text within the document.
+ */
+var Text = /** @class */ (function (_super) {
+    __extends(Text, _super);
+    function Text() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.type = domelementtype_1.ElementType.Text;
+        return _this;
+    }
+    Object.defineProperty(Text.prototype, "nodeType", {
+        get: function () {
+            return 3;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return Text;
+}(DataNode));
+exports.Text = Text;
+/**
+ * Comments within the document.
+ */
+var Comment = /** @class */ (function (_super) {
+    __extends(Comment, _super);
+    function Comment() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.type = domelementtype_1.ElementType.Comment;
+        return _this;
+    }
+    Object.defineProperty(Comment.prototype, "nodeType", {
+        get: function () {
+            return 8;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return Comment;
+}(DataNode));
+exports.Comment = Comment;
+/**
+ * Processing instructions, including doc types.
+ */
+var ProcessingInstruction = /** @class */ (function (_super) {
+    __extends(ProcessingInstruction, _super);
+    function ProcessingInstruction(name, data) {
+        var _this = _super.call(this, data) || this;
+        _this.name = name;
+        _this.type = domelementtype_1.ElementType.Directive;
+        return _this;
+    }
+    Object.defineProperty(ProcessingInstruction.prototype, "nodeType", {
+        get: function () {
+            return 1;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return ProcessingInstruction;
+}(DataNode));
+exports.ProcessingInstruction = ProcessingInstruction;
+/**
+ * A `Node` that can have children.
+ */
+var NodeWithChildren = /** @class */ (function (_super) {
+    __extends(NodeWithChildren, _super);
+    /**
+     * @param children Children of the node. Only certain node types can have children.
+     */
+    function NodeWithChildren(children) {
+        var _this = _super.call(this) || this;
+        _this.children = children;
+        return _this;
+    }
+    Object.defineProperty(NodeWithChildren.prototype, "firstChild", {
+        // Aliases
+        /** First child of the node. */
+        get: function () {
+            var _a;
+            return (_a = this.children[0]) !== null && _a !== void 0 ? _a : null;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(NodeWithChildren.prototype, "lastChild", {
+        /** Last child of the node. */
+        get: function () {
+            return this.children.length > 0
+                ? this.children[this.children.length - 1]
+                : null;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(NodeWithChildren.prototype, "childNodes", {
+        /**
+         * Same as {@link children}.
+         * [DOM spec](https://dom.spec.whatwg.org)-compatible alias.
+         */
+        get: function () {
+            return this.children;
+        },
+        set: function (children) {
+            this.children = children;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return NodeWithChildren;
+}(Node));
+exports.NodeWithChildren = NodeWithChildren;
+var CDATA = /** @class */ (function (_super) {
+    __extends(CDATA, _super);
+    function CDATA() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.type = domelementtype_1.ElementType.CDATA;
+        return _this;
+    }
+    Object.defineProperty(CDATA.prototype, "nodeType", {
+        get: function () {
+            return 4;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return CDATA;
+}(NodeWithChildren));
+exports.CDATA = CDATA;
+/**
+ * The root node of the document.
+ */
+var Document = /** @class */ (function (_super) {
+    __extends(Document, _super);
+    function Document() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.type = domelementtype_1.ElementType.Root;
+        return _this;
+    }
+    Object.defineProperty(Document.prototype, "nodeType", {
+        get: function () {
+            return 9;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return Document;
+}(NodeWithChildren));
+exports.Document = Document;
+/**
+ * An element within the DOM.
+ */
+var Element = /** @class */ (function (_super) {
+    __extends(Element, _super);
+    /**
+     * @param name Name of the tag, eg. `div`, `span`.
+     * @param attribs Object mapping attribute names to attribute values.
+     * @param children Children of the node.
+     */
+    function Element(name, attribs, children, type) {
+        if (children === void 0) { children = []; }
+        if (type === void 0) { type = name === "script"
+            ? domelementtype_1.ElementType.Script
+            : name === "style"
+                ? domelementtype_1.ElementType.Style
+                : domelementtype_1.ElementType.Tag; }
+        var _this = _super.call(this, children) || this;
+        _this.name = name;
+        _this.attribs = attribs;
+        _this.type = type;
+        return _this;
+    }
+    Object.defineProperty(Element.prototype, "nodeType", {
+        get: function () {
+            return 1;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Element.prototype, "tagName", {
+        // DOM Level 1 aliases
+        /**
+         * Same as {@link name}.
+         * [DOM spec](https://dom.spec.whatwg.org)-compatible alias.
+         */
+        get: function () {
+            return this.name;
+        },
+        set: function (name) {
+            this.name = name;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Element.prototype, "attributes", {
+        get: function () {
+            var _this = this;
+            return Object.keys(this.attribs).map(function (name) {
+                var _a, _b;
+                return ({
+                    name: name,
+                    value: _this.attribs[name],
+                    namespace: (_a = _this["x-attribsNamespace"]) === null || _a === void 0 ? void 0 : _a[name],
+                    prefix: (_b = _this["x-attribsPrefix"]) === null || _b === void 0 ? void 0 : _b[name],
+                });
+            });
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return Element;
+}(NodeWithChildren));
+exports.Element = Element;
+/**
+ * @param node Node to check.
+ * @returns `true` if the node is a `Element`, `false` otherwise.
+ */
+function isTag(node) {
+    return (0, domelementtype_1.isTag)(node);
+}
+exports.isTag = isTag;
+/**
+ * @param node Node to check.
+ * @returns `true` if the node has the type `CDATA`, `false` otherwise.
+ */
+function isCDATA(node) {
+    return node.type === domelementtype_1.ElementType.CDATA;
+}
+exports.isCDATA = isCDATA;
+/**
+ * @param node Node to check.
+ * @returns `true` if the node has the type `Text`, `false` otherwise.
+ */
+function isText(node) {
+    return node.type === domelementtype_1.ElementType.Text;
+}
+exports.isText = isText;
+/**
+ * @param node Node to check.
+ * @returns `true` if the node has the type `Comment`, `false` otherwise.
+ */
+function isComment(node) {
+    return node.type === domelementtype_1.ElementType.Comment;
+}
+exports.isComment = isComment;
+/**
+ * @param node Node to check.
+ * @returns `true` if the node has the type `ProcessingInstruction`, `false` otherwise.
+ */
+function isDirective(node) {
+    return node.type === domelementtype_1.ElementType.Directive;
+}
+exports.isDirective = isDirective;
+/**
+ * @param node Node to check.
+ * @returns `true` if the node has the type `ProcessingInstruction`, `false` otherwise.
+ */
+function isDocument(node) {
+    return node.type === domelementtype_1.ElementType.Root;
+}
+exports.isDocument = isDocument;
+/**
+ * @param node Node to check.
+ * @returns `true` if the node has children, `false` otherwise.
+ */
+function hasChildren(node) {
+    return Object.prototype.hasOwnProperty.call(node, "children");
+}
+exports.hasChildren = hasChildren;
+/**
+ * Clone a node, and optionally its children.
+ *
+ * @param recursive Clone child nodes as well.
+ * @returns A clone of the node.
+ */
+function cloneNode(node, recursive) {
+    if (recursive === void 0) { recursive = false; }
+    var result;
+    if (isText(node)) {
+        result = new Text(node.data);
+    }
+    else if (isComment(node)) {
+        result = new Comment(node.data);
+    }
+    else if (isTag(node)) {
+        var children = recursive ? cloneChildren(node.children) : [];
+        var clone_1 = new Element(node.name, __assign({}, node.attribs), children);
+        children.forEach(function (child) { return (child.parent = clone_1); });
+        if (node.namespace != null) {
+            clone_1.namespace = node.namespace;
+        }
+        if (node["x-attribsNamespace"]) {
+            clone_1["x-attribsNamespace"] = __assign({}, node["x-attribsNamespace"]);
+        }
+        if (node["x-attribsPrefix"]) {
+            clone_1["x-attribsPrefix"] = __assign({}, node["x-attribsPrefix"]);
+        }
+        result = clone_1;
+    }
+    else if (isCDATA(node)) {
+        var children = recursive ? cloneChildren(node.children) : [];
+        var clone_2 = new CDATA(children);
+        children.forEach(function (child) { return (child.parent = clone_2); });
+        result = clone_2;
+    }
+    else if (isDocument(node)) {
+        var children = recursive ? cloneChildren(node.children) : [];
+        var clone_3 = new Document(children);
+        children.forEach(function (child) { return (child.parent = clone_3); });
+        if (node["x-mode"]) {
+            clone_3["x-mode"] = node["x-mode"];
+        }
+        result = clone_3;
+    }
+    else if (isDirective(node)) {
+        var instruction = new ProcessingInstruction(node.name, node.data);
+        if (node["x-name"] != null) {
+            instruction["x-name"] = node["x-name"];
+            instruction["x-publicId"] = node["x-publicId"];
+            instruction["x-systemId"] = node["x-systemId"];
+        }
+        result = instruction;
+    }
+    else {
+        throw new Error("Not implemented yet: ".concat(node.type));
+    }
+    result.startIndex = node.startIndex;
+    result.endIndex = node.endIndex;
+    if (node.sourceCodeLocation != null) {
+        result.sourceCodeLocation = node.sourceCodeLocation;
+    }
+    return result;
+}
+exports.cloneNode = cloneNode;
+function cloneChildren(childs) {
+    var children = childs.map(function (child) { return cloneNode(child, true); });
+    for (var i = 1; i < children.length; i++) {
+        children[i].prev = children[i - 1];
+        children[i - 1].next = children[i];
+    }
+    return children;
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/html-react-parser/esm/index.mjs":
+/*!******************************************************!*\
+  !*** ./node_modules/html-react-parser/esm/index.mjs ***!
+  \******************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Comment: function() { return /* reexport safe */ _lib_index_js__WEBPACK_IMPORTED_MODULE_0__.Comment; },
+/* harmony export */   Element: function() { return /* reexport safe */ _lib_index_js__WEBPACK_IMPORTED_MODULE_0__.Element; },
+/* harmony export */   ProcessingInstruction: function() { return /* reexport safe */ _lib_index_js__WEBPACK_IMPORTED_MODULE_0__.ProcessingInstruction; },
+/* harmony export */   Text: function() { return /* reexport safe */ _lib_index_js__WEBPACK_IMPORTED_MODULE_0__.Text; },
+/* harmony export */   attributesToProps: function() { return /* reexport safe */ _lib_index_js__WEBPACK_IMPORTED_MODULE_0__.attributesToProps; },
+/* harmony export */   domToReact: function() { return /* reexport safe */ _lib_index_js__WEBPACK_IMPORTED_MODULE_0__.domToReact; },
+/* harmony export */   htmlToDOM: function() { return /* reexport safe */ _lib_index_js__WEBPACK_IMPORTED_MODULE_0__.htmlToDOM; }
+/* harmony export */ });
+/* harmony import */ var _lib_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../lib/index.js */ "./node_modules/html-react-parser/lib/index.js");
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = (_lib_index_js__WEBPACK_IMPORTED_MODULE_0__["default"] || _lib_index_js__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/***/ }),
+
+/***/ "./node_modules/html-react-parser/lib/attributes-to-props.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/html-react-parser/lib/attributes-to-props.js ***!
+  \*******************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports["default"] = attributesToProps;
+var react_property_1 = __webpack_require__(/*! react-property */ "./node_modules/react-property/lib/index.js");
+var utilities_1 = __webpack_require__(/*! ./utilities */ "./node_modules/html-react-parser/lib/utilities.js");
+// https://react.dev/learn/sharing-state-between-components#controlled-and-uncontrolled-components
+// https://developer.mozilla.org/docs/Web/HTML/Attributes
+var UNCONTROLLED_COMPONENT_ATTRIBUTES = ['checked', 'value'];
+var UNCONTROLLED_COMPONENT_NAMES = ['input', 'select', 'textarea'];
+var valueOnlyInputs = {
+    reset: true,
+    submit: true,
+};
+/**
+ * Converts HTML/SVG DOM attributes to React props.
+ *
+ * @param attributes - HTML/SVG DOM attributes.
+ * @param nodeName - DOM node name.
+ * @returns - React props.
+ */
+function attributesToProps(attributes, nodeName) {
+    if (attributes === void 0) { attributes = {}; }
+    var props = {};
+    var isInputValueOnly = Boolean(attributes.type && valueOnlyInputs[attributes.type]);
+    for (var attributeName in attributes) {
+        var attributeValue = attributes[attributeName];
+        // ARIA (aria-*) or custom data (data-*) attribute
+        if ((0, react_property_1.isCustomAttribute)(attributeName)) {
+            props[attributeName] = attributeValue;
+            continue;
+        }
+        // convert HTML/SVG attribute to React prop
+        var attributeNameLowerCased = attributeName.toLowerCase();
+        var propName = getPropName(attributeNameLowerCased);
+        if (propName) {
+            var propertyInfo = (0, react_property_1.getPropertyInfo)(propName);
+            // convert attribute to uncontrolled component prop (e.g., `value` to `defaultValue`)
+            if (UNCONTROLLED_COMPONENT_ATTRIBUTES.includes(propName) &&
+                UNCONTROLLED_COMPONENT_NAMES.includes(nodeName) &&
+                !isInputValueOnly) {
+                propName = getPropName('default' + attributeNameLowerCased);
+            }
+            props[propName] = attributeValue;
+            switch (propertyInfo && propertyInfo.type) {
+                case react_property_1.BOOLEAN:
+                    props[propName] = true;
+                    break;
+                case react_property_1.OVERLOADED_BOOLEAN:
+                    if (attributeValue === '') {
+                        props[propName] = true;
+                    }
+                    break;
+            }
+            continue;
+        }
+        // preserve custom attribute if React >=16
+        if (utilities_1.PRESERVE_CUSTOM_ATTRIBUTES) {
+            props[attributeName] = attributeValue;
+        }
+    }
+    // transform inline style to object
+    (0, utilities_1.setStyleProp)(attributes.style, props);
+    return props;
+}
+/**
+ * Gets prop name from lowercased attribute name.
+ *
+ * @param attributeName - Lowercased attribute name.
+ * @returns - Prop name.
+ */
+function getPropName(attributeName) {
+    return react_property_1.possibleStandardNames[attributeName];
+}
+//# sourceMappingURL=attributes-to-props.js.map
+
+/***/ }),
+
+/***/ "./node_modules/html-react-parser/lib/dom-to-react.js":
+/*!************************************************************!*\
+  !*** ./node_modules/html-react-parser/lib/dom-to-react.js ***!
+  \************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports["default"] = domToReact;
+var react_1 = __webpack_require__(/*! react */ "react");
+var attributes_to_props_1 = __importDefault(__webpack_require__(/*! ./attributes-to-props */ "./node_modules/html-react-parser/lib/attributes-to-props.js"));
+var utilities_1 = __webpack_require__(/*! ./utilities */ "./node_modules/html-react-parser/lib/utilities.js");
+var React = {
+    cloneElement: react_1.cloneElement,
+    createElement: react_1.createElement,
+    isValidElement: react_1.isValidElement,
+};
+/**
+ * Converts DOM nodes to JSX element(s).
+ *
+ * @param nodes - DOM nodes.
+ * @param options - Options.
+ * @returns - String or JSX element(s).
+ */
+function domToReact(nodes, options) {
+    if (options === void 0) { options = {}; }
+    var reactElements = [];
+    var hasReplace = typeof options.replace === 'function';
+    var transform = options.transform || utilities_1.returnFirstArg;
+    var _a = options.library || React, cloneElement = _a.cloneElement, createElement = _a.createElement, isValidElement = _a.isValidElement;
+    var nodesLength = nodes.length;
+    for (var index = 0; index < nodesLength; index++) {
+        var node = nodes[index];
+        // replace with custom React element (if present)
+        if (hasReplace) {
+            var replaceElement = options.replace(node, index);
+            if (isValidElement(replaceElement)) {
+                // set "key" prop for sibling elements
+                // https://react.dev/learn/rendering-lists#rules-of-keys
+                if (nodesLength > 1) {
+                    replaceElement = cloneElement(replaceElement, {
+                        key: replaceElement.key || index,
+                    });
+                }
+                reactElements.push(transform(replaceElement, node, index));
+                continue;
+            }
+        }
+        if (node.type === 'text') {
+            var isWhitespace = !node.data.trim().length;
+            // We have a whitespace node that can't be nested in its parent
+            // so skip it
+            if (isWhitespace &&
+                node.parent &&
+                !(0, utilities_1.canTextBeChildOfNode)(node.parent)) {
+                continue;
+            }
+            // Trim is enabled and we have a whitespace node
+            // so skip it
+            if (options.trim && isWhitespace) {
+                continue;
+            }
+            // We have a text node that's not whitespace and it can be nested
+            // in its parent so add it to the results
+            reactElements.push(transform(node.data, node, index));
+            continue;
+        }
+        var element = node;
+        var props = {};
+        if (skipAttributesToProps(element)) {
+            (0, utilities_1.setStyleProp)(element.attribs.style, element.attribs);
+            props = element.attribs;
+        }
+        else if (element.attribs) {
+            props = (0, attributes_to_props_1.default)(element.attribs, element.name);
+        }
+        var children = void 0;
+        switch (node.type) {
+            case 'script':
+            case 'style':
+                // prevent text in <script> or <style> from being escaped
+                // https://react.dev/reference/react-dom/components/common#dangerously-setting-the-inner-html
+                if (node.children[0]) {
+                    props.dangerouslySetInnerHTML = {
+                        __html: node.children[0].data,
+                    };
+                }
+                break;
+            case 'tag':
+                // setting textarea value in children is an antipattern in React
+                // https://react.dev/reference/react-dom/components/textarea#caveats
+                if (node.name === 'textarea' && node.children[0]) {
+                    props.defaultValue = node.children[0].data;
+                }
+                else if (node.children && node.children.length) {
+                    // continue recursion of creating React elements (if applicable)
+                    children = domToReact(node.children, options);
+                }
+                break;
+            // skip all other cases (e.g., comment)
+            default:
+                continue;
+        }
+        // set "key" prop for sibling elements
+        // https://react.dev/learn/rendering-lists#rules-of-keys
+        if (nodesLength > 1) {
+            props.key = index;
+        }
+        reactElements.push(transform(createElement(node.name, props, children), node, index));
+    }
+    return reactElements.length === 1 ? reactElements[0] : reactElements;
+}
+/**
+ * Determines whether DOM element attributes should be transformed to props.
+ * Web Components should not have their attributes transformed except for `style`.
+ *
+ * @param node - Element node.
+ * @returns - Whether the node attributes should be converted to props.
+ */
+function skipAttributesToProps(node) {
+    return (utilities_1.PRESERVE_CUSTOM_ATTRIBUTES &&
+        node.type === 'tag' &&
+        (0, utilities_1.isCustomComponent)(node.name, node.attribs));
+}
+//# sourceMappingURL=dom-to-react.js.map
+
+/***/ }),
+
+/***/ "./node_modules/html-react-parser/lib/index.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/html-react-parser/lib/index.js ***!
+  \*****************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.htmlToDOM = exports.domToReact = exports.attributesToProps = exports.Text = exports.ProcessingInstruction = exports.Element = exports.Comment = void 0;
+exports["default"] = HTMLReactParser;
+var html_dom_parser_1 = __importDefault(__webpack_require__(/*! html-dom-parser */ "./node_modules/html-dom-parser/lib/client/html-to-dom.js"));
+exports.htmlToDOM = html_dom_parser_1.default;
+var attributes_to_props_1 = __importDefault(__webpack_require__(/*! ./attributes-to-props */ "./node_modules/html-react-parser/lib/attributes-to-props.js"));
+exports.attributesToProps = attributes_to_props_1.default;
+var dom_to_react_1 = __importDefault(__webpack_require__(/*! ./dom-to-react */ "./node_modules/html-react-parser/lib/dom-to-react.js"));
+exports.domToReact = dom_to_react_1.default;
+var domhandler_1 = __webpack_require__(/*! domhandler */ "./node_modules/html-react-parser/node_modules/domhandler/lib/index.js");
+Object.defineProperty(exports, "Comment", ({ enumerable: true, get: function () { return domhandler_1.Comment; } }));
+Object.defineProperty(exports, "Element", ({ enumerable: true, get: function () { return domhandler_1.Element; } }));
+Object.defineProperty(exports, "ProcessingInstruction", ({ enumerable: true, get: function () { return domhandler_1.ProcessingInstruction; } }));
+Object.defineProperty(exports, "Text", ({ enumerable: true, get: function () { return domhandler_1.Text; } }));
+var domParserOptions = { lowerCaseAttributeNames: false };
+/**
+ * Converts HTML string to React elements.
+ *
+ * @param html - HTML string.
+ * @param options - Parser options.
+ * @returns - React element(s), empty array, or string.
+ */
+function HTMLReactParser(html, options) {
+    if (typeof html !== 'string') {
+        throw new TypeError('First argument must be a string');
+    }
+    if (!html) {
+        return [];
+    }
+    return (0, dom_to_react_1.default)((0, html_dom_parser_1.default)(html, (options === null || options === void 0 ? void 0 : options.htmlparser2) || domParserOptions), options);
+}
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./node_modules/html-react-parser/lib/utilities.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/html-react-parser/lib/utilities.js ***!
+  \*********************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.returnFirstArg = exports.canTextBeChildOfNode = exports.ELEMENTS_WITH_NO_TEXT_CHILDREN = exports.PRESERVE_CUSTOM_ATTRIBUTES = void 0;
+exports.isCustomComponent = isCustomComponent;
+exports.setStyleProp = setStyleProp;
+var react_1 = __webpack_require__(/*! react */ "react");
+var style_to_js_1 = __importDefault(__webpack_require__(/*! style-to-js */ "./node_modules/style-to-js/cjs/index.js"));
+var RESERVED_SVG_MATHML_ELEMENTS = new Set([
+    'annotation-xml',
+    'color-profile',
+    'font-face',
+    'font-face-src',
+    'font-face-uri',
+    'font-face-format',
+    'font-face-name',
+    'missing-glyph',
+]);
+/**
+ * Check if a tag is a custom component.
+ *
+ * @see {@link https://github.com/facebook/react/blob/v16.6.3/packages/react-dom/src/shared/isCustomComponent.js}
+ *
+ * @param tagName - Tag name.
+ * @param props - Props passed to the element.
+ * @returns - Whether the tag is custom component.
+ */
+function isCustomComponent(tagName, props) {
+    if (!tagName.includes('-')) {
+        return Boolean(props && typeof props.is === 'string');
+    }
+    // These are reserved SVG and MathML elements.
+    // We don't mind this whitelist too much because we expect it to never grow.
+    // The alternative is to track the namespace in a few places which is convoluted.
+    // https://w3c.github.io/webcomponents/spec/custom/#custom-elements-core-concepts
+    if (RESERVED_SVG_MATHML_ELEMENTS.has(tagName)) {
+        return false;
+    }
+    return true;
+}
+var styleOptions = {
+    reactCompat: true,
+};
+/**
+ * Sets style prop.
+ *
+ * @param style - Inline style.
+ * @param props - Props object.
+ */
+function setStyleProp(style, props) {
+    if (typeof style !== 'string') {
+        return;
+    }
+    if (!style.trim()) {
+        props.style = {};
+        return;
+    }
+    try {
+        props.style = (0, style_to_js_1.default)(style, styleOptions);
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    }
+    catch (error) {
+        props.style = {};
+    }
+}
+/**
+ * @see https://reactjs.org/blog/2017/09/08/dom-attributes-in-react-16.html
+ */
+exports.PRESERVE_CUSTOM_ATTRIBUTES = Number(react_1.version.split('.')[0]) >= 16;
+/**
+ * @see https://github.com/facebook/react/blob/cae635054e17a6f107a39d328649137b83f25972/packages/react-dom/src/client/validateDOMNesting.js#L213
+ */
+exports.ELEMENTS_WITH_NO_TEXT_CHILDREN = new Set([
+    'tr',
+    'tbody',
+    'thead',
+    'tfoot',
+    'colgroup',
+    'table',
+    'head',
+    'html',
+    'frameset',
+]);
+/**
+ * Checks if the given node can contain text nodes
+ *
+ * @param node - Element node.
+ * @returns - Whether the node can contain text nodes.
+ */
+var canTextBeChildOfNode = function (node) {
+    return !exports.ELEMENTS_WITH_NO_TEXT_CHILDREN.has(node.name);
+};
+exports.canTextBeChildOfNode = canTextBeChildOfNode;
+/**
+ * Returns the first argument as is.
+ *
+ * @param arg - The argument to be returned.
+ * @returns - The input argument `arg`.
+ */
+var returnFirstArg = function (arg) { return arg; }; // eslint-disable-line @typescript-eslint/no-explicit-any
+exports.returnFirstArg = returnFirstArg;
+//# sourceMappingURL=utilities.js.map
+
+/***/ }),
+
+/***/ "./node_modules/html-react-parser/node_modules/domhandler/lib/index.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/html-react-parser/node_modules/domhandler/lib/index.js ***!
+  \*****************************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.DomHandler = void 0;
+var domelementtype_1 = __webpack_require__(/*! domelementtype */ "./node_modules/domelementtype/lib/index.js");
+var node_js_1 = __webpack_require__(/*! ./node.js */ "./node_modules/html-react-parser/node_modules/domhandler/lib/node.js");
+__exportStar(__webpack_require__(/*! ./node.js */ "./node_modules/html-react-parser/node_modules/domhandler/lib/node.js"), exports);
+// Default options
+var defaultOpts = {
+    withStartIndices: false,
+    withEndIndices: false,
+    xmlMode: false,
+};
+var DomHandler = /** @class */ (function () {
+    /**
+     * @param callback Called once parsing has completed.
+     * @param options Settings for the handler.
+     * @param elementCB Callback whenever a tag is closed.
+     */
+    function DomHandler(callback, options, elementCB) {
+        /** The elements of the DOM */
+        this.dom = [];
+        /** The root element for the DOM */
+        this.root = new node_js_1.Document(this.dom);
+        /** Indicated whether parsing has been completed. */
+        this.done = false;
+        /** Stack of open tags. */
+        this.tagStack = [this.root];
+        /** A data node that is still being written to. */
+        this.lastNode = null;
+        /** Reference to the parser instance. Used for location information. */
+        this.parser = null;
+        // Make it possible to skip arguments, for backwards-compatibility
+        if (typeof options === "function") {
+            elementCB = options;
+            options = defaultOpts;
+        }
+        if (typeof callback === "object") {
+            options = callback;
+            callback = undefined;
+        }
+        this.callback = callback !== null && callback !== void 0 ? callback : null;
+        this.options = options !== null && options !== void 0 ? options : defaultOpts;
+        this.elementCB = elementCB !== null && elementCB !== void 0 ? elementCB : null;
+    }
+    DomHandler.prototype.onparserinit = function (parser) {
+        this.parser = parser;
+    };
+    // Resets the handler back to starting state
+    DomHandler.prototype.onreset = function () {
+        this.dom = [];
+        this.root = new node_js_1.Document(this.dom);
+        this.done = false;
+        this.tagStack = [this.root];
+        this.lastNode = null;
+        this.parser = null;
+    };
+    // Signals the handler that parsing is done
+    DomHandler.prototype.onend = function () {
+        if (this.done)
+            return;
+        this.done = true;
+        this.parser = null;
+        this.handleCallback(null);
+    };
+    DomHandler.prototype.onerror = function (error) {
+        this.handleCallback(error);
+    };
+    DomHandler.prototype.onclosetag = function () {
+        this.lastNode = null;
+        var elem = this.tagStack.pop();
+        if (this.options.withEndIndices) {
+            elem.endIndex = this.parser.endIndex;
+        }
+        if (this.elementCB)
+            this.elementCB(elem);
+    };
+    DomHandler.prototype.onopentag = function (name, attribs) {
+        var type = this.options.xmlMode ? domelementtype_1.ElementType.Tag : undefined;
+        var element = new node_js_1.Element(name, attribs, undefined, type);
+        this.addNode(element);
+        this.tagStack.push(element);
+    };
+    DomHandler.prototype.ontext = function (data) {
+        var lastNode = this.lastNode;
+        if (lastNode && lastNode.type === domelementtype_1.ElementType.Text) {
+            lastNode.data += data;
+            if (this.options.withEndIndices) {
+                lastNode.endIndex = this.parser.endIndex;
+            }
+        }
+        else {
+            var node = new node_js_1.Text(data);
+            this.addNode(node);
+            this.lastNode = node;
+        }
+    };
+    DomHandler.prototype.oncomment = function (data) {
+        if (this.lastNode && this.lastNode.type === domelementtype_1.ElementType.Comment) {
+            this.lastNode.data += data;
+            return;
+        }
+        var node = new node_js_1.Comment(data);
+        this.addNode(node);
+        this.lastNode = node;
+    };
+    DomHandler.prototype.oncommentend = function () {
+        this.lastNode = null;
+    };
+    DomHandler.prototype.oncdatastart = function () {
+        var text = new node_js_1.Text("");
+        var node = new node_js_1.CDATA([text]);
+        this.addNode(node);
+        text.parent = node;
+        this.lastNode = text;
+    };
+    DomHandler.prototype.oncdataend = function () {
+        this.lastNode = null;
+    };
+    DomHandler.prototype.onprocessinginstruction = function (name, data) {
+        var node = new node_js_1.ProcessingInstruction(name, data);
+        this.addNode(node);
+    };
+    DomHandler.prototype.handleCallback = function (error) {
+        if (typeof this.callback === "function") {
+            this.callback(error, this.dom);
+        }
+        else if (error) {
+            throw error;
+        }
+    };
+    DomHandler.prototype.addNode = function (node) {
+        var parent = this.tagStack[this.tagStack.length - 1];
+        var previousSibling = parent.children[parent.children.length - 1];
+        if (this.options.withStartIndices) {
+            node.startIndex = this.parser.startIndex;
+        }
+        if (this.options.withEndIndices) {
+            node.endIndex = this.parser.endIndex;
+        }
+        parent.children.push(node);
+        if (previousSibling) {
+            node.prev = previousSibling;
+            previousSibling.next = node;
+        }
+        node.parent = parent;
+        this.lastNode = null;
+    };
+    return DomHandler;
+}());
+exports.DomHandler = DomHandler;
+exports["default"] = DomHandler;
+
+
+/***/ }),
+
+/***/ "./node_modules/html-react-parser/node_modules/domhandler/lib/node.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/html-react-parser/node_modules/domhandler/lib/node.js ***!
+  \****************************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.cloneNode = exports.hasChildren = exports.isDocument = exports.isDirective = exports.isComment = exports.isText = exports.isCDATA = exports.isTag = exports.Element = exports.Document = exports.CDATA = exports.NodeWithChildren = exports.ProcessingInstruction = exports.Comment = exports.Text = exports.DataNode = exports.Node = void 0;
+var domelementtype_1 = __webpack_require__(/*! domelementtype */ "./node_modules/domelementtype/lib/index.js");
+/**
+ * This object will be used as the prototype for Nodes when creating a
+ * DOM-Level-1-compliant structure.
+ */
+var Node = /** @class */ (function () {
+    function Node() {
+        /** Parent of the node */
+        this.parent = null;
+        /** Previous sibling */
+        this.prev = null;
+        /** Next sibling */
+        this.next = null;
+        /** The start index of the node. Requires `withStartIndices` on the handler to be `true. */
+        this.startIndex = null;
+        /** The end index of the node. Requires `withEndIndices` on the handler to be `true. */
+        this.endIndex = null;
+    }
+    Object.defineProperty(Node.prototype, "parentNode", {
+        // Read-write aliases for properties
+        /**
+         * Same as {@link parent}.
+         * [DOM spec](https://dom.spec.whatwg.org)-compatible alias.
+         */
+        get: function () {
+            return this.parent;
+        },
+        set: function (parent) {
+            this.parent = parent;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Node.prototype, "previousSibling", {
+        /**
+         * Same as {@link prev}.
+         * [DOM spec](https://dom.spec.whatwg.org)-compatible alias.
+         */
+        get: function () {
+            return this.prev;
+        },
+        set: function (prev) {
+            this.prev = prev;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Node.prototype, "nextSibling", {
+        /**
+         * Same as {@link next}.
+         * [DOM spec](https://dom.spec.whatwg.org)-compatible alias.
+         */
+        get: function () {
+            return this.next;
+        },
+        set: function (next) {
+            this.next = next;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    /**
+     * Clone this node, and optionally its children.
+     *
+     * @param recursive Clone child nodes as well.
+     * @returns A clone of the node.
+     */
+    Node.prototype.cloneNode = function (recursive) {
+        if (recursive === void 0) { recursive = false; }
+        return cloneNode(this, recursive);
+    };
+    return Node;
+}());
+exports.Node = Node;
+/**
+ * A node that contains some data.
+ */
+var DataNode = /** @class */ (function (_super) {
+    __extends(DataNode, _super);
+    /**
+     * @param data The content of the data node
+     */
+    function DataNode(data) {
+        var _this = _super.call(this) || this;
+        _this.data = data;
+        return _this;
+    }
+    Object.defineProperty(DataNode.prototype, "nodeValue", {
+        /**
+         * Same as {@link data}.
+         * [DOM spec](https://dom.spec.whatwg.org)-compatible alias.
+         */
+        get: function () {
+            return this.data;
+        },
+        set: function (data) {
+            this.data = data;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return DataNode;
+}(Node));
+exports.DataNode = DataNode;
+/**
+ * Text within the document.
+ */
+var Text = /** @class */ (function (_super) {
+    __extends(Text, _super);
+    function Text() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.type = domelementtype_1.ElementType.Text;
+        return _this;
+    }
+    Object.defineProperty(Text.prototype, "nodeType", {
+        get: function () {
+            return 3;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return Text;
+}(DataNode));
+exports.Text = Text;
+/**
+ * Comments within the document.
+ */
+var Comment = /** @class */ (function (_super) {
+    __extends(Comment, _super);
+    function Comment() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.type = domelementtype_1.ElementType.Comment;
+        return _this;
+    }
+    Object.defineProperty(Comment.prototype, "nodeType", {
+        get: function () {
+            return 8;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return Comment;
+}(DataNode));
+exports.Comment = Comment;
+/**
+ * Processing instructions, including doc types.
+ */
+var ProcessingInstruction = /** @class */ (function (_super) {
+    __extends(ProcessingInstruction, _super);
+    function ProcessingInstruction(name, data) {
+        var _this = _super.call(this, data) || this;
+        _this.name = name;
+        _this.type = domelementtype_1.ElementType.Directive;
+        return _this;
+    }
+    Object.defineProperty(ProcessingInstruction.prototype, "nodeType", {
+        get: function () {
+            return 1;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return ProcessingInstruction;
+}(DataNode));
+exports.ProcessingInstruction = ProcessingInstruction;
+/**
+ * A `Node` that can have children.
+ */
+var NodeWithChildren = /** @class */ (function (_super) {
+    __extends(NodeWithChildren, _super);
+    /**
+     * @param children Children of the node. Only certain node types can have children.
+     */
+    function NodeWithChildren(children) {
+        var _this = _super.call(this) || this;
+        _this.children = children;
+        return _this;
+    }
+    Object.defineProperty(NodeWithChildren.prototype, "firstChild", {
+        // Aliases
+        /** First child of the node. */
+        get: function () {
+            var _a;
+            return (_a = this.children[0]) !== null && _a !== void 0 ? _a : null;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(NodeWithChildren.prototype, "lastChild", {
+        /** Last child of the node. */
+        get: function () {
+            return this.children.length > 0
+                ? this.children[this.children.length - 1]
+                : null;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(NodeWithChildren.prototype, "childNodes", {
+        /**
+         * Same as {@link children}.
+         * [DOM spec](https://dom.spec.whatwg.org)-compatible alias.
+         */
+        get: function () {
+            return this.children;
+        },
+        set: function (children) {
+            this.children = children;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return NodeWithChildren;
+}(Node));
+exports.NodeWithChildren = NodeWithChildren;
+var CDATA = /** @class */ (function (_super) {
+    __extends(CDATA, _super);
+    function CDATA() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.type = domelementtype_1.ElementType.CDATA;
+        return _this;
+    }
+    Object.defineProperty(CDATA.prototype, "nodeType", {
+        get: function () {
+            return 4;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return CDATA;
+}(NodeWithChildren));
+exports.CDATA = CDATA;
+/**
+ * The root node of the document.
+ */
+var Document = /** @class */ (function (_super) {
+    __extends(Document, _super);
+    function Document() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.type = domelementtype_1.ElementType.Root;
+        return _this;
+    }
+    Object.defineProperty(Document.prototype, "nodeType", {
+        get: function () {
+            return 9;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return Document;
+}(NodeWithChildren));
+exports.Document = Document;
+/**
+ * An element within the DOM.
+ */
+var Element = /** @class */ (function (_super) {
+    __extends(Element, _super);
+    /**
+     * @param name Name of the tag, eg. `div`, `span`.
+     * @param attribs Object mapping attribute names to attribute values.
+     * @param children Children of the node.
+     */
+    function Element(name, attribs, children, type) {
+        if (children === void 0) { children = []; }
+        if (type === void 0) { type = name === "script"
+            ? domelementtype_1.ElementType.Script
+            : name === "style"
+                ? domelementtype_1.ElementType.Style
+                : domelementtype_1.ElementType.Tag; }
+        var _this = _super.call(this, children) || this;
+        _this.name = name;
+        _this.attribs = attribs;
+        _this.type = type;
+        return _this;
+    }
+    Object.defineProperty(Element.prototype, "nodeType", {
+        get: function () {
+            return 1;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Element.prototype, "tagName", {
+        // DOM Level 1 aliases
+        /**
+         * Same as {@link name}.
+         * [DOM spec](https://dom.spec.whatwg.org)-compatible alias.
+         */
+        get: function () {
+            return this.name;
+        },
+        set: function (name) {
+            this.name = name;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Element.prototype, "attributes", {
+        get: function () {
+            var _this = this;
+            return Object.keys(this.attribs).map(function (name) {
+                var _a, _b;
+                return ({
+                    name: name,
+                    value: _this.attribs[name],
+                    namespace: (_a = _this["x-attribsNamespace"]) === null || _a === void 0 ? void 0 : _a[name],
+                    prefix: (_b = _this["x-attribsPrefix"]) === null || _b === void 0 ? void 0 : _b[name],
+                });
+            });
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return Element;
+}(NodeWithChildren));
+exports.Element = Element;
+/**
+ * @param node Node to check.
+ * @returns `true` if the node is a `Element`, `false` otherwise.
+ */
+function isTag(node) {
+    return (0, domelementtype_1.isTag)(node);
+}
+exports.isTag = isTag;
+/**
+ * @param node Node to check.
+ * @returns `true` if the node has the type `CDATA`, `false` otherwise.
+ */
+function isCDATA(node) {
+    return node.type === domelementtype_1.ElementType.CDATA;
+}
+exports.isCDATA = isCDATA;
+/**
+ * @param node Node to check.
+ * @returns `true` if the node has the type `Text`, `false` otherwise.
+ */
+function isText(node) {
+    return node.type === domelementtype_1.ElementType.Text;
+}
+exports.isText = isText;
+/**
+ * @param node Node to check.
+ * @returns `true` if the node has the type `Comment`, `false` otherwise.
+ */
+function isComment(node) {
+    return node.type === domelementtype_1.ElementType.Comment;
+}
+exports.isComment = isComment;
+/**
+ * @param node Node to check.
+ * @returns `true` if the node has the type `ProcessingInstruction`, `false` otherwise.
+ */
+function isDirective(node) {
+    return node.type === domelementtype_1.ElementType.Directive;
+}
+exports.isDirective = isDirective;
+/**
+ * @param node Node to check.
+ * @returns `true` if the node has the type `ProcessingInstruction`, `false` otherwise.
+ */
+function isDocument(node) {
+    return node.type === domelementtype_1.ElementType.Root;
+}
+exports.isDocument = isDocument;
+/**
+ * @param node Node to check.
+ * @returns `true` if the node has children, `false` otherwise.
+ */
+function hasChildren(node) {
+    return Object.prototype.hasOwnProperty.call(node, "children");
+}
+exports.hasChildren = hasChildren;
+/**
+ * Clone a node, and optionally its children.
+ *
+ * @param recursive Clone child nodes as well.
+ * @returns A clone of the node.
+ */
+function cloneNode(node, recursive) {
+    if (recursive === void 0) { recursive = false; }
+    var result;
+    if (isText(node)) {
+        result = new Text(node.data);
+    }
+    else if (isComment(node)) {
+        result = new Comment(node.data);
+    }
+    else if (isTag(node)) {
+        var children = recursive ? cloneChildren(node.children) : [];
+        var clone_1 = new Element(node.name, __assign({}, node.attribs), children);
+        children.forEach(function (child) { return (child.parent = clone_1); });
+        if (node.namespace != null) {
+            clone_1.namespace = node.namespace;
+        }
+        if (node["x-attribsNamespace"]) {
+            clone_1["x-attribsNamespace"] = __assign({}, node["x-attribsNamespace"]);
+        }
+        if (node["x-attribsPrefix"]) {
+            clone_1["x-attribsPrefix"] = __assign({}, node["x-attribsPrefix"]);
+        }
+        result = clone_1;
+    }
+    else if (isCDATA(node)) {
+        var children = recursive ? cloneChildren(node.children) : [];
+        var clone_2 = new CDATA(children);
+        children.forEach(function (child) { return (child.parent = clone_2); });
+        result = clone_2;
+    }
+    else if (isDocument(node)) {
+        var children = recursive ? cloneChildren(node.children) : [];
+        var clone_3 = new Document(children);
+        children.forEach(function (child) { return (child.parent = clone_3); });
+        if (node["x-mode"]) {
+            clone_3["x-mode"] = node["x-mode"];
+        }
+        result = clone_3;
+    }
+    else if (isDirective(node)) {
+        var instruction = new ProcessingInstruction(node.name, node.data);
+        if (node["x-name"] != null) {
+            instruction["x-name"] = node["x-name"];
+            instruction["x-publicId"] = node["x-publicId"];
+            instruction["x-systemId"] = node["x-systemId"];
+        }
+        result = instruction;
+    }
+    else {
+        throw new Error("Not implemented yet: ".concat(node.type));
+    }
+    result.startIndex = node.startIndex;
+    result.endIndex = node.endIndex;
+    if (node.sourceCodeLocation != null) {
+        result.sourceCodeLocation = node.sourceCodeLocation;
+    }
+    return result;
+}
+exports.cloneNode = cloneNode;
+function cloneChildren(childs) {
+    var children = childs.map(function (child) { return cloneNode(child, true); });
+    for (var i = 1; i < children.length; i++) {
+        children[i].prev = children[i - 1];
+        children[i - 1].next = children[i];
+    }
+    return children;
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/inline-style-parser/index.js":
+/*!***************************************************!*\
+  !*** ./node_modules/inline-style-parser/index.js ***!
+  \***************************************************/
+/***/ (function(module) {
+
+// http://www.w3.org/TR/CSS21/grammar.html
+// https://github.com/visionmedia/css-parse/pull/49#issuecomment-30088027
+var COMMENT_REGEX = /\/\*[^*]*\*+([^/*][^*]*\*+)*\//g;
+
+var NEWLINE_REGEX = /\n/g;
+var WHITESPACE_REGEX = /^\s*/;
+
+// declaration
+var PROPERTY_REGEX = /^(\*?[-#/*\\\w]+(\[[0-9a-z_-]+\])?)\s*/;
+var COLON_REGEX = /^:\s*/;
+var VALUE_REGEX = /^((?:'(?:\\'|.)*?'|"(?:\\"|.)*?"|\([^)]*?\)|[^};])+)/;
+var SEMICOLON_REGEX = /^[;\s]*/;
+
+// https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/Trim#Polyfill
+var TRIM_REGEX = /^\s+|\s+$/g;
+
+// strings
+var NEWLINE = '\n';
+var FORWARD_SLASH = '/';
+var ASTERISK = '*';
+var EMPTY_STRING = '';
+
+// types
+var TYPE_COMMENT = 'comment';
+var TYPE_DECLARATION = 'declaration';
+
+/**
+ * @param {String} style
+ * @param {Object} [options]
+ * @return {Object[]}
+ * @throws {TypeError}
+ * @throws {Error}
+ */
+module.exports = function (style, options) {
+  if (typeof style !== 'string') {
+    throw new TypeError('First argument must be a string');
+  }
+
+  if (!style) return [];
+
+  options = options || {};
+
+  /**
+   * Positional.
+   */
+  var lineno = 1;
+  var column = 1;
+
+  /**
+   * Update lineno and column based on `str`.
+   *
+   * @param {String} str
+   */
+  function updatePosition(str) {
+    var lines = str.match(NEWLINE_REGEX);
+    if (lines) lineno += lines.length;
+    var i = str.lastIndexOf(NEWLINE);
+    column = ~i ? str.length - i : column + str.length;
+  }
+
+  /**
+   * Mark position and patch `node.position`.
+   *
+   * @return {Function}
+   */
+  function position() {
+    var start = { line: lineno, column: column };
+    return function (node) {
+      node.position = new Position(start);
+      whitespace();
+      return node;
+    };
+  }
+
+  /**
+   * Store position information for a node.
+   *
+   * @constructor
+   * @property {Object} start
+   * @property {Object} end
+   * @property {undefined|String} source
+   */
+  function Position(start) {
+    this.start = start;
+    this.end = { line: lineno, column: column };
+    this.source = options.source;
+  }
+
+  /**
+   * Non-enumerable source string.
+   */
+  Position.prototype.content = style;
+
+  var errorsList = [];
+
+  /**
+   * Error `msg`.
+   *
+   * @param {String} msg
+   * @throws {Error}
+   */
+  function error(msg) {
+    var err = new Error(
+      options.source + ':' + lineno + ':' + column + ': ' + msg
+    );
+    err.reason = msg;
+    err.filename = options.source;
+    err.line = lineno;
+    err.column = column;
+    err.source = style;
+
+    if (options.silent) {
+      errorsList.push(err);
+    } else {
+      throw err;
+    }
+  }
+
+  /**
+   * Match `re` and return captures.
+   *
+   * @param {RegExp} re
+   * @return {undefined|Array}
+   */
+  function match(re) {
+    var m = re.exec(style);
+    if (!m) return;
+    var str = m[0];
+    updatePosition(str);
+    style = style.slice(str.length);
+    return m;
+  }
+
+  /**
+   * Parse whitespace.
+   */
+  function whitespace() {
+    match(WHITESPACE_REGEX);
+  }
+
+  /**
+   * Parse comments.
+   *
+   * @param {Object[]} [rules]
+   * @return {Object[]}
+   */
+  function comments(rules) {
+    var c;
+    rules = rules || [];
+    while ((c = comment())) {
+      if (c !== false) {
+        rules.push(c);
+      }
+    }
+    return rules;
+  }
+
+  /**
+   * Parse comment.
+   *
+   * @return {Object}
+   * @throws {Error}
+   */
+  function comment() {
+    var pos = position();
+    if (FORWARD_SLASH != style.charAt(0) || ASTERISK != style.charAt(1)) return;
+
+    var i = 2;
+    while (
+      EMPTY_STRING != style.charAt(i) &&
+      (ASTERISK != style.charAt(i) || FORWARD_SLASH != style.charAt(i + 1))
+    ) {
+      ++i;
+    }
+    i += 2;
+
+    if (EMPTY_STRING === style.charAt(i - 1)) {
+      return error('End of comment missing');
+    }
+
+    var str = style.slice(2, i - 2);
+    column += 2;
+    updatePosition(str);
+    style = style.slice(i);
+    column += 2;
+
+    return pos({
+      type: TYPE_COMMENT,
+      comment: str
+    });
+  }
+
+  /**
+   * Parse declaration.
+   *
+   * @return {Object}
+   * @throws {Error}
+   */
+  function declaration() {
+    var pos = position();
+
+    // prop
+    var prop = match(PROPERTY_REGEX);
+    if (!prop) return;
+    comment();
+
+    // :
+    if (!match(COLON_REGEX)) return error("property missing ':'");
+
+    // val
+    var val = match(VALUE_REGEX);
+
+    var ret = pos({
+      type: TYPE_DECLARATION,
+      property: trim(prop[0].replace(COMMENT_REGEX, EMPTY_STRING)),
+      value: val
+        ? trim(val[0].replace(COMMENT_REGEX, EMPTY_STRING))
+        : EMPTY_STRING
+    });
+
+    // ;
+    match(SEMICOLON_REGEX);
+
+    return ret;
+  }
+
+  /**
+   * Parse declarations.
+   *
+   * @return {Object[]}
+   */
+  function declarations() {
+    var decls = [];
+
+    comments(decls);
+
+    // declarations
+    var decl;
+    while ((decl = declaration())) {
+      if (decl !== false) {
+        decls.push(decl);
+        comments(decls);
+      }
+    }
+
+    return decls;
+  }
+
+  whitespace();
+  return declarations();
+};
+
+/**
+ * Trim `str`.
+ *
+ * @param {String} str
+ * @return {String}
+ */
+function trim(str) {
+  return str ? str.replace(TRIM_REGEX, EMPTY_STRING) : EMPTY_STRING;
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/react-property/lib/index.js":
+/*!**************************************************!*\
+  !*** ./node_modules/react-property/lib/index.js ***!
+  \**************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+
+
+
+// A reserved attribute.
+// It is handled by React separately and shouldn't be written to the DOM.
+const RESERVED = 0;
+
+// A simple string attribute.
+// Attributes that aren't in the filter are presumed to have this type.
+const STRING = 1;
+
+// A string attribute that accepts booleans in React. In HTML, these are called
+// "enumerated" attributes with "true" and "false" as possible values.
+// When true, it should be set to a "true" string.
+// When false, it should be set to a "false" string.
+const BOOLEANISH_STRING = 2;
+
+// A real boolean attribute.
+// When true, it should be present (set either to an empty string or its name).
+// When false, it should be omitted.
+const BOOLEAN = 3;
+
+// An attribute that can be used as a flag as well as with a value.
+// When true, it should be present (set either to an empty string or its name).
+// When false, it should be omitted.
+// For any other value, should be present with that value.
+const OVERLOADED_BOOLEAN = 4;
+
+// An attribute that must be numeric or parse as a numeric.
+// When falsy, it should be removed.
+const NUMERIC = 5;
+
+// An attribute that must be positive numeric or parse as a positive numeric.
+// When falsy, it should be removed.
+const POSITIVE_NUMERIC = 6;
+
+function getPropertyInfo(name) {
+  return properties.hasOwnProperty(name) ? properties[name] : null;
+}
+
+function PropertyInfoRecord(
+  name,
+  type,
+  mustUseProperty,
+  attributeName,
+  attributeNamespace,
+  sanitizeURL,
+  removeEmptyString,
+) {
+  this.acceptsBooleans =
+    type === BOOLEANISH_STRING ||
+    type === BOOLEAN ||
+    type === OVERLOADED_BOOLEAN;
+  this.attributeName = attributeName;
+  this.attributeNamespace = attributeNamespace;
+  this.mustUseProperty = mustUseProperty;
+  this.propertyName = name;
+  this.type = type;
+  this.sanitizeURL = sanitizeURL;
+  this.removeEmptyString = removeEmptyString;
+}
+
+// When adding attributes to this list, be sure to also add them to
+// the `possibleStandardNames` module to ensure casing and incorrect
+// name warnings.
+const properties = {};
+
+// These props are reserved by React. They shouldn't be written to the DOM.
+const reservedProps = [
+  'children',
+  'dangerouslySetInnerHTML',
+  // TODO: This prevents the assignment of defaultValue to regular
+  // elements (not just inputs). Now that ReactDOMInput assigns to the
+  // defaultValue property -- do we need this?
+  'defaultValue',
+  'defaultChecked',
+  'innerHTML',
+  'suppressContentEditableWarning',
+  'suppressHydrationWarning',
+  'style',
+];
+
+reservedProps.forEach(name => {
+  properties[name] = new PropertyInfoRecord(
+    name,
+    RESERVED,
+    false, // mustUseProperty
+    name, // attributeName
+    null, // attributeNamespace
+    false, // sanitizeURL
+    false, // removeEmptyString
+  );
+});
+
+// A few React string attributes have a different name.
+// This is a mapping from React prop names to the attribute names.
+[
+  ['acceptCharset', 'accept-charset'],
+  ['className', 'class'],
+  ['htmlFor', 'for'],
+  ['httpEquiv', 'http-equiv'],
+].forEach(([name, attributeName]) => {
+  properties[name] = new PropertyInfoRecord(
+    name,
+    STRING,
+    false, // mustUseProperty
+    attributeName, // attributeName
+    null, // attributeNamespace
+    false, // sanitizeURL
+    false, // removeEmptyString
+  );
+});
+
+// These are "enumerated" HTML attributes that accept "true" and "false".
+// In React, we let users pass `true` and `false` even though technically
+// these aren't boolean attributes (they are coerced to strings).
+['contentEditable', 'draggable', 'spellCheck', 'value'].forEach(name => {
+  properties[name] = new PropertyInfoRecord(
+    name,
+    BOOLEANISH_STRING,
+    false, // mustUseProperty
+    name.toLowerCase(), // attributeName
+    null, // attributeNamespace
+    false, // sanitizeURL
+    false, // removeEmptyString
+  );
+});
+
+// These are "enumerated" SVG attributes that accept "true" and "false".
+// In React, we let users pass `true` and `false` even though technically
+// these aren't boolean attributes (they are coerced to strings).
+// Since these are SVG attributes, their attribute names are case-sensitive.
+[
+  'autoReverse',
+  'externalResourcesRequired',
+  'focusable',
+  'preserveAlpha',
+].forEach(name => {
+  properties[name] = new PropertyInfoRecord(
+    name,
+    BOOLEANISH_STRING,
+    false, // mustUseProperty
+    name, // attributeName
+    null, // attributeNamespace
+    false, // sanitizeURL
+    false, // removeEmptyString
+  );
+});
+
+// These are HTML boolean attributes.
+[
+  'allowFullScreen',
+  'async',
+  // Note: there is a special case that prevents it from being written to the DOM
+  // on the client side because the browsers are inconsistent. Instead we call focus().
+  'autoFocus',
+  'autoPlay',
+  'controls',
+  'default',
+  'defer',
+  'disabled',
+  'disablePictureInPicture',
+  'disableRemotePlayback',
+  'formNoValidate',
+  'hidden',
+  'loop',
+  'noModule',
+  'noValidate',
+  'open',
+  'playsInline',
+  'readOnly',
+  'required',
+  'reversed',
+  'scoped',
+  'seamless',
+  // Microdata
+  'itemScope',
+].forEach(name => {
+  properties[name] = new PropertyInfoRecord(
+    name,
+    BOOLEAN,
+    false, // mustUseProperty
+    name.toLowerCase(), // attributeName
+    null, // attributeNamespace
+    false, // sanitizeURL
+    false, // removeEmptyString
+  );
+});
+
+// These are the few React props that we set as DOM properties
+// rather than attributes. These are all booleans.
+[
+  'checked',
+  // Note: `option.selected` is not updated if `select.multiple` is
+  // disabled with `removeAttribute`. We have special logic for handling this.
+  'multiple',
+  'muted',
+  'selected',
+
+  // NOTE: if you add a camelCased prop to this list,
+  // you'll need to set attributeName to name.toLowerCase()
+  // instead in the assignment below.
+].forEach(name => {
+  properties[name] = new PropertyInfoRecord(
+    name,
+    BOOLEAN,
+    true, // mustUseProperty
+    name, // attributeName
+    null, // attributeNamespace
+    false, // sanitizeURL
+    false, // removeEmptyString
+  );
+});
+
+// These are HTML attributes that are "overloaded booleans": they behave like
+// booleans, but can also accept a string value.
+[
+  'capture',
+  'download',
+
+  // NOTE: if you add a camelCased prop to this list,
+  // you'll need to set attributeName to name.toLowerCase()
+  // instead in the assignment below.
+].forEach(name => {
+  properties[name] = new PropertyInfoRecord(
+    name,
+    OVERLOADED_BOOLEAN,
+    false, // mustUseProperty
+    name, // attributeName
+    null, // attributeNamespace
+    false, // sanitizeURL
+    false, // removeEmptyString
+  );
+});
+
+// These are HTML attributes that must be positive numbers.
+[
+  'cols',
+  'rows',
+  'size',
+  'span',
+
+  // NOTE: if you add a camelCased prop to this list,
+  // you'll need to set attributeName to name.toLowerCase()
+  // instead in the assignment below.
+].forEach(name => {
+  properties[name] = new PropertyInfoRecord(
+    name,
+    POSITIVE_NUMERIC,
+    false, // mustUseProperty
+    name, // attributeName
+    null, // attributeNamespace
+    false, // sanitizeURL
+    false, // removeEmptyString
+  );
+});
+
+// These are HTML attributes that must be numbers.
+['rowSpan', 'start'].forEach(name => {
+  properties[name] = new PropertyInfoRecord(
+    name,
+    NUMERIC,
+    false, // mustUseProperty
+    name.toLowerCase(), // attributeName
+    null, // attributeNamespace
+    false, // sanitizeURL
+    false, // removeEmptyString
+  );
+});
+
+const CAMELIZE = /[\-\:]([a-z])/g;
+const capitalize = token => token[1].toUpperCase();
+
+// This is a list of all SVG attributes that need special casing, namespacing,
+// or boolean value assignment. Regular attributes that just accept strings
+// and have the same names are omitted, just like in the HTML attribute filter.
+// Some of these attributes can be hard to find. This list was created by
+// scraping the MDN documentation.
+[
+  'accent-height',
+  'alignment-baseline',
+  'arabic-form',
+  'baseline-shift',
+  'cap-height',
+  'clip-path',
+  'clip-rule',
+  'color-interpolation',
+  'color-interpolation-filters',
+  'color-profile',
+  'color-rendering',
+  'dominant-baseline',
+  'enable-background',
+  'fill-opacity',
+  'fill-rule',
+  'flood-color',
+  'flood-opacity',
+  'font-family',
+  'font-size',
+  'font-size-adjust',
+  'font-stretch',
+  'font-style',
+  'font-variant',
+  'font-weight',
+  'glyph-name',
+  'glyph-orientation-horizontal',
+  'glyph-orientation-vertical',
+  'horiz-adv-x',
+  'horiz-origin-x',
+  'image-rendering',
+  'letter-spacing',
+  'lighting-color',
+  'marker-end',
+  'marker-mid',
+  'marker-start',
+  'overline-position',
+  'overline-thickness',
+  'paint-order',
+  'panose-1',
+  'pointer-events',
+  'rendering-intent',
+  'shape-rendering',
+  'stop-color',
+  'stop-opacity',
+  'strikethrough-position',
+  'strikethrough-thickness',
+  'stroke-dasharray',
+  'stroke-dashoffset',
+  'stroke-linecap',
+  'stroke-linejoin',
+  'stroke-miterlimit',
+  'stroke-opacity',
+  'stroke-width',
+  'text-anchor',
+  'text-decoration',
+  'text-rendering',
+  'underline-position',
+  'underline-thickness',
+  'unicode-bidi',
+  'unicode-range',
+  'units-per-em',
+  'v-alphabetic',
+  'v-hanging',
+  'v-ideographic',
+  'v-mathematical',
+  'vector-effect',
+  'vert-adv-y',
+  'vert-origin-x',
+  'vert-origin-y',
+  'word-spacing',
+  'writing-mode',
+  'xmlns:xlink',
+  'x-height',
+
+  // NOTE: if you add a camelCased prop to this list,
+  // you'll need to set attributeName to name.toLowerCase()
+  // instead in the assignment below.
+].forEach(attributeName => {
+  const name = attributeName.replace(CAMELIZE, capitalize);
+  properties[name] = new PropertyInfoRecord(
+    name,
+    STRING,
+    false, // mustUseProperty
+    attributeName,
+    null, // attributeNamespace
+    false, // sanitizeURL
+    false, // removeEmptyString
+  );
+});
+
+// String SVG attributes with the xlink namespace.
+[
+  'xlink:actuate',
+  'xlink:arcrole',
+  'xlink:role',
+  'xlink:show',
+  'xlink:title',
+  'xlink:type',
+
+  // NOTE: if you add a camelCased prop to this list,
+  // you'll need to set attributeName to name.toLowerCase()
+  // instead in the assignment below.
+].forEach(attributeName => {
+  const name = attributeName.replace(CAMELIZE, capitalize);
+  properties[name] = new PropertyInfoRecord(
+    name,
+    STRING,
+    false, // mustUseProperty
+    attributeName,
+    'http://www.w3.org/1999/xlink',
+    false, // sanitizeURL
+    false, // removeEmptyString
+  );
+});
+
+// String SVG attributes with the xml namespace.
+[
+  'xml:base',
+  'xml:lang',
+  'xml:space',
+
+  // NOTE: if you add a camelCased prop to this list,
+  // you'll need to set attributeName to name.toLowerCase()
+  // instead in the assignment below.
+].forEach(attributeName => {
+  const name = attributeName.replace(CAMELIZE, capitalize);
+  properties[name] = new PropertyInfoRecord(
+    name,
+    STRING,
+    false, // mustUseProperty
+    attributeName,
+    'http://www.w3.org/XML/1998/namespace',
+    false, // sanitizeURL
+    false, // removeEmptyString
+  );
+});
+
+// These attribute exists both in HTML and SVG.
+// The attribute name is case-sensitive in SVG so we can't just use
+// the React name like we do for attributes that exist only in HTML.
+['tabIndex', 'crossOrigin'].forEach(attributeName => {
+  properties[attributeName] = new PropertyInfoRecord(
+    attributeName,
+    STRING,
+    false, // mustUseProperty
+    attributeName.toLowerCase(), // attributeName
+    null, // attributeNamespace
+    false, // sanitizeURL
+    false, // removeEmptyString
+  );
+});
+
+// These attributes accept URLs. These must not allow javascript: URLS.
+// These will also need to accept Trusted Types object in the future.
+const xlinkHref = 'xlinkHref';
+properties[xlinkHref] = new PropertyInfoRecord(
+  'xlinkHref',
+  STRING,
+  false, // mustUseProperty
+  'xlink:href',
+  'http://www.w3.org/1999/xlink',
+  true, // sanitizeURL
+  false, // removeEmptyString
+);
+
+['src', 'href', 'action', 'formAction'].forEach(attributeName => {
+  properties[attributeName] = new PropertyInfoRecord(
+    attributeName,
+    STRING,
+    false, // mustUseProperty
+    attributeName.toLowerCase(), // attributeName
+    null, // attributeNamespace
+    true, // sanitizeURL
+    true, // removeEmptyString
+  );
+});
+
+// 
+const {
+  CAMELCASE,
+  SAME,
+  possibleStandardNames: possibleStandardNamesOptimized
+} = __webpack_require__(/*! ../lib/possibleStandardNamesOptimized */ "./node_modules/react-property/lib/possibleStandardNamesOptimized.js");
+
+const ATTRIBUTE_NAME_START_CHAR =
+  ':A-Z_a-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD';
+
+const ATTRIBUTE_NAME_CHAR =
+  ATTRIBUTE_NAME_START_CHAR + '\\-.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040';
+
+/**
+ * Checks whether a property name is a custom attribute.
+ *
+ * @see https://github.com/facebook/react/blob/15-stable/src/renderers/dom/shared/HTMLDOMPropertyConfig.js#L23-L25
+ *
+ * @type {(attribute: string) => boolean}
+ */
+const isCustomAttribute =
+  RegExp.prototype.test.bind(
+    // eslint-disable-next-line no-misleading-character-class
+    new RegExp('^(data|aria)-[' + ATTRIBUTE_NAME_CHAR + ']*$')
+  );
+
+/**
+ * @type {Record<string, string>}
+ */
+const possibleStandardNames = Object.keys(
+  possibleStandardNamesOptimized
+).reduce((accumulator, standardName) => {
+  const propName = possibleStandardNamesOptimized[standardName];
+  if (propName === SAME) {
+    accumulator[standardName] = standardName;
+  } else if (propName === CAMELCASE) {
+    accumulator[standardName.toLowerCase()] = standardName;
+  } else {
+    accumulator[standardName] = propName;
+  }
+  return accumulator;
+}, {});
+
+exports.BOOLEAN = BOOLEAN;
+exports.BOOLEANISH_STRING = BOOLEANISH_STRING;
+exports.NUMERIC = NUMERIC;
+exports.OVERLOADED_BOOLEAN = OVERLOADED_BOOLEAN;
+exports.POSITIVE_NUMERIC = POSITIVE_NUMERIC;
+exports.RESERVED = RESERVED;
+exports.STRING = STRING;
+exports.getPropertyInfo = getPropertyInfo;
+exports.isCustomAttribute = isCustomAttribute;
+exports.possibleStandardNames = possibleStandardNames;
+
+
+/***/ }),
+
+/***/ "./node_modules/react-property/lib/possibleStandardNamesOptimized.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/react-property/lib/possibleStandardNamesOptimized.js ***!
+  \***************************************************************************/
+/***/ (function(__unused_webpack_module, exports) {
+
+// An attribute in which the DOM/SVG standard name is the same as the React prop name (e.g., 'accept').
+var SAME = 0;
+exports.SAME = SAME;
+
+// An attribute in which the React prop name is the camelcased version of the DOM/SVG standard name (e.g., 'acceptCharset').
+var CAMELCASE = 1;
+exports.CAMELCASE = CAMELCASE;
+
+exports.possibleStandardNames = {
+  accept: 0,
+  acceptCharset: 1,
+  'accept-charset': 'acceptCharset',
+  accessKey: 1,
+  action: 0,
+  allowFullScreen: 1,
+  alt: 0,
+  as: 0,
+  async: 0,
+  autoCapitalize: 1,
+  autoComplete: 1,
+  autoCorrect: 1,
+  autoFocus: 1,
+  autoPlay: 1,
+  autoSave: 1,
+  capture: 0,
+  cellPadding: 1,
+  cellSpacing: 1,
+  challenge: 0,
+  charSet: 1,
+  checked: 0,
+  children: 0,
+  cite: 0,
+  class: 'className',
+  classID: 1,
+  className: 1,
+  cols: 0,
+  colSpan: 1,
+  content: 0,
+  contentEditable: 1,
+  contextMenu: 1,
+  controls: 0,
+  controlsList: 1,
+  coords: 0,
+  crossOrigin: 1,
+  dangerouslySetInnerHTML: 1,
+  data: 0,
+  dateTime: 1,
+  default: 0,
+  defaultChecked: 1,
+  defaultValue: 1,
+  defer: 0,
+  dir: 0,
+  disabled: 0,
+  disablePictureInPicture: 1,
+  disableRemotePlayback: 1,
+  download: 0,
+  draggable: 0,
+  encType: 1,
+  enterKeyHint: 1,
+  for: 'htmlFor',
+  form: 0,
+  formMethod: 1,
+  formAction: 1,
+  formEncType: 1,
+  formNoValidate: 1,
+  formTarget: 1,
+  frameBorder: 1,
+  headers: 0,
+  height: 0,
+  hidden: 0,
+  high: 0,
+  href: 0,
+  hrefLang: 1,
+  htmlFor: 1,
+  httpEquiv: 1,
+  'http-equiv': 'httpEquiv',
+  icon: 0,
+  id: 0,
+  innerHTML: 1,
+  inputMode: 1,
+  integrity: 0,
+  is: 0,
+  itemID: 1,
+  itemProp: 1,
+  itemRef: 1,
+  itemScope: 1,
+  itemType: 1,
+  keyParams: 1,
+  keyType: 1,
+  kind: 0,
+  label: 0,
+  lang: 0,
+  list: 0,
+  loop: 0,
+  low: 0,
+  manifest: 0,
+  marginWidth: 1,
+  marginHeight: 1,
+  max: 0,
+  maxLength: 1,
+  media: 0,
+  mediaGroup: 1,
+  method: 0,
+  min: 0,
+  minLength: 1,
+  multiple: 0,
+  muted: 0,
+  name: 0,
+  noModule: 1,
+  nonce: 0,
+  noValidate: 1,
+  open: 0,
+  optimum: 0,
+  pattern: 0,
+  placeholder: 0,
+  playsInline: 1,
+  poster: 0,
+  preload: 0,
+  profile: 0,
+  radioGroup: 1,
+  readOnly: 1,
+  referrerPolicy: 1,
+  rel: 0,
+  required: 0,
+  reversed: 0,
+  role: 0,
+  rows: 0,
+  rowSpan: 1,
+  sandbox: 0,
+  scope: 0,
+  scoped: 0,
+  scrolling: 0,
+  seamless: 0,
+  selected: 0,
+  shape: 0,
+  size: 0,
+  sizes: 0,
+  span: 0,
+  spellCheck: 1,
+  src: 0,
+  srcDoc: 1,
+  srcLang: 1,
+  srcSet: 1,
+  start: 0,
+  step: 0,
+  style: 0,
+  summary: 0,
+  tabIndex: 1,
+  target: 0,
+  title: 0,
+  type: 0,
+  useMap: 1,
+  value: 0,
+  width: 0,
+  wmode: 0,
+  wrap: 0,
+  about: 0,
+  accentHeight: 1,
+  'accent-height': 'accentHeight',
+  accumulate: 0,
+  additive: 0,
+  alignmentBaseline: 1,
+  'alignment-baseline': 'alignmentBaseline',
+  allowReorder: 1,
+  alphabetic: 0,
+  amplitude: 0,
+  arabicForm: 1,
+  'arabic-form': 'arabicForm',
+  ascent: 0,
+  attributeName: 1,
+  attributeType: 1,
+  autoReverse: 1,
+  azimuth: 0,
+  baseFrequency: 1,
+  baselineShift: 1,
+  'baseline-shift': 'baselineShift',
+  baseProfile: 1,
+  bbox: 0,
+  begin: 0,
+  bias: 0,
+  by: 0,
+  calcMode: 1,
+  capHeight: 1,
+  'cap-height': 'capHeight',
+  clip: 0,
+  clipPath: 1,
+  'clip-path': 'clipPath',
+  clipPathUnits: 1,
+  clipRule: 1,
+  'clip-rule': 'clipRule',
+  color: 0,
+  colorInterpolation: 1,
+  'color-interpolation': 'colorInterpolation',
+  colorInterpolationFilters: 1,
+  'color-interpolation-filters': 'colorInterpolationFilters',
+  colorProfile: 1,
+  'color-profile': 'colorProfile',
+  colorRendering: 1,
+  'color-rendering': 'colorRendering',
+  contentScriptType: 1,
+  contentStyleType: 1,
+  cursor: 0,
+  cx: 0,
+  cy: 0,
+  d: 0,
+  datatype: 0,
+  decelerate: 0,
+  descent: 0,
+  diffuseConstant: 1,
+  direction: 0,
+  display: 0,
+  divisor: 0,
+  dominantBaseline: 1,
+  'dominant-baseline': 'dominantBaseline',
+  dur: 0,
+  dx: 0,
+  dy: 0,
+  edgeMode: 1,
+  elevation: 0,
+  enableBackground: 1,
+  'enable-background': 'enableBackground',
+  end: 0,
+  exponent: 0,
+  externalResourcesRequired: 1,
+  fill: 0,
+  fillOpacity: 1,
+  'fill-opacity': 'fillOpacity',
+  fillRule: 1,
+  'fill-rule': 'fillRule',
+  filter: 0,
+  filterRes: 1,
+  filterUnits: 1,
+  floodOpacity: 1,
+  'flood-opacity': 'floodOpacity',
+  floodColor: 1,
+  'flood-color': 'floodColor',
+  focusable: 0,
+  fontFamily: 1,
+  'font-family': 'fontFamily',
+  fontSize: 1,
+  'font-size': 'fontSize',
+  fontSizeAdjust: 1,
+  'font-size-adjust': 'fontSizeAdjust',
+  fontStretch: 1,
+  'font-stretch': 'fontStretch',
+  fontStyle: 1,
+  'font-style': 'fontStyle',
+  fontVariant: 1,
+  'font-variant': 'fontVariant',
+  fontWeight: 1,
+  'font-weight': 'fontWeight',
+  format: 0,
+  from: 0,
+  fx: 0,
+  fy: 0,
+  g1: 0,
+  g2: 0,
+  glyphName: 1,
+  'glyph-name': 'glyphName',
+  glyphOrientationHorizontal: 1,
+  'glyph-orientation-horizontal': 'glyphOrientationHorizontal',
+  glyphOrientationVertical: 1,
+  'glyph-orientation-vertical': 'glyphOrientationVertical',
+  glyphRef: 1,
+  gradientTransform: 1,
+  gradientUnits: 1,
+  hanging: 0,
+  horizAdvX: 1,
+  'horiz-adv-x': 'horizAdvX',
+  horizOriginX: 1,
+  'horiz-origin-x': 'horizOriginX',
+  ideographic: 0,
+  imageRendering: 1,
+  'image-rendering': 'imageRendering',
+  in2: 0,
+  in: 0,
+  inlist: 0,
+  intercept: 0,
+  k1: 0,
+  k2: 0,
+  k3: 0,
+  k4: 0,
+  k: 0,
+  kernelMatrix: 1,
+  kernelUnitLength: 1,
+  kerning: 0,
+  keyPoints: 1,
+  keySplines: 1,
+  keyTimes: 1,
+  lengthAdjust: 1,
+  letterSpacing: 1,
+  'letter-spacing': 'letterSpacing',
+  lightingColor: 1,
+  'lighting-color': 'lightingColor',
+  limitingConeAngle: 1,
+  local: 0,
+  markerEnd: 1,
+  'marker-end': 'markerEnd',
+  markerHeight: 1,
+  markerMid: 1,
+  'marker-mid': 'markerMid',
+  markerStart: 1,
+  'marker-start': 'markerStart',
+  markerUnits: 1,
+  markerWidth: 1,
+  mask: 0,
+  maskContentUnits: 1,
+  maskUnits: 1,
+  mathematical: 0,
+  mode: 0,
+  numOctaves: 1,
+  offset: 0,
+  opacity: 0,
+  operator: 0,
+  order: 0,
+  orient: 0,
+  orientation: 0,
+  origin: 0,
+  overflow: 0,
+  overlinePosition: 1,
+  'overline-position': 'overlinePosition',
+  overlineThickness: 1,
+  'overline-thickness': 'overlineThickness',
+  paintOrder: 1,
+  'paint-order': 'paintOrder',
+  panose1: 0,
+  'panose-1': 'panose1',
+  pathLength: 1,
+  patternContentUnits: 1,
+  patternTransform: 1,
+  patternUnits: 1,
+  pointerEvents: 1,
+  'pointer-events': 'pointerEvents',
+  points: 0,
+  pointsAtX: 1,
+  pointsAtY: 1,
+  pointsAtZ: 1,
+  prefix: 0,
+  preserveAlpha: 1,
+  preserveAspectRatio: 1,
+  primitiveUnits: 1,
+  property: 0,
+  r: 0,
+  radius: 0,
+  refX: 1,
+  refY: 1,
+  renderingIntent: 1,
+  'rendering-intent': 'renderingIntent',
+  repeatCount: 1,
+  repeatDur: 1,
+  requiredExtensions: 1,
+  requiredFeatures: 1,
+  resource: 0,
+  restart: 0,
+  result: 0,
+  results: 0,
+  rotate: 0,
+  rx: 0,
+  ry: 0,
+  scale: 0,
+  security: 0,
+  seed: 0,
+  shapeRendering: 1,
+  'shape-rendering': 'shapeRendering',
+  slope: 0,
+  spacing: 0,
+  specularConstant: 1,
+  specularExponent: 1,
+  speed: 0,
+  spreadMethod: 1,
+  startOffset: 1,
+  stdDeviation: 1,
+  stemh: 0,
+  stemv: 0,
+  stitchTiles: 1,
+  stopColor: 1,
+  'stop-color': 'stopColor',
+  stopOpacity: 1,
+  'stop-opacity': 'stopOpacity',
+  strikethroughPosition: 1,
+  'strikethrough-position': 'strikethroughPosition',
+  strikethroughThickness: 1,
+  'strikethrough-thickness': 'strikethroughThickness',
+  string: 0,
+  stroke: 0,
+  strokeDasharray: 1,
+  'stroke-dasharray': 'strokeDasharray',
+  strokeDashoffset: 1,
+  'stroke-dashoffset': 'strokeDashoffset',
+  strokeLinecap: 1,
+  'stroke-linecap': 'strokeLinecap',
+  strokeLinejoin: 1,
+  'stroke-linejoin': 'strokeLinejoin',
+  strokeMiterlimit: 1,
+  'stroke-miterlimit': 'strokeMiterlimit',
+  strokeWidth: 1,
+  'stroke-width': 'strokeWidth',
+  strokeOpacity: 1,
+  'stroke-opacity': 'strokeOpacity',
+  suppressContentEditableWarning: 1,
+  suppressHydrationWarning: 1,
+  surfaceScale: 1,
+  systemLanguage: 1,
+  tableValues: 1,
+  targetX: 1,
+  targetY: 1,
+  textAnchor: 1,
+  'text-anchor': 'textAnchor',
+  textDecoration: 1,
+  'text-decoration': 'textDecoration',
+  textLength: 1,
+  textRendering: 1,
+  'text-rendering': 'textRendering',
+  to: 0,
+  transform: 0,
+  typeof: 0,
+  u1: 0,
+  u2: 0,
+  underlinePosition: 1,
+  'underline-position': 'underlinePosition',
+  underlineThickness: 1,
+  'underline-thickness': 'underlineThickness',
+  unicode: 0,
+  unicodeBidi: 1,
+  'unicode-bidi': 'unicodeBidi',
+  unicodeRange: 1,
+  'unicode-range': 'unicodeRange',
+  unitsPerEm: 1,
+  'units-per-em': 'unitsPerEm',
+  unselectable: 0,
+  vAlphabetic: 1,
+  'v-alphabetic': 'vAlphabetic',
+  values: 0,
+  vectorEffect: 1,
+  'vector-effect': 'vectorEffect',
+  version: 0,
+  vertAdvY: 1,
+  'vert-adv-y': 'vertAdvY',
+  vertOriginX: 1,
+  'vert-origin-x': 'vertOriginX',
+  vertOriginY: 1,
+  'vert-origin-y': 'vertOriginY',
+  vHanging: 1,
+  'v-hanging': 'vHanging',
+  vIdeographic: 1,
+  'v-ideographic': 'vIdeographic',
+  viewBox: 1,
+  viewTarget: 1,
+  visibility: 0,
+  vMathematical: 1,
+  'v-mathematical': 'vMathematical',
+  vocab: 0,
+  widths: 0,
+  wordSpacing: 1,
+  'word-spacing': 'wordSpacing',
+  writingMode: 1,
+  'writing-mode': 'writingMode',
+  x1: 0,
+  x2: 0,
+  x: 0,
+  xChannelSelector: 1,
+  xHeight: 1,
+  'x-height': 'xHeight',
+  xlinkActuate: 1,
+  'xlink:actuate': 'xlinkActuate',
+  xlinkArcrole: 1,
+  'xlink:arcrole': 'xlinkArcrole',
+  xlinkHref: 1,
+  'xlink:href': 'xlinkHref',
+  xlinkRole: 1,
+  'xlink:role': 'xlinkRole',
+  xlinkShow: 1,
+  'xlink:show': 'xlinkShow',
+  xlinkTitle: 1,
+  'xlink:title': 'xlinkTitle',
+  xlinkType: 1,
+  'xlink:type': 'xlinkType',
+  xmlBase: 1,
+  'xml:base': 'xmlBase',
+  xmlLang: 1,
+  'xml:lang': 'xmlLang',
+  xmlns: 0,
+  'xml:space': 'xmlSpace',
+  xmlnsXlink: 1,
+  'xmlns:xlink': 'xmlnsXlink',
+  xmlSpace: 1,
+  y1: 0,
+  y2: 0,
+  y: 0,
+  yChannelSelector: 1,
+  z: 0,
+  zoomAndPan: 1
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/showdown/dist/showdown.js":
+/*!************************************************!*\
+  !*** ./node_modules/showdown/dist/showdown.js ***!
+  \************************************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_RESULT__;;/*! showdown v 2.1.0 - 21-04-2022 */
+(function(){
+/**
+ * Created by Tivie on 13-07-2015.
+ */
+
+function getDefaultOpts (simple) {
+  'use strict';
+
+  var defaultOptions = {
+    omitExtraWLInCodeBlocks: {
+      defaultValue: false,
+      describe: 'Omit the default extra whiteline added to code blocks',
+      type: 'boolean'
+    },
+    noHeaderId: {
+      defaultValue: false,
+      describe: 'Turn on/off generated header id',
+      type: 'boolean'
+    },
+    prefixHeaderId: {
+      defaultValue: false,
+      describe: 'Add a prefix to the generated header ids. Passing a string will prefix that string to the header id. Setting to true will add a generic \'section-\' prefix',
+      type: 'string'
+    },
+    rawPrefixHeaderId: {
+      defaultValue: false,
+      describe: 'Setting this option to true will prevent showdown from modifying the prefix. This might result in malformed IDs (if, for instance, the " char is used in the prefix)',
+      type: 'boolean'
+    },
+    ghCompatibleHeaderId: {
+      defaultValue: false,
+      describe: 'Generate header ids compatible with github style (spaces are replaced with dashes, a bunch of non alphanumeric chars are removed)',
+      type: 'boolean'
+    },
+    rawHeaderId: {
+      defaultValue: false,
+      describe: 'Remove only spaces, \' and " from generated header ids (including prefixes), replacing them with dashes (-). WARNING: This might result in malformed ids',
+      type: 'boolean'
+    },
+    headerLevelStart: {
+      defaultValue: false,
+      describe: 'The header blocks level start',
+      type: 'integer'
+    },
+    parseImgDimensions: {
+      defaultValue: false,
+      describe: 'Turn on/off image dimension parsing',
+      type: 'boolean'
+    },
+    simplifiedAutoLink: {
+      defaultValue: false,
+      describe: 'Turn on/off GFM autolink style',
+      type: 'boolean'
+    },
+    excludeTrailingPunctuationFromURLs: {
+      defaultValue: false,
+      describe: 'Excludes trailing punctuation from links generated with autoLinking',
+      type: 'boolean'
+    },
+    literalMidWordUnderscores: {
+      defaultValue: false,
+      describe: 'Parse midword underscores as literal underscores',
+      type: 'boolean'
+    },
+    literalMidWordAsterisks: {
+      defaultValue: false,
+      describe: 'Parse midword asterisks as literal asterisks',
+      type: 'boolean'
+    },
+    strikethrough: {
+      defaultValue: false,
+      describe: 'Turn on/off strikethrough support',
+      type: 'boolean'
+    },
+    tables: {
+      defaultValue: false,
+      describe: 'Turn on/off tables support',
+      type: 'boolean'
+    },
+    tablesHeaderId: {
+      defaultValue: false,
+      describe: 'Add an id to table headers',
+      type: 'boolean'
+    },
+    ghCodeBlocks: {
+      defaultValue: true,
+      describe: 'Turn on/off GFM fenced code blocks support',
+      type: 'boolean'
+    },
+    tasklists: {
+      defaultValue: false,
+      describe: 'Turn on/off GFM tasklist support',
+      type: 'boolean'
+    },
+    smoothLivePreview: {
+      defaultValue: false,
+      describe: 'Prevents weird effects in live previews due to incomplete input',
+      type: 'boolean'
+    },
+    smartIndentationFix: {
+      defaultValue: false,
+      describe: 'Tries to smartly fix indentation in es6 strings',
+      type: 'boolean'
+    },
+    disableForced4SpacesIndentedSublists: {
+      defaultValue: false,
+      describe: 'Disables the requirement of indenting nested sublists by 4 spaces',
+      type: 'boolean'
+    },
+    simpleLineBreaks: {
+      defaultValue: false,
+      describe: 'Parses simple line breaks as <br> (GFM Style)',
+      type: 'boolean'
+    },
+    requireSpaceBeforeHeadingText: {
+      defaultValue: false,
+      describe: 'Makes adding a space between `#` and the header text mandatory (GFM Style)',
+      type: 'boolean'
+    },
+    ghMentions: {
+      defaultValue: false,
+      describe: 'Enables github @mentions',
+      type: 'boolean'
+    },
+    ghMentionsLink: {
+      defaultValue: 'https://github.com/{u}',
+      describe: 'Changes the link generated by @mentions. Only applies if ghMentions option is enabled.',
+      type: 'string'
+    },
+    encodeEmails: {
+      defaultValue: true,
+      describe: 'Encode e-mail addresses through the use of Character Entities, transforming ASCII e-mail addresses into its equivalent decimal entities',
+      type: 'boolean'
+    },
+    openLinksInNewWindow: {
+      defaultValue: false,
+      describe: 'Open all links in new windows',
+      type: 'boolean'
+    },
+    backslashEscapesHTMLTags: {
+      defaultValue: false,
+      describe: 'Support for HTML Tag escaping. ex: \<div>foo\</div>',
+      type: 'boolean'
+    },
+    emoji: {
+      defaultValue: false,
+      describe: 'Enable emoji support. Ex: `this is a :smile: emoji`',
+      type: 'boolean'
+    },
+    underline: {
+      defaultValue: false,
+      describe: 'Enable support for underline. Syntax is double or triple underscores: `__underline word__`. With this option enabled, underscores no longer parses into `<em>` and `<strong>`',
+      type: 'boolean'
+    },
+    ellipsis: {
+      defaultValue: true,
+      describe: 'Replaces three dots with the ellipsis unicode character',
+      type: 'boolean'
+    },
+    completeHTMLDocument: {
+      defaultValue: false,
+      describe: 'Outputs a complete html document, including `<html>`, `<head>` and `<body>` tags',
+      type: 'boolean'
+    },
+    metadata: {
+      defaultValue: false,
+      describe: 'Enable support for document metadata (defined at the top of the document between `«««` and `»»»` or between `---` and `---`).',
+      type: 'boolean'
+    },
+    splitAdjacentBlockquotes: {
+      defaultValue: false,
+      describe: 'Split adjacent blockquote blocks',
+      type: 'boolean'
+    }
+  };
+  if (simple === false) {
+    return JSON.parse(JSON.stringify(defaultOptions));
+  }
+  var ret = {};
+  for (var opt in defaultOptions) {
+    if (defaultOptions.hasOwnProperty(opt)) {
+      ret[opt] = defaultOptions[opt].defaultValue;
+    }
+  }
+  return ret;
+}
+
+function allOptionsOn () {
+  'use strict';
+  var options = getDefaultOpts(true),
+      ret = {};
+  for (var opt in options) {
+    if (options.hasOwnProperty(opt)) {
+      ret[opt] = true;
+    }
+  }
+  return ret;
+}
+
+/**
+ * Created by Tivie on 06-01-2015.
+ */
+
+// Private properties
+var showdown = {},
+    parsers = {},
+    extensions = {},
+    globalOptions = getDefaultOpts(true),
+    setFlavor = 'vanilla',
+    flavor = {
+      github: {
+        omitExtraWLInCodeBlocks:              true,
+        simplifiedAutoLink:                   true,
+        excludeTrailingPunctuationFromURLs:   true,
+        literalMidWordUnderscores:            true,
+        strikethrough:                        true,
+        tables:                               true,
+        tablesHeaderId:                       true,
+        ghCodeBlocks:                         true,
+        tasklists:                            true,
+        disableForced4SpacesIndentedSublists: true,
+        simpleLineBreaks:                     true,
+        requireSpaceBeforeHeadingText:        true,
+        ghCompatibleHeaderId:                 true,
+        ghMentions:                           true,
+        backslashEscapesHTMLTags:             true,
+        emoji:                                true,
+        splitAdjacentBlockquotes:             true
+      },
+      original: {
+        noHeaderId:                           true,
+        ghCodeBlocks:                         false
+      },
+      ghost: {
+        omitExtraWLInCodeBlocks:              true,
+        parseImgDimensions:                   true,
+        simplifiedAutoLink:                   true,
+        excludeTrailingPunctuationFromURLs:   true,
+        literalMidWordUnderscores:            true,
+        strikethrough:                        true,
+        tables:                               true,
+        tablesHeaderId:                       true,
+        ghCodeBlocks:                         true,
+        tasklists:                            true,
+        smoothLivePreview:                    true,
+        simpleLineBreaks:                     true,
+        requireSpaceBeforeHeadingText:        true,
+        ghMentions:                           false,
+        encodeEmails:                         true
+      },
+      vanilla: getDefaultOpts(true),
+      allOn: allOptionsOn()
+    };
+
+/**
+ * helper namespace
+ * @type {{}}
+ */
+showdown.helper = {};
+
+/**
+ * TODO LEGACY SUPPORT CODE
+ * @type {{}}
+ */
+showdown.extensions = {};
+
+/**
+ * Set a global option
+ * @static
+ * @param {string} key
+ * @param {*} value
+ * @returns {showdown}
+ */
+showdown.setOption = function (key, value) {
+  'use strict';
+  globalOptions[key] = value;
+  return this;
+};
+
+/**
+ * Get a global option
+ * @static
+ * @param {string} key
+ * @returns {*}
+ */
+showdown.getOption = function (key) {
+  'use strict';
+  return globalOptions[key];
+};
+
+/**
+ * Get the global options
+ * @static
+ * @returns {{}}
+ */
+showdown.getOptions = function () {
+  'use strict';
+  return globalOptions;
+};
+
+/**
+ * Reset global options to the default values
+ * @static
+ */
+showdown.resetOptions = function () {
+  'use strict';
+  globalOptions = getDefaultOpts(true);
+};
+
+/**
+ * Set the flavor showdown should use as default
+ * @param {string} name
+ */
+showdown.setFlavor = function (name) {
+  'use strict';
+  if (!flavor.hasOwnProperty(name)) {
+    throw Error(name + ' flavor was not found');
+  }
+  showdown.resetOptions();
+  var preset = flavor[name];
+  setFlavor = name;
+  for (var option in preset) {
+    if (preset.hasOwnProperty(option)) {
+      globalOptions[option] = preset[option];
+    }
+  }
+};
+
+/**
+ * Get the currently set flavor
+ * @returns {string}
+ */
+showdown.getFlavor = function () {
+  'use strict';
+  return setFlavor;
+};
+
+/**
+ * Get the options of a specified flavor. Returns undefined if the flavor was not found
+ * @param {string} name Name of the flavor
+ * @returns {{}|undefined}
+ */
+showdown.getFlavorOptions = function (name) {
+  'use strict';
+  if (flavor.hasOwnProperty(name)) {
+    return flavor[name];
+  }
+};
+
+/**
+ * Get the default options
+ * @static
+ * @param {boolean} [simple=true]
+ * @returns {{}}
+ */
+showdown.getDefaultOptions = function (simple) {
+  'use strict';
+  return getDefaultOpts(simple);
+};
+
+/**
+ * Get or set a subParser
+ *
+ * subParser(name)       - Get a registered subParser
+ * subParser(name, func) - Register a subParser
+ * @static
+ * @param {string} name
+ * @param {function} [func]
+ * @returns {*}
+ */
+showdown.subParser = function (name, func) {
+  'use strict';
+  if (showdown.helper.isString(name)) {
+    if (typeof func !== 'undefined') {
+      parsers[name] = func;
+    } else {
+      if (parsers.hasOwnProperty(name)) {
+        return parsers[name];
+      } else {
+        throw Error('SubParser named ' + name + ' not registered!');
+      }
+    }
+  }
+};
+
+/**
+ * Gets or registers an extension
+ * @static
+ * @param {string} name
+ * @param {object|object[]|function=} ext
+ * @returns {*}
+ */
+showdown.extension = function (name, ext) {
+  'use strict';
+
+  if (!showdown.helper.isString(name)) {
+    throw Error('Extension \'name\' must be a string');
+  }
+
+  name = showdown.helper.stdExtName(name);
+
+  // Getter
+  if (showdown.helper.isUndefined(ext)) {
+    if (!extensions.hasOwnProperty(name)) {
+      throw Error('Extension named ' + name + ' is not registered!');
+    }
+    return extensions[name];
+
+    // Setter
+  } else {
+    // Expand extension if it's wrapped in a function
+    if (typeof ext === 'function') {
+      ext = ext();
+    }
+
+    // Ensure extension is an array
+    if (!showdown.helper.isArray(ext)) {
+      ext = [ext];
+    }
+
+    var validExtension = validate(ext, name);
+
+    if (validExtension.valid) {
+      extensions[name] = ext;
+    } else {
+      throw Error(validExtension.error);
+    }
+  }
+};
+
+/**
+ * Gets all extensions registered
+ * @returns {{}}
+ */
+showdown.getAllExtensions = function () {
+  'use strict';
+  return extensions;
+};
+
+/**
+ * Remove an extension
+ * @param {string} name
+ */
+showdown.removeExtension = function (name) {
+  'use strict';
+  delete extensions[name];
+};
+
+/**
+ * Removes all extensions
+ */
+showdown.resetExtensions = function () {
+  'use strict';
+  extensions = {};
+};
+
+/**
+ * Validate extension
+ * @param {array} extension
+ * @param {string} name
+ * @returns {{valid: boolean, error: string}}
+ */
+function validate (extension, name) {
+  'use strict';
+
+  var errMsg = (name) ? 'Error in ' + name + ' extension->' : 'Error in unnamed extension',
+      ret = {
+        valid: true,
+        error: ''
+      };
+
+  if (!showdown.helper.isArray(extension)) {
+    extension = [extension];
+  }
+
+  for (var i = 0; i < extension.length; ++i) {
+    var baseMsg = errMsg + ' sub-extension ' + i + ': ',
+        ext = extension[i];
+    if (typeof ext !== 'object') {
+      ret.valid = false;
+      ret.error = baseMsg + 'must be an object, but ' + typeof ext + ' given';
+      return ret;
+    }
+
+    if (!showdown.helper.isString(ext.type)) {
+      ret.valid = false;
+      ret.error = baseMsg + 'property "type" must be a string, but ' + typeof ext.type + ' given';
+      return ret;
+    }
+
+    var type = ext.type = ext.type.toLowerCase();
+
+    // normalize extension type
+    if (type === 'language') {
+      type = ext.type = 'lang';
+    }
+
+    if (type === 'html') {
+      type = ext.type = 'output';
+    }
+
+    if (type !== 'lang' && type !== 'output' && type !== 'listener') {
+      ret.valid = false;
+      ret.error = baseMsg + 'type ' + type + ' is not recognized. Valid values: "lang/language", "output/html" or "listener"';
+      return ret;
+    }
+
+    if (type === 'listener') {
+      if (showdown.helper.isUndefined(ext.listeners)) {
+        ret.valid = false;
+        ret.error = baseMsg + '. Extensions of type "listener" must have a property called "listeners"';
+        return ret;
+      }
+    } else {
+      if (showdown.helper.isUndefined(ext.filter) && showdown.helper.isUndefined(ext.regex)) {
+        ret.valid = false;
+        ret.error = baseMsg + type + ' extensions must define either a "regex" property or a "filter" method';
+        return ret;
+      }
+    }
+
+    if (ext.listeners) {
+      if (typeof ext.listeners !== 'object') {
+        ret.valid = false;
+        ret.error = baseMsg + '"listeners" property must be an object but ' + typeof ext.listeners + ' given';
+        return ret;
+      }
+      for (var ln in ext.listeners) {
+        if (ext.listeners.hasOwnProperty(ln)) {
+          if (typeof ext.listeners[ln] !== 'function') {
+            ret.valid = false;
+            ret.error = baseMsg + '"listeners" property must be an hash of [event name]: [callback]. listeners.' + ln +
+              ' must be a function but ' + typeof ext.listeners[ln] + ' given';
+            return ret;
+          }
+        }
+      }
+    }
+
+    if (ext.filter) {
+      if (typeof ext.filter !== 'function') {
+        ret.valid = false;
+        ret.error = baseMsg + '"filter" must be a function, but ' + typeof ext.filter + ' given';
+        return ret;
+      }
+    } else if (ext.regex) {
+      if (showdown.helper.isString(ext.regex)) {
+        ext.regex = new RegExp(ext.regex, 'g');
+      }
+      if (!(ext.regex instanceof RegExp)) {
+        ret.valid = false;
+        ret.error = baseMsg + '"regex" property must either be a string or a RegExp object, but ' + typeof ext.regex + ' given';
+        return ret;
+      }
+      if (showdown.helper.isUndefined(ext.replace)) {
+        ret.valid = false;
+        ret.error = baseMsg + '"regex" extensions must implement a replace string or function';
+        return ret;
+      }
+    }
+  }
+  return ret;
+}
+
+/**
+ * Validate extension
+ * @param {object} ext
+ * @returns {boolean}
+ */
+showdown.validateExtension = function (ext) {
+  'use strict';
+
+  var validateExtension = validate(ext, null);
+  if (!validateExtension.valid) {
+    console.warn(validateExtension.error);
+    return false;
+  }
+  return true;
+};
+
+/**
+ * showdownjs helper functions
+ */
+
+if (!showdown.hasOwnProperty('helper')) {
+  showdown.helper = {};
+}
+
+/**
+ * Check if var is string
+ * @static
+ * @param {string} a
+ * @returns {boolean}
+ */
+showdown.helper.isString = function (a) {
+  'use strict';
+  return (typeof a === 'string' || a instanceof String);
+};
+
+/**
+ * Check if var is a function
+ * @static
+ * @param {*} a
+ * @returns {boolean}
+ */
+showdown.helper.isFunction = function (a) {
+  'use strict';
+  var getType = {};
+  return a && getType.toString.call(a) === '[object Function]';
+};
+
+/**
+ * isArray helper function
+ * @static
+ * @param {*} a
+ * @returns {boolean}
+ */
+showdown.helper.isArray = function (a) {
+  'use strict';
+  return Array.isArray(a);
+};
+
+/**
+ * Check if value is undefined
+ * @static
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is `undefined`, else `false`.
+ */
+showdown.helper.isUndefined = function (value) {
+  'use strict';
+  return typeof value === 'undefined';
+};
+
+/**
+ * ForEach helper function
+ * Iterates over Arrays and Objects (own properties only)
+ * @static
+ * @param {*} obj
+ * @param {function} callback Accepts 3 params: 1. value, 2. key, 3. the original array/object
+ */
+showdown.helper.forEach = function (obj, callback) {
+  'use strict';
+  // check if obj is defined
+  if (showdown.helper.isUndefined(obj)) {
+    throw new Error('obj param is required');
+  }
+
+  if (showdown.helper.isUndefined(callback)) {
+    throw new Error('callback param is required');
+  }
+
+  if (!showdown.helper.isFunction(callback)) {
+    throw new Error('callback param must be a function/closure');
+  }
+
+  if (typeof obj.forEach === 'function') {
+    obj.forEach(callback);
+  } else if (showdown.helper.isArray(obj)) {
+    for (var i = 0; i < obj.length; i++) {
+      callback(obj[i], i, obj);
+    }
+  } else if (typeof (obj) === 'object') {
+    for (var prop in obj) {
+      if (obj.hasOwnProperty(prop)) {
+        callback(obj[prop], prop, obj);
+      }
+    }
+  } else {
+    throw new Error('obj does not seem to be an array or an iterable object');
+  }
+};
+
+/**
+ * Standardidize extension name
+ * @static
+ * @param {string} s extension name
+ * @returns {string}
+ */
+showdown.helper.stdExtName = function (s) {
+  'use strict';
+  return s.replace(/[_?*+\/\\.^-]/g, '').replace(/\s/g, '').toLowerCase();
+};
+
+function escapeCharactersCallback (wholeMatch, m1) {
+  'use strict';
+  var charCodeToEscape = m1.charCodeAt(0);
+  return '¨E' + charCodeToEscape + 'E';
+}
+
+/**
+ * Callback used to escape characters when passing through String.replace
+ * @static
+ * @param {string} wholeMatch
+ * @param {string} m1
+ * @returns {string}
+ */
+showdown.helper.escapeCharactersCallback = escapeCharactersCallback;
+
+/**
+ * Escape characters in a string
+ * @static
+ * @param {string} text
+ * @param {string} charsToEscape
+ * @param {boolean} afterBackslash
+ * @returns {XML|string|void|*}
+ */
+showdown.helper.escapeCharacters = function (text, charsToEscape, afterBackslash) {
+  'use strict';
+  // First we have to escape the escape characters so that
+  // we can build a character class out of them
+  var regexString = '([' + charsToEscape.replace(/([\[\]\\])/g, '\\$1') + '])';
+
+  if (afterBackslash) {
+    regexString = '\\\\' + regexString;
+  }
+
+  var regex = new RegExp(regexString, 'g');
+  text = text.replace(regex, escapeCharactersCallback);
+
+  return text;
+};
+
+/**
+ * Unescape HTML entities
+ * @param txt
+ * @returns {string}
+ */
+showdown.helper.unescapeHTMLEntities = function (txt) {
+  'use strict';
+
+  return txt
+    .replace(/&quot;/g, '"')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&amp;/g, '&');
+};
+
+var rgxFindMatchPos = function (str, left, right, flags) {
+  'use strict';
+  var f = flags || '',
+      g = f.indexOf('g') > -1,
+      x = new RegExp(left + '|' + right, 'g' + f.replace(/g/g, '')),
+      l = new RegExp(left, f.replace(/g/g, '')),
+      pos = [],
+      t, s, m, start, end;
+
+  do {
+    t = 0;
+    while ((m = x.exec(str))) {
+      if (l.test(m[0])) {
+        if (!(t++)) {
+          s = x.lastIndex;
+          start = s - m[0].length;
+        }
+      } else if (t) {
+        if (!--t) {
+          end = m.index + m[0].length;
+          var obj = {
+            left: {start: start, end: s},
+            match: {start: s, end: m.index},
+            right: {start: m.index, end: end},
+            wholeMatch: {start: start, end: end}
+          };
+          pos.push(obj);
+          if (!g) {
+            return pos;
+          }
+        }
+      }
+    }
+  } while (t && (x.lastIndex = s));
+
+  return pos;
+};
+
+/**
+ * matchRecursiveRegExp
+ *
+ * (c) 2007 Steven Levithan <stevenlevithan.com>
+ * MIT License
+ *
+ * Accepts a string to search, a left and right format delimiter
+ * as regex patterns, and optional regex flags. Returns an array
+ * of matches, allowing nested instances of left/right delimiters.
+ * Use the "g" flag to return all matches, otherwise only the
+ * first is returned. Be careful to ensure that the left and
+ * right format delimiters produce mutually exclusive matches.
+ * Backreferences are not supported within the right delimiter
+ * due to how it is internally combined with the left delimiter.
+ * When matching strings whose format delimiters are unbalanced
+ * to the left or right, the output is intentionally as a
+ * conventional regex library with recursion support would
+ * produce, e.g. "<<x>" and "<x>>" both produce ["x"] when using
+ * "<" and ">" as the delimiters (both strings contain a single,
+ * balanced instance of "<x>").
+ *
+ * examples:
+ * matchRecursiveRegExp("test", "\\(", "\\)")
+ * returns: []
+ * matchRecursiveRegExp("<t<<e>><s>>t<>", "<", ">", "g")
+ * returns: ["t<<e>><s>", ""]
+ * matchRecursiveRegExp("<div id=\"x\">test</div>", "<div\\b[^>]*>", "</div>", "gi")
+ * returns: ["test"]
+ */
+showdown.helper.matchRecursiveRegExp = function (str, left, right, flags) {
+  'use strict';
+
+  var matchPos = rgxFindMatchPos (str, left, right, flags),
+      results = [];
+
+  for (var i = 0; i < matchPos.length; ++i) {
+    results.push([
+      str.slice(matchPos[i].wholeMatch.start, matchPos[i].wholeMatch.end),
+      str.slice(matchPos[i].match.start, matchPos[i].match.end),
+      str.slice(matchPos[i].left.start, matchPos[i].left.end),
+      str.slice(matchPos[i].right.start, matchPos[i].right.end)
+    ]);
+  }
+  return results;
+};
+
+/**
+ *
+ * @param {string} str
+ * @param {string|function} replacement
+ * @param {string} left
+ * @param {string} right
+ * @param {string} flags
+ * @returns {string}
+ */
+showdown.helper.replaceRecursiveRegExp = function (str, replacement, left, right, flags) {
+  'use strict';
+
+  if (!showdown.helper.isFunction(replacement)) {
+    var repStr = replacement;
+    replacement = function () {
+      return repStr;
+    };
+  }
+
+  var matchPos = rgxFindMatchPos(str, left, right, flags),
+      finalStr = str,
+      lng = matchPos.length;
+
+  if (lng > 0) {
+    var bits = [];
+    if (matchPos[0].wholeMatch.start !== 0) {
+      bits.push(str.slice(0, matchPos[0].wholeMatch.start));
+    }
+    for (var i = 0; i < lng; ++i) {
+      bits.push(
+        replacement(
+          str.slice(matchPos[i].wholeMatch.start, matchPos[i].wholeMatch.end),
+          str.slice(matchPos[i].match.start, matchPos[i].match.end),
+          str.slice(matchPos[i].left.start, matchPos[i].left.end),
+          str.slice(matchPos[i].right.start, matchPos[i].right.end)
+        )
+      );
+      if (i < lng - 1) {
+        bits.push(str.slice(matchPos[i].wholeMatch.end, matchPos[i + 1].wholeMatch.start));
+      }
+    }
+    if (matchPos[lng - 1].wholeMatch.end < str.length) {
+      bits.push(str.slice(matchPos[lng - 1].wholeMatch.end));
+    }
+    finalStr = bits.join('');
+  }
+  return finalStr;
+};
+
+/**
+ * Returns the index within the passed String object of the first occurrence of the specified regex,
+ * starting the search at fromIndex. Returns -1 if the value is not found.
+ *
+ * @param {string} str string to search
+ * @param {RegExp} regex Regular expression to search
+ * @param {int} [fromIndex = 0] Index to start the search
+ * @returns {Number}
+ * @throws InvalidArgumentError
+ */
+showdown.helper.regexIndexOf = function (str, regex, fromIndex) {
+  'use strict';
+  if (!showdown.helper.isString(str)) {
+    throw 'InvalidArgumentError: first parameter of showdown.helper.regexIndexOf function must be a string';
+  }
+  if (regex instanceof RegExp === false) {
+    throw 'InvalidArgumentError: second parameter of showdown.helper.regexIndexOf function must be an instance of RegExp';
+  }
+  var indexOf = str.substring(fromIndex || 0).search(regex);
+  return (indexOf >= 0) ? (indexOf + (fromIndex || 0)) : indexOf;
+};
+
+/**
+ * Splits the passed string object at the defined index, and returns an array composed of the two substrings
+ * @param {string} str string to split
+ * @param {int} index index to split string at
+ * @returns {[string,string]}
+ * @throws InvalidArgumentError
+ */
+showdown.helper.splitAtIndex = function (str, index) {
+  'use strict';
+  if (!showdown.helper.isString(str)) {
+    throw 'InvalidArgumentError: first parameter of showdown.helper.regexIndexOf function must be a string';
+  }
+  return [str.substring(0, index), str.substring(index)];
+};
+
+/**
+ * Obfuscate an e-mail address through the use of Character Entities,
+ * transforming ASCII characters into their equivalent decimal or hex entities.
+ *
+ * Since it has a random component, subsequent calls to this function produce different results
+ *
+ * @param {string} mail
+ * @returns {string}
+ */
+showdown.helper.encodeEmailAddress = function (mail) {
+  'use strict';
+  var encode = [
+    function (ch) {
+      return '&#' + ch.charCodeAt(0) + ';';
+    },
+    function (ch) {
+      return '&#x' + ch.charCodeAt(0).toString(16) + ';';
+    },
+    function (ch) {
+      return ch;
+    }
+  ];
+
+  mail = mail.replace(/./g, function (ch) {
+    if (ch === '@') {
+      // this *must* be encoded. I insist.
+      ch = encode[Math.floor(Math.random() * 2)](ch);
+    } else {
+      var r = Math.random();
+      // roughly 10% raw, 45% hex, 45% dec
+      ch = (
+        r > 0.9 ? encode[2](ch) : r > 0.45 ? encode[1](ch) : encode[0](ch)
+      );
+    }
+    return ch;
+  });
+
+  return mail;
+};
+
+/**
+ *
+ * @param str
+ * @param targetLength
+ * @param padString
+ * @returns {string}
+ */
+showdown.helper.padEnd = function padEnd (str, targetLength, padString) {
+  'use strict';
+  /*jshint bitwise: false*/
+  // eslint-disable-next-line space-infix-ops
+  targetLength = targetLength>>0; //floor if number or convert non-number to 0;
+  /*jshint bitwise: true*/
+  padString = String(padString || ' ');
+  if (str.length > targetLength) {
+    return String(str);
+  } else {
+    targetLength = targetLength - str.length;
+    if (targetLength > padString.length) {
+      padString += padString.repeat(targetLength / padString.length); //append to original to ensure we are longer than needed
+    }
+    return String(str) + padString.slice(0,targetLength);
+  }
+};
+
+/**
+ * POLYFILLS
+ */
+// use this instead of builtin is undefined for IE8 compatibility
+if (typeof (console) === 'undefined') {
+  console = {
+    warn: function (msg) {
+      'use strict';
+      alert(msg);
+    },
+    log: function (msg) {
+      'use strict';
+      alert(msg);
+    },
+    error: function (msg) {
+      'use strict';
+      throw msg;
+    }
+  };
+}
+
+/**
+ * Common regexes.
+ * We declare some common regexes to improve performance
+ */
+showdown.helper.regexes = {
+  asteriskDashAndColon: /([*_:~])/g
+};
+
+/**
+ * EMOJIS LIST
+ */
+showdown.helper.emojis = {
+  '+1':'\ud83d\udc4d',
+  '-1':'\ud83d\udc4e',
+  '100':'\ud83d\udcaf',
+  '1234':'\ud83d\udd22',
+  '1st_place_medal':'\ud83e\udd47',
+  '2nd_place_medal':'\ud83e\udd48',
+  '3rd_place_medal':'\ud83e\udd49',
+  '8ball':'\ud83c\udfb1',
+  'a':'\ud83c\udd70\ufe0f',
+  'ab':'\ud83c\udd8e',
+  'abc':'\ud83d\udd24',
+  'abcd':'\ud83d\udd21',
+  'accept':'\ud83c\ude51',
+  'aerial_tramway':'\ud83d\udea1',
+  'airplane':'\u2708\ufe0f',
+  'alarm_clock':'\u23f0',
+  'alembic':'\u2697\ufe0f',
+  'alien':'\ud83d\udc7d',
+  'ambulance':'\ud83d\ude91',
+  'amphora':'\ud83c\udffa',
+  'anchor':'\u2693\ufe0f',
+  'angel':'\ud83d\udc7c',
+  'anger':'\ud83d\udca2',
+  'angry':'\ud83d\ude20',
+  'anguished':'\ud83d\ude27',
+  'ant':'\ud83d\udc1c',
+  'apple':'\ud83c\udf4e',
+  'aquarius':'\u2652\ufe0f',
+  'aries':'\u2648\ufe0f',
+  'arrow_backward':'\u25c0\ufe0f',
+  'arrow_double_down':'\u23ec',
+  'arrow_double_up':'\u23eb',
+  'arrow_down':'\u2b07\ufe0f',
+  'arrow_down_small':'\ud83d\udd3d',
+  'arrow_forward':'\u25b6\ufe0f',
+  'arrow_heading_down':'\u2935\ufe0f',
+  'arrow_heading_up':'\u2934\ufe0f',
+  'arrow_left':'\u2b05\ufe0f',
+  'arrow_lower_left':'\u2199\ufe0f',
+  'arrow_lower_right':'\u2198\ufe0f',
+  'arrow_right':'\u27a1\ufe0f',
+  'arrow_right_hook':'\u21aa\ufe0f',
+  'arrow_up':'\u2b06\ufe0f',
+  'arrow_up_down':'\u2195\ufe0f',
+  'arrow_up_small':'\ud83d\udd3c',
+  'arrow_upper_left':'\u2196\ufe0f',
+  'arrow_upper_right':'\u2197\ufe0f',
+  'arrows_clockwise':'\ud83d\udd03',
+  'arrows_counterclockwise':'\ud83d\udd04',
+  'art':'\ud83c\udfa8',
+  'articulated_lorry':'\ud83d\ude9b',
+  'artificial_satellite':'\ud83d\udef0',
+  'astonished':'\ud83d\ude32',
+  'athletic_shoe':'\ud83d\udc5f',
+  'atm':'\ud83c\udfe7',
+  'atom_symbol':'\u269b\ufe0f',
+  'avocado':'\ud83e\udd51',
+  'b':'\ud83c\udd71\ufe0f',
+  'baby':'\ud83d\udc76',
+  'baby_bottle':'\ud83c\udf7c',
+  'baby_chick':'\ud83d\udc24',
+  'baby_symbol':'\ud83d\udebc',
+  'back':'\ud83d\udd19',
+  'bacon':'\ud83e\udd53',
+  'badminton':'\ud83c\udff8',
+  'baggage_claim':'\ud83d\udec4',
+  'baguette_bread':'\ud83e\udd56',
+  'balance_scale':'\u2696\ufe0f',
+  'balloon':'\ud83c\udf88',
+  'ballot_box':'\ud83d\uddf3',
+  'ballot_box_with_check':'\u2611\ufe0f',
+  'bamboo':'\ud83c\udf8d',
+  'banana':'\ud83c\udf4c',
+  'bangbang':'\u203c\ufe0f',
+  'bank':'\ud83c\udfe6',
+  'bar_chart':'\ud83d\udcca',
+  'barber':'\ud83d\udc88',
+  'baseball':'\u26be\ufe0f',
+  'basketball':'\ud83c\udfc0',
+  'basketball_man':'\u26f9\ufe0f',
+  'basketball_woman':'\u26f9\ufe0f&zwj;\u2640\ufe0f',
+  'bat':'\ud83e\udd87',
+  'bath':'\ud83d\udec0',
+  'bathtub':'\ud83d\udec1',
+  'battery':'\ud83d\udd0b',
+  'beach_umbrella':'\ud83c\udfd6',
+  'bear':'\ud83d\udc3b',
+  'bed':'\ud83d\udecf',
+  'bee':'\ud83d\udc1d',
+  'beer':'\ud83c\udf7a',
+  'beers':'\ud83c\udf7b',
+  'beetle':'\ud83d\udc1e',
+  'beginner':'\ud83d\udd30',
+  'bell':'\ud83d\udd14',
+  'bellhop_bell':'\ud83d\udece',
+  'bento':'\ud83c\udf71',
+  'biking_man':'\ud83d\udeb4',
+  'bike':'\ud83d\udeb2',
+  'biking_woman':'\ud83d\udeb4&zwj;\u2640\ufe0f',
+  'bikini':'\ud83d\udc59',
+  'biohazard':'\u2623\ufe0f',
+  'bird':'\ud83d\udc26',
+  'birthday':'\ud83c\udf82',
+  'black_circle':'\u26ab\ufe0f',
+  'black_flag':'\ud83c\udff4',
+  'black_heart':'\ud83d\udda4',
+  'black_joker':'\ud83c\udccf',
+  'black_large_square':'\u2b1b\ufe0f',
+  'black_medium_small_square':'\u25fe\ufe0f',
+  'black_medium_square':'\u25fc\ufe0f',
+  'black_nib':'\u2712\ufe0f',
+  'black_small_square':'\u25aa\ufe0f',
+  'black_square_button':'\ud83d\udd32',
+  'blonde_man':'\ud83d\udc71',
+  'blonde_woman':'\ud83d\udc71&zwj;\u2640\ufe0f',
+  'blossom':'\ud83c\udf3c',
+  'blowfish':'\ud83d\udc21',
+  'blue_book':'\ud83d\udcd8',
+  'blue_car':'\ud83d\ude99',
+  'blue_heart':'\ud83d\udc99',
+  'blush':'\ud83d\ude0a',
+  'boar':'\ud83d\udc17',
+  'boat':'\u26f5\ufe0f',
+  'bomb':'\ud83d\udca3',
+  'book':'\ud83d\udcd6',
+  'bookmark':'\ud83d\udd16',
+  'bookmark_tabs':'\ud83d\udcd1',
+  'books':'\ud83d\udcda',
+  'boom':'\ud83d\udca5',
+  'boot':'\ud83d\udc62',
+  'bouquet':'\ud83d\udc90',
+  'bowing_man':'\ud83d\ude47',
+  'bow_and_arrow':'\ud83c\udff9',
+  'bowing_woman':'\ud83d\ude47&zwj;\u2640\ufe0f',
+  'bowling':'\ud83c\udfb3',
+  'boxing_glove':'\ud83e\udd4a',
+  'boy':'\ud83d\udc66',
+  'bread':'\ud83c\udf5e',
+  'bride_with_veil':'\ud83d\udc70',
+  'bridge_at_night':'\ud83c\udf09',
+  'briefcase':'\ud83d\udcbc',
+  'broken_heart':'\ud83d\udc94',
+  'bug':'\ud83d\udc1b',
+  'building_construction':'\ud83c\udfd7',
+  'bulb':'\ud83d\udca1',
+  'bullettrain_front':'\ud83d\ude85',
+  'bullettrain_side':'\ud83d\ude84',
+  'burrito':'\ud83c\udf2f',
+  'bus':'\ud83d\ude8c',
+  'business_suit_levitating':'\ud83d\udd74',
+  'busstop':'\ud83d\ude8f',
+  'bust_in_silhouette':'\ud83d\udc64',
+  'busts_in_silhouette':'\ud83d\udc65',
+  'butterfly':'\ud83e\udd8b',
+  'cactus':'\ud83c\udf35',
+  'cake':'\ud83c\udf70',
+  'calendar':'\ud83d\udcc6',
+  'call_me_hand':'\ud83e\udd19',
+  'calling':'\ud83d\udcf2',
+  'camel':'\ud83d\udc2b',
+  'camera':'\ud83d\udcf7',
+  'camera_flash':'\ud83d\udcf8',
+  'camping':'\ud83c\udfd5',
+  'cancer':'\u264b\ufe0f',
+  'candle':'\ud83d\udd6f',
+  'candy':'\ud83c\udf6c',
+  'canoe':'\ud83d\udef6',
+  'capital_abcd':'\ud83d\udd20',
+  'capricorn':'\u2651\ufe0f',
+  'car':'\ud83d\ude97',
+  'card_file_box':'\ud83d\uddc3',
+  'card_index':'\ud83d\udcc7',
+  'card_index_dividers':'\ud83d\uddc2',
+  'carousel_horse':'\ud83c\udfa0',
+  'carrot':'\ud83e\udd55',
+  'cat':'\ud83d\udc31',
+  'cat2':'\ud83d\udc08',
+  'cd':'\ud83d\udcbf',
+  'chains':'\u26d3',
+  'champagne':'\ud83c\udf7e',
+  'chart':'\ud83d\udcb9',
+  'chart_with_downwards_trend':'\ud83d\udcc9',
+  'chart_with_upwards_trend':'\ud83d\udcc8',
+  'checkered_flag':'\ud83c\udfc1',
+  'cheese':'\ud83e\uddc0',
+  'cherries':'\ud83c\udf52',
+  'cherry_blossom':'\ud83c\udf38',
+  'chestnut':'\ud83c\udf30',
+  'chicken':'\ud83d\udc14',
+  'children_crossing':'\ud83d\udeb8',
+  'chipmunk':'\ud83d\udc3f',
+  'chocolate_bar':'\ud83c\udf6b',
+  'christmas_tree':'\ud83c\udf84',
+  'church':'\u26ea\ufe0f',
+  'cinema':'\ud83c\udfa6',
+  'circus_tent':'\ud83c\udfaa',
+  'city_sunrise':'\ud83c\udf07',
+  'city_sunset':'\ud83c\udf06',
+  'cityscape':'\ud83c\udfd9',
+  'cl':'\ud83c\udd91',
+  'clamp':'\ud83d\udddc',
+  'clap':'\ud83d\udc4f',
+  'clapper':'\ud83c\udfac',
+  'classical_building':'\ud83c\udfdb',
+  'clinking_glasses':'\ud83e\udd42',
+  'clipboard':'\ud83d\udccb',
+  'clock1':'\ud83d\udd50',
+  'clock10':'\ud83d\udd59',
+  'clock1030':'\ud83d\udd65',
+  'clock11':'\ud83d\udd5a',
+  'clock1130':'\ud83d\udd66',
+  'clock12':'\ud83d\udd5b',
+  'clock1230':'\ud83d\udd67',
+  'clock130':'\ud83d\udd5c',
+  'clock2':'\ud83d\udd51',
+  'clock230':'\ud83d\udd5d',
+  'clock3':'\ud83d\udd52',
+  'clock330':'\ud83d\udd5e',
+  'clock4':'\ud83d\udd53',
+  'clock430':'\ud83d\udd5f',
+  'clock5':'\ud83d\udd54',
+  'clock530':'\ud83d\udd60',
+  'clock6':'\ud83d\udd55',
+  'clock630':'\ud83d\udd61',
+  'clock7':'\ud83d\udd56',
+  'clock730':'\ud83d\udd62',
+  'clock8':'\ud83d\udd57',
+  'clock830':'\ud83d\udd63',
+  'clock9':'\ud83d\udd58',
+  'clock930':'\ud83d\udd64',
+  'closed_book':'\ud83d\udcd5',
+  'closed_lock_with_key':'\ud83d\udd10',
+  'closed_umbrella':'\ud83c\udf02',
+  'cloud':'\u2601\ufe0f',
+  'cloud_with_lightning':'\ud83c\udf29',
+  'cloud_with_lightning_and_rain':'\u26c8',
+  'cloud_with_rain':'\ud83c\udf27',
+  'cloud_with_snow':'\ud83c\udf28',
+  'clown_face':'\ud83e\udd21',
+  'clubs':'\u2663\ufe0f',
+  'cocktail':'\ud83c\udf78',
+  'coffee':'\u2615\ufe0f',
+  'coffin':'\u26b0\ufe0f',
+  'cold_sweat':'\ud83d\ude30',
+  'comet':'\u2604\ufe0f',
+  'computer':'\ud83d\udcbb',
+  'computer_mouse':'\ud83d\uddb1',
+  'confetti_ball':'\ud83c\udf8a',
+  'confounded':'\ud83d\ude16',
+  'confused':'\ud83d\ude15',
+  'congratulations':'\u3297\ufe0f',
+  'construction':'\ud83d\udea7',
+  'construction_worker_man':'\ud83d\udc77',
+  'construction_worker_woman':'\ud83d\udc77&zwj;\u2640\ufe0f',
+  'control_knobs':'\ud83c\udf9b',
+  'convenience_store':'\ud83c\udfea',
+  'cookie':'\ud83c\udf6a',
+  'cool':'\ud83c\udd92',
+  'policeman':'\ud83d\udc6e',
+  'copyright':'\u00a9\ufe0f',
+  'corn':'\ud83c\udf3d',
+  'couch_and_lamp':'\ud83d\udecb',
+  'couple':'\ud83d\udc6b',
+  'couple_with_heart_woman_man':'\ud83d\udc91',
+  'couple_with_heart_man_man':'\ud83d\udc68&zwj;\u2764\ufe0f&zwj;\ud83d\udc68',
+  'couple_with_heart_woman_woman':'\ud83d\udc69&zwj;\u2764\ufe0f&zwj;\ud83d\udc69',
+  'couplekiss_man_man':'\ud83d\udc68&zwj;\u2764\ufe0f&zwj;\ud83d\udc8b&zwj;\ud83d\udc68',
+  'couplekiss_man_woman':'\ud83d\udc8f',
+  'couplekiss_woman_woman':'\ud83d\udc69&zwj;\u2764\ufe0f&zwj;\ud83d\udc8b&zwj;\ud83d\udc69',
+  'cow':'\ud83d\udc2e',
+  'cow2':'\ud83d\udc04',
+  'cowboy_hat_face':'\ud83e\udd20',
+  'crab':'\ud83e\udd80',
+  'crayon':'\ud83d\udd8d',
+  'credit_card':'\ud83d\udcb3',
+  'crescent_moon':'\ud83c\udf19',
+  'cricket':'\ud83c\udfcf',
+  'crocodile':'\ud83d\udc0a',
+  'croissant':'\ud83e\udd50',
+  'crossed_fingers':'\ud83e\udd1e',
+  'crossed_flags':'\ud83c\udf8c',
+  'crossed_swords':'\u2694\ufe0f',
+  'crown':'\ud83d\udc51',
+  'cry':'\ud83d\ude22',
+  'crying_cat_face':'\ud83d\ude3f',
+  'crystal_ball':'\ud83d\udd2e',
+  'cucumber':'\ud83e\udd52',
+  'cupid':'\ud83d\udc98',
+  'curly_loop':'\u27b0',
+  'currency_exchange':'\ud83d\udcb1',
+  'curry':'\ud83c\udf5b',
+  'custard':'\ud83c\udf6e',
+  'customs':'\ud83d\udec3',
+  'cyclone':'\ud83c\udf00',
+  'dagger':'\ud83d\udde1',
+  'dancer':'\ud83d\udc83',
+  'dancing_women':'\ud83d\udc6f',
+  'dancing_men':'\ud83d\udc6f&zwj;\u2642\ufe0f',
+  'dango':'\ud83c\udf61',
+  'dark_sunglasses':'\ud83d\udd76',
+  'dart':'\ud83c\udfaf',
+  'dash':'\ud83d\udca8',
+  'date':'\ud83d\udcc5',
+  'deciduous_tree':'\ud83c\udf33',
+  'deer':'\ud83e\udd8c',
+  'department_store':'\ud83c\udfec',
+  'derelict_house':'\ud83c\udfda',
+  'desert':'\ud83c\udfdc',
+  'desert_island':'\ud83c\udfdd',
+  'desktop_computer':'\ud83d\udda5',
+  'male_detective':'\ud83d\udd75\ufe0f',
+  'diamond_shape_with_a_dot_inside':'\ud83d\udca0',
+  'diamonds':'\u2666\ufe0f',
+  'disappointed':'\ud83d\ude1e',
+  'disappointed_relieved':'\ud83d\ude25',
+  'dizzy':'\ud83d\udcab',
+  'dizzy_face':'\ud83d\ude35',
+  'do_not_litter':'\ud83d\udeaf',
+  'dog':'\ud83d\udc36',
+  'dog2':'\ud83d\udc15',
+  'dollar':'\ud83d\udcb5',
+  'dolls':'\ud83c\udf8e',
+  'dolphin':'\ud83d\udc2c',
+  'door':'\ud83d\udeaa',
+  'doughnut':'\ud83c\udf69',
+  'dove':'\ud83d\udd4a',
+  'dragon':'\ud83d\udc09',
+  'dragon_face':'\ud83d\udc32',
+  'dress':'\ud83d\udc57',
+  'dromedary_camel':'\ud83d\udc2a',
+  'drooling_face':'\ud83e\udd24',
+  'droplet':'\ud83d\udca7',
+  'drum':'\ud83e\udd41',
+  'duck':'\ud83e\udd86',
+  'dvd':'\ud83d\udcc0',
+  'e-mail':'\ud83d\udce7',
+  'eagle':'\ud83e\udd85',
+  'ear':'\ud83d\udc42',
+  'ear_of_rice':'\ud83c\udf3e',
+  'earth_africa':'\ud83c\udf0d',
+  'earth_americas':'\ud83c\udf0e',
+  'earth_asia':'\ud83c\udf0f',
+  'egg':'\ud83e\udd5a',
+  'eggplant':'\ud83c\udf46',
+  'eight_pointed_black_star':'\u2734\ufe0f',
+  'eight_spoked_asterisk':'\u2733\ufe0f',
+  'electric_plug':'\ud83d\udd0c',
+  'elephant':'\ud83d\udc18',
+  'email':'\u2709\ufe0f',
+  'end':'\ud83d\udd1a',
+  'envelope_with_arrow':'\ud83d\udce9',
+  'euro':'\ud83d\udcb6',
+  'european_castle':'\ud83c\udff0',
+  'european_post_office':'\ud83c\udfe4',
+  'evergreen_tree':'\ud83c\udf32',
+  'exclamation':'\u2757\ufe0f',
+  'expressionless':'\ud83d\ude11',
+  'eye':'\ud83d\udc41',
+  'eye_speech_bubble':'\ud83d\udc41&zwj;\ud83d\udde8',
+  'eyeglasses':'\ud83d\udc53',
+  'eyes':'\ud83d\udc40',
+  'face_with_head_bandage':'\ud83e\udd15',
+  'face_with_thermometer':'\ud83e\udd12',
+  'fist_oncoming':'\ud83d\udc4a',
+  'factory':'\ud83c\udfed',
+  'fallen_leaf':'\ud83c\udf42',
+  'family_man_woman_boy':'\ud83d\udc6a',
+  'family_man_boy':'\ud83d\udc68&zwj;\ud83d\udc66',
+  'family_man_boy_boy':'\ud83d\udc68&zwj;\ud83d\udc66&zwj;\ud83d\udc66',
+  'family_man_girl':'\ud83d\udc68&zwj;\ud83d\udc67',
+  'family_man_girl_boy':'\ud83d\udc68&zwj;\ud83d\udc67&zwj;\ud83d\udc66',
+  'family_man_girl_girl':'\ud83d\udc68&zwj;\ud83d\udc67&zwj;\ud83d\udc67',
+  'family_man_man_boy':'\ud83d\udc68&zwj;\ud83d\udc68&zwj;\ud83d\udc66',
+  'family_man_man_boy_boy':'\ud83d\udc68&zwj;\ud83d\udc68&zwj;\ud83d\udc66&zwj;\ud83d\udc66',
+  'family_man_man_girl':'\ud83d\udc68&zwj;\ud83d\udc68&zwj;\ud83d\udc67',
+  'family_man_man_girl_boy':'\ud83d\udc68&zwj;\ud83d\udc68&zwj;\ud83d\udc67&zwj;\ud83d\udc66',
+  'family_man_man_girl_girl':'\ud83d\udc68&zwj;\ud83d\udc68&zwj;\ud83d\udc67&zwj;\ud83d\udc67',
+  'family_man_woman_boy_boy':'\ud83d\udc68&zwj;\ud83d\udc69&zwj;\ud83d\udc66&zwj;\ud83d\udc66',
+  'family_man_woman_girl':'\ud83d\udc68&zwj;\ud83d\udc69&zwj;\ud83d\udc67',
+  'family_man_woman_girl_boy':'\ud83d\udc68&zwj;\ud83d\udc69&zwj;\ud83d\udc67&zwj;\ud83d\udc66',
+  'family_man_woman_girl_girl':'\ud83d\udc68&zwj;\ud83d\udc69&zwj;\ud83d\udc67&zwj;\ud83d\udc67',
+  'family_woman_boy':'\ud83d\udc69&zwj;\ud83d\udc66',
+  'family_woman_boy_boy':'\ud83d\udc69&zwj;\ud83d\udc66&zwj;\ud83d\udc66',
+  'family_woman_girl':'\ud83d\udc69&zwj;\ud83d\udc67',
+  'family_woman_girl_boy':'\ud83d\udc69&zwj;\ud83d\udc67&zwj;\ud83d\udc66',
+  'family_woman_girl_girl':'\ud83d\udc69&zwj;\ud83d\udc67&zwj;\ud83d\udc67',
+  'family_woman_woman_boy':'\ud83d\udc69&zwj;\ud83d\udc69&zwj;\ud83d\udc66',
+  'family_woman_woman_boy_boy':'\ud83d\udc69&zwj;\ud83d\udc69&zwj;\ud83d\udc66&zwj;\ud83d\udc66',
+  'family_woman_woman_girl':'\ud83d\udc69&zwj;\ud83d\udc69&zwj;\ud83d\udc67',
+  'family_woman_woman_girl_boy':'\ud83d\udc69&zwj;\ud83d\udc69&zwj;\ud83d\udc67&zwj;\ud83d\udc66',
+  'family_woman_woman_girl_girl':'\ud83d\udc69&zwj;\ud83d\udc69&zwj;\ud83d\udc67&zwj;\ud83d\udc67',
+  'fast_forward':'\u23e9',
+  'fax':'\ud83d\udce0',
+  'fearful':'\ud83d\ude28',
+  'feet':'\ud83d\udc3e',
+  'female_detective':'\ud83d\udd75\ufe0f&zwj;\u2640\ufe0f',
+  'ferris_wheel':'\ud83c\udfa1',
+  'ferry':'\u26f4',
+  'field_hockey':'\ud83c\udfd1',
+  'file_cabinet':'\ud83d\uddc4',
+  'file_folder':'\ud83d\udcc1',
+  'film_projector':'\ud83d\udcfd',
+  'film_strip':'\ud83c\udf9e',
+  'fire':'\ud83d\udd25',
+  'fire_engine':'\ud83d\ude92',
+  'fireworks':'\ud83c\udf86',
+  'first_quarter_moon':'\ud83c\udf13',
+  'first_quarter_moon_with_face':'\ud83c\udf1b',
+  'fish':'\ud83d\udc1f',
+  'fish_cake':'\ud83c\udf65',
+  'fishing_pole_and_fish':'\ud83c\udfa3',
+  'fist_raised':'\u270a',
+  'fist_left':'\ud83e\udd1b',
+  'fist_right':'\ud83e\udd1c',
+  'flags':'\ud83c\udf8f',
+  'flashlight':'\ud83d\udd26',
+  'fleur_de_lis':'\u269c\ufe0f',
+  'flight_arrival':'\ud83d\udeec',
+  'flight_departure':'\ud83d\udeeb',
+  'floppy_disk':'\ud83d\udcbe',
+  'flower_playing_cards':'\ud83c\udfb4',
+  'flushed':'\ud83d\ude33',
+  'fog':'\ud83c\udf2b',
+  'foggy':'\ud83c\udf01',
+  'football':'\ud83c\udfc8',
+  'footprints':'\ud83d\udc63',
+  'fork_and_knife':'\ud83c\udf74',
+  'fountain':'\u26f2\ufe0f',
+  'fountain_pen':'\ud83d\udd8b',
+  'four_leaf_clover':'\ud83c\udf40',
+  'fox_face':'\ud83e\udd8a',
+  'framed_picture':'\ud83d\uddbc',
+  'free':'\ud83c\udd93',
+  'fried_egg':'\ud83c\udf73',
+  'fried_shrimp':'\ud83c\udf64',
+  'fries':'\ud83c\udf5f',
+  'frog':'\ud83d\udc38',
+  'frowning':'\ud83d\ude26',
+  'frowning_face':'\u2639\ufe0f',
+  'frowning_man':'\ud83d\ude4d&zwj;\u2642\ufe0f',
+  'frowning_woman':'\ud83d\ude4d',
+  'middle_finger':'\ud83d\udd95',
+  'fuelpump':'\u26fd\ufe0f',
+  'full_moon':'\ud83c\udf15',
+  'full_moon_with_face':'\ud83c\udf1d',
+  'funeral_urn':'\u26b1\ufe0f',
+  'game_die':'\ud83c\udfb2',
+  'gear':'\u2699\ufe0f',
+  'gem':'\ud83d\udc8e',
+  'gemini':'\u264a\ufe0f',
+  'ghost':'\ud83d\udc7b',
+  'gift':'\ud83c\udf81',
+  'gift_heart':'\ud83d\udc9d',
+  'girl':'\ud83d\udc67',
+  'globe_with_meridians':'\ud83c\udf10',
+  'goal_net':'\ud83e\udd45',
+  'goat':'\ud83d\udc10',
+  'golf':'\u26f3\ufe0f',
+  'golfing_man':'\ud83c\udfcc\ufe0f',
+  'golfing_woman':'\ud83c\udfcc\ufe0f&zwj;\u2640\ufe0f',
+  'gorilla':'\ud83e\udd8d',
+  'grapes':'\ud83c\udf47',
+  'green_apple':'\ud83c\udf4f',
+  'green_book':'\ud83d\udcd7',
+  'green_heart':'\ud83d\udc9a',
+  'green_salad':'\ud83e\udd57',
+  'grey_exclamation':'\u2755',
+  'grey_question':'\u2754',
+  'grimacing':'\ud83d\ude2c',
+  'grin':'\ud83d\ude01',
+  'grinning':'\ud83d\ude00',
+  'guardsman':'\ud83d\udc82',
+  'guardswoman':'\ud83d\udc82&zwj;\u2640\ufe0f',
+  'guitar':'\ud83c\udfb8',
+  'gun':'\ud83d\udd2b',
+  'haircut_woman':'\ud83d\udc87',
+  'haircut_man':'\ud83d\udc87&zwj;\u2642\ufe0f',
+  'hamburger':'\ud83c\udf54',
+  'hammer':'\ud83d\udd28',
+  'hammer_and_pick':'\u2692',
+  'hammer_and_wrench':'\ud83d\udee0',
+  'hamster':'\ud83d\udc39',
+  'hand':'\u270b',
+  'handbag':'\ud83d\udc5c',
+  'handshake':'\ud83e\udd1d',
+  'hankey':'\ud83d\udca9',
+  'hatched_chick':'\ud83d\udc25',
+  'hatching_chick':'\ud83d\udc23',
+  'headphones':'\ud83c\udfa7',
+  'hear_no_evil':'\ud83d\ude49',
+  'heart':'\u2764\ufe0f',
+  'heart_decoration':'\ud83d\udc9f',
+  'heart_eyes':'\ud83d\ude0d',
+  'heart_eyes_cat':'\ud83d\ude3b',
+  'heartbeat':'\ud83d\udc93',
+  'heartpulse':'\ud83d\udc97',
+  'hearts':'\u2665\ufe0f',
+  'heavy_check_mark':'\u2714\ufe0f',
+  'heavy_division_sign':'\u2797',
+  'heavy_dollar_sign':'\ud83d\udcb2',
+  'heavy_heart_exclamation':'\u2763\ufe0f',
+  'heavy_minus_sign':'\u2796',
+  'heavy_multiplication_x':'\u2716\ufe0f',
+  'heavy_plus_sign':'\u2795',
+  'helicopter':'\ud83d\ude81',
+  'herb':'\ud83c\udf3f',
+  'hibiscus':'\ud83c\udf3a',
+  'high_brightness':'\ud83d\udd06',
+  'high_heel':'\ud83d\udc60',
+  'hocho':'\ud83d\udd2a',
+  'hole':'\ud83d\udd73',
+  'honey_pot':'\ud83c\udf6f',
+  'horse':'\ud83d\udc34',
+  'horse_racing':'\ud83c\udfc7',
+  'hospital':'\ud83c\udfe5',
+  'hot_pepper':'\ud83c\udf36',
+  'hotdog':'\ud83c\udf2d',
+  'hotel':'\ud83c\udfe8',
+  'hotsprings':'\u2668\ufe0f',
+  'hourglass':'\u231b\ufe0f',
+  'hourglass_flowing_sand':'\u23f3',
+  'house':'\ud83c\udfe0',
+  'house_with_garden':'\ud83c\udfe1',
+  'houses':'\ud83c\udfd8',
+  'hugs':'\ud83e\udd17',
+  'hushed':'\ud83d\ude2f',
+  'ice_cream':'\ud83c\udf68',
+  'ice_hockey':'\ud83c\udfd2',
+  'ice_skate':'\u26f8',
+  'icecream':'\ud83c\udf66',
+  'id':'\ud83c\udd94',
+  'ideograph_advantage':'\ud83c\ude50',
+  'imp':'\ud83d\udc7f',
+  'inbox_tray':'\ud83d\udce5',
+  'incoming_envelope':'\ud83d\udce8',
+  'tipping_hand_woman':'\ud83d\udc81',
+  'information_source':'\u2139\ufe0f',
+  'innocent':'\ud83d\ude07',
+  'interrobang':'\u2049\ufe0f',
+  'iphone':'\ud83d\udcf1',
+  'izakaya_lantern':'\ud83c\udfee',
+  'jack_o_lantern':'\ud83c\udf83',
+  'japan':'\ud83d\uddfe',
+  'japanese_castle':'\ud83c\udfef',
+  'japanese_goblin':'\ud83d\udc7a',
+  'japanese_ogre':'\ud83d\udc79',
+  'jeans':'\ud83d\udc56',
+  'joy':'\ud83d\ude02',
+  'joy_cat':'\ud83d\ude39',
+  'joystick':'\ud83d\udd79',
+  'kaaba':'\ud83d\udd4b',
+  'key':'\ud83d\udd11',
+  'keyboard':'\u2328\ufe0f',
+  'keycap_ten':'\ud83d\udd1f',
+  'kick_scooter':'\ud83d\udef4',
+  'kimono':'\ud83d\udc58',
+  'kiss':'\ud83d\udc8b',
+  'kissing':'\ud83d\ude17',
+  'kissing_cat':'\ud83d\ude3d',
+  'kissing_closed_eyes':'\ud83d\ude1a',
+  'kissing_heart':'\ud83d\ude18',
+  'kissing_smiling_eyes':'\ud83d\ude19',
+  'kiwi_fruit':'\ud83e\udd5d',
+  'koala':'\ud83d\udc28',
+  'koko':'\ud83c\ude01',
+  'label':'\ud83c\udff7',
+  'large_blue_circle':'\ud83d\udd35',
+  'large_blue_diamond':'\ud83d\udd37',
+  'large_orange_diamond':'\ud83d\udd36',
+  'last_quarter_moon':'\ud83c\udf17',
+  'last_quarter_moon_with_face':'\ud83c\udf1c',
+  'latin_cross':'\u271d\ufe0f',
+  'laughing':'\ud83d\ude06',
+  'leaves':'\ud83c\udf43',
+  'ledger':'\ud83d\udcd2',
+  'left_luggage':'\ud83d\udec5',
+  'left_right_arrow':'\u2194\ufe0f',
+  'leftwards_arrow_with_hook':'\u21a9\ufe0f',
+  'lemon':'\ud83c\udf4b',
+  'leo':'\u264c\ufe0f',
+  'leopard':'\ud83d\udc06',
+  'level_slider':'\ud83c\udf9a',
+  'libra':'\u264e\ufe0f',
+  'light_rail':'\ud83d\ude88',
+  'link':'\ud83d\udd17',
+  'lion':'\ud83e\udd81',
+  'lips':'\ud83d\udc44',
+  'lipstick':'\ud83d\udc84',
+  'lizard':'\ud83e\udd8e',
+  'lock':'\ud83d\udd12',
+  'lock_with_ink_pen':'\ud83d\udd0f',
+  'lollipop':'\ud83c\udf6d',
+  'loop':'\u27bf',
+  'loud_sound':'\ud83d\udd0a',
+  'loudspeaker':'\ud83d\udce2',
+  'love_hotel':'\ud83c\udfe9',
+  'love_letter':'\ud83d\udc8c',
+  'low_brightness':'\ud83d\udd05',
+  'lying_face':'\ud83e\udd25',
+  'm':'\u24c2\ufe0f',
+  'mag':'\ud83d\udd0d',
+  'mag_right':'\ud83d\udd0e',
+  'mahjong':'\ud83c\udc04\ufe0f',
+  'mailbox':'\ud83d\udceb',
+  'mailbox_closed':'\ud83d\udcea',
+  'mailbox_with_mail':'\ud83d\udcec',
+  'mailbox_with_no_mail':'\ud83d\udced',
+  'man':'\ud83d\udc68',
+  'man_artist':'\ud83d\udc68&zwj;\ud83c\udfa8',
+  'man_astronaut':'\ud83d\udc68&zwj;\ud83d\ude80',
+  'man_cartwheeling':'\ud83e\udd38&zwj;\u2642\ufe0f',
+  'man_cook':'\ud83d\udc68&zwj;\ud83c\udf73',
+  'man_dancing':'\ud83d\udd7a',
+  'man_facepalming':'\ud83e\udd26&zwj;\u2642\ufe0f',
+  'man_factory_worker':'\ud83d\udc68&zwj;\ud83c\udfed',
+  'man_farmer':'\ud83d\udc68&zwj;\ud83c\udf3e',
+  'man_firefighter':'\ud83d\udc68&zwj;\ud83d\ude92',
+  'man_health_worker':'\ud83d\udc68&zwj;\u2695\ufe0f',
+  'man_in_tuxedo':'\ud83e\udd35',
+  'man_judge':'\ud83d\udc68&zwj;\u2696\ufe0f',
+  'man_juggling':'\ud83e\udd39&zwj;\u2642\ufe0f',
+  'man_mechanic':'\ud83d\udc68&zwj;\ud83d\udd27',
+  'man_office_worker':'\ud83d\udc68&zwj;\ud83d\udcbc',
+  'man_pilot':'\ud83d\udc68&zwj;\u2708\ufe0f',
+  'man_playing_handball':'\ud83e\udd3e&zwj;\u2642\ufe0f',
+  'man_playing_water_polo':'\ud83e\udd3d&zwj;\u2642\ufe0f',
+  'man_scientist':'\ud83d\udc68&zwj;\ud83d\udd2c',
+  'man_shrugging':'\ud83e\udd37&zwj;\u2642\ufe0f',
+  'man_singer':'\ud83d\udc68&zwj;\ud83c\udfa4',
+  'man_student':'\ud83d\udc68&zwj;\ud83c\udf93',
+  'man_teacher':'\ud83d\udc68&zwj;\ud83c\udfeb',
+  'man_technologist':'\ud83d\udc68&zwj;\ud83d\udcbb',
+  'man_with_gua_pi_mao':'\ud83d\udc72',
+  'man_with_turban':'\ud83d\udc73',
+  'tangerine':'\ud83c\udf4a',
+  'mans_shoe':'\ud83d\udc5e',
+  'mantelpiece_clock':'\ud83d\udd70',
+  'maple_leaf':'\ud83c\udf41',
+  'martial_arts_uniform':'\ud83e\udd4b',
+  'mask':'\ud83d\ude37',
+  'massage_woman':'\ud83d\udc86',
+  'massage_man':'\ud83d\udc86&zwj;\u2642\ufe0f',
+  'meat_on_bone':'\ud83c\udf56',
+  'medal_military':'\ud83c\udf96',
+  'medal_sports':'\ud83c\udfc5',
+  'mega':'\ud83d\udce3',
+  'melon':'\ud83c\udf48',
+  'memo':'\ud83d\udcdd',
+  'men_wrestling':'\ud83e\udd3c&zwj;\u2642\ufe0f',
+  'menorah':'\ud83d\udd4e',
+  'mens':'\ud83d\udeb9',
+  'metal':'\ud83e\udd18',
+  'metro':'\ud83d\ude87',
+  'microphone':'\ud83c\udfa4',
+  'microscope':'\ud83d\udd2c',
+  'milk_glass':'\ud83e\udd5b',
+  'milky_way':'\ud83c\udf0c',
+  'minibus':'\ud83d\ude90',
+  'minidisc':'\ud83d\udcbd',
+  'mobile_phone_off':'\ud83d\udcf4',
+  'money_mouth_face':'\ud83e\udd11',
+  'money_with_wings':'\ud83d\udcb8',
+  'moneybag':'\ud83d\udcb0',
+  'monkey':'\ud83d\udc12',
+  'monkey_face':'\ud83d\udc35',
+  'monorail':'\ud83d\ude9d',
+  'moon':'\ud83c\udf14',
+  'mortar_board':'\ud83c\udf93',
+  'mosque':'\ud83d\udd4c',
+  'motor_boat':'\ud83d\udee5',
+  'motor_scooter':'\ud83d\udef5',
+  'motorcycle':'\ud83c\udfcd',
+  'motorway':'\ud83d\udee3',
+  'mount_fuji':'\ud83d\uddfb',
+  'mountain':'\u26f0',
+  'mountain_biking_man':'\ud83d\udeb5',
+  'mountain_biking_woman':'\ud83d\udeb5&zwj;\u2640\ufe0f',
+  'mountain_cableway':'\ud83d\udea0',
+  'mountain_railway':'\ud83d\ude9e',
+  'mountain_snow':'\ud83c\udfd4',
+  'mouse':'\ud83d\udc2d',
+  'mouse2':'\ud83d\udc01',
+  'movie_camera':'\ud83c\udfa5',
+  'moyai':'\ud83d\uddff',
+  'mrs_claus':'\ud83e\udd36',
+  'muscle':'\ud83d\udcaa',
+  'mushroom':'\ud83c\udf44',
+  'musical_keyboard':'\ud83c\udfb9',
+  'musical_note':'\ud83c\udfb5',
+  'musical_score':'\ud83c\udfbc',
+  'mute':'\ud83d\udd07',
+  'nail_care':'\ud83d\udc85',
+  'name_badge':'\ud83d\udcdb',
+  'national_park':'\ud83c\udfde',
+  'nauseated_face':'\ud83e\udd22',
+  'necktie':'\ud83d\udc54',
+  'negative_squared_cross_mark':'\u274e',
+  'nerd_face':'\ud83e\udd13',
+  'neutral_face':'\ud83d\ude10',
+  'new':'\ud83c\udd95',
+  'new_moon':'\ud83c\udf11',
+  'new_moon_with_face':'\ud83c\udf1a',
+  'newspaper':'\ud83d\udcf0',
+  'newspaper_roll':'\ud83d\uddde',
+  'next_track_button':'\u23ed',
+  'ng':'\ud83c\udd96',
+  'no_good_man':'\ud83d\ude45&zwj;\u2642\ufe0f',
+  'no_good_woman':'\ud83d\ude45',
+  'night_with_stars':'\ud83c\udf03',
+  'no_bell':'\ud83d\udd15',
+  'no_bicycles':'\ud83d\udeb3',
+  'no_entry':'\u26d4\ufe0f',
+  'no_entry_sign':'\ud83d\udeab',
+  'no_mobile_phones':'\ud83d\udcf5',
+  'no_mouth':'\ud83d\ude36',
+  'no_pedestrians':'\ud83d\udeb7',
+  'no_smoking':'\ud83d\udead',
+  'non-potable_water':'\ud83d\udeb1',
+  'nose':'\ud83d\udc43',
+  'notebook':'\ud83d\udcd3',
+  'notebook_with_decorative_cover':'\ud83d\udcd4',
+  'notes':'\ud83c\udfb6',
+  'nut_and_bolt':'\ud83d\udd29',
+  'o':'\u2b55\ufe0f',
+  'o2':'\ud83c\udd7e\ufe0f',
+  'ocean':'\ud83c\udf0a',
+  'octopus':'\ud83d\udc19',
+  'oden':'\ud83c\udf62',
+  'office':'\ud83c\udfe2',
+  'oil_drum':'\ud83d\udee2',
+  'ok':'\ud83c\udd97',
+  'ok_hand':'\ud83d\udc4c',
+  'ok_man':'\ud83d\ude46&zwj;\u2642\ufe0f',
+  'ok_woman':'\ud83d\ude46',
+  'old_key':'\ud83d\udddd',
+  'older_man':'\ud83d\udc74',
+  'older_woman':'\ud83d\udc75',
+  'om':'\ud83d\udd49',
+  'on':'\ud83d\udd1b',
+  'oncoming_automobile':'\ud83d\ude98',
+  'oncoming_bus':'\ud83d\ude8d',
+  'oncoming_police_car':'\ud83d\ude94',
+  'oncoming_taxi':'\ud83d\ude96',
+  'open_file_folder':'\ud83d\udcc2',
+  'open_hands':'\ud83d\udc50',
+  'open_mouth':'\ud83d\ude2e',
+  'open_umbrella':'\u2602\ufe0f',
+  'ophiuchus':'\u26ce',
+  'orange_book':'\ud83d\udcd9',
+  'orthodox_cross':'\u2626\ufe0f',
+  'outbox_tray':'\ud83d\udce4',
+  'owl':'\ud83e\udd89',
+  'ox':'\ud83d\udc02',
+  'package':'\ud83d\udce6',
+  'page_facing_up':'\ud83d\udcc4',
+  'page_with_curl':'\ud83d\udcc3',
+  'pager':'\ud83d\udcdf',
+  'paintbrush':'\ud83d\udd8c',
+  'palm_tree':'\ud83c\udf34',
+  'pancakes':'\ud83e\udd5e',
+  'panda_face':'\ud83d\udc3c',
+  'paperclip':'\ud83d\udcce',
+  'paperclips':'\ud83d\udd87',
+  'parasol_on_ground':'\u26f1',
+  'parking':'\ud83c\udd7f\ufe0f',
+  'part_alternation_mark':'\u303d\ufe0f',
+  'partly_sunny':'\u26c5\ufe0f',
+  'passenger_ship':'\ud83d\udef3',
+  'passport_control':'\ud83d\udec2',
+  'pause_button':'\u23f8',
+  'peace_symbol':'\u262e\ufe0f',
+  'peach':'\ud83c\udf51',
+  'peanuts':'\ud83e\udd5c',
+  'pear':'\ud83c\udf50',
+  'pen':'\ud83d\udd8a',
+  'pencil2':'\u270f\ufe0f',
+  'penguin':'\ud83d\udc27',
+  'pensive':'\ud83d\ude14',
+  'performing_arts':'\ud83c\udfad',
+  'persevere':'\ud83d\ude23',
+  'person_fencing':'\ud83e\udd3a',
+  'pouting_woman':'\ud83d\ude4e',
+  'phone':'\u260e\ufe0f',
+  'pick':'\u26cf',
+  'pig':'\ud83d\udc37',
+  'pig2':'\ud83d\udc16',
+  'pig_nose':'\ud83d\udc3d',
+  'pill':'\ud83d\udc8a',
+  'pineapple':'\ud83c\udf4d',
+  'ping_pong':'\ud83c\udfd3',
+  'pisces':'\u2653\ufe0f',
+  'pizza':'\ud83c\udf55',
+  'place_of_worship':'\ud83d\uded0',
+  'plate_with_cutlery':'\ud83c\udf7d',
+  'play_or_pause_button':'\u23ef',
+  'point_down':'\ud83d\udc47',
+  'point_left':'\ud83d\udc48',
+  'point_right':'\ud83d\udc49',
+  'point_up':'\u261d\ufe0f',
+  'point_up_2':'\ud83d\udc46',
+  'police_car':'\ud83d\ude93',
+  'policewoman':'\ud83d\udc6e&zwj;\u2640\ufe0f',
+  'poodle':'\ud83d\udc29',
+  'popcorn':'\ud83c\udf7f',
+  'post_office':'\ud83c\udfe3',
+  'postal_horn':'\ud83d\udcef',
+  'postbox':'\ud83d\udcee',
+  'potable_water':'\ud83d\udeb0',
+  'potato':'\ud83e\udd54',
+  'pouch':'\ud83d\udc5d',
+  'poultry_leg':'\ud83c\udf57',
+  'pound':'\ud83d\udcb7',
+  'rage':'\ud83d\ude21',
+  'pouting_cat':'\ud83d\ude3e',
+  'pouting_man':'\ud83d\ude4e&zwj;\u2642\ufe0f',
+  'pray':'\ud83d\ude4f',
+  'prayer_beads':'\ud83d\udcff',
+  'pregnant_woman':'\ud83e\udd30',
+  'previous_track_button':'\u23ee',
+  'prince':'\ud83e\udd34',
+  'princess':'\ud83d\udc78',
+  'printer':'\ud83d\udda8',
+  'purple_heart':'\ud83d\udc9c',
+  'purse':'\ud83d\udc5b',
+  'pushpin':'\ud83d\udccc',
+  'put_litter_in_its_place':'\ud83d\udeae',
+  'question':'\u2753',
+  'rabbit':'\ud83d\udc30',
+  'rabbit2':'\ud83d\udc07',
+  'racehorse':'\ud83d\udc0e',
+  'racing_car':'\ud83c\udfce',
+  'radio':'\ud83d\udcfb',
+  'radio_button':'\ud83d\udd18',
+  'radioactive':'\u2622\ufe0f',
+  'railway_car':'\ud83d\ude83',
+  'railway_track':'\ud83d\udee4',
+  'rainbow':'\ud83c\udf08',
+  'rainbow_flag':'\ud83c\udff3\ufe0f&zwj;\ud83c\udf08',
+  'raised_back_of_hand':'\ud83e\udd1a',
+  'raised_hand_with_fingers_splayed':'\ud83d\udd90',
+  'raised_hands':'\ud83d\ude4c',
+  'raising_hand_woman':'\ud83d\ude4b',
+  'raising_hand_man':'\ud83d\ude4b&zwj;\u2642\ufe0f',
+  'ram':'\ud83d\udc0f',
+  'ramen':'\ud83c\udf5c',
+  'rat':'\ud83d\udc00',
+  'record_button':'\u23fa',
+  'recycle':'\u267b\ufe0f',
+  'red_circle':'\ud83d\udd34',
+  'registered':'\u00ae\ufe0f',
+  'relaxed':'\u263a\ufe0f',
+  'relieved':'\ud83d\ude0c',
+  'reminder_ribbon':'\ud83c\udf97',
+  'repeat':'\ud83d\udd01',
+  'repeat_one':'\ud83d\udd02',
+  'rescue_worker_helmet':'\u26d1',
+  'restroom':'\ud83d\udebb',
+  'revolving_hearts':'\ud83d\udc9e',
+  'rewind':'\u23ea',
+  'rhinoceros':'\ud83e\udd8f',
+  'ribbon':'\ud83c\udf80',
+  'rice':'\ud83c\udf5a',
+  'rice_ball':'\ud83c\udf59',
+  'rice_cracker':'\ud83c\udf58',
+  'rice_scene':'\ud83c\udf91',
+  'right_anger_bubble':'\ud83d\uddef',
+  'ring':'\ud83d\udc8d',
+  'robot':'\ud83e\udd16',
+  'rocket':'\ud83d\ude80',
+  'rofl':'\ud83e\udd23',
+  'roll_eyes':'\ud83d\ude44',
+  'roller_coaster':'\ud83c\udfa2',
+  'rooster':'\ud83d\udc13',
+  'rose':'\ud83c\udf39',
+  'rosette':'\ud83c\udff5',
+  'rotating_light':'\ud83d\udea8',
+  'round_pushpin':'\ud83d\udccd',
+  'rowing_man':'\ud83d\udea3',
+  'rowing_woman':'\ud83d\udea3&zwj;\u2640\ufe0f',
+  'rugby_football':'\ud83c\udfc9',
+  'running_man':'\ud83c\udfc3',
+  'running_shirt_with_sash':'\ud83c\udfbd',
+  'running_woman':'\ud83c\udfc3&zwj;\u2640\ufe0f',
+  'sa':'\ud83c\ude02\ufe0f',
+  'sagittarius':'\u2650\ufe0f',
+  'sake':'\ud83c\udf76',
+  'sandal':'\ud83d\udc61',
+  'santa':'\ud83c\udf85',
+  'satellite':'\ud83d\udce1',
+  'saxophone':'\ud83c\udfb7',
+  'school':'\ud83c\udfeb',
+  'school_satchel':'\ud83c\udf92',
+  'scissors':'\u2702\ufe0f',
+  'scorpion':'\ud83e\udd82',
+  'scorpius':'\u264f\ufe0f',
+  'scream':'\ud83d\ude31',
+  'scream_cat':'\ud83d\ude40',
+  'scroll':'\ud83d\udcdc',
+  'seat':'\ud83d\udcba',
+  'secret':'\u3299\ufe0f',
+  'see_no_evil':'\ud83d\ude48',
+  'seedling':'\ud83c\udf31',
+  'selfie':'\ud83e\udd33',
+  'shallow_pan_of_food':'\ud83e\udd58',
+  'shamrock':'\u2618\ufe0f',
+  'shark':'\ud83e\udd88',
+  'shaved_ice':'\ud83c\udf67',
+  'sheep':'\ud83d\udc11',
+  'shell':'\ud83d\udc1a',
+  'shield':'\ud83d\udee1',
+  'shinto_shrine':'\u26e9',
+  'ship':'\ud83d\udea2',
+  'shirt':'\ud83d\udc55',
+  'shopping':'\ud83d\udecd',
+  'shopping_cart':'\ud83d\uded2',
+  'shower':'\ud83d\udebf',
+  'shrimp':'\ud83e\udd90',
+  'signal_strength':'\ud83d\udcf6',
+  'six_pointed_star':'\ud83d\udd2f',
+  'ski':'\ud83c\udfbf',
+  'skier':'\u26f7',
+  'skull':'\ud83d\udc80',
+  'skull_and_crossbones':'\u2620\ufe0f',
+  'sleeping':'\ud83d\ude34',
+  'sleeping_bed':'\ud83d\udecc',
+  'sleepy':'\ud83d\ude2a',
+  'slightly_frowning_face':'\ud83d\ude41',
+  'slightly_smiling_face':'\ud83d\ude42',
+  'slot_machine':'\ud83c\udfb0',
+  'small_airplane':'\ud83d\udee9',
+  'small_blue_diamond':'\ud83d\udd39',
+  'small_orange_diamond':'\ud83d\udd38',
+  'small_red_triangle':'\ud83d\udd3a',
+  'small_red_triangle_down':'\ud83d\udd3b',
+  'smile':'\ud83d\ude04',
+  'smile_cat':'\ud83d\ude38',
+  'smiley':'\ud83d\ude03',
+  'smiley_cat':'\ud83d\ude3a',
+  'smiling_imp':'\ud83d\ude08',
+  'smirk':'\ud83d\ude0f',
+  'smirk_cat':'\ud83d\ude3c',
+  'smoking':'\ud83d\udeac',
+  'snail':'\ud83d\udc0c',
+  'snake':'\ud83d\udc0d',
+  'sneezing_face':'\ud83e\udd27',
+  'snowboarder':'\ud83c\udfc2',
+  'snowflake':'\u2744\ufe0f',
+  'snowman':'\u26c4\ufe0f',
+  'snowman_with_snow':'\u2603\ufe0f',
+  'sob':'\ud83d\ude2d',
+  'soccer':'\u26bd\ufe0f',
+  'soon':'\ud83d\udd1c',
+  'sos':'\ud83c\udd98',
+  'sound':'\ud83d\udd09',
+  'space_invader':'\ud83d\udc7e',
+  'spades':'\u2660\ufe0f',
+  'spaghetti':'\ud83c\udf5d',
+  'sparkle':'\u2747\ufe0f',
+  'sparkler':'\ud83c\udf87',
+  'sparkles':'\u2728',
+  'sparkling_heart':'\ud83d\udc96',
+  'speak_no_evil':'\ud83d\ude4a',
+  'speaker':'\ud83d\udd08',
+  'speaking_head':'\ud83d\udde3',
+  'speech_balloon':'\ud83d\udcac',
+  'speedboat':'\ud83d\udea4',
+  'spider':'\ud83d\udd77',
+  'spider_web':'\ud83d\udd78',
+  'spiral_calendar':'\ud83d\uddd3',
+  'spiral_notepad':'\ud83d\uddd2',
+  'spoon':'\ud83e\udd44',
+  'squid':'\ud83e\udd91',
+  'stadium':'\ud83c\udfdf',
+  'star':'\u2b50\ufe0f',
+  'star2':'\ud83c\udf1f',
+  'star_and_crescent':'\u262a\ufe0f',
+  'star_of_david':'\u2721\ufe0f',
+  'stars':'\ud83c\udf20',
+  'station':'\ud83d\ude89',
+  'statue_of_liberty':'\ud83d\uddfd',
+  'steam_locomotive':'\ud83d\ude82',
+  'stew':'\ud83c\udf72',
+  'stop_button':'\u23f9',
+  'stop_sign':'\ud83d\uded1',
+  'stopwatch':'\u23f1',
+  'straight_ruler':'\ud83d\udccf',
+  'strawberry':'\ud83c\udf53',
+  'stuck_out_tongue':'\ud83d\ude1b',
+  'stuck_out_tongue_closed_eyes':'\ud83d\ude1d',
+  'stuck_out_tongue_winking_eye':'\ud83d\ude1c',
+  'studio_microphone':'\ud83c\udf99',
+  'stuffed_flatbread':'\ud83e\udd59',
+  'sun_behind_large_cloud':'\ud83c\udf25',
+  'sun_behind_rain_cloud':'\ud83c\udf26',
+  'sun_behind_small_cloud':'\ud83c\udf24',
+  'sun_with_face':'\ud83c\udf1e',
+  'sunflower':'\ud83c\udf3b',
+  'sunglasses':'\ud83d\ude0e',
+  'sunny':'\u2600\ufe0f',
+  'sunrise':'\ud83c\udf05',
+  'sunrise_over_mountains':'\ud83c\udf04',
+  'surfing_man':'\ud83c\udfc4',
+  'surfing_woman':'\ud83c\udfc4&zwj;\u2640\ufe0f',
+  'sushi':'\ud83c\udf63',
+  'suspension_railway':'\ud83d\ude9f',
+  'sweat':'\ud83d\ude13',
+  'sweat_drops':'\ud83d\udca6',
+  'sweat_smile':'\ud83d\ude05',
+  'sweet_potato':'\ud83c\udf60',
+  'swimming_man':'\ud83c\udfca',
+  'swimming_woman':'\ud83c\udfca&zwj;\u2640\ufe0f',
+  'symbols':'\ud83d\udd23',
+  'synagogue':'\ud83d\udd4d',
+  'syringe':'\ud83d\udc89',
+  'taco':'\ud83c\udf2e',
+  'tada':'\ud83c\udf89',
+  'tanabata_tree':'\ud83c\udf8b',
+  'taurus':'\u2649\ufe0f',
+  'taxi':'\ud83d\ude95',
+  'tea':'\ud83c\udf75',
+  'telephone_receiver':'\ud83d\udcde',
+  'telescope':'\ud83d\udd2d',
+  'tennis':'\ud83c\udfbe',
+  'tent':'\u26fa\ufe0f',
+  'thermometer':'\ud83c\udf21',
+  'thinking':'\ud83e\udd14',
+  'thought_balloon':'\ud83d\udcad',
+  'ticket':'\ud83c\udfab',
+  'tickets':'\ud83c\udf9f',
+  'tiger':'\ud83d\udc2f',
+  'tiger2':'\ud83d\udc05',
+  'timer_clock':'\u23f2',
+  'tipping_hand_man':'\ud83d\udc81&zwj;\u2642\ufe0f',
+  'tired_face':'\ud83d\ude2b',
+  'tm':'\u2122\ufe0f',
+  'toilet':'\ud83d\udebd',
+  'tokyo_tower':'\ud83d\uddfc',
+  'tomato':'\ud83c\udf45',
+  'tongue':'\ud83d\udc45',
+  'top':'\ud83d\udd1d',
+  'tophat':'\ud83c\udfa9',
+  'tornado':'\ud83c\udf2a',
+  'trackball':'\ud83d\uddb2',
+  'tractor':'\ud83d\ude9c',
+  'traffic_light':'\ud83d\udea5',
+  'train':'\ud83d\ude8b',
+  'train2':'\ud83d\ude86',
+  'tram':'\ud83d\ude8a',
+  'triangular_flag_on_post':'\ud83d\udea9',
+  'triangular_ruler':'\ud83d\udcd0',
+  'trident':'\ud83d\udd31',
+  'triumph':'\ud83d\ude24',
+  'trolleybus':'\ud83d\ude8e',
+  'trophy':'\ud83c\udfc6',
+  'tropical_drink':'\ud83c\udf79',
+  'tropical_fish':'\ud83d\udc20',
+  'truck':'\ud83d\ude9a',
+  'trumpet':'\ud83c\udfba',
+  'tulip':'\ud83c\udf37',
+  'tumbler_glass':'\ud83e\udd43',
+  'turkey':'\ud83e\udd83',
+  'turtle':'\ud83d\udc22',
+  'tv':'\ud83d\udcfa',
+  'twisted_rightwards_arrows':'\ud83d\udd00',
+  'two_hearts':'\ud83d\udc95',
+  'two_men_holding_hands':'\ud83d\udc6c',
+  'two_women_holding_hands':'\ud83d\udc6d',
+  'u5272':'\ud83c\ude39',
+  'u5408':'\ud83c\ude34',
+  'u55b6':'\ud83c\ude3a',
+  'u6307':'\ud83c\ude2f\ufe0f',
+  'u6708':'\ud83c\ude37\ufe0f',
+  'u6709':'\ud83c\ude36',
+  'u6e80':'\ud83c\ude35',
+  'u7121':'\ud83c\ude1a\ufe0f',
+  'u7533':'\ud83c\ude38',
+  'u7981':'\ud83c\ude32',
+  'u7a7a':'\ud83c\ude33',
+  'umbrella':'\u2614\ufe0f',
+  'unamused':'\ud83d\ude12',
+  'underage':'\ud83d\udd1e',
+  'unicorn':'\ud83e\udd84',
+  'unlock':'\ud83d\udd13',
+  'up':'\ud83c\udd99',
+  'upside_down_face':'\ud83d\ude43',
+  'v':'\u270c\ufe0f',
+  'vertical_traffic_light':'\ud83d\udea6',
+  'vhs':'\ud83d\udcfc',
+  'vibration_mode':'\ud83d\udcf3',
+  'video_camera':'\ud83d\udcf9',
+  'video_game':'\ud83c\udfae',
+  'violin':'\ud83c\udfbb',
+  'virgo':'\u264d\ufe0f',
+  'volcano':'\ud83c\udf0b',
+  'volleyball':'\ud83c\udfd0',
+  'vs':'\ud83c\udd9a',
+  'vulcan_salute':'\ud83d\udd96',
+  'walking_man':'\ud83d\udeb6',
+  'walking_woman':'\ud83d\udeb6&zwj;\u2640\ufe0f',
+  'waning_crescent_moon':'\ud83c\udf18',
+  'waning_gibbous_moon':'\ud83c\udf16',
+  'warning':'\u26a0\ufe0f',
+  'wastebasket':'\ud83d\uddd1',
+  'watch':'\u231a\ufe0f',
+  'water_buffalo':'\ud83d\udc03',
+  'watermelon':'\ud83c\udf49',
+  'wave':'\ud83d\udc4b',
+  'wavy_dash':'\u3030\ufe0f',
+  'waxing_crescent_moon':'\ud83c\udf12',
+  'wc':'\ud83d\udebe',
+  'weary':'\ud83d\ude29',
+  'wedding':'\ud83d\udc92',
+  'weight_lifting_man':'\ud83c\udfcb\ufe0f',
+  'weight_lifting_woman':'\ud83c\udfcb\ufe0f&zwj;\u2640\ufe0f',
+  'whale':'\ud83d\udc33',
+  'whale2':'\ud83d\udc0b',
+  'wheel_of_dharma':'\u2638\ufe0f',
+  'wheelchair':'\u267f\ufe0f',
+  'white_check_mark':'\u2705',
+  'white_circle':'\u26aa\ufe0f',
+  'white_flag':'\ud83c\udff3\ufe0f',
+  'white_flower':'\ud83d\udcae',
+  'white_large_square':'\u2b1c\ufe0f',
+  'white_medium_small_square':'\u25fd\ufe0f',
+  'white_medium_square':'\u25fb\ufe0f',
+  'white_small_square':'\u25ab\ufe0f',
+  'white_square_button':'\ud83d\udd33',
+  'wilted_flower':'\ud83e\udd40',
+  'wind_chime':'\ud83c\udf90',
+  'wind_face':'\ud83c\udf2c',
+  'wine_glass':'\ud83c\udf77',
+  'wink':'\ud83d\ude09',
+  'wolf':'\ud83d\udc3a',
+  'woman':'\ud83d\udc69',
+  'woman_artist':'\ud83d\udc69&zwj;\ud83c\udfa8',
+  'woman_astronaut':'\ud83d\udc69&zwj;\ud83d\ude80',
+  'woman_cartwheeling':'\ud83e\udd38&zwj;\u2640\ufe0f',
+  'woman_cook':'\ud83d\udc69&zwj;\ud83c\udf73',
+  'woman_facepalming':'\ud83e\udd26&zwj;\u2640\ufe0f',
+  'woman_factory_worker':'\ud83d\udc69&zwj;\ud83c\udfed',
+  'woman_farmer':'\ud83d\udc69&zwj;\ud83c\udf3e',
+  'woman_firefighter':'\ud83d\udc69&zwj;\ud83d\ude92',
+  'woman_health_worker':'\ud83d\udc69&zwj;\u2695\ufe0f',
+  'woman_judge':'\ud83d\udc69&zwj;\u2696\ufe0f',
+  'woman_juggling':'\ud83e\udd39&zwj;\u2640\ufe0f',
+  'woman_mechanic':'\ud83d\udc69&zwj;\ud83d\udd27',
+  'woman_office_worker':'\ud83d\udc69&zwj;\ud83d\udcbc',
+  'woman_pilot':'\ud83d\udc69&zwj;\u2708\ufe0f',
+  'woman_playing_handball':'\ud83e\udd3e&zwj;\u2640\ufe0f',
+  'woman_playing_water_polo':'\ud83e\udd3d&zwj;\u2640\ufe0f',
+  'woman_scientist':'\ud83d\udc69&zwj;\ud83d\udd2c',
+  'woman_shrugging':'\ud83e\udd37&zwj;\u2640\ufe0f',
+  'woman_singer':'\ud83d\udc69&zwj;\ud83c\udfa4',
+  'woman_student':'\ud83d\udc69&zwj;\ud83c\udf93',
+  'woman_teacher':'\ud83d\udc69&zwj;\ud83c\udfeb',
+  'woman_technologist':'\ud83d\udc69&zwj;\ud83d\udcbb',
+  'woman_with_turban':'\ud83d\udc73&zwj;\u2640\ufe0f',
+  'womans_clothes':'\ud83d\udc5a',
+  'womans_hat':'\ud83d\udc52',
+  'women_wrestling':'\ud83e\udd3c&zwj;\u2640\ufe0f',
+  'womens':'\ud83d\udeba',
+  'world_map':'\ud83d\uddfa',
+  'worried':'\ud83d\ude1f',
+  'wrench':'\ud83d\udd27',
+  'writing_hand':'\u270d\ufe0f',
+  'x':'\u274c',
+  'yellow_heart':'\ud83d\udc9b',
+  'yen':'\ud83d\udcb4',
+  'yin_yang':'\u262f\ufe0f',
+  'yum':'\ud83d\ude0b',
+  'zap':'\u26a1\ufe0f',
+  'zipper_mouth_face':'\ud83e\udd10',
+  'zzz':'\ud83d\udca4',
+
+  /* special emojis :P */
+  'octocat':  '<img alt=":octocat:" height="20" width="20" align="absmiddle" src="https://assets-cdn.github.com/images/icons/emoji/octocat.png">',
+  'showdown': '<span style="font-family: \'Anonymous Pro\', monospace; text-decoration: underline; text-decoration-style: dashed; text-decoration-color: #3e8b8a;text-underline-position: under;">S</span>'
+};
+
+/**
+ * Created by Estevao on 31-05-2015.
+ */
+
+/**
+ * Showdown Converter class
+ * @class
+ * @param {object} [converterOptions]
+ * @returns {Converter}
+ */
+showdown.Converter = function (converterOptions) {
+  'use strict';
+
+  var
+      /**
+       * Options used by this converter
+       * @private
+       * @type {{}}
+       */
+      options = {},
+
+      /**
+       * Language extensions used by this converter
+       * @private
+       * @type {Array}
+       */
+      langExtensions = [],
+
+      /**
+       * Output modifiers extensions used by this converter
+       * @private
+       * @type {Array}
+       */
+      outputModifiers = [],
+
+      /**
+       * Event listeners
+       * @private
+       * @type {{}}
+       */
+      listeners = {},
+
+      /**
+       * The flavor set in this converter
+       */
+      setConvFlavor = setFlavor,
+
+      /**
+       * Metadata of the document
+       * @type {{parsed: {}, raw: string, format: string}}
+       */
+      metadata = {
+        parsed: {},
+        raw: '',
+        format: ''
+      };
+
+  _constructor();
+
+  /**
+   * Converter constructor
+   * @private
+   */
+  function _constructor () {
+    converterOptions = converterOptions || {};
+
+    for (var gOpt in globalOptions) {
+      if (globalOptions.hasOwnProperty(gOpt)) {
+        options[gOpt] = globalOptions[gOpt];
+      }
+    }
+
+    // Merge options
+    if (typeof converterOptions === 'object') {
+      for (var opt in converterOptions) {
+        if (converterOptions.hasOwnProperty(opt)) {
+          options[opt] = converterOptions[opt];
+        }
+      }
+    } else {
+      throw Error('Converter expects the passed parameter to be an object, but ' + typeof converterOptions +
+      ' was passed instead.');
+    }
+
+    if (options.extensions) {
+      showdown.helper.forEach(options.extensions, _parseExtension);
+    }
+  }
+
+  /**
+   * Parse extension
+   * @param {*} ext
+   * @param {string} [name='']
+   * @private
+   */
+  function _parseExtension (ext, name) {
+
+    name = name || null;
+    // If it's a string, the extension was previously loaded
+    if (showdown.helper.isString(ext)) {
+      ext = showdown.helper.stdExtName(ext);
+      name = ext;
+
+      // LEGACY_SUPPORT CODE
+      if (showdown.extensions[ext]) {
+        console.warn('DEPRECATION WARNING: ' + ext + ' is an old extension that uses a deprecated loading method.' +
+          'Please inform the developer that the extension should be updated!');
+        legacyExtensionLoading(showdown.extensions[ext], ext);
+        return;
+        // END LEGACY SUPPORT CODE
+
+      } else if (!showdown.helper.isUndefined(extensions[ext])) {
+        ext = extensions[ext];
+
+      } else {
+        throw Error('Extension "' + ext + '" could not be loaded. It was either not found or is not a valid extension.');
+      }
+    }
+
+    if (typeof ext === 'function') {
+      ext = ext();
+    }
+
+    if (!showdown.helper.isArray(ext)) {
+      ext = [ext];
+    }
+
+    var validExt = validate(ext, name);
+    if (!validExt.valid) {
+      throw Error(validExt.error);
+    }
+
+    for (var i = 0; i < ext.length; ++i) {
+      switch (ext[i].type) {
+
+        case 'lang':
+          langExtensions.push(ext[i]);
+          break;
+
+        case 'output':
+          outputModifiers.push(ext[i]);
+          break;
+      }
+      if (ext[i].hasOwnProperty('listeners')) {
+        for (var ln in ext[i].listeners) {
+          if (ext[i].listeners.hasOwnProperty(ln)) {
+            listen(ln, ext[i].listeners[ln]);
+          }
+        }
+      }
+    }
+
+  }
+
+  /**
+   * LEGACY_SUPPORT
+   * @param {*} ext
+   * @param {string} name
+   */
+  function legacyExtensionLoading (ext, name) {
+    if (typeof ext === 'function') {
+      ext = ext(new showdown.Converter());
+    }
+    if (!showdown.helper.isArray(ext)) {
+      ext = [ext];
+    }
+    var valid = validate(ext, name);
+
+    if (!valid.valid) {
+      throw Error(valid.error);
+    }
+
+    for (var i = 0; i < ext.length; ++i) {
+      switch (ext[i].type) {
+        case 'lang':
+          langExtensions.push(ext[i]);
+          break;
+        case 'output':
+          outputModifiers.push(ext[i]);
+          break;
+        default:// should never reach here
+          throw Error('Extension loader error: Type unrecognized!!!');
+      }
+    }
+  }
+
+  /**
+   * Listen to an event
+   * @param {string} name
+   * @param {function} callback
+   */
+  function listen (name, callback) {
+    if (!showdown.helper.isString(name)) {
+      throw Error('Invalid argument in converter.listen() method: name must be a string, but ' + typeof name + ' given');
+    }
+
+    if (typeof callback !== 'function') {
+      throw Error('Invalid argument in converter.listen() method: callback must be a function, but ' + typeof callback + ' given');
+    }
+
+    if (!listeners.hasOwnProperty(name)) {
+      listeners[name] = [];
+    }
+    listeners[name].push(callback);
+  }
+
+  function rTrimInputText (text) {
+    var rsp = text.match(/^\s*/)[0].length,
+        rgx = new RegExp('^\\s{0,' + rsp + '}', 'gm');
+    return text.replace(rgx, '');
+  }
+
+  /**
+   * Dispatch an event
+   * @private
+   * @param {string} evtName Event name
+   * @param {string} text Text
+   * @param {{}} options Converter Options
+   * @param {{}} globals
+   * @returns {string}
+   */
+  this._dispatch = function dispatch (evtName, text, options, globals) {
+    if (listeners.hasOwnProperty(evtName)) {
+      for (var ei = 0; ei < listeners[evtName].length; ++ei) {
+        var nText = listeners[evtName][ei](evtName, text, this, options, globals);
+        if (nText && typeof nText !== 'undefined') {
+          text = nText;
+        }
+      }
+    }
+    return text;
+  };
+
+  /**
+   * Listen to an event
+   * @param {string} name
+   * @param {function} callback
+   * @returns {showdown.Converter}
+   */
+  this.listen = function (name, callback) {
+    listen(name, callback);
+    return this;
+  };
+
+  /**
+   * Converts a markdown string into HTML
+   * @param {string} text
+   * @returns {*}
+   */
+  this.makeHtml = function (text) {
+    //check if text is not falsy
+    if (!text) {
+      return text;
+    }
+
+    var globals = {
+      gHtmlBlocks:     [],
+      gHtmlMdBlocks:   [],
+      gHtmlSpans:      [],
+      gUrls:           {},
+      gTitles:         {},
+      gDimensions:     {},
+      gListLevel:      0,
+      hashLinkCounts:  {},
+      langExtensions:  langExtensions,
+      outputModifiers: outputModifiers,
+      converter:       this,
+      ghCodeBlocks:    [],
+      metadata: {
+        parsed: {},
+        raw: '',
+        format: ''
+      }
+    };
+
+    // This lets us use ¨ trema as an escape char to avoid md5 hashes
+    // The choice of character is arbitrary; anything that isn't
+    // magic in Markdown will work.
+    text = text.replace(/¨/g, '¨T');
+
+    // Replace $ with ¨D
+    // RegExp interprets $ as a special character
+    // when it's in a replacement string
+    text = text.replace(/\$/g, '¨D');
+
+    // Standardize line endings
+    text = text.replace(/\r\n/g, '\n'); // DOS to Unix
+    text = text.replace(/\r/g, '\n'); // Mac to Unix
+
+    // Stardardize line spaces
+    text = text.replace(/\u00A0/g, '&nbsp;');
+
+    if (options.smartIndentationFix) {
+      text = rTrimInputText(text);
+    }
+
+    // Make sure text begins and ends with a couple of newlines:
+    text = '\n\n' + text + '\n\n';
+
+    // detab
+    text = showdown.subParser('detab')(text, options, globals);
+
+    /**
+     * Strip any lines consisting only of spaces and tabs.
+     * This makes subsequent regexs easier to write, because we can
+     * match consecutive blank lines with /\n+/ instead of something
+     * contorted like /[ \t]*\n+/
+     */
+    text = text.replace(/^[ \t]+$/mg, '');
+
+    //run languageExtensions
+    showdown.helper.forEach(langExtensions, function (ext) {
+      text = showdown.subParser('runExtension')(ext, text, options, globals);
+    });
+
+    // run the sub parsers
+    text = showdown.subParser('metadata')(text, options, globals);
+    text = showdown.subParser('hashPreCodeTags')(text, options, globals);
+    text = showdown.subParser('githubCodeBlocks')(text, options, globals);
+    text = showdown.subParser('hashHTMLBlocks')(text, options, globals);
+    text = showdown.subParser('hashCodeTags')(text, options, globals);
+    text = showdown.subParser('stripLinkDefinitions')(text, options, globals);
+    text = showdown.subParser('blockGamut')(text, options, globals);
+    text = showdown.subParser('unhashHTMLSpans')(text, options, globals);
+    text = showdown.subParser('unescapeSpecialChars')(text, options, globals);
+
+    // attacklab: Restore dollar signs
+    text = text.replace(/¨D/g, '$$');
+
+    // attacklab: Restore tremas
+    text = text.replace(/¨T/g, '¨');
+
+    // render a complete html document instead of a partial if the option is enabled
+    text = showdown.subParser('completeHTMLDocument')(text, options, globals);
+
+    // Run output modifiers
+    showdown.helper.forEach(outputModifiers, function (ext) {
+      text = showdown.subParser('runExtension')(ext, text, options, globals);
+    });
+
+    // update metadata
+    metadata = globals.metadata;
+    return text;
+  };
+
+  /**
+   * Converts an HTML string into a markdown string
+   * @param src
+   * @param [HTMLParser] A WHATWG DOM and HTML parser, such as JSDOM. If none is supplied, window.document will be used.
+   * @returns {string}
+   */
+  this.makeMarkdown = this.makeMd = function (src, HTMLParser) {
+
+    // replace \r\n with \n
+    src = src.replace(/\r\n/g, '\n');
+    src = src.replace(/\r/g, '\n'); // old macs
+
+    // due to an edge case, we need to find this: > <
+    // to prevent removing of non silent white spaces
+    // ex: <em>this is</em> <strong>sparta</strong>
+    src = src.replace(/>[ \t]+</, '>¨NBSP;<');
+
+    if (!HTMLParser) {
+      if (window && window.document) {
+        HTMLParser = window.document;
+      } else {
+        throw new Error('HTMLParser is undefined. If in a webworker or nodejs environment, you need to provide a WHATWG DOM and HTML such as JSDOM');
+      }
+    }
+
+    var doc = HTMLParser.createElement('div');
+    doc.innerHTML = src;
+
+    var globals = {
+      preList: substitutePreCodeTags(doc)
+    };
+
+    // remove all newlines and collapse spaces
+    clean(doc);
+
+    // some stuff, like accidental reference links must now be escaped
+    // TODO
+    // doc.innerHTML = doc.innerHTML.replace(/\[[\S\t ]]/);
+
+    var nodes = doc.childNodes,
+        mdDoc = '';
+
+    for (var i = 0; i < nodes.length; i++) {
+      mdDoc += showdown.subParser('makeMarkdown.node')(nodes[i], globals);
+    }
+
+    function clean (node) {
+      for (var n = 0; n < node.childNodes.length; ++n) {
+        var child = node.childNodes[n];
+        if (child.nodeType === 3) {
+          if (!/\S/.test(child.nodeValue) && !/^[ ]+$/.test(child.nodeValue)) {
+            node.removeChild(child);
+            --n;
+          } else {
+            child.nodeValue = child.nodeValue.split('\n').join(' ');
+            child.nodeValue = child.nodeValue.replace(/(\s)+/g, '$1');
+          }
+        } else if (child.nodeType === 1) {
+          clean(child);
+        }
+      }
+    }
+
+    // find all pre tags and replace contents with placeholder
+    // we need this so that we can remove all indentation from html
+    // to ease up parsing
+    function substitutePreCodeTags (doc) {
+
+      var pres = doc.querySelectorAll('pre'),
+          presPH = [];
+
+      for (var i = 0; i < pres.length; ++i) {
+
+        if (pres[i].childElementCount === 1 && pres[i].firstChild.tagName.toLowerCase() === 'code') {
+          var content = pres[i].firstChild.innerHTML.trim(),
+              language = pres[i].firstChild.getAttribute('data-language') || '';
+
+          // if data-language attribute is not defined, then we look for class language-*
+          if (language === '') {
+            var classes = pres[i].firstChild.className.split(' ');
+            for (var c = 0; c < classes.length; ++c) {
+              var matches = classes[c].match(/^language-(.+)$/);
+              if (matches !== null) {
+                language = matches[1];
+                break;
+              }
+            }
+          }
+
+          // unescape html entities in content
+          content = showdown.helper.unescapeHTMLEntities(content);
+
+          presPH.push(content);
+          pres[i].outerHTML = '<precode language="' + language + '" precodenum="' + i.toString() + '"></precode>';
+        } else {
+          presPH.push(pres[i].innerHTML);
+          pres[i].innerHTML = '';
+          pres[i].setAttribute('prenum', i.toString());
+        }
+      }
+      return presPH;
+    }
+
+    return mdDoc;
+  };
+
+  /**
+   * Set an option of this Converter instance
+   * @param {string} key
+   * @param {*} value
+   */
+  this.setOption = function (key, value) {
+    options[key] = value;
+  };
+
+  /**
+   * Get the option of this Converter instance
+   * @param {string} key
+   * @returns {*}
+   */
+  this.getOption = function (key) {
+    return options[key];
+  };
+
+  /**
+   * Get the options of this Converter instance
+   * @returns {{}}
+   */
+  this.getOptions = function () {
+    return options;
+  };
+
+  /**
+   * Add extension to THIS converter
+   * @param {{}} extension
+   * @param {string} [name=null]
+   */
+  this.addExtension = function (extension, name) {
+    name = name || null;
+    _parseExtension(extension, name);
+  };
+
+  /**
+   * Use a global registered extension with THIS converter
+   * @param {string} extensionName Name of the previously registered extension
+   */
+  this.useExtension = function (extensionName) {
+    _parseExtension(extensionName);
+  };
+
+  /**
+   * Set the flavor THIS converter should use
+   * @param {string} name
+   */
+  this.setFlavor = function (name) {
+    if (!flavor.hasOwnProperty(name)) {
+      throw Error(name + ' flavor was not found');
+    }
+    var preset = flavor[name];
+    setConvFlavor = name;
+    for (var option in preset) {
+      if (preset.hasOwnProperty(option)) {
+        options[option] = preset[option];
+      }
+    }
+  };
+
+  /**
+   * Get the currently set flavor of this converter
+   * @returns {string}
+   */
+  this.getFlavor = function () {
+    return setConvFlavor;
+  };
+
+  /**
+   * Remove an extension from THIS converter.
+   * Note: This is a costly operation. It's better to initialize a new converter
+   * and specify the extensions you wish to use
+   * @param {Array} extension
+   */
+  this.removeExtension = function (extension) {
+    if (!showdown.helper.isArray(extension)) {
+      extension = [extension];
+    }
+    for (var a = 0; a < extension.length; ++a) {
+      var ext = extension[a];
+      for (var i = 0; i < langExtensions.length; ++i) {
+        if (langExtensions[i] === ext) {
+          langExtensions.splice(i, 1);
+        }
+      }
+      for (var ii = 0; ii < outputModifiers.length; ++ii) {
+        if (outputModifiers[ii] === ext) {
+          outputModifiers.splice(ii, 1);
+        }
+      }
+    }
+  };
+
+  /**
+   * Get all extension of THIS converter
+   * @returns {{language: Array, output: Array}}
+   */
+  this.getAllExtensions = function () {
+    return {
+      language: langExtensions,
+      output: outputModifiers
+    };
+  };
+
+  /**
+   * Get the metadata of the previously parsed document
+   * @param raw
+   * @returns {string|{}}
+   */
+  this.getMetadata = function (raw) {
+    if (raw) {
+      return metadata.raw;
+    } else {
+      return metadata.parsed;
+    }
+  };
+
+  /**
+   * Get the metadata format of the previously parsed document
+   * @returns {string}
+   */
+  this.getMetadataFormat = function () {
+    return metadata.format;
+  };
+
+  /**
+   * Private: set a single key, value metadata pair
+   * @param {string} key
+   * @param {string} value
+   */
+  this._setMetadataPair = function (key, value) {
+    metadata.parsed[key] = value;
+  };
+
+  /**
+   * Private: set metadata format
+   * @param {string} format
+   */
+  this._setMetadataFormat = function (format) {
+    metadata.format = format;
+  };
+
+  /**
+   * Private: set metadata raw text
+   * @param {string} raw
+   */
+  this._setMetadataRaw = function (raw) {
+    metadata.raw = raw;
+  };
+};
+
+/**
+ * Turn Markdown link shortcuts into XHTML <a> tags.
+ */
+showdown.subParser('anchors', function (text, options, globals) {
+  'use strict';
+
+  text = globals.converter._dispatch('anchors.before', text, options, globals);
+
+  var writeAnchorTag = function (wholeMatch, linkText, linkId, url, m5, m6, title) {
+    if (showdown.helper.isUndefined(title)) {
+      title = '';
+    }
+    linkId = linkId.toLowerCase();
+
+    // Special case for explicit empty url
+    if (wholeMatch.search(/\(<?\s*>? ?(['"].*['"])?\)$/m) > -1) {
+      url = '';
+    } else if (!url) {
+      if (!linkId) {
+        // lower-case and turn embedded newlines into spaces
+        linkId = linkText.toLowerCase().replace(/ ?\n/g, ' ');
+      }
+      url = '#' + linkId;
+
+      if (!showdown.helper.isUndefined(globals.gUrls[linkId])) {
+        url = globals.gUrls[linkId];
+        if (!showdown.helper.isUndefined(globals.gTitles[linkId])) {
+          title = globals.gTitles[linkId];
+        }
+      } else {
+        return wholeMatch;
+      }
+    }
+
+    //url = showdown.helper.escapeCharacters(url, '*_', false); // replaced line to improve performance
+    url = url.replace(showdown.helper.regexes.asteriskDashAndColon, showdown.helper.escapeCharactersCallback);
+
+    var result = '<a href="' + url + '"';
+
+    if (title !== '' && title !== null) {
+      title = title.replace(/"/g, '&quot;');
+      //title = showdown.helper.escapeCharacters(title, '*_', false); // replaced line to improve performance
+      title = title.replace(showdown.helper.regexes.asteriskDashAndColon, showdown.helper.escapeCharactersCallback);
+      result += ' title="' + title + '"';
+    }
+
+    // optionLinksInNewWindow only applies
+    // to external links. Hash links (#) open in same page
+    if (options.openLinksInNewWindow && !/^#/.test(url)) {
+      // escaped _
+      result += ' rel="noopener noreferrer" target="¨E95Eblank"';
+    }
+
+    result += '>' + linkText + '</a>';
+
+    return result;
+  };
+
+  // First, handle reference-style links: [link text] [id]
+  text = text.replace(/\[((?:\[[^\]]*]|[^\[\]])*)] ?(?:\n *)?\[(.*?)]()()()()/g, writeAnchorTag);
+
+  // Next, inline-style links: [link text](url "optional title")
+  // cases with crazy urls like ./image/cat1).png
+  text = text.replace(/\[((?:\[[^\]]*]|[^\[\]])*)]()[ \t]*\([ \t]?<([^>]*)>(?:[ \t]*((["'])([^"]*?)\5))?[ \t]?\)/g,
+    writeAnchorTag);
+
+  // normal cases
+  text = text.replace(/\[((?:\[[^\]]*]|[^\[\]])*)]()[ \t]*\([ \t]?<?([\S]+?(?:\([\S]*?\)[\S]*?)?)>?(?:[ \t]*((["'])([^"]*?)\5))?[ \t]?\)/g,
+    writeAnchorTag);
+
+  // handle reference-style shortcuts: [link text]
+  // These must come last in case you've also got [link test][1]
+  // or [link test](/foo)
+  text = text.replace(/\[([^\[\]]+)]()()()()()/g, writeAnchorTag);
+
+  // Lastly handle GithubMentions if option is enabled
+  if (options.ghMentions) {
+    text = text.replace(/(^|\s)(\\)?(@([a-z\d]+(?:[a-z\d.-]+?[a-z\d]+)*))/gmi, function (wm, st, escape, mentions, username) {
+      if (escape === '\\') {
+        return st + mentions;
+      }
+
+      //check if options.ghMentionsLink is a string
+      if (!showdown.helper.isString(options.ghMentionsLink)) {
+        throw new Error('ghMentionsLink option must be a string');
+      }
+      var lnk = options.ghMentionsLink.replace(/\{u}/g, username),
+          target = '';
+      if (options.openLinksInNewWindow) {
+        target = ' rel="noopener noreferrer" target="¨E95Eblank"';
+      }
+      return st + '<a href="' + lnk + '"' + target + '>' + mentions + '</a>';
+    });
+  }
+
+  text = globals.converter._dispatch('anchors.after', text, options, globals);
+  return text;
+});
+
+// url allowed chars [a-z\d_.~:/?#[]@!$&'()*+,;=-]
+
+var simpleURLRegex  = /([*~_]+|\b)(((https?|ftp|dict):\/\/|www\.)[^'">\s]+?\.[^'">\s]+?)()(\1)?(?=\s|$)(?!["<>])/gi,
+    simpleURLRegex2 = /([*~_]+|\b)(((https?|ftp|dict):\/\/|www\.)[^'">\s]+\.[^'">\s]+?)([.!?,()\[\]])?(\1)?(?=\s|$)(?!["<>])/gi,
+    delimUrlRegex   = /()<(((https?|ftp|dict):\/\/|www\.)[^'">\s]+)()>()/gi,
+    simpleMailRegex = /(^|\s)(?:mailto:)?([A-Za-z0-9!#$%&'*+-/=?^_`{|}~.]+@[-a-z0-9]+(\.[-a-z0-9]+)*\.[a-z]+)(?=$|\s)/gmi,
+    delimMailRegex  = /<()(?:mailto:)?([-.\w]+@[-a-z0-9]+(\.[-a-z0-9]+)*\.[a-z]+)>/gi,
+
+    replaceLink = function (options) {
+      'use strict';
+      return function (wm, leadingMagicChars, link, m2, m3, trailingPunctuation, trailingMagicChars) {
+        link = link.replace(showdown.helper.regexes.asteriskDashAndColon, showdown.helper.escapeCharactersCallback);
+        var lnkTxt = link,
+            append = '',
+            target = '',
+            lmc    = leadingMagicChars || '',
+            tmc    = trailingMagicChars || '';
+        if (/^www\./i.test(link)) {
+          link = link.replace(/^www\./i, 'http://www.');
+        }
+        if (options.excludeTrailingPunctuationFromURLs && trailingPunctuation) {
+          append = trailingPunctuation;
+        }
+        if (options.openLinksInNewWindow) {
+          target = ' rel="noopener noreferrer" target="¨E95Eblank"';
+        }
+        return lmc + '<a href="' + link + '"' + target + '>' + lnkTxt + '</a>' + append + tmc;
+      };
+    },
+
+    replaceMail = function (options, globals) {
+      'use strict';
+      return function (wholeMatch, b, mail) {
+        var href = 'mailto:';
+        b = b || '';
+        mail = showdown.subParser('unescapeSpecialChars')(mail, options, globals);
+        if (options.encodeEmails) {
+          href = showdown.helper.encodeEmailAddress(href + mail);
+          mail = showdown.helper.encodeEmailAddress(mail);
+        } else {
+          href = href + mail;
+        }
+        return b + '<a href="' + href + '">' + mail + '</a>';
+      };
+    };
+
+showdown.subParser('autoLinks', function (text, options, globals) {
+  'use strict';
+
+  text = globals.converter._dispatch('autoLinks.before', text, options, globals);
+
+  text = text.replace(delimUrlRegex, replaceLink(options));
+  text = text.replace(delimMailRegex, replaceMail(options, globals));
+
+  text = globals.converter._dispatch('autoLinks.after', text, options, globals);
+
+  return text;
+});
+
+showdown.subParser('simplifiedAutoLinks', function (text, options, globals) {
+  'use strict';
+
+  if (!options.simplifiedAutoLink) {
+    return text;
+  }
+
+  text = globals.converter._dispatch('simplifiedAutoLinks.before', text, options, globals);
+
+  if (options.excludeTrailingPunctuationFromURLs) {
+    text = text.replace(simpleURLRegex2, replaceLink(options));
+  } else {
+    text = text.replace(simpleURLRegex, replaceLink(options));
+  }
+  text = text.replace(simpleMailRegex, replaceMail(options, globals));
+
+  text = globals.converter._dispatch('simplifiedAutoLinks.after', text, options, globals);
+
+  return text;
+});
+
+/**
+ * These are all the transformations that form block-level
+ * tags like paragraphs, headers, and list items.
+ */
+showdown.subParser('blockGamut', function (text, options, globals) {
+  'use strict';
+
+  text = globals.converter._dispatch('blockGamut.before', text, options, globals);
+
+  // we parse blockquotes first so that we can have headings and hrs
+  // inside blockquotes
+  text = showdown.subParser('blockQuotes')(text, options, globals);
+  text = showdown.subParser('headers')(text, options, globals);
+
+  // Do Horizontal Rules:
+  text = showdown.subParser('horizontalRule')(text, options, globals);
+
+  text = showdown.subParser('lists')(text, options, globals);
+  text = showdown.subParser('codeBlocks')(text, options, globals);
+  text = showdown.subParser('tables')(text, options, globals);
+
+  // We already ran _HashHTMLBlocks() before, in Markdown(), but that
+  // was to escape raw HTML in the original Markdown source. This time,
+  // we're escaping the markup we've just created, so that we don't wrap
+  // <p> tags around block-level tags.
+  text = showdown.subParser('hashHTMLBlocks')(text, options, globals);
+  text = showdown.subParser('paragraphs')(text, options, globals);
+
+  text = globals.converter._dispatch('blockGamut.after', text, options, globals);
+
+  return text;
+});
+
+showdown.subParser('blockQuotes', function (text, options, globals) {
+  'use strict';
+
+  text = globals.converter._dispatch('blockQuotes.before', text, options, globals);
+
+  // add a couple extra lines after the text and endtext mark
+  text = text + '\n\n';
+
+  var rgx = /(^ {0,3}>[ \t]?.+\n(.+\n)*\n*)+/gm;
+
+  if (options.splitAdjacentBlockquotes) {
+    rgx = /^ {0,3}>[\s\S]*?(?:\n\n)/gm;
+  }
+
+  text = text.replace(rgx, function (bq) {
+    // attacklab: hack around Konqueror 3.5.4 bug:
+    // "----------bug".replace(/^-/g,"") == "bug"
+    bq = bq.replace(/^[ \t]*>[ \t]?/gm, ''); // trim one level of quoting
+
+    // attacklab: clean up hack
+    bq = bq.replace(/¨0/g, '');
+
+    bq = bq.replace(/^[ \t]+$/gm, ''); // trim whitespace-only lines
+    bq = showdown.subParser('githubCodeBlocks')(bq, options, globals);
+    bq = showdown.subParser('blockGamut')(bq, options, globals); // recurse
+
+    bq = bq.replace(/(^|\n)/g, '$1  ');
+    // These leading spaces screw with <pre> content, so we need to fix that:
+    bq = bq.replace(/(\s*<pre>[^\r]+?<\/pre>)/gm, function (wholeMatch, m1) {
+      var pre = m1;
+      // attacklab: hack around Konqueror 3.5.4 bug:
+      pre = pre.replace(/^  /mg, '¨0');
+      pre = pre.replace(/¨0/g, '');
+      return pre;
+    });
+
+    return showdown.subParser('hashBlock')('<blockquote>\n' + bq + '\n</blockquote>', options, globals);
+  });
+
+  text = globals.converter._dispatch('blockQuotes.after', text, options, globals);
+  return text;
+});
+
+/**
+ * Process Markdown `<pre><code>` blocks.
+ */
+showdown.subParser('codeBlocks', function (text, options, globals) {
+  'use strict';
+
+  text = globals.converter._dispatch('codeBlocks.before', text, options, globals);
+
+  // sentinel workarounds for lack of \A and \Z, safari\khtml bug
+  text += '¨0';
+
+  var pattern = /(?:\n\n|^)((?:(?:[ ]{4}|\t).*\n+)+)(\n*[ ]{0,3}[^ \t\n]|(?=¨0))/g;
+  text = text.replace(pattern, function (wholeMatch, m1, m2) {
+    var codeblock = m1,
+        nextChar = m2,
+        end = '\n';
+
+    codeblock = showdown.subParser('outdent')(codeblock, options, globals);
+    codeblock = showdown.subParser('encodeCode')(codeblock, options, globals);
+    codeblock = showdown.subParser('detab')(codeblock, options, globals);
+    codeblock = codeblock.replace(/^\n+/g, ''); // trim leading newlines
+    codeblock = codeblock.replace(/\n+$/g, ''); // trim trailing newlines
+
+    if (options.omitExtraWLInCodeBlocks) {
+      end = '';
+    }
+
+    codeblock = '<pre><code>' + codeblock + end + '</code></pre>';
+
+    return showdown.subParser('hashBlock')(codeblock, options, globals) + nextChar;
+  });
+
+  // strip sentinel
+  text = text.replace(/¨0/, '');
+
+  text = globals.converter._dispatch('codeBlocks.after', text, options, globals);
+  return text;
+});
+
+/**
+ *
+ *   *  Backtick quotes are used for <code></code> spans.
+ *
+ *   *  You can use multiple backticks as the delimiters if you want to
+ *     include literal backticks in the code span. So, this input:
+ *
+ *         Just type ``foo `bar` baz`` at the prompt.
+ *
+ *       Will translate to:
+ *
+ *         <p>Just type <code>foo `bar` baz</code> at the prompt.</p>
+ *
+ *    There's no arbitrary limit to the number of backticks you
+ *    can use as delimters. If you need three consecutive backticks
+ *    in your code, use four for delimiters, etc.
+ *
+ *  *  You can use spaces to get literal backticks at the edges:
+ *
+ *         ... type `` `bar` `` ...
+ *
+ *       Turns to:
+ *
+ *         ... type <code>`bar`</code> ...
+ */
+showdown.subParser('codeSpans', function (text, options, globals) {
+  'use strict';
+
+  text = globals.converter._dispatch('codeSpans.before', text, options, globals);
+
+  if (typeof (text) === 'undefined') {
+    text = '';
+  }
+  text = text.replace(/(^|[^\\])(`+)([^\r]*?[^`])\2(?!`)/gm,
+    function (wholeMatch, m1, m2, m3) {
+      var c = m3;
+      c = c.replace(/^([ \t]*)/g, '');	// leading whitespace
+      c = c.replace(/[ \t]*$/g, '');	// trailing whitespace
+      c = showdown.subParser('encodeCode')(c, options, globals);
+      c = m1 + '<code>' + c + '</code>';
+      c = showdown.subParser('hashHTMLSpans')(c, options, globals);
+      return c;
+    }
+  );
+
+  text = globals.converter._dispatch('codeSpans.after', text, options, globals);
+  return text;
+});
+
+/**
+ * Create a full HTML document from the processed markdown
+ */
+showdown.subParser('completeHTMLDocument', function (text, options, globals) {
+  'use strict';
+
+  if (!options.completeHTMLDocument) {
+    return text;
+  }
+
+  text = globals.converter._dispatch('completeHTMLDocument.before', text, options, globals);
+
+  var doctype = 'html',
+      doctypeParsed = '<!DOCTYPE HTML>\n',
+      title = '',
+      charset = '<meta charset="utf-8">\n',
+      lang = '',
+      metadata = '';
+
+  if (typeof globals.metadata.parsed.doctype !== 'undefined') {
+    doctypeParsed = '<!DOCTYPE ' +  globals.metadata.parsed.doctype + '>\n';
+    doctype = globals.metadata.parsed.doctype.toString().toLowerCase();
+    if (doctype === 'html' || doctype === 'html5') {
+      charset = '<meta charset="utf-8">';
+    }
+  }
+
+  for (var meta in globals.metadata.parsed) {
+    if (globals.metadata.parsed.hasOwnProperty(meta)) {
+      switch (meta.toLowerCase()) {
+        case 'doctype':
+          break;
+
+        case 'title':
+          title = '<title>' +  globals.metadata.parsed.title + '</title>\n';
+          break;
+
+        case 'charset':
+          if (doctype === 'html' || doctype === 'html5') {
+            charset = '<meta charset="' + globals.metadata.parsed.charset + '">\n';
+          } else {
+            charset = '<meta name="charset" content="' + globals.metadata.parsed.charset + '">\n';
+          }
+          break;
+
+        case 'language':
+        case 'lang':
+          lang = ' lang="' + globals.metadata.parsed[meta] + '"';
+          metadata += '<meta name="' + meta + '" content="' + globals.metadata.parsed[meta] + '">\n';
+          break;
+
+        default:
+          metadata += '<meta name="' + meta + '" content="' + globals.metadata.parsed[meta] + '">\n';
+      }
+    }
+  }
+
+  text = doctypeParsed + '<html' + lang + '>\n<head>\n' + title + charset + metadata + '</head>\n<body>\n' + text.trim() + '\n</body>\n</html>';
+
+  text = globals.converter._dispatch('completeHTMLDocument.after', text, options, globals);
+  return text;
+});
+
+/**
+ * Convert all tabs to spaces
+ */
+showdown.subParser('detab', function (text, options, globals) {
+  'use strict';
+  text = globals.converter._dispatch('detab.before', text, options, globals);
+
+  // expand first n-1 tabs
+  text = text.replace(/\t(?=\t)/g, '    '); // g_tab_width
+
+  // replace the nth with two sentinels
+  text = text.replace(/\t/g, '¨A¨B');
+
+  // use the sentinel to anchor our regex so it doesn't explode
+  text = text.replace(/¨B(.+?)¨A/g, function (wholeMatch, m1) {
+    var leadingText = m1,
+        numSpaces = 4 - leadingText.length % 4;  // g_tab_width
+
+    // there *must* be a better way to do this:
+    for (var i = 0; i < numSpaces; i++) {
+      leadingText += ' ';
+    }
+
+    return leadingText;
+  });
+
+  // clean up sentinels
+  text = text.replace(/¨A/g, '    ');  // g_tab_width
+  text = text.replace(/¨B/g, '');
+
+  text = globals.converter._dispatch('detab.after', text, options, globals);
+  return text;
+});
+
+showdown.subParser('ellipsis', function (text, options, globals) {
+  'use strict';
+
+  if (!options.ellipsis) {
+    return text;
+  }
+
+  text = globals.converter._dispatch('ellipsis.before', text, options, globals);
+
+  text = text.replace(/\.\.\./g, '…');
+
+  text = globals.converter._dispatch('ellipsis.after', text, options, globals);
+
+  return text;
+});
+
+/**
+ * Turn emoji codes into emojis
+ *
+ * List of supported emojis: https://github.com/showdownjs/showdown/wiki/Emojis
+ */
+showdown.subParser('emoji', function (text, options, globals) {
+  'use strict';
+
+  if (!options.emoji) {
+    return text;
+  }
+
+  text = globals.converter._dispatch('emoji.before', text, options, globals);
+
+  var emojiRgx = /:([\S]+?):/g;
+
+  text = text.replace(emojiRgx, function (wm, emojiCode) {
+    if (showdown.helper.emojis.hasOwnProperty(emojiCode)) {
+      return showdown.helper.emojis[emojiCode];
+    }
+    return wm;
+  });
+
+  text = globals.converter._dispatch('emoji.after', text, options, globals);
+
+  return text;
+});
+
+/**
+ * Smart processing for ampersands and angle brackets that need to be encoded.
+ */
+showdown.subParser('encodeAmpsAndAngles', function (text, options, globals) {
+  'use strict';
+  text = globals.converter._dispatch('encodeAmpsAndAngles.before', text, options, globals);
+
+  // Ampersand-encoding based entirely on Nat Irons's Amputator MT plugin:
+  // http://bumppo.net/projects/amputator/
+  text = text.replace(/&(?!#?[xX]?(?:[0-9a-fA-F]+|\w+);)/g, '&amp;');
+
+  // Encode naked <'s
+  text = text.replace(/<(?![a-z\/?$!])/gi, '&lt;');
+
+  // Encode <
+  text = text.replace(/</g, '&lt;');
+
+  // Encode >
+  text = text.replace(/>/g, '&gt;');
+
+  text = globals.converter._dispatch('encodeAmpsAndAngles.after', text, options, globals);
+  return text;
+});
+
+/**
+ * Returns the string, with after processing the following backslash escape sequences.
+ *
+ * attacklab: The polite way to do this is with the new escapeCharacters() function:
+ *
+ *    text = escapeCharacters(text,"\\",true);
+ *    text = escapeCharacters(text,"`*_{}[]()>#+-.!",true);
+ *
+ * ...but we're sidestepping its use of the (slow) RegExp constructor
+ * as an optimization for Firefox.  This function gets called a LOT.
+ */
+showdown.subParser('encodeBackslashEscapes', function (text, options, globals) {
+  'use strict';
+  text = globals.converter._dispatch('encodeBackslashEscapes.before', text, options, globals);
+
+  text = text.replace(/\\(\\)/g, showdown.helper.escapeCharactersCallback);
+  text = text.replace(/\\([`*_{}\[\]()>#+.!~=|:-])/g, showdown.helper.escapeCharactersCallback);
+
+  text = globals.converter._dispatch('encodeBackslashEscapes.after', text, options, globals);
+  return text;
+});
+
+/**
+ * Encode/escape certain characters inside Markdown code runs.
+ * The point is that in code, these characters are literals,
+ * and lose their special Markdown meanings.
+ */
+showdown.subParser('encodeCode', function (text, options, globals) {
+  'use strict';
+
+  text = globals.converter._dispatch('encodeCode.before', text, options, globals);
+
+  // Encode all ampersands; HTML entities are not
+  // entities within a Markdown code span.
+  text = text
+    .replace(/&/g, '&amp;')
+  // Do the angle bracket song and dance:
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+  // Now, escape characters that are magic in Markdown:
+    .replace(/([*_{}\[\]\\=~-])/g, showdown.helper.escapeCharactersCallback);
+
+  text = globals.converter._dispatch('encodeCode.after', text, options, globals);
+  return text;
+});
+
+/**
+ * Within tags -- meaning between < and > -- encode [\ ` * _ ~ =] so they
+ * don't conflict with their use in Markdown for code, italics and strong.
+ */
+showdown.subParser('escapeSpecialCharsWithinTagAttributes', function (text, options, globals) {
+  'use strict';
+  text = globals.converter._dispatch('escapeSpecialCharsWithinTagAttributes.before', text, options, globals);
+
+  // Build a regex to find HTML tags.
+  var tags     = /<\/?[a-z\d_:-]+(?:[\s]+[\s\S]+?)?>/gi,
+      comments = /<!(--(?:(?:[^>-]|-[^>])(?:[^-]|-[^-])*)--)>/gi;
+
+  text = text.replace(tags, function (wholeMatch) {
+    return wholeMatch
+      .replace(/(.)<\/?code>(?=.)/g, '$1`')
+      .replace(/([\\`*_~=|])/g, showdown.helper.escapeCharactersCallback);
+  });
+
+  text = text.replace(comments, function (wholeMatch) {
+    return wholeMatch
+      .replace(/([\\`*_~=|])/g, showdown.helper.escapeCharactersCallback);
+  });
+
+  text = globals.converter._dispatch('escapeSpecialCharsWithinTagAttributes.after', text, options, globals);
+  return text;
+});
+
+/**
+ * Handle github codeblocks prior to running HashHTML so that
+ * HTML contained within the codeblock gets escaped properly
+ * Example:
+ * ```ruby
+ *     def hello_world(x)
+ *       puts "Hello, #{x}"
+ *     end
+ * ```
+ */
+showdown.subParser('githubCodeBlocks', function (text, options, globals) {
+  'use strict';
+
+  // early exit if option is not enabled
+  if (!options.ghCodeBlocks) {
+    return text;
+  }
+
+  text = globals.converter._dispatch('githubCodeBlocks.before', text, options, globals);
+
+  text += '¨0';
+
+  text = text.replace(/(?:^|\n)(?: {0,3})(```+|~~~+)(?: *)([^\s`~]*)\n([\s\S]*?)\n(?: {0,3})\1/g, function (wholeMatch, delim, language, codeblock) {
+    var end = (options.omitExtraWLInCodeBlocks) ? '' : '\n';
+
+    // First parse the github code block
+    codeblock = showdown.subParser('encodeCode')(codeblock, options, globals);
+    codeblock = showdown.subParser('detab')(codeblock, options, globals);
+    codeblock = codeblock.replace(/^\n+/g, ''); // trim leading newlines
+    codeblock = codeblock.replace(/\n+$/g, ''); // trim trailing whitespace
+
+    codeblock = '<pre><code' + (language ? ' class="' + language + ' language-' + language + '"' : '') + '>' + codeblock + end + '</code></pre>';
+
+    codeblock = showdown.subParser('hashBlock')(codeblock, options, globals);
+
+    // Since GHCodeblocks can be false positives, we need to
+    // store the primitive text and the parsed text in a global var,
+    // and then return a token
+    return '\n\n¨G' + (globals.ghCodeBlocks.push({text: wholeMatch, codeblock: codeblock}) - 1) + 'G\n\n';
+  });
+
+  // attacklab: strip sentinel
+  text = text.replace(/¨0/, '');
+
+  return globals.converter._dispatch('githubCodeBlocks.after', text, options, globals);
+});
+
+showdown.subParser('hashBlock', function (text, options, globals) {
+  'use strict';
+  text = globals.converter._dispatch('hashBlock.before', text, options, globals);
+  text = text.replace(/(^\n+|\n+$)/g, '');
+  text = '\n\n¨K' + (globals.gHtmlBlocks.push(text) - 1) + 'K\n\n';
+  text = globals.converter._dispatch('hashBlock.after', text, options, globals);
+  return text;
+});
+
+/**
+ * Hash and escape <code> elements that should not be parsed as markdown
+ */
+showdown.subParser('hashCodeTags', function (text, options, globals) {
+  'use strict';
+  text = globals.converter._dispatch('hashCodeTags.before', text, options, globals);
+
+  var repFunc = function (wholeMatch, match, left, right) {
+    var codeblock = left + showdown.subParser('encodeCode')(match, options, globals) + right;
+    return '¨C' + (globals.gHtmlSpans.push(codeblock) - 1) + 'C';
+  };
+
+  // Hash naked <code>
+  text = showdown.helper.replaceRecursiveRegExp(text, repFunc, '<code\\b[^>]*>', '</code>', 'gim');
+
+  text = globals.converter._dispatch('hashCodeTags.after', text, options, globals);
+  return text;
+});
+
+showdown.subParser('hashElement', function (text, options, globals) {
+  'use strict';
+
+  return function (wholeMatch, m1) {
+    var blockText = m1;
+
+    // Undo double lines
+    blockText = blockText.replace(/\n\n/g, '\n');
+    blockText = blockText.replace(/^\n/, '');
+
+    // strip trailing blank lines
+    blockText = blockText.replace(/\n+$/g, '');
+
+    // Replace the element text with a marker ("¨KxK" where x is its key)
+    blockText = '\n\n¨K' + (globals.gHtmlBlocks.push(blockText) - 1) + 'K\n\n';
+
+    return blockText;
+  };
+});
+
+showdown.subParser('hashHTMLBlocks', function (text, options, globals) {
+  'use strict';
+  text = globals.converter._dispatch('hashHTMLBlocks.before', text, options, globals);
+
+  var blockTags = [
+        'pre',
+        'div',
+        'h1',
+        'h2',
+        'h3',
+        'h4',
+        'h5',
+        'h6',
+        'blockquote',
+        'table',
+        'dl',
+        'ol',
+        'ul',
+        'script',
+        'noscript',
+        'form',
+        'fieldset',
+        'iframe',
+        'math',
+        'style',
+        'section',
+        'header',
+        'footer',
+        'nav',
+        'article',
+        'aside',
+        'address',
+        'audio',
+        'canvas',
+        'figure',
+        'hgroup',
+        'output',
+        'video',
+        'p'
+      ],
+      repFunc = function (wholeMatch, match, left, right) {
+        var txt = wholeMatch;
+        // check if this html element is marked as markdown
+        // if so, it's contents should be parsed as markdown
+        if (left.search(/\bmarkdown\b/) !== -1) {
+          txt = left + globals.converter.makeHtml(match) + right;
+        }
+        return '\n\n¨K' + (globals.gHtmlBlocks.push(txt) - 1) + 'K\n\n';
+      };
+
+  if (options.backslashEscapesHTMLTags) {
+    // encode backslash escaped HTML tags
+    text = text.replace(/\\<(\/?[^>]+?)>/g, function (wm, inside) {
+      return '&lt;' + inside + '&gt;';
+    });
+  }
+
+  // hash HTML Blocks
+  for (var i = 0; i < blockTags.length; ++i) {
+
+    var opTagPos,
+        rgx1     = new RegExp('^ {0,3}(<' + blockTags[i] + '\\b[^>]*>)', 'im'),
+        patLeft  = '<' + blockTags[i] + '\\b[^>]*>',
+        patRight = '</' + blockTags[i] + '>';
+    // 1. Look for the first position of the first opening HTML tag in the text
+    while ((opTagPos = showdown.helper.regexIndexOf(text, rgx1)) !== -1) {
+
+      // if the HTML tag is \ escaped, we need to escape it and break
+
+
+      //2. Split the text in that position
+      var subTexts = showdown.helper.splitAtIndex(text, opTagPos),
+          //3. Match recursively
+          newSubText1 = showdown.helper.replaceRecursiveRegExp(subTexts[1], repFunc, patLeft, patRight, 'im');
+
+      // prevent an infinite loop
+      if (newSubText1 === subTexts[1]) {
+        break;
+      }
+      text = subTexts[0].concat(newSubText1);
+    }
+  }
+  // HR SPECIAL CASE
+  text = text.replace(/(\n {0,3}(<(hr)\b([^<>])*?\/?>)[ \t]*(?=\n{2,}))/g,
+    showdown.subParser('hashElement')(text, options, globals));
+
+  // Special case for standalone HTML comments
+  text = showdown.helper.replaceRecursiveRegExp(text, function (txt) {
+    return '\n\n¨K' + (globals.gHtmlBlocks.push(txt) - 1) + 'K\n\n';
+  }, '^ {0,3}<!--', '-->', 'gm');
+
+  // PHP and ASP-style processor instructions (<?...?> and <%...%>)
+  text = text.replace(/(?:\n\n)( {0,3}(?:<([?%])[^\r]*?\2>)[ \t]*(?=\n{2,}))/g,
+    showdown.subParser('hashElement')(text, options, globals));
+
+  text = globals.converter._dispatch('hashHTMLBlocks.after', text, options, globals);
+  return text;
+});
+
+/**
+ * Hash span elements that should not be parsed as markdown
+ */
+showdown.subParser('hashHTMLSpans', function (text, options, globals) {
+  'use strict';
+  text = globals.converter._dispatch('hashHTMLSpans.before', text, options, globals);
+
+  function hashHTMLSpan (html) {
+    return '¨C' + (globals.gHtmlSpans.push(html) - 1) + 'C';
+  }
+
+  // Hash Self Closing tags
+  text = text.replace(/<[^>]+?\/>/gi, function (wm) {
+    return hashHTMLSpan(wm);
+  });
+
+  // Hash tags without properties
+  text = text.replace(/<([^>]+?)>[\s\S]*?<\/\1>/g, function (wm) {
+    return hashHTMLSpan(wm);
+  });
+
+  // Hash tags with properties
+  text = text.replace(/<([^>]+?)\s[^>]+?>[\s\S]*?<\/\1>/g, function (wm) {
+    return hashHTMLSpan(wm);
+  });
+
+  // Hash self closing tags without />
+  text = text.replace(/<[^>]+?>/gi, function (wm) {
+    return hashHTMLSpan(wm);
+  });
+
+  /*showdown.helper.matchRecursiveRegExp(text, '<code\\b[^>]*>', '</code>', 'gi');*/
+
+  text = globals.converter._dispatch('hashHTMLSpans.after', text, options, globals);
+  return text;
+});
+
+/**
+ * Unhash HTML spans
+ */
+showdown.subParser('unhashHTMLSpans', function (text, options, globals) {
+  'use strict';
+  text = globals.converter._dispatch('unhashHTMLSpans.before', text, options, globals);
+
+  for (var i = 0; i < globals.gHtmlSpans.length; ++i) {
+    var repText = globals.gHtmlSpans[i],
+        // limiter to prevent infinite loop (assume 10 as limit for recurse)
+        limit = 0;
+
+    while (/¨C(\d+)C/.test(repText)) {
+      var num = RegExp.$1;
+      repText = repText.replace('¨C' + num + 'C', globals.gHtmlSpans[num]);
+      if (limit === 10) {
+        console.error('maximum nesting of 10 spans reached!!!');
+        break;
+      }
+      ++limit;
+    }
+    text = text.replace('¨C' + i + 'C', repText);
+  }
+
+  text = globals.converter._dispatch('unhashHTMLSpans.after', text, options, globals);
+  return text;
+});
+
+/**
+ * Hash and escape <pre><code> elements that should not be parsed as markdown
+ */
+showdown.subParser('hashPreCodeTags', function (text, options, globals) {
+  'use strict';
+  text = globals.converter._dispatch('hashPreCodeTags.before', text, options, globals);
+
+  var repFunc = function (wholeMatch, match, left, right) {
+    // encode html entities
+    var codeblock = left + showdown.subParser('encodeCode')(match, options, globals) + right;
+    return '\n\n¨G' + (globals.ghCodeBlocks.push({text: wholeMatch, codeblock: codeblock}) - 1) + 'G\n\n';
+  };
+
+  // Hash <pre><code>
+  text = showdown.helper.replaceRecursiveRegExp(text, repFunc, '^ {0,3}<pre\\b[^>]*>\\s*<code\\b[^>]*>', '^ {0,3}</code>\\s*</pre>', 'gim');
+
+  text = globals.converter._dispatch('hashPreCodeTags.after', text, options, globals);
+  return text;
+});
+
+showdown.subParser('headers', function (text, options, globals) {
+  'use strict';
+
+  text = globals.converter._dispatch('headers.before', text, options, globals);
+
+  var headerLevelStart = (isNaN(parseInt(options.headerLevelStart))) ? 1 : parseInt(options.headerLevelStart),
+
+      // Set text-style headers:
+      //	Header 1
+      //	========
+      //
+      //	Header 2
+      //	--------
+      //
+      setextRegexH1 = (options.smoothLivePreview) ? /^(.+)[ \t]*\n={2,}[ \t]*\n+/gm : /^(.+)[ \t]*\n=+[ \t]*\n+/gm,
+      setextRegexH2 = (options.smoothLivePreview) ? /^(.+)[ \t]*\n-{2,}[ \t]*\n+/gm : /^(.+)[ \t]*\n-+[ \t]*\n+/gm;
+
+  text = text.replace(setextRegexH1, function (wholeMatch, m1) {
+
+    var spanGamut = showdown.subParser('spanGamut')(m1, options, globals),
+        hID = (options.noHeaderId) ? '' : ' id="' + headerId(m1) + '"',
+        hLevel = headerLevelStart,
+        hashBlock = '<h' + hLevel + hID + '>' + spanGamut + '</h' + hLevel + '>';
+    return showdown.subParser('hashBlock')(hashBlock, options, globals);
+  });
+
+  text = text.replace(setextRegexH2, function (matchFound, m1) {
+    var spanGamut = showdown.subParser('spanGamut')(m1, options, globals),
+        hID = (options.noHeaderId) ? '' : ' id="' + headerId(m1) + '"',
+        hLevel = headerLevelStart + 1,
+        hashBlock = '<h' + hLevel + hID + '>' + spanGamut + '</h' + hLevel + '>';
+    return showdown.subParser('hashBlock')(hashBlock, options, globals);
+  });
+
+  // atx-style headers:
+  //  # Header 1
+  //  ## Header 2
+  //  ## Header 2 with closing hashes ##
+  //  ...
+  //  ###### Header 6
+  //
+  var atxStyle = (options.requireSpaceBeforeHeadingText) ? /^(#{1,6})[ \t]+(.+?)[ \t]*#*\n+/gm : /^(#{1,6})[ \t]*(.+?)[ \t]*#*\n+/gm;
+
+  text = text.replace(atxStyle, function (wholeMatch, m1, m2) {
+    var hText = m2;
+    if (options.customizedHeaderId) {
+      hText = m2.replace(/\s?\{([^{]+?)}\s*$/, '');
+    }
+
+    var span = showdown.subParser('spanGamut')(hText, options, globals),
+        hID = (options.noHeaderId) ? '' : ' id="' + headerId(m2) + '"',
+        hLevel = headerLevelStart - 1 + m1.length,
+        header = '<h' + hLevel + hID + '>' + span + '</h' + hLevel + '>';
+
+    return showdown.subParser('hashBlock')(header, options, globals);
+  });
+
+  function headerId (m) {
+    var title,
+        prefix;
+
+    // It is separate from other options to allow combining prefix and customized
+    if (options.customizedHeaderId) {
+      var match = m.match(/\{([^{]+?)}\s*$/);
+      if (match && match[1]) {
+        m = match[1];
+      }
+    }
+
+    title = m;
+
+    // Prefix id to prevent causing inadvertent pre-existing style matches.
+    if (showdown.helper.isString(options.prefixHeaderId)) {
+      prefix = options.prefixHeaderId;
+    } else if (options.prefixHeaderId === true) {
+      prefix = 'section-';
+    } else {
+      prefix = '';
+    }
+
+    if (!options.rawPrefixHeaderId) {
+      title = prefix + title;
+    }
+
+    if (options.ghCompatibleHeaderId) {
+      title = title
+        .replace(/ /g, '-')
+        // replace previously escaped chars (&, ¨ and $)
+        .replace(/&amp;/g, '')
+        .replace(/¨T/g, '')
+        .replace(/¨D/g, '')
+        // replace rest of the chars (&~$ are repeated as they might have been escaped)
+        // borrowed from github's redcarpet (some they should produce similar results)
+        .replace(/[&+$,\/:;=?@"#{}|^¨~\[\]`\\*)(%.!'<>]/g, '')
+        .toLowerCase();
+    } else if (options.rawHeaderId) {
+      title = title
+        .replace(/ /g, '-')
+        // replace previously escaped chars (&, ¨ and $)
+        .replace(/&amp;/g, '&')
+        .replace(/¨T/g, '¨')
+        .replace(/¨D/g, '$')
+        // replace " and '
+        .replace(/["']/g, '-')
+        .toLowerCase();
+    } else {
+      title = title
+        .replace(/[^\w]/g, '')
+        .toLowerCase();
+    }
+
+    if (options.rawPrefixHeaderId) {
+      title = prefix + title;
+    }
+
+    if (globals.hashLinkCounts[title]) {
+      title = title + '-' + (globals.hashLinkCounts[title]++);
+    } else {
+      globals.hashLinkCounts[title] = 1;
+    }
+    return title;
+  }
+
+  text = globals.converter._dispatch('headers.after', text, options, globals);
+  return text;
+});
+
+/**
+ * Turn Markdown link shortcuts into XHTML <a> tags.
+ */
+showdown.subParser('horizontalRule', function (text, options, globals) {
+  'use strict';
+  text = globals.converter._dispatch('horizontalRule.before', text, options, globals);
+
+  var key = showdown.subParser('hashBlock')('<hr />', options, globals);
+  text = text.replace(/^ {0,2}( ?-){3,}[ \t]*$/gm, key);
+  text = text.replace(/^ {0,2}( ?\*){3,}[ \t]*$/gm, key);
+  text = text.replace(/^ {0,2}( ?_){3,}[ \t]*$/gm, key);
+
+  text = globals.converter._dispatch('horizontalRule.after', text, options, globals);
+  return text;
+});
+
+/**
+ * Turn Markdown image shortcuts into <img> tags.
+ */
+showdown.subParser('images', function (text, options, globals) {
+  'use strict';
+
+  text = globals.converter._dispatch('images.before', text, options, globals);
+
+  var inlineRegExp      = /!\[([^\]]*?)][ \t]*()\([ \t]?<?([\S]+?(?:\([\S]*?\)[\S]*?)?)>?(?: =([*\d]+[A-Za-z%]{0,4})x([*\d]+[A-Za-z%]{0,4}))?[ \t]*(?:(["'])([^"]*?)\6)?[ \t]?\)/g,
+      crazyRegExp       = /!\[([^\]]*?)][ \t]*()\([ \t]?<([^>]*)>(?: =([*\d]+[A-Za-z%]{0,4})x([*\d]+[A-Za-z%]{0,4}))?[ \t]*(?:(?:(["'])([^"]*?)\6))?[ \t]?\)/g,
+      base64RegExp      = /!\[([^\]]*?)][ \t]*()\([ \t]?<?(data:.+?\/.+?;base64,[A-Za-z0-9+/=\n]+?)>?(?: =([*\d]+[A-Za-z%]{0,4})x([*\d]+[A-Za-z%]{0,4}))?[ \t]*(?:(["'])([^"]*?)\6)?[ \t]?\)/g,
+      referenceRegExp   = /!\[([^\]]*?)] ?(?:\n *)?\[([\s\S]*?)]()()()()()/g,
+      refShortcutRegExp = /!\[([^\[\]]+)]()()()()()/g;
+
+  function writeImageTagBase64 (wholeMatch, altText, linkId, url, width, height, m5, title) {
+    url = url.replace(/\s/g, '');
+    return writeImageTag (wholeMatch, altText, linkId, url, width, height, m5, title);
+  }
+
+  function writeImageTag (wholeMatch, altText, linkId, url, width, height, m5, title) {
+
+    var gUrls   = globals.gUrls,
+        gTitles = globals.gTitles,
+        gDims   = globals.gDimensions;
+
+    linkId = linkId.toLowerCase();
+
+    if (!title) {
+      title = '';
+    }
+    // Special case for explicit empty url
+    if (wholeMatch.search(/\(<?\s*>? ?(['"].*['"])?\)$/m) > -1) {
+      url = '';
+
+    } else if (url === '' || url === null) {
+      if (linkId === '' || linkId === null) {
+        // lower-case and turn embedded newlines into spaces
+        linkId = altText.toLowerCase().replace(/ ?\n/g, ' ');
+      }
+      url = '#' + linkId;
+
+      if (!showdown.helper.isUndefined(gUrls[linkId])) {
+        url = gUrls[linkId];
+        if (!showdown.helper.isUndefined(gTitles[linkId])) {
+          title = gTitles[linkId];
+        }
+        if (!showdown.helper.isUndefined(gDims[linkId])) {
+          width = gDims[linkId].width;
+          height = gDims[linkId].height;
+        }
+      } else {
+        return wholeMatch;
+      }
+    }
+
+    altText = altText
+      .replace(/"/g, '&quot;')
+    //altText = showdown.helper.escapeCharacters(altText, '*_', false);
+      .replace(showdown.helper.regexes.asteriskDashAndColon, showdown.helper.escapeCharactersCallback);
+    //url = showdown.helper.escapeCharacters(url, '*_', false);
+    url = url.replace(showdown.helper.regexes.asteriskDashAndColon, showdown.helper.escapeCharactersCallback);
+    var result = '<img src="' + url + '" alt="' + altText + '"';
+
+    if (title && showdown.helper.isString(title)) {
+      title = title
+        .replace(/"/g, '&quot;')
+      //title = showdown.helper.escapeCharacters(title, '*_', false);
+        .replace(showdown.helper.regexes.asteriskDashAndColon, showdown.helper.escapeCharactersCallback);
+      result += ' title="' + title + '"';
+    }
+
+    if (width && height) {
+      width  = (width === '*') ? 'auto' : width;
+      height = (height === '*') ? 'auto' : height;
+
+      result += ' width="' + width + '"';
+      result += ' height="' + height + '"';
+    }
+
+    result += ' />';
+
+    return result;
+  }
+
+  // First, handle reference-style labeled images: ![alt text][id]
+  text = text.replace(referenceRegExp, writeImageTag);
+
+  // Next, handle inline images:  ![alt text](url =<width>x<height> "optional title")
+
+  // base64 encoded images
+  text = text.replace(base64RegExp, writeImageTagBase64);
+
+  // cases with crazy urls like ./image/cat1).png
+  text = text.replace(crazyRegExp, writeImageTag);
+
+  // normal cases
+  text = text.replace(inlineRegExp, writeImageTag);
+
+  // handle reference-style shortcuts: ![img text]
+  text = text.replace(refShortcutRegExp, writeImageTag);
+
+  text = globals.converter._dispatch('images.after', text, options, globals);
+  return text;
+});
+
+showdown.subParser('italicsAndBold', function (text, options, globals) {
+  'use strict';
+
+  text = globals.converter._dispatch('italicsAndBold.before', text, options, globals);
+
+  // it's faster to have 3 separate regexes for each case than have just one
+  // because of backtracing, in some cases, it could lead to an exponential effect
+  // called "catastrophic backtrace". Ominous!
+
+  function parseInside (txt, left, right) {
+    /*
+    if (options.simplifiedAutoLink) {
+      txt = showdown.subParser('simplifiedAutoLinks')(txt, options, globals);
+    }
+    */
+    return left + txt + right;
+  }
+
+  // Parse underscores
+  if (options.literalMidWordUnderscores) {
+    text = text.replace(/\b___(\S[\s\S]*?)___\b/g, function (wm, txt) {
+      return parseInside (txt, '<strong><em>', '</em></strong>');
+    });
+    text = text.replace(/\b__(\S[\s\S]*?)__\b/g, function (wm, txt) {
+      return parseInside (txt, '<strong>', '</strong>');
+    });
+    text = text.replace(/\b_(\S[\s\S]*?)_\b/g, function (wm, txt) {
+      return parseInside (txt, '<em>', '</em>');
+    });
+  } else {
+    text = text.replace(/___(\S[\s\S]*?)___/g, function (wm, m) {
+      return (/\S$/.test(m)) ? parseInside (m, '<strong><em>', '</em></strong>') : wm;
+    });
+    text = text.replace(/__(\S[\s\S]*?)__/g, function (wm, m) {
+      return (/\S$/.test(m)) ? parseInside (m, '<strong>', '</strong>') : wm;
+    });
+    text = text.replace(/_([^\s_][\s\S]*?)_/g, function (wm, m) {
+      // !/^_[^_]/.test(m) - test if it doesn't start with __ (since it seems redundant, we removed it)
+      return (/\S$/.test(m)) ? parseInside (m, '<em>', '</em>') : wm;
+    });
+  }
+
+  // Now parse asterisks
+  if (options.literalMidWordAsterisks) {
+    text = text.replace(/([^*]|^)\B\*\*\*(\S[\s\S]*?)\*\*\*\B(?!\*)/g, function (wm, lead, txt) {
+      return parseInside (txt, lead + '<strong><em>', '</em></strong>');
+    });
+    text = text.replace(/([^*]|^)\B\*\*(\S[\s\S]*?)\*\*\B(?!\*)/g, function (wm, lead, txt) {
+      return parseInside (txt, lead + '<strong>', '</strong>');
+    });
+    text = text.replace(/([^*]|^)\B\*(\S[\s\S]*?)\*\B(?!\*)/g, function (wm, lead, txt) {
+      return parseInside (txt, lead + '<em>', '</em>');
+    });
+  } else {
+    text = text.replace(/\*\*\*(\S[\s\S]*?)\*\*\*/g, function (wm, m) {
+      return (/\S$/.test(m)) ? parseInside (m, '<strong><em>', '</em></strong>') : wm;
+    });
+    text = text.replace(/\*\*(\S[\s\S]*?)\*\*/g, function (wm, m) {
+      return (/\S$/.test(m)) ? parseInside (m, '<strong>', '</strong>') : wm;
+    });
+    text = text.replace(/\*([^\s*][\s\S]*?)\*/g, function (wm, m) {
+      // !/^\*[^*]/.test(m) - test if it doesn't start with ** (since it seems redundant, we removed it)
+      return (/\S$/.test(m)) ? parseInside (m, '<em>', '</em>') : wm;
+    });
+  }
+
+
+  text = globals.converter._dispatch('italicsAndBold.after', text, options, globals);
+  return text;
+});
+
+/**
+ * Form HTML ordered (numbered) and unordered (bulleted) lists.
+ */
+showdown.subParser('lists', function (text, options, globals) {
+  'use strict';
+
+  /**
+   * Process the contents of a single ordered or unordered list, splitting it
+   * into individual list items.
+   * @param {string} listStr
+   * @param {boolean} trimTrailing
+   * @returns {string}
+   */
+  function processListItems (listStr, trimTrailing) {
+    // The $g_list_level global keeps track of when we're inside a list.
+    // Each time we enter a list, we increment it; when we leave a list,
+    // we decrement. If it's zero, we're not in a list anymore.
+    //
+    // We do this because when we're not inside a list, we want to treat
+    // something like this:
+    //
+    //    I recommend upgrading to version
+    //    8. Oops, now this line is treated
+    //    as a sub-list.
+    //
+    // As a single paragraph, despite the fact that the second line starts
+    // with a digit-period-space sequence.
+    //
+    // Whereas when we're inside a list (or sub-list), that line will be
+    // treated as the start of a sub-list. What a kludge, huh? This is
+    // an aspect of Markdown's syntax that's hard to parse perfectly
+    // without resorting to mind-reading. Perhaps the solution is to
+    // change the syntax rules such that sub-lists must start with a
+    // starting cardinal number; e.g. "1." or "a.".
+    globals.gListLevel++;
+
+    // trim trailing blank lines:
+    listStr = listStr.replace(/\n{2,}$/, '\n');
+
+    // attacklab: add sentinel to emulate \z
+    listStr += '¨0';
+
+    var rgx = /(\n)?(^ {0,3})([*+-]|\d+[.])[ \t]+((\[(x|X| )?])?[ \t]*[^\r]+?(\n{1,2}))(?=\n*(¨0| {0,3}([*+-]|\d+[.])[ \t]+))/gm,
+        isParagraphed = (/\n[ \t]*\n(?!¨0)/.test(listStr));
+
+    // Since version 1.5, nesting sublists requires 4 spaces (or 1 tab) indentation,
+    // which is a syntax breaking change
+    // activating this option reverts to old behavior
+    if (options.disableForced4SpacesIndentedSublists) {
+      rgx = /(\n)?(^ {0,3})([*+-]|\d+[.])[ \t]+((\[(x|X| )?])?[ \t]*[^\r]+?(\n{1,2}))(?=\n*(¨0|\2([*+-]|\d+[.])[ \t]+))/gm;
+    }
+
+    listStr = listStr.replace(rgx, function (wholeMatch, m1, m2, m3, m4, taskbtn, checked) {
+      checked = (checked && checked.trim() !== '');
+
+      var item = showdown.subParser('outdent')(m4, options, globals),
+          bulletStyle = '';
+
+      // Support for github tasklists
+      if (taskbtn && options.tasklists) {
+        bulletStyle = ' class="task-list-item" style="list-style-type: none;"';
+        item = item.replace(/^[ \t]*\[(x|X| )?]/m, function () {
+          var otp = '<input type="checkbox" disabled style="margin: 0px 0.35em 0.25em -1.6em; vertical-align: middle;"';
+          if (checked) {
+            otp += ' checked';
+          }
+          otp += '>';
+          return otp;
+        });
+      }
+
+      // ISSUE #312
+      // This input: - - - a
+      // causes trouble to the parser, since it interprets it as:
+      // <ul><li><li><li>a</li></li></li></ul>
+      // instead of:
+      // <ul><li>- - a</li></ul>
+      // So, to prevent it, we will put a marker (¨A)in the beginning of the line
+      // Kind of hackish/monkey patching, but seems more effective than overcomplicating the list parser
+      item = item.replace(/^([-*+]|\d\.)[ \t]+[\S\n ]*/g, function (wm2) {
+        return '¨A' + wm2;
+      });
+
+      // m1 - Leading line or
+      // Has a double return (multi paragraph) or
+      // Has sublist
+      if (m1 || (item.search(/\n{2,}/) > -1)) {
+        item = showdown.subParser('githubCodeBlocks')(item, options, globals);
+        item = showdown.subParser('blockGamut')(item, options, globals);
+      } else {
+        // Recursion for sub-lists:
+        item = showdown.subParser('lists')(item, options, globals);
+        item = item.replace(/\n$/, ''); // chomp(item)
+        item = showdown.subParser('hashHTMLBlocks')(item, options, globals);
+
+        // Colapse double linebreaks
+        item = item.replace(/\n\n+/g, '\n\n');
+        if (isParagraphed) {
+          item = showdown.subParser('paragraphs')(item, options, globals);
+        } else {
+          item = showdown.subParser('spanGamut')(item, options, globals);
+        }
+      }
+
+      // now we need to remove the marker (¨A)
+      item = item.replace('¨A', '');
+      // we can finally wrap the line in list item tags
+      item =  '<li' + bulletStyle + '>' + item + '</li>\n';
+
+      return item;
+    });
+
+    // attacklab: strip sentinel
+    listStr = listStr.replace(/¨0/g, '');
+
+    globals.gListLevel--;
+
+    if (trimTrailing) {
+      listStr = listStr.replace(/\s+$/, '');
+    }
+
+    return listStr;
+  }
+
+  function styleStartNumber (list, listType) {
+    // check if ol and starts by a number different than 1
+    if (listType === 'ol') {
+      var res = list.match(/^ *(\d+)\./);
+      if (res && res[1] !== '1') {
+        return ' start="' + res[1] + '"';
+      }
+    }
+    return '';
+  }
+
+  /**
+   * Check and parse consecutive lists (better fix for issue #142)
+   * @param {string} list
+   * @param {string} listType
+   * @param {boolean} trimTrailing
+   * @returns {string}
+   */
+  function parseConsecutiveLists (list, listType, trimTrailing) {
+    // check if we caught 2 or more consecutive lists by mistake
+    // we use the counterRgx, meaning if listType is UL we look for OL and vice versa
+    var olRgx = (options.disableForced4SpacesIndentedSublists) ? /^ ?\d+\.[ \t]/gm : /^ {0,3}\d+\.[ \t]/gm,
+        ulRgx = (options.disableForced4SpacesIndentedSublists) ? /^ ?[*+-][ \t]/gm : /^ {0,3}[*+-][ \t]/gm,
+        counterRxg = (listType === 'ul') ? olRgx : ulRgx,
+        result = '';
+
+    if (list.search(counterRxg) !== -1) {
+      (function parseCL (txt) {
+        var pos = txt.search(counterRxg),
+            style = styleStartNumber(list, listType);
+        if (pos !== -1) {
+          // slice
+          result += '\n\n<' + listType + style + '>\n' + processListItems(txt.slice(0, pos), !!trimTrailing) + '</' + listType + '>\n';
+
+          // invert counterType and listType
+          listType = (listType === 'ul') ? 'ol' : 'ul';
+          counterRxg = (listType === 'ul') ? olRgx : ulRgx;
+
+          //recurse
+          parseCL(txt.slice(pos));
+        } else {
+          result += '\n\n<' + listType + style + '>\n' + processListItems(txt, !!trimTrailing) + '</' + listType + '>\n';
+        }
+      })(list);
+    } else {
+      var style = styleStartNumber(list, listType);
+      result = '\n\n<' + listType + style + '>\n' + processListItems(list, !!trimTrailing) + '</' + listType + '>\n';
+    }
+
+    return result;
+  }
+
+  /** Start of list parsing **/
+  text = globals.converter._dispatch('lists.before', text, options, globals);
+  // add sentinel to hack around khtml/safari bug:
+  // http://bugs.webkit.org/show_bug.cgi?id=11231
+  text += '¨0';
+
+  if (globals.gListLevel) {
+    text = text.replace(/^(( {0,3}([*+-]|\d+[.])[ \t]+)[^\r]+?(¨0|\n{2,}(?=\S)(?![ \t]*(?:[*+-]|\d+[.])[ \t]+)))/gm,
+      function (wholeMatch, list, m2) {
+        var listType = (m2.search(/[*+-]/g) > -1) ? 'ul' : 'ol';
+        return parseConsecutiveLists(list, listType, true);
+      }
+    );
+  } else {
+    text = text.replace(/(\n\n|^\n?)(( {0,3}([*+-]|\d+[.])[ \t]+)[^\r]+?(¨0|\n{2,}(?=\S)(?![ \t]*(?:[*+-]|\d+[.])[ \t]+)))/gm,
+      function (wholeMatch, m1, list, m3) {
+        var listType = (m3.search(/[*+-]/g) > -1) ? 'ul' : 'ol';
+        return parseConsecutiveLists(list, listType, false);
+      }
+    );
+  }
+
+  // strip sentinel
+  text = text.replace(/¨0/, '');
+  text = globals.converter._dispatch('lists.after', text, options, globals);
+  return text;
+});
+
+/**
+ * Parse metadata at the top of the document
+ */
+showdown.subParser('metadata', function (text, options, globals) {
+  'use strict';
+
+  if (!options.metadata) {
+    return text;
+  }
+
+  text = globals.converter._dispatch('metadata.before', text, options, globals);
+
+  function parseMetadataContents (content) {
+    // raw is raw so it's not changed in any way
+    globals.metadata.raw = content;
+
+    // escape chars forbidden in html attributes
+    // double quotes
+    content = content
+      // ampersand first
+      .replace(/&/g, '&amp;')
+      // double quotes
+      .replace(/"/g, '&quot;');
+
+    content = content.replace(/\n {4}/g, ' ');
+    content.replace(/^([\S ]+): +([\s\S]+?)$/gm, function (wm, key, value) {
+      globals.metadata.parsed[key] = value;
+      return '';
+    });
+  }
+
+  text = text.replace(/^\s*«««+(\S*?)\n([\s\S]+?)\n»»»+\n/, function (wholematch, format, content) {
+    parseMetadataContents(content);
+    return '¨M';
+  });
+
+  text = text.replace(/^\s*---+(\S*?)\n([\s\S]+?)\n---+\n/, function (wholematch, format, content) {
+    if (format) {
+      globals.metadata.format = format;
+    }
+    parseMetadataContents(content);
+    return '¨M';
+  });
+
+  text = text.replace(/¨M/g, '');
+
+  text = globals.converter._dispatch('metadata.after', text, options, globals);
+  return text;
+});
+
+/**
+ * Remove one level of line-leading tabs or spaces
+ */
+showdown.subParser('outdent', function (text, options, globals) {
+  'use strict';
+  text = globals.converter._dispatch('outdent.before', text, options, globals);
+
+  // attacklab: hack around Konqueror 3.5.4 bug:
+  // "----------bug".replace(/^-/g,"") == "bug"
+  text = text.replace(/^(\t|[ ]{1,4})/gm, '¨0'); // attacklab: g_tab_width
+
+  // attacklab: clean up hack
+  text = text.replace(/¨0/g, '');
+
+  text = globals.converter._dispatch('outdent.after', text, options, globals);
+  return text;
+});
+
+/**
+ *
+ */
+showdown.subParser('paragraphs', function (text, options, globals) {
+  'use strict';
+
+  text = globals.converter._dispatch('paragraphs.before', text, options, globals);
+  // Strip leading and trailing lines:
+  text = text.replace(/^\n+/g, '');
+  text = text.replace(/\n+$/g, '');
+
+  var grafs = text.split(/\n{2,}/g),
+      grafsOut = [],
+      end = grafs.length; // Wrap <p> tags
+
+  for (var i = 0; i < end; i++) {
+    var str = grafs[i];
+    // if this is an HTML marker, copy it
+    if (str.search(/¨(K|G)(\d+)\1/g) >= 0) {
+      grafsOut.push(str);
+
+    // test for presence of characters to prevent empty lines being parsed
+    // as paragraphs (resulting in undesired extra empty paragraphs)
+    } else if (str.search(/\S/) >= 0) {
+      str = showdown.subParser('spanGamut')(str, options, globals);
+      str = str.replace(/^([ \t]*)/g, '<p>');
+      str += '</p>';
+      grafsOut.push(str);
+    }
+  }
+
+  /** Unhashify HTML blocks */
+  end = grafsOut.length;
+  for (i = 0; i < end; i++) {
+    var blockText = '',
+        grafsOutIt = grafsOut[i],
+        codeFlag = false;
+    // if this is a marker for an html block...
+    // use RegExp.test instead of string.search because of QML bug
+    while (/¨(K|G)(\d+)\1/.test(grafsOutIt)) {
+      var delim = RegExp.$1,
+          num   = RegExp.$2;
+
+      if (delim === 'K') {
+        blockText = globals.gHtmlBlocks[num];
+      } else {
+        // we need to check if ghBlock is a false positive
+        if (codeFlag) {
+          // use encoded version of all text
+          blockText = showdown.subParser('encodeCode')(globals.ghCodeBlocks[num].text, options, globals);
+        } else {
+          blockText = globals.ghCodeBlocks[num].codeblock;
+        }
+      }
+      blockText = blockText.replace(/\$/g, '$$$$'); // Escape any dollar signs
+
+      grafsOutIt = grafsOutIt.replace(/(\n\n)?¨(K|G)\d+\2(\n\n)?/, blockText);
+      // Check if grafsOutIt is a pre->code
+      if (/^<pre\b[^>]*>\s*<code\b[^>]*>/.test(grafsOutIt)) {
+        codeFlag = true;
+      }
+    }
+    grafsOut[i] = grafsOutIt;
+  }
+  text = grafsOut.join('\n');
+  // Strip leading and trailing lines:
+  text = text.replace(/^\n+/g, '');
+  text = text.replace(/\n+$/g, '');
+  return globals.converter._dispatch('paragraphs.after', text, options, globals);
+});
+
+/**
+ * Run extension
+ */
+showdown.subParser('runExtension', function (ext, text, options, globals) {
+  'use strict';
+
+  if (ext.filter) {
+    text = ext.filter(text, globals.converter, options);
+
+  } else if (ext.regex) {
+    // TODO remove this when old extension loading mechanism is deprecated
+    var re = ext.regex;
+    if (!(re instanceof RegExp)) {
+      re = new RegExp(re, 'g');
+    }
+    text = text.replace(re, ext.replace);
+  }
+
+  return text;
+});
+
+/**
+ * These are all the transformations that occur *within* block-level
+ * tags like paragraphs, headers, and list items.
+ */
+showdown.subParser('spanGamut', function (text, options, globals) {
+  'use strict';
+
+  text = globals.converter._dispatch('spanGamut.before', text, options, globals);
+  text = showdown.subParser('codeSpans')(text, options, globals);
+  text = showdown.subParser('escapeSpecialCharsWithinTagAttributes')(text, options, globals);
+  text = showdown.subParser('encodeBackslashEscapes')(text, options, globals);
+
+  // Process anchor and image tags. Images must come first,
+  // because ![foo][f] looks like an anchor.
+  text = showdown.subParser('images')(text, options, globals);
+  text = showdown.subParser('anchors')(text, options, globals);
+
+  // Make links out of things like `<http://example.com/>`
+  // Must come after anchors, because you can use < and >
+  // delimiters in inline links like [this](<url>).
+  text = showdown.subParser('autoLinks')(text, options, globals);
+  text = showdown.subParser('simplifiedAutoLinks')(text, options, globals);
+  text = showdown.subParser('emoji')(text, options, globals);
+  text = showdown.subParser('underline')(text, options, globals);
+  text = showdown.subParser('italicsAndBold')(text, options, globals);
+  text = showdown.subParser('strikethrough')(text, options, globals);
+  text = showdown.subParser('ellipsis')(text, options, globals);
+
+  // we need to hash HTML tags inside spans
+  text = showdown.subParser('hashHTMLSpans')(text, options, globals);
+
+  // now we encode amps and angles
+  text = showdown.subParser('encodeAmpsAndAngles')(text, options, globals);
+
+  // Do hard breaks
+  if (options.simpleLineBreaks) {
+    // GFM style hard breaks
+    // only add line breaks if the text does not contain a block (special case for lists)
+    if (!/\n\n¨K/.test(text)) {
+      text = text.replace(/\n+/g, '<br />\n');
+    }
+  } else {
+    // Vanilla hard breaks
+    text = text.replace(/  +\n/g, '<br />\n');
+  }
+
+  text = globals.converter._dispatch('spanGamut.after', text, options, globals);
+  return text;
+});
+
+showdown.subParser('strikethrough', function (text, options, globals) {
+  'use strict';
+
+  function parseInside (txt) {
+    if (options.simplifiedAutoLink) {
+      txt = showdown.subParser('simplifiedAutoLinks')(txt, options, globals);
+    }
+    return '<del>' + txt + '</del>';
+  }
+
+  if (options.strikethrough) {
+    text = globals.converter._dispatch('strikethrough.before', text, options, globals);
+    text = text.replace(/(?:~){2}([\s\S]+?)(?:~){2}/g, function (wm, txt) { return parseInside(txt); });
+    text = globals.converter._dispatch('strikethrough.after', text, options, globals);
+  }
+
+  return text;
+});
+
+/**
+ * Strips link definitions from text, stores the URLs and titles in
+ * hash references.
+ * Link defs are in the form: ^[id]: url "optional title"
+ */
+showdown.subParser('stripLinkDefinitions', function (text, options, globals) {
+  'use strict';
+
+  var regex       = /^ {0,3}\[([^\]]+)]:[ \t]*\n?[ \t]*<?([^>\s]+)>?(?: =([*\d]+[A-Za-z%]{0,4})x([*\d]+[A-Za-z%]{0,4}))?[ \t]*\n?[ \t]*(?:(\n*)["|'(](.+?)["|')][ \t]*)?(?:\n+|(?=¨0))/gm,
+      base64Regex = /^ {0,3}\[([^\]]+)]:[ \t]*\n?[ \t]*<?(data:.+?\/.+?;base64,[A-Za-z0-9+/=\n]+?)>?(?: =([*\d]+[A-Za-z%]{0,4})x([*\d]+[A-Za-z%]{0,4}))?[ \t]*\n?[ \t]*(?:(\n*)["|'(](.+?)["|')][ \t]*)?(?:\n\n|(?=¨0)|(?=\n\[))/gm;
+
+  // attacklab: sentinel workarounds for lack of \A and \Z, safari\khtml bug
+  text += '¨0';
+
+  var replaceFunc = function (wholeMatch, linkId, url, width, height, blankLines, title) {
+
+    // if there aren't two instances of linkId it must not be a reference link so back out
+    linkId = linkId.toLowerCase();
+    if (text.toLowerCase().split(linkId).length - 1 < 2) {
+      return wholeMatch;
+    }
+    if (url.match(/^data:.+?\/.+?;base64,/)) {
+      // remove newlines
+      globals.gUrls[linkId] = url.replace(/\s/g, '');
+    } else {
+      globals.gUrls[linkId] = showdown.subParser('encodeAmpsAndAngles')(url, options, globals);  // Link IDs are case-insensitive
+    }
+
+    if (blankLines) {
+      // Oops, found blank lines, so it's not a title.
+      // Put back the parenthetical statement we stole.
+      return blankLines + title;
+
+    } else {
+      if (title) {
+        globals.gTitles[linkId] = title.replace(/"|'/g, '&quot;');
+      }
+      if (options.parseImgDimensions && width && height) {
+        globals.gDimensions[linkId] = {
+          width:  width,
+          height: height
+        };
+      }
+    }
+    // Completely remove the definition from the text
+    return '';
+  };
+
+  // first we try to find base64 link references
+  text = text.replace(base64Regex, replaceFunc);
+
+  text = text.replace(regex, replaceFunc);
+
+  // attacklab: strip sentinel
+  text = text.replace(/¨0/, '');
+
+  return text;
+});
+
+showdown.subParser('tables', function (text, options, globals) {
+  'use strict';
+
+  if (!options.tables) {
+    return text;
+  }
+
+  var tableRgx       = /^ {0,3}\|?.+\|.+\n {0,3}\|?[ \t]*:?[ \t]*(?:[-=]){2,}[ \t]*:?[ \t]*\|[ \t]*:?[ \t]*(?:[-=]){2,}[\s\S]+?(?:\n\n|¨0)/gm,
+      //singeColTblRgx = /^ {0,3}\|.+\|\n {0,3}\|[ \t]*:?[ \t]*(?:[-=]){2,}[ \t]*:?[ \t]*\|[ \t]*\n(?: {0,3}\|.+\|\n)+(?:\n\n|¨0)/gm;
+      singeColTblRgx = /^ {0,3}\|.+\|[ \t]*\n {0,3}\|[ \t]*:?[ \t]*(?:[-=]){2,}[ \t]*:?[ \t]*\|[ \t]*\n( {0,3}\|.+\|[ \t]*\n)*(?:\n|¨0)/gm;
+
+  function parseStyles (sLine) {
+    if (/^:[ \t]*--*$/.test(sLine)) {
+      return ' style="text-align:left;"';
+    } else if (/^--*[ \t]*:[ \t]*$/.test(sLine)) {
+      return ' style="text-align:right;"';
+    } else if (/^:[ \t]*--*[ \t]*:$/.test(sLine)) {
+      return ' style="text-align:center;"';
+    } else {
+      return '';
+    }
+  }
+
+  function parseHeaders (header, style) {
+    var id = '';
+    header = header.trim();
+    // support both tablesHeaderId and tableHeaderId due to error in documentation so we don't break backwards compatibility
+    if (options.tablesHeaderId || options.tableHeaderId) {
+      id = ' id="' + header.replace(/ /g, '_').toLowerCase() + '"';
+    }
+    header = showdown.subParser('spanGamut')(header, options, globals);
+
+    return '<th' + id + style + '>' + header + '</th>\n';
+  }
+
+  function parseCells (cell, style) {
+    var subText = showdown.subParser('spanGamut')(cell, options, globals);
+    return '<td' + style + '>' + subText + '</td>\n';
+  }
+
+  function buildTable (headers, cells) {
+    var tb = '<table>\n<thead>\n<tr>\n',
+        tblLgn = headers.length;
+
+    for (var i = 0; i < tblLgn; ++i) {
+      tb += headers[i];
+    }
+    tb += '</tr>\n</thead>\n<tbody>\n';
+
+    for (i = 0; i < cells.length; ++i) {
+      tb += '<tr>\n';
+      for (var ii = 0; ii < tblLgn; ++ii) {
+        tb += cells[i][ii];
+      }
+      tb += '</tr>\n';
+    }
+    tb += '</tbody>\n</table>\n';
+    return tb;
+  }
+
+  function parseTable (rawTable) {
+    var i, tableLines = rawTable.split('\n');
+
+    for (i = 0; i < tableLines.length; ++i) {
+      // strip wrong first and last column if wrapped tables are used
+      if (/^ {0,3}\|/.test(tableLines[i])) {
+        tableLines[i] = tableLines[i].replace(/^ {0,3}\|/, '');
+      }
+      if (/\|[ \t]*$/.test(tableLines[i])) {
+        tableLines[i] = tableLines[i].replace(/\|[ \t]*$/, '');
+      }
+      // parse code spans first, but we only support one line code spans
+      tableLines[i] = showdown.subParser('codeSpans')(tableLines[i], options, globals);
+    }
+
+    var rawHeaders = tableLines[0].split('|').map(function (s) { return s.trim();}),
+        rawStyles = tableLines[1].split('|').map(function (s) { return s.trim();}),
+        rawCells = [],
+        headers = [],
+        styles = [],
+        cells = [];
+
+    tableLines.shift();
+    tableLines.shift();
+
+    for (i = 0; i < tableLines.length; ++i) {
+      if (tableLines[i].trim() === '') {
+        continue;
+      }
+      rawCells.push(
+        tableLines[i]
+          .split('|')
+          .map(function (s) {
+            return s.trim();
+          })
+      );
+    }
+
+    if (rawHeaders.length < rawStyles.length) {
+      return rawTable;
+    }
+
+    for (i = 0; i < rawStyles.length; ++i) {
+      styles.push(parseStyles(rawStyles[i]));
+    }
+
+    for (i = 0; i < rawHeaders.length; ++i) {
+      if (showdown.helper.isUndefined(styles[i])) {
+        styles[i] = '';
+      }
+      headers.push(parseHeaders(rawHeaders[i], styles[i]));
+    }
+
+    for (i = 0; i < rawCells.length; ++i) {
+      var row = [];
+      for (var ii = 0; ii < headers.length; ++ii) {
+        if (showdown.helper.isUndefined(rawCells[i][ii])) {
+
+        }
+        row.push(parseCells(rawCells[i][ii], styles[ii]));
+      }
+      cells.push(row);
+    }
+
+    return buildTable(headers, cells);
+  }
+
+  text = globals.converter._dispatch('tables.before', text, options, globals);
+
+  // find escaped pipe characters
+  text = text.replace(/\\(\|)/g, showdown.helper.escapeCharactersCallback);
+
+  // parse multi column tables
+  text = text.replace(tableRgx, parseTable);
+
+  // parse one column tables
+  text = text.replace(singeColTblRgx, parseTable);
+
+  text = globals.converter._dispatch('tables.after', text, options, globals);
+
+  return text;
+});
+
+showdown.subParser('underline', function (text, options, globals) {
+  'use strict';
+
+  if (!options.underline) {
+    return text;
+  }
+
+  text = globals.converter._dispatch('underline.before', text, options, globals);
+
+  if (options.literalMidWordUnderscores) {
+    text = text.replace(/\b___(\S[\s\S]*?)___\b/g, function (wm, txt) {
+      return '<u>' + txt + '</u>';
+    });
+    text = text.replace(/\b__(\S[\s\S]*?)__\b/g, function (wm, txt) {
+      return '<u>' + txt + '</u>';
+    });
+  } else {
+    text = text.replace(/___(\S[\s\S]*?)___/g, function (wm, m) {
+      return (/\S$/.test(m)) ? '<u>' + m + '</u>' : wm;
+    });
+    text = text.replace(/__(\S[\s\S]*?)__/g, function (wm, m) {
+      return (/\S$/.test(m)) ? '<u>' + m + '</u>' : wm;
+    });
+  }
+
+  // escape remaining underscores to prevent them being parsed by italic and bold
+  text = text.replace(/(_)/g, showdown.helper.escapeCharactersCallback);
+
+  text = globals.converter._dispatch('underline.after', text, options, globals);
+
+  return text;
+});
+
+/**
+ * Swap back in all the special characters we've hidden.
+ */
+showdown.subParser('unescapeSpecialChars', function (text, options, globals) {
+  'use strict';
+  text = globals.converter._dispatch('unescapeSpecialChars.before', text, options, globals);
+
+  text = text.replace(/¨E(\d+)E/g, function (wholeMatch, m1) {
+    var charCodeToReplace = parseInt(m1);
+    return String.fromCharCode(charCodeToReplace);
+  });
+
+  text = globals.converter._dispatch('unescapeSpecialChars.after', text, options, globals);
+  return text;
+});
+
+showdown.subParser('makeMarkdown.blockquote', function (node, globals) {
+  'use strict';
+
+  var txt = '';
+  if (node.hasChildNodes()) {
+    var children = node.childNodes,
+        childrenLength = children.length;
+
+    for (var i = 0; i < childrenLength; ++i) {
+      var innerTxt = showdown.subParser('makeMarkdown.node')(children[i], globals);
+
+      if (innerTxt === '') {
+        continue;
+      }
+      txt += innerTxt;
+    }
+  }
+  // cleanup
+  txt = txt.trim();
+  txt = '> ' + txt.split('\n').join('\n> ');
+  return txt;
+});
+
+showdown.subParser('makeMarkdown.codeBlock', function (node, globals) {
+  'use strict';
+
+  var lang = node.getAttribute('language'),
+      num  = node.getAttribute('precodenum');
+  return '```' + lang + '\n' + globals.preList[num] + '\n```';
+});
+
+showdown.subParser('makeMarkdown.codeSpan', function (node) {
+  'use strict';
+
+  return '`' + node.innerHTML + '`';
+});
+
+showdown.subParser('makeMarkdown.emphasis', function (node, globals) {
+  'use strict';
+
+  var txt = '';
+  if (node.hasChildNodes()) {
+    txt += '*';
+    var children = node.childNodes,
+        childrenLength = children.length;
+    for (var i = 0; i < childrenLength; ++i) {
+      txt += showdown.subParser('makeMarkdown.node')(children[i], globals);
+    }
+    txt += '*';
+  }
+  return txt;
+});
+
+showdown.subParser('makeMarkdown.header', function (node, globals, headerLevel) {
+  'use strict';
+
+  var headerMark = new Array(headerLevel + 1).join('#'),
+      txt = '';
+
+  if (node.hasChildNodes()) {
+    txt = headerMark + ' ';
+    var children = node.childNodes,
+        childrenLength = children.length;
+
+    for (var i = 0; i < childrenLength; ++i) {
+      txt += showdown.subParser('makeMarkdown.node')(children[i], globals);
+    }
+  }
+  return txt;
+});
+
+showdown.subParser('makeMarkdown.hr', function () {
+  'use strict';
+
+  return '---';
+});
+
+showdown.subParser('makeMarkdown.image', function (node) {
+  'use strict';
+
+  var txt = '';
+  if (node.hasAttribute('src')) {
+    txt += '![' + node.getAttribute('alt') + '](';
+    txt += '<' + node.getAttribute('src') + '>';
+    if (node.hasAttribute('width') && node.hasAttribute('height')) {
+      txt += ' =' + node.getAttribute('width') + 'x' + node.getAttribute('height');
+    }
+
+    if (node.hasAttribute('title')) {
+      txt += ' "' + node.getAttribute('title') + '"';
+    }
+    txt += ')';
+  }
+  return txt;
+});
+
+showdown.subParser('makeMarkdown.links', function (node, globals) {
+  'use strict';
+
+  var txt = '';
+  if (node.hasChildNodes() && node.hasAttribute('href')) {
+    var children = node.childNodes,
+        childrenLength = children.length;
+    txt = '[';
+    for (var i = 0; i < childrenLength; ++i) {
+      txt += showdown.subParser('makeMarkdown.node')(children[i], globals);
+    }
+    txt += '](';
+    txt += '<' + node.getAttribute('href') + '>';
+    if (node.hasAttribute('title')) {
+      txt += ' "' + node.getAttribute('title') + '"';
+    }
+    txt += ')';
+  }
+  return txt;
+});
+
+showdown.subParser('makeMarkdown.list', function (node, globals, type) {
+  'use strict';
+
+  var txt = '';
+  if (!node.hasChildNodes()) {
+    return '';
+  }
+  var listItems       = node.childNodes,
+      listItemsLenght = listItems.length,
+      listNum = node.getAttribute('start') || 1;
+
+  for (var i = 0; i < listItemsLenght; ++i) {
+    if (typeof listItems[i].tagName === 'undefined' || listItems[i].tagName.toLowerCase() !== 'li') {
+      continue;
+    }
+
+    // define the bullet to use in list
+    var bullet = '';
+    if (type === 'ol') {
+      bullet = listNum.toString() + '. ';
+    } else {
+      bullet = '- ';
+    }
+
+    // parse list item
+    txt += bullet + showdown.subParser('makeMarkdown.listItem')(listItems[i], globals);
+    ++listNum;
+  }
+
+  // add comment at the end to prevent consecutive lists to be parsed as one
+  txt += '\n<!-- -->\n';
+  return txt.trim();
+});
+
+showdown.subParser('makeMarkdown.listItem', function (node, globals) {
+  'use strict';
+
+  var listItemTxt = '';
+
+  var children = node.childNodes,
+      childrenLenght = children.length;
+
+  for (var i = 0; i < childrenLenght; ++i) {
+    listItemTxt += showdown.subParser('makeMarkdown.node')(children[i], globals);
+  }
+  // if it's only one liner, we need to add a newline at the end
+  if (!/\n$/.test(listItemTxt)) {
+    listItemTxt += '\n';
+  } else {
+    // it's multiparagraph, so we need to indent
+    listItemTxt = listItemTxt
+      .split('\n')
+      .join('\n    ')
+      .replace(/^ {4}$/gm, '')
+      .replace(/\n\n+/g, '\n\n');
+  }
+
+  return listItemTxt;
+});
+
+
+
+showdown.subParser('makeMarkdown.node', function (node, globals, spansOnly) {
+  'use strict';
+
+  spansOnly = spansOnly || false;
+
+  var txt = '';
+
+  // edge case of text without wrapper paragraph
+  if (node.nodeType === 3) {
+    return showdown.subParser('makeMarkdown.txt')(node, globals);
+  }
+
+  // HTML comment
+  if (node.nodeType === 8) {
+    return '<!--' + node.data + '-->\n\n';
+  }
+
+  // process only node elements
+  if (node.nodeType !== 1) {
+    return '';
+  }
+
+  var tagName = node.tagName.toLowerCase();
+
+  switch (tagName) {
+
+    //
+    // BLOCKS
+    //
+    case 'h1':
+      if (!spansOnly) { txt = showdown.subParser('makeMarkdown.header')(node, globals, 1) + '\n\n'; }
+      break;
+    case 'h2':
+      if (!spansOnly) { txt = showdown.subParser('makeMarkdown.header')(node, globals, 2) + '\n\n'; }
+      break;
+    case 'h3':
+      if (!spansOnly) { txt = showdown.subParser('makeMarkdown.header')(node, globals, 3) + '\n\n'; }
+      break;
+    case 'h4':
+      if (!spansOnly) { txt = showdown.subParser('makeMarkdown.header')(node, globals, 4) + '\n\n'; }
+      break;
+    case 'h5':
+      if (!spansOnly) { txt = showdown.subParser('makeMarkdown.header')(node, globals, 5) + '\n\n'; }
+      break;
+    case 'h6':
+      if (!spansOnly) { txt = showdown.subParser('makeMarkdown.header')(node, globals, 6) + '\n\n'; }
+      break;
+
+    case 'p':
+      if (!spansOnly) { txt = showdown.subParser('makeMarkdown.paragraph')(node, globals) + '\n\n'; }
+      break;
+
+    case 'blockquote':
+      if (!spansOnly) { txt = showdown.subParser('makeMarkdown.blockquote')(node, globals) + '\n\n'; }
+      break;
+
+    case 'hr':
+      if (!spansOnly) { txt = showdown.subParser('makeMarkdown.hr')(node, globals) + '\n\n'; }
+      break;
+
+    case 'ol':
+      if (!spansOnly) { txt = showdown.subParser('makeMarkdown.list')(node, globals, 'ol') + '\n\n'; }
+      break;
+
+    case 'ul':
+      if (!spansOnly) { txt = showdown.subParser('makeMarkdown.list')(node, globals, 'ul') + '\n\n'; }
+      break;
+
+    case 'precode':
+      if (!spansOnly) { txt = showdown.subParser('makeMarkdown.codeBlock')(node, globals) + '\n\n'; }
+      break;
+
+    case 'pre':
+      if (!spansOnly) { txt = showdown.subParser('makeMarkdown.pre')(node, globals) + '\n\n'; }
+      break;
+
+    case 'table':
+      if (!spansOnly) { txt = showdown.subParser('makeMarkdown.table')(node, globals) + '\n\n'; }
+      break;
+
+    //
+    // SPANS
+    //
+    case 'code':
+      txt = showdown.subParser('makeMarkdown.codeSpan')(node, globals);
+      break;
+
+    case 'em':
+    case 'i':
+      txt = showdown.subParser('makeMarkdown.emphasis')(node, globals);
+      break;
+
+    case 'strong':
+    case 'b':
+      txt = showdown.subParser('makeMarkdown.strong')(node, globals);
+      break;
+
+    case 'del':
+      txt = showdown.subParser('makeMarkdown.strikethrough')(node, globals);
+      break;
+
+    case 'a':
+      txt = showdown.subParser('makeMarkdown.links')(node, globals);
+      break;
+
+    case 'img':
+      txt = showdown.subParser('makeMarkdown.image')(node, globals);
+      break;
+
+    default:
+      txt = node.outerHTML + '\n\n';
+  }
+
+  // common normalization
+  // TODO eventually
+
+  return txt;
+});
+
+showdown.subParser('makeMarkdown.paragraph', function (node, globals) {
+  'use strict';
+
+  var txt = '';
+  if (node.hasChildNodes()) {
+    var children = node.childNodes,
+        childrenLength = children.length;
+    for (var i = 0; i < childrenLength; ++i) {
+      txt += showdown.subParser('makeMarkdown.node')(children[i], globals);
+    }
+  }
+
+  // some text normalization
+  txt = txt.trim();
+
+  return txt;
+});
+
+showdown.subParser('makeMarkdown.pre', function (node, globals) {
+  'use strict';
+
+  var num  = node.getAttribute('prenum');
+  return '<pre>' + globals.preList[num] + '</pre>';
+});
+
+showdown.subParser('makeMarkdown.strikethrough', function (node, globals) {
+  'use strict';
+
+  var txt = '';
+  if (node.hasChildNodes()) {
+    txt += '~~';
+    var children = node.childNodes,
+        childrenLength = children.length;
+    for (var i = 0; i < childrenLength; ++i) {
+      txt += showdown.subParser('makeMarkdown.node')(children[i], globals);
+    }
+    txt += '~~';
+  }
+  return txt;
+});
+
+showdown.subParser('makeMarkdown.strong', function (node, globals) {
+  'use strict';
+
+  var txt = '';
+  if (node.hasChildNodes()) {
+    txt += '**';
+    var children = node.childNodes,
+        childrenLength = children.length;
+    for (var i = 0; i < childrenLength; ++i) {
+      txt += showdown.subParser('makeMarkdown.node')(children[i], globals);
+    }
+    txt += '**';
+  }
+  return txt;
+});
+
+showdown.subParser('makeMarkdown.table', function (node, globals) {
+  'use strict';
+
+  var txt = '',
+      tableArray = [[], []],
+      headings   = node.querySelectorAll('thead>tr>th'),
+      rows       = node.querySelectorAll('tbody>tr'),
+      i, ii;
+  for (i = 0; i < headings.length; ++i) {
+    var headContent = showdown.subParser('makeMarkdown.tableCell')(headings[i], globals),
+        allign = '---';
+
+    if (headings[i].hasAttribute('style')) {
+      var style = headings[i].getAttribute('style').toLowerCase().replace(/\s/g, '');
+      switch (style) {
+        case 'text-align:left;':
+          allign = ':---';
+          break;
+        case 'text-align:right;':
+          allign = '---:';
+          break;
+        case 'text-align:center;':
+          allign = ':---:';
+          break;
+      }
+    }
+    tableArray[0][i] = headContent.trim();
+    tableArray[1][i] = allign;
+  }
+
+  for (i = 0; i < rows.length; ++i) {
+    var r = tableArray.push([]) - 1,
+        cols = rows[i].getElementsByTagName('td');
+
+    for (ii = 0; ii < headings.length; ++ii) {
+      var cellContent = ' ';
+      if (typeof cols[ii] !== 'undefined') {
+        cellContent = showdown.subParser('makeMarkdown.tableCell')(cols[ii], globals);
+      }
+      tableArray[r].push(cellContent);
+    }
+  }
+
+  var cellSpacesCount = 3;
+  for (i = 0; i < tableArray.length; ++i) {
+    for (ii = 0; ii < tableArray[i].length; ++ii) {
+      var strLen = tableArray[i][ii].length;
+      if (strLen > cellSpacesCount) {
+        cellSpacesCount = strLen;
+      }
+    }
+  }
+
+  for (i = 0; i < tableArray.length; ++i) {
+    for (ii = 0; ii < tableArray[i].length; ++ii) {
+      if (i === 1) {
+        if (tableArray[i][ii].slice(-1) === ':') {
+          tableArray[i][ii] = showdown.helper.padEnd(tableArray[i][ii].slice(-1), cellSpacesCount - 1, '-') + ':';
+        } else {
+          tableArray[i][ii] = showdown.helper.padEnd(tableArray[i][ii], cellSpacesCount, '-');
+        }
+      } else {
+        tableArray[i][ii] = showdown.helper.padEnd(tableArray[i][ii], cellSpacesCount);
+      }
+    }
+    txt += '| ' + tableArray[i].join(' | ') + ' |\n';
+  }
+
+  return txt.trim();
+});
+
+showdown.subParser('makeMarkdown.tableCell', function (node, globals) {
+  'use strict';
+
+  var txt = '';
+  if (!node.hasChildNodes()) {
+    return '';
+  }
+  var children = node.childNodes,
+      childrenLength = children.length;
+
+  for (var i = 0; i < childrenLength; ++i) {
+    txt += showdown.subParser('makeMarkdown.node')(children[i], globals, true);
+  }
+  return txt.trim();
+});
+
+showdown.subParser('makeMarkdown.txt', function (node) {
+  'use strict';
+
+  var txt = node.nodeValue;
+
+  // multiple spaces are collapsed
+  txt = txt.replace(/ +/g, ' ');
+
+  // replace the custom ¨NBSP; with a space
+  txt = txt.replace(/¨NBSP;/g, ' ');
+
+  // ", <, > and & should replace escaped html entities
+  txt = showdown.helper.unescapeHTMLEntities(txt);
+
+  // escape markdown magic characters
+  // emphasis, strong and strikethrough - can appear everywhere
+  // we also escape pipe (|) because of tables
+  // and escape ` because of code blocks and spans
+  txt = txt.replace(/([*_~|`])/g, '\\$1');
+
+  // escape > because of blockquotes
+  txt = txt.replace(/^(\s*)>/g, '\\$1>');
+
+  // hash character, only troublesome at the beginning of a line because of headers
+  txt = txt.replace(/^#/gm, '\\#');
+
+  // horizontal rules
+  txt = txt.replace(/^(\s*)([-=]{3,})(\s*)$/, '$1\\$2$3');
+
+  // dot, because of ordered lists, only troublesome at the beginning of a line when preceded by an integer
+  txt = txt.replace(/^( {0,3}\d+)\./gm, '$1\\.');
+
+  // +, * and -, at the beginning of a line becomes a list, so we need to escape them also (asterisk was already escaped)
+  txt = txt.replace(/^( {0,3})([+-])/gm, '$1\\$2');
+
+  // images and links, ] followed by ( is problematic, so we escape it
+  txt = txt.replace(/]([\s]*)\(/g, '\\]$1\\(');
+
+  // reference URIs must also be escaped
+  txt = txt.replace(/^ {0,3}\[([\S \t]*?)]:/gm, '\\[$1]:');
+
+  return txt;
+});
+
+var root = this;
+
+// AMD Loader
+if (true) {
+  !(__WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+    'use strict';
+    return showdown;
+  }).call(exports, __webpack_require__, exports, module),
+		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+// CommonJS/nodeJS Loader
+} else // removed by dead control flow
+{}
+}).call(this);
+
+//# sourceMappingURL=showdown.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/style-to-js/cjs/index.js":
+/*!***********************************************!*\
+  !*** ./node_modules/style-to-js/cjs/index.js ***!
+  \***********************************************/
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var style_to_object_1 = __importDefault(__webpack_require__(/*! style-to-object */ "./node_modules/style-to-object/cjs/index.js"));
+var utilities_1 = __webpack_require__(/*! ./utilities */ "./node_modules/style-to-js/cjs/utilities.js");
+/**
+ * Parses CSS inline style to JavaScript object (camelCased).
+ */
+function StyleToJS(style, options) {
+    var output = {};
+    if (!style || typeof style !== 'string') {
+        return output;
+    }
+    (0, style_to_object_1.default)(style, function (property, value) {
+        // skip CSS comment
+        if (property && value) {
+            output[(0, utilities_1.camelCase)(property, options)] = value;
+        }
+    });
+    return output;
+}
+StyleToJS.default = StyleToJS;
+module.exports = StyleToJS;
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./node_modules/style-to-js/cjs/utilities.js":
+/*!***************************************************!*\
+  !*** ./node_modules/style-to-js/cjs/utilities.js ***!
+  \***************************************************/
+/***/ (function(__unused_webpack_module, exports) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.camelCase = void 0;
+var CUSTOM_PROPERTY_REGEX = /^--[a-zA-Z0-9_-]+$/;
+var HYPHEN_REGEX = /-([a-z])/g;
+var NO_HYPHEN_REGEX = /^[^-]+$/;
+var VENDOR_PREFIX_REGEX = /^-(webkit|moz|ms|o|khtml)-/;
+var MS_VENDOR_PREFIX_REGEX = /^-(ms)-/;
+/**
+ * Checks whether to skip camelCase.
+ */
+var skipCamelCase = function (property) {
+    return !property ||
+        NO_HYPHEN_REGEX.test(property) ||
+        CUSTOM_PROPERTY_REGEX.test(property);
+};
+/**
+ * Replacer that capitalizes first character.
+ */
+var capitalize = function (match, character) {
+    return character.toUpperCase();
+};
+/**
+ * Replacer that removes beginning hyphen of vendor prefix property.
+ */
+var trimHyphen = function (match, prefix) { return "".concat(prefix, "-"); };
+/**
+ * CamelCases a CSS property.
+ */
+var camelCase = function (property, options) {
+    if (options === void 0) { options = {}; }
+    if (skipCamelCase(property)) {
+        return property;
+    }
+    property = property.toLowerCase();
+    if (options.reactCompat) {
+        // `-ms` vendor prefix should not be capitalized
+        property = property.replace(MS_VENDOR_PREFIX_REGEX, trimHyphen);
+    }
+    else {
+        // for non-React, remove first hyphen so vendor prefix is not capitalized
+        property = property.replace(VENDOR_PREFIX_REGEX, trimHyphen);
+    }
+    return property.replace(HYPHEN_REGEX, capitalize);
+};
+exports.camelCase = camelCase;
+//# sourceMappingURL=utilities.js.map
+
+/***/ }),
+
+/***/ "./node_modules/style-to-object/cjs/index.js":
+/*!***************************************************!*\
+  !*** ./node_modules/style-to-object/cjs/index.js ***!
+  \***************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports["default"] = StyleToObject;
+const inline_style_parser_1 = __importDefault(__webpack_require__(/*! inline-style-parser */ "./node_modules/inline-style-parser/index.js"));
+/**
+ * Parses inline style to object.
+ *
+ * @param style - Inline style.
+ * @param iterator - Iterator.
+ * @returns - Style object or null.
+ *
+ * @example Parsing inline style to object:
+ *
+ * ```js
+ * import parse from 'style-to-object';
+ * parse('line-height: 42;'); // { 'line-height': '42' }
+ * ```
+ */
+function StyleToObject(style, iterator) {
+    let styleObject = null;
+    if (!style || typeof style !== 'string') {
+        return styleObject;
+    }
+    const declarations = (0, inline_style_parser_1.default)(style);
+    const hasIterator = typeof iterator === 'function';
+    declarations.forEach((declaration) => {
+        if (declaration.type !== 'declaration') {
+            return;
+        }
+        const { property, value } = declaration;
+        if (hasIterator) {
+            iterator(property, value, declaration);
+        }
+        else if (value) {
+            styleObject = styleObject || {};
+            styleObject[property] = value;
+        }
+    });
+    return styleObject;
+}
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./src/blocks/common/icons/markdown.svg":
+/*!**********************************************!*\
+  !*** ./src/blocks/common/icons/markdown.svg ***!
+  \**********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ReactComponent: function() { return /* binding */ SvgMarkdown; }
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _g;
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+
+const SvgMarkdown = props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", _extends({
+  width: 24,
+  height: 24,
+  viewBox: "0 0 24 24",
+  xmlns: "http://www.w3.org/2000/svg"
+}, props), _g || (_g = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("g", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+  fill: "none",
+  d: "M0 0h24v24H0z"
+}), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+  fillRule: "nonzero",
+  d: "M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm1 2v14h16V5H4zm3 10.5H5v-7h2l2 2 2-2h2v7h-2v-4l-2 2-2-2v4zm11-3h2l-3 3-3-3h2v-4h2v4z"
+}))));
+
+/* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBVcGxvYWRlZCB0bzogU1ZHIFJlcG8sIHd3dy5zdmdyZXBvLmNvbSwgR2VuZXJhdG9yOiBTVkcgUmVwbyBNaXhlciBUb29scyAtLT4KPHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnPgogICAgICAgIDxwYXRoIGZpbGw9Im5vbmUiIGQ9Ik0wIDBoMjR2MjRIMHoiLz4KICAgICAgICA8cGF0aCBmaWxsLXJ1bGU9Im5vbnplcm8iIGQ9Ik0zIDNoMThhMSAxIDAgMCAxIDEgMXYxNmExIDEgMCAwIDEtMSAxSDNhMSAxIDAgMCAxLTEtMVY0YTEgMSAwIDAgMSAxLTF6bTEgMnYxNGgxNlY1SDR6bTMgMTAuNUg1di03aDJsMiAyIDItMmgydjdoLTJ2LTRsLTIgMi0yLTJ2NHptMTEtM2gybC0zIDMtMy0zaDJ2LTRoMnY0eiIvPgogICAgPC9nPgo8L3N2Zz4=");
+
+/***/ }),
+
+/***/ "./src/blocks/embed-markdown/block.json":
+/*!**********************************************!*\
+  !*** ./src/blocks/embed-markdown/block.json ***!
+  \**********************************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/wp/5.8/block.json","apiVersion":2,"name":"r3-id-documentation/embed-markdown","version":"0.1.0","title":"Embed Markdown","category":"r3-id-documentation-block-category","description":"embed-markdown","example":{"attributes":{"mdURL":"https://github.com/README.md"}},"attributes":{"anchor":{"type":"string","default":""},"mdURL":{"type":"string"}},"supports":{"anchor":true,"align":["wide","full"]},"textdomain":"r3-id-documentation","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","script":"file:./view.js"}');
+
+/***/ }),
+
+/***/ "./src/blocks/embed-markdown/edit.js":
+/*!*******************************************!*\
+  !*** ./src/blocks/embed-markdown/edit.js ***!
+  \*******************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ Edit; }
+/* harmony export */ });
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./editor.scss */ "./src/blocks/embed-markdown/editor.scss");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _modules_FetchRawFile_mjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/FetchRawFile.mjs */ "./src/blocks/embed-markdown/modules/FetchRawFile.mjs");
+/**
+ * Retrieves the translation of text.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
+ */
+
+
+/**
+ * React hook that is used to mark the block wrapper element.
+ * It provides all the necessary props like the class name.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
+ */
+
+
+/**
+ * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
+ * Those files can contain any CSS code that gets applied to the editor.
+ *
+ * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
+ */
+
+
+// Import WP assets.
+
+
+
+/**
+ * The edit function describes the structure of your block in the context of the
+ * editor. This represents what the editor will render when the block is used.
+ *
+ * @param {Object} props Arguments passed to a React component.
+ * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
+ *
+ * @return {Element} Element to render.
+ */
+function Edit(props) {
+  const {
+    attributes,
+    setAttributes
+  } = props;
+  const {
+    mdURL
+  } = attributes;
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Markdown File')
+  }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+    label: "Full URL to markdown file:",
+    help: "EX: https://github.com/README.md",
+    onChange: value => setAttributes({
+      mdURL: value
+    }),
+    value: mdURL,
+    type: "url"
+  }))), /*#__PURE__*/React.createElement("article", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)(), /*#__PURE__*/React.createElement("div", {
+    className: "showdown"
+  }, /*#__PURE__*/React.createElement("script", {
+    type: "text/plain"
+  }, /*#__PURE__*/React.createElement(_modules_FetchRawFile_mjs__WEBPACK_IMPORTED_MODULE_4__.FetchRawFile, {
+    filePath: mdURL
+  }))), /*#__PURE__*/React.createElement("p", {
+    className: "wp-block-r3-id-documentation-embed-markdown-source"
+  }, /*#__PURE__*/React.createElement("strong", null, "Source:"), " ", /*#__PURE__*/React.createElement("a", {
+    href: mdURL
+  }, mdURL))));
+}
+
+/***/ }),
+
+/***/ "./src/blocks/embed-markdown/editor.scss":
+/*!***********************************************!*\
+  !*** ./src/blocks/embed-markdown/editor.scss ***!
+  \***********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./src/blocks/embed-markdown/index.js":
+/*!********************************************!*\
+  !*** ./src/blocks/embed-markdown/index.js ***!
+  \********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./src/blocks/embed-markdown/style.scss");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/blocks/embed-markdown/edit.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./block.json */ "./src/blocks/embed-markdown/block.json");
+/* harmony import */ var _common_icons_markdown_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../common/icons/markdown.svg */ "./src/blocks/common/icons/markdown.svg");
+/**
+ * Registers a new block provided a unique name and an object defining its behavior.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
+ */
+
+
+/**
+ * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
+ * All files containing `style` keyword are bundled together. The code used
+ * gets applied both to the front of your site and to the editor.
+ *
+ * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
+ */
+
+
+/**
+ * Internal dependencies
+ */
+
+
+
+// Update with the desired icon.
+
+
+/**
+ * Every block starts by registering a new block type definition.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
+ */
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_3__.name, {
+  edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"],
+  save: ({
+    attributes
+  }) => null,
+  icon: {
+    src: _common_icons_markdown_svg__WEBPACK_IMPORTED_MODULE_4__.ReactComponent,
+    foreground: '#cc0000'
+  }
+});
+
+/***/ }),
+
+/***/ "./src/blocks/embed-markdown/modules/FetchRawFile.mjs":
+/*!************************************************************!*\
+  !*** ./src/blocks/embed-markdown/modules/FetchRawFile.mjs ***!
+  \************************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   FetchRawFile: function() { return /* binding */ FetchRawFile; }
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var showdown__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! showdown */ "./node_modules/showdown/dist/showdown.js");
+/* harmony import */ var html_react_parser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! html-react-parser */ "./node_modules/html-react-parser/esm/index.mjs");
+/**
+ * Fetch the markdown file and convert it to HTML.
+ */
+
+
+
+// Convert Markdown into HTML.
+
+
+// This library parses an HTML string and converts it into React elements. It's safer than dangerouslySetInnerHTML because it handles sanitization. Install the library.
+
+
+/**
+ * Fetch file contents.
+ * @param {string} filePath File to fetch.
+ */
+function FetchRawFile({
+  filePath
+}) {
+  const [fileContent, setFileContent] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const [error, setError] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+  const converter = new showdown__WEBPACK_IMPORTED_MODULE_1__.Converter();
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    if (filePath && 'md' === getExtension(filePath)) {
+      // convert GitHub ui view to raw
+      filePath = filePath.replace('/github.com/', '/raw.githubusercontent.com/');
+      filePath = filePath.replace('/blob/', '/');
+      fetch(filePath).then(response => {
+        if (!response.ok) {
+          console.error('Network response was not OK:', response);
+        }
+        return response.text(); // Get raw text content
+      }).then(text => {
+        setFileContent(text);
+      }).catch(error => {
+        setError(error);
+        console.error('Error fetching file:', error);
+      });
+    } else {
+      setFileContent('Please provide a full URL to a .md file in the Inspector panel to the right →');
+    }
+  }, [filePath]); // This will run whenever the filePath is changed.
+
+  if (error) {
+    return /*#__PURE__*/React.createElement(React.Fragment, null, "Error fetching ", filePath, ": ", error.message);
+  }
+
+  // Convert md to html using Showdown.
+  const markdownHtml = converter.makeHtml(fileContent);
+  return /*#__PURE__*/React.createElement(React.Fragment, null, (0,html_react_parser__WEBPACK_IMPORTED_MODULE_2__["default"])(markdownHtml));
+}
+
+/**
+ * Find extension of file.
+ * @param {string} filename File to check.
+ */
+function getExtension(filename) {
+  return filename.toLowerCase().split('.').pop();
+}
+
+/***/ }),
+
+/***/ "./src/blocks/embed-markdown/style.scss":
+/*!**********************************************!*\
+  !*** ./src/blocks/embed-markdown/style.scss ***!
+  \**********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "@wordpress/block-editor":
+/*!*************************************!*\
+  !*** external ["wp","blockEditor"] ***!
+  \*************************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = window["wp"]["blockEditor"];
+
+/***/ }),
+
+/***/ "@wordpress/blocks":
+/*!********************************!*\
+  !*** external ["wp","blocks"] ***!
+  \********************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = window["wp"]["blocks"];
+
+/***/ }),
+
+/***/ "@wordpress/components":
+/*!************************************!*\
+  !*** external ["wp","components"] ***!
+  \************************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = window["wp"]["components"];
+
+/***/ }),
+
+/***/ "@wordpress/element":
+/*!*********************************!*\
+  !*** external ["wp","element"] ***!
+  \*********************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = window["wp"]["element"];
+
+/***/ }),
+
+/***/ "@wordpress/i18n":
+/*!******************************!*\
+  !*** external ["wp","i18n"] ***!
+  \******************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = window["wp"]["i18n"];
+
+/***/ }),
+
+/***/ "react":
+/*!************************!*\
+  !*** external "React" ***!
+  \************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = window["React"];
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = __webpack_modules__;
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/chunk loaded */
+/******/ 	!function() {
+/******/ 		var deferred = [];
+/******/ 		__webpack_require__.O = function(result, chunkIds, fn, priority) {
+/******/ 			if(chunkIds) {
+/******/ 				priority = priority || 0;
+/******/ 				for(var i = deferred.length; i > 0 && deferred[i - 1][2] > priority; i--) deferred[i] = deferred[i - 1];
+/******/ 				deferred[i] = [chunkIds, fn, priority];
+/******/ 				return;
+/******/ 			}
+/******/ 			var notFulfilled = Infinity;
+/******/ 			for (var i = 0; i < deferred.length; i++) {
+/******/ 				var chunkIds = deferred[i][0];
+/******/ 				var fn = deferred[i][1];
+/******/ 				var priority = deferred[i][2];
+/******/ 				var fulfilled = true;
+/******/ 				for (var j = 0; j < chunkIds.length; j++) {
+/******/ 					if ((priority & 1 === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every(function(key) { return __webpack_require__.O[key](chunkIds[j]); })) {
+/******/ 						chunkIds.splice(j--, 1);
+/******/ 					} else {
+/******/ 						fulfilled = false;
+/******/ 						if(priority < notFulfilled) notFulfilled = priority;
+/******/ 					}
+/******/ 				}
+/******/ 				if(fulfilled) {
+/******/ 					deferred.splice(i--, 1)
+/******/ 					var r = fn();
+/******/ 					if (r !== undefined) result = r;
+/******/ 				}
+/******/ 			}
+/******/ 			return result;
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	!function() {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = function(module) {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				function() { return module['default']; } :
+/******/ 				function() { return module; };
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	!function() {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = function(exports, definition) {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	!function() {
+/******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	!function() {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = function(exports) {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/jsonp chunk loading */
+/******/ 	!function() {
+/******/ 		// no baseURI
+/******/ 		
+/******/ 		// object to store loaded and loading chunks
+/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
+/******/ 		var installedChunks = {
+/******/ 			"blocks/embed-markdown/index": 0,
+/******/ 			"blocks/embed-markdown/style-index": 0
+/******/ 		};
+/******/ 		
+/******/ 		// no chunk on demand loading
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
+/******/ 		
+/******/ 		__webpack_require__.O.j = function(chunkId) { return installedChunks[chunkId] === 0; };
+/******/ 		
+/******/ 		// install a JSONP callback for chunk loading
+/******/ 		var webpackJsonpCallback = function(parentChunkLoadingFunction, data) {
+/******/ 			var chunkIds = data[0];
+/******/ 			var moreModules = data[1];
+/******/ 			var runtime = data[2];
+/******/ 			// add "moreModules" to the modules object,
+/******/ 			// then flag all "chunkIds" as loaded and fire callback
+/******/ 			var moduleId, chunkId, i = 0;
+/******/ 			if(chunkIds.some(function(id) { return installedChunks[id] !== 0; })) {
+/******/ 				for(moduleId in moreModules) {
+/******/ 					if(__webpack_require__.o(moreModules, moduleId)) {
+/******/ 						__webpack_require__.m[moduleId] = moreModules[moduleId];
+/******/ 					}
+/******/ 				}
+/******/ 				if(runtime) var result = runtime(__webpack_require__);
+/******/ 			}
+/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
+/******/ 			for(;i < chunkIds.length; i++) {
+/******/ 				chunkId = chunkIds[i];
+/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
+/******/ 					installedChunks[chunkId][0]();
+/******/ 				}
+/******/ 				installedChunks[chunkId] = 0;
+/******/ 			}
+/******/ 			return __webpack_require__.O(result);
+/******/ 		}
+/******/ 		
+/******/ 		var chunkLoadingGlobal = self["webpackChunkr3_id_documentation"] = self["webpackChunkr3_id_documentation"] || [];
+/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
+/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
+/******/ 	}();
+/******/ 	
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["blocks/embed-markdown/style-index"], function() { return __webpack_require__("./src/blocks/embed-markdown/index.js"); })
+/******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
+/******/ 	
+/******/ })()
+;
 //# sourceMappingURL=index.js.map

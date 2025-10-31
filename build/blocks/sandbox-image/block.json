@@ -9,6 +9,24 @@
   "description": "This block is used to explore and adjust the parameters sent to the <Image> Component.",
   "example": {},
   "attributes": {
+    "canEditImage": {
+      "type": "boolean",
+      "default": false
+    },
+    "labelsPlaceholder": {
+      "type": "array"
+    },
+    "labelsMediaPlaceholder": {
+      "type": "array"
+    },
+    "allowedTypes": {
+      "type": "string",
+      "default": "['image']"
+    },
+    "accept": {
+      "type": "string",
+      "default": "image/*"
+    },
     "tag": {
       "type": "string",
       "enum": [
@@ -25,14 +43,6 @@
     "altSource": {
       "type": "string",
       "default": "alt"
-    },
-    "allowedTypes": {
-      "type": "string",
-      "default": "['image']"
-    },
-    "canEditImage": {
-      "type": "boolean",
-      "default": true
     },
     "canOverrideImage": {
       "type": "boolean",
@@ -61,10 +71,6 @@
     "onChangeFocalPoint": {
       "type": "string",
       "default": ""
-    },
-    "labels": {
-      "type": "array",
-      "default": "{}"
     },
     "debug": {
       "type": "boolean",
