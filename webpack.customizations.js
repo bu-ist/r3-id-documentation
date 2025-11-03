@@ -47,9 +47,12 @@ const themeEntryPoints = {
 };
 
 /**
- * Set SASS compiler to use the faster embedded version. Default is `sass`. `sass-embedded` appears to be faster on MacOS. This can be changed back to `sass` if it causes issues.
+ * SASS compiler is now automatically detected by sass-loader based on installed dependencies.
+ * Priority order: sass-embedded -> sass (Dart Sass) -> node-sass
+ * 
+ * To see which implementation is being used, check the webpack build output or
+ * install sass-loader with debug logging enabled.
  */
-const sassCompiler = 'sass-embedded';
 
 /**
  * Set sassOptions.
@@ -86,7 +89,6 @@ const statsConfig = {
  */
 module.exports = {
 	themeEntryPoints,
-	sassCompiler,
 	statsConfig,
 	customSassOptions,
 };

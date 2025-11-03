@@ -18,7 +18,6 @@ const RemoveEmptyScriptsPlugin = require( 'webpack-remove-empty-scripts' );
 // Import our theme paths from a separate file that can be modified in the theme.
 const {
 	themeEntryPoints,
-	sassCompiler,
 	statsConfig,
 	customSassOptions,
 } = require( './webpack.customizations' );
@@ -43,14 +42,17 @@ const blocksConfig = {
 						loader: require.resolve( 'sass-loader' ),
 						options: {
 							sassOptions: customSassOptions,
-							implementation: require( sassCompiler ),
 						},
 					},
 				],
 			},
 		],
 	},
-	stats: statsConfig,
+	// Enable debug logging to see which Sass implementation is being used
+	stats: {
+		...statsConfig,
+		loggingDebug: ['sass-loader'],
+	},
 };
 
 /**
@@ -77,14 +79,16 @@ const themeConfig = {
 						loader: require.resolve( 'sass-loader' ),
 						options: {
 							sassOptions: customSassOptions,
-							implementation: require( sassCompiler ),
 						},
 					},
 				],
 			},
 		],
 	},
-	stats: statsConfig,
+	stats: {
+		...statsConfig,
+		loggingDebug: ['sass-loader'],
+	},
 	plugins: [
 		// Grab the defaultConfig's plugins array and filter it to remove what we don't need.
 		...defaultConfig.plugins.filter(
