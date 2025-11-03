@@ -70,7 +70,7 @@ function display_breadcrumbs_theme() {
 		echo 'Your Breadcrumbs are stale! Please make sure you are using the latest 5.8 BU_Responsive_Customizations.';
 	}
 }
-add_action( 'r_after_opening_body_tag', __NAMESPACE__ . '\\display_breadcrumbs_theme' );
+//add_action( 'r_after_opening_body_tag', __NAMESPACE__ . '\\display_breadcrumbs_theme' );
 add_action( 'r_before_opening_article', __NAMESPACE__ . '\\display_breadcrumbs_theme' );
 add_action( 'r_before_footer_brand_assets', 'BU\Plugins\BU_Responsive_Customizations\Breadcrumbs\display_breadcrumbs' );
 
