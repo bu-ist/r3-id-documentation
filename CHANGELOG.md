@@ -2,13 +2,15 @@
 
 ## FORTHCOMING
 
+## 0.4.1
+
+- Fixes the build.
+- Locks pacakges to exact versions.
+
 ## 0.4.0
 
 - Adds GitHub Code Block block
-
 - Adds `<Image>` sandbox block
-
-## FORTHCOMING
 
 ## 0.3.0
 
