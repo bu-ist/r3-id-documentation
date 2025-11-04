@@ -16,11 +16,8 @@
 // Abstract and Foundational Styles
 // =================================================================
 
-// include BU base styles
-
-@forward "@bostonuniversity/base/styles";
-
 @import "burf-base/accessibility";
+@import "abstracts/config/custom-props";
 @import "abstracts/config/breakpoints";
 @import "abstracts/mixins/mixins";
 @import "foundational/fonts";
@@ -28,6 +25,7 @@
 @import "abstracts/config/typography";
 @import "foundational/grid";
 @import "foundational/tables";
+@import "foundational/buttons";
 @import "foundational/forms";
 @import "foundational/comments";
 @import "foundational/layout";
