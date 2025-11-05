@@ -1,251 +1,249 @@
-// // It's highly recommended you work on partials in the order they are listed here.
-// // Start with variables, if they are available. After setting all variables, override with Sass.
+// It's highly recommended you work on partials in the order they are listed here.
+// Start with variables, if they are available. After setting all variables, override with Sass.
 
-// // If you don't see a partial you need here, don't hesitate to add it! Think carefully about
-// // how much of the site your new partial will effect. If it affects the whole site - it's
-// // global, and it should go at the top. If it only affects a single template, it's probably
-// // very specific, and should go at the bottom. If it's content that could show up on several
-// // templates, it probably belongs somewhere in the middle. If you need to override something
-// // that's already here, make sure your custom partial comes after the partial you want to override.
+// If you don't see a partial you need here, don't hesitate to add it! Think carefully about
+// how much of the site your new partial will effect. If it affects the whole site - it's
+// global, and it should go at the top. If it only affects a single template, it's probably
+// very specific, and should go at the bottom. If it's content that could show up on several
+// templates, it probably belongs somewhere in the middle. If you need to override something
+// that's already here, make sure your custom partial comes after the partial you want to override.
 
-// // =================================================================
-// // Libraries and Dependencies
-// // =================================================================
+// =================================================================
+// Libraries and Dependencies
+// =================================================================
 
-// // =================================================================
-// // Abstract and Foundational Styles
-// // =================================================================
+// =================================================================
+// Abstract and Foundational Styles
+// =================================================================
 
-// // include BU base styles
+@import "burf-base/accessibility";
+@import "abstracts/config/custom-props";
+@import "abstracts/config/breakpoints";
+@import "abstracts/mixins/mixins";
+@import "foundational/fonts";
+@import "foundational/icons";
+@import "abstracts/config/typography";
+@import "foundational/grid";
+@import "foundational/tables";
+@import "foundational/buttons";
+@import "foundational/forms";
+@import "foundational/comments";
+@import "foundational/layout";
 
-// @forward "@bostonuniversity/base/styles";
+// =================================================================
+// Shortcodes
+// =================================================================
 
-// @import "burf-base/accessibility";
-// @import "abstracts/config/breakpoints";
-// @import "abstracts/mixins/mixins";
-// @import "foundational/fonts";
-// @import "foundational/icons";
-// @import "abstracts/config/typography";
-// @import "foundational/grid";
-// @import "foundational/tables";
-// @import "foundational/forms";
-// @import "foundational/comments";
-// @import "foundational/layout";
+@import "shortcodes/collapsibles";
+@import "shortcodes/courses";
+@import "shortcodes/galleries";
+@import "shortcodes/slideshows";
+@import "shortcodes/wordpress-editor";
 
-// // =================================================================
-// // Shortcodes
-// // =================================================================
+// =================================================================
+// Widgets
+// =================================================================
 
-// @import "shortcodes/collapsibles";
-// @import "shortcodes/courses";
-// @import "shortcodes/galleries";
-// @import "shortcodes/slideshows";
-// @import "shortcodes/wordpress-editor";
+@import "widgets/widgets";
+@import "widgets/widget-calendar";
+@import "widgets/widget-navigation";
+@import "widgets/widget-posts";
 
-// // =================================================================
-// // Widgets
-// // =================================================================
+// =================================================================
+// Layout
+// =================================================================
 
-// @import "widgets/widgets";
-// @import "widgets/widget-calendar";
-// @import "widgets/widget-navigation";
-// @import "widgets/widget-posts";
+@import "layout/navigation";
+@import "layout/branding";
+@import "layout/content-container";
+@import "layout/breadcrumbs";
+@import "layout/content-area";
+@import "layout/sidebar";
+@import "layout/footer";
 
-// // =================================================================
-// // Layout
-// // =================================================================
+// =================================================================
+// Templates
+// =================================================================
 
-// @import "layout/navigation";
-// @import "layout/branding";
-// @import "layout/content-container";
-// @import "layout/breadcrumbs";
-// @import "layout/content-area";
-// @import "layout/sidebar";
-// @import "layout/footer";
+@import "templates/default";
+@import "templates/archive";
+@import "templates/single";
 
-// // =================================================================
-// // Templates
-// // =================================================================
+// =================================================================
+// Plugin: BU Banners
+// =================================================================
 
-// @import "templates/default";
-// @import "templates/archive";
-// @import "templates/single";
+@import "plugins/bu-banners/banner";
 
-// // =================================================================
-// // Plugin: BU Banners
-// // =================================================================
+// =================================================================
+// Plugin: BU Profiles
+// =================================================================
 
-// @import "plugins/bu-banners/banner";
+@import "plugins/bu-profiles/profile-single";
+@import "plugins/bu-profiles/profile-archive";
 
-// // =================================================================
-// // Plugin: BU Profiles
-// // =================================================================
+// Shortcode
 
-// @import "plugins/bu-profiles/profile-single";
-// @import "plugins/bu-profiles/profile-archive";
+@import "plugins/bu-profiles/profile-format-default";
+@import "plugins/bu-profiles/profile-format-basic";
+@import "plugins/bu-profiles/profile-format-advanced";
+@import "plugins/bu-profiles/profile-format-mini";
 
-// // Shortcode
+// =================================================================
+// Plugin: BU Calendar
+// =================================================================
 
-// @import "plugins/bu-profiles/profile-format-default";
-// @import "plugins/bu-profiles/profile-format-basic";
-// @import "plugins/bu-profiles/profile-format-advanced";
-// @import "plugins/bu-profiles/profile-format-mini";
+@import "plugins/bu-calendar/calendar-single";
+@import "plugins/bu-calendar/calendar-archive";
 
-// // =================================================================
-// // Plugin: BU Calendar
-// // =================================================================
+// Widgets
 
-// @import "plugins/bu-calendar/calendar-single";
-// @import "plugins/bu-calendar/calendar-archive";
+@import "plugins/bu-calendar/widget-calendar";
+@import "plugins/bu-calendar/calendar-picker";
 
-// // Widgets
+// =================================================================
+// Plugin: BU Filtering
+// =================================================================
 
-// @import "plugins/bu-calendar/widget-calendar";
-// @import "plugins/bu-calendar/calendar-picker";
+@import "plugins/bu-filtering/filter-base";
+@import "plugins/bu-filtering/filter-layout-profile";
+@import "plugins/bu-filtering/filter-bar";
+@import "plugins/bu-filtering/filter-pagination";
 
-// // =================================================================
-// // Plugin: BU Filtering
-// // =================================================================
+// =================================================================
+// Plugin: BU Landing Page
+// =================================================================
 
-// @import "plugins/bu-filtering/filter-base";
-// @import "plugins/bu-filtering/filter-layout-profile";
-// @import "plugins/bu-filtering/filter-bar";
-// @import "plugins/bu-filtering/filter-pagination";
+//Foundational
 
-// // =================================================================
-// // Plugin: BU Landing Page
-// // =================================================================
+@import "plugins/bu-landing-page/layout";
 
-// //Foundational
+// BU Landing Page Template Rows
 
-// @import "plugins/bu-landing-page/layout";
+@import "plugins/bu-landing-page/rows/child-nav";
+@import "plugins/bu-landing-page/rows/custom-html";
+@import "plugins/bu-landing-page/rows/events";
+@import "plugins/bu-landing-page/rows/large-promo";
+@import "plugins/bu-landing-page/rows/news";
+@import "plugins/bu-landing-page/rows/promos";
+@import "plugins/bu-landing-page/rows/video-promo";
 
-// // BU Landing Page Template Rows
+// BU Landing Page Blocks
 
-// @import "plugins/bu-landing-page/rows/child-nav";
-// @import "plugins/bu-landing-page/rows/custom-html";
-// @import "plugins/bu-landing-page/rows/events";
-// @import "plugins/bu-landing-page/rows/large-promo";
-// @import "plugins/bu-landing-page/rows/news";
-// @import "plugins/bu-landing-page/rows/promos";
-// @import "plugins/bu-landing-page/rows/video-promo";
+@import "plugins/bu-landing-page/blocks/row";
 
-// // BU Landing Page Blocks
+// =================================================================
+// Plugin: BU Blocks
+// =================================================================
 
-// @import "plugins/bu-landing-page/blocks/row";
+// Components
 
-// // =================================================================
-// // Plugin: BU Blocks
-// // =================================================================
+@import "plugins/bu-blocks/components/component-background";
+@import "plugins/bu-blocks/components/component-caption";
+@import "plugins/bu-blocks/components/component-end-of-article";
+@import "plugins/bu-blocks/components/component-media-credit";
 
-// // Components
+// Blocks
 
-// @import "plugins/bu-blocks/components/component-background";
-// @import "plugins/bu-blocks/components/component-caption";
-// @import "plugins/bu-blocks/components/component-end-of-article";
-// @import "plugins/bu-blocks/components/component-media-credit";
-
-// // Blocks
-
-// @import "plugins/bu-blocks/blocks/block-aside";
-// @import "plugins/bu-blocks/blocks/block-buniverse";
-// @import "plugins/bu-blocks/blocks/block-button";
-// @import "plugins/bu-blocks/blocks/block-clicktotweet";
-// @import "plugins/bu-blocks/blocks/block-collapsible";
-// @import "plugins/bu-blocks/blocks/block-drawer";
-// @import "plugins/bu-blocks/blocks/block-headline";
-// @import "plugins/bu-blocks/blocks/block-introparagraph";
-// @import "plugins/bu-blocks/blocks/block-leadin";
-// @import "plugins/bu-blocks/blocks/block-listicle";
-// @import "plugins/bu-blocks/blocks/block-modal";
-// @import "plugins/bu-blocks/blocks/block-photoessay";
-// @import "plugins/bu-blocks/blocks/block-pullquote";
-// @import "plugins/bu-blocks/blocks/block-relatedstories";
-// @import "plugins/bu-blocks/blocks/block-slideshow";
-// @import "plugins/bu-blocks/blocks/block-stat";
+@import "plugins/bu-blocks/blocks/block-aside";
+@import "plugins/bu-blocks/blocks/block-buniverse";
+@import "plugins/bu-blocks/blocks/block-button";
+@import "plugins/bu-blocks/blocks/block-clicktotweet";
+@import "plugins/bu-blocks/blocks/block-collapsible";
+@import "plugins/bu-blocks/blocks/block-drawer";
+@import "plugins/bu-blocks/blocks/block-headline";
+@import "plugins/bu-blocks/blocks/block-introparagraph";
+@import "plugins/bu-blocks/blocks/block-leadin";
+@import "plugins/bu-blocks/blocks/block-listicle";
+@import "plugins/bu-blocks/blocks/block-modal";
+@import "plugins/bu-blocks/blocks/block-photoessay";
+@import "plugins/bu-blocks/blocks/block-pullquote";
+@import "plugins/bu-blocks/blocks/block-relatedstories";
+@import "plugins/bu-blocks/blocks/block-slideshow";
+@import "plugins/bu-blocks/blocks/block-stat";
 
 
-// // =================================================================
-// // Plugin: BU Blocks
-// // =================================================================
+// =================================================================
+// Plugin: BU Blocks
+// =================================================================
 
-// // Abstract & Foundational
+// Abstract & Foundational
 
-// @import "plugins/bu-prepress/foundational/_grid";
-// @import "plugins/bu-prepress/foundational/_masthead";
-// @import "plugins/bu-prepress/foundational/_footer";
+@import "plugins/bu-prepress/foundational/_grid";
+@import "plugins/bu-prepress/foundational/_masthead";
+@import "plugins/bu-prepress/foundational/_footer";
 
-// // Components
+// Components
 
-// @import "plugins/bu-prepress/components/component-actions-toolbar";
-// @import "plugins/bu-prepress/components/component-article-share";
-// @import "plugins/bu-prepress/components/component-author-info";
-// @import "plugins/bu-prepress/components/component-button-play";
-// @import "plugins/bu-prepress/components/component-cinemagraph";
-// @import "plugins/bu-prepress/components/component-comment-counter";
-// @import "plugins/bu-prepress/components/component-comments";
-// @import "plugins/bu-prepress/components/component-edition-components";
-// @import "plugins/bu-prepress/components/component-metabar";
-// @import "plugins/bu-prepress/components/component-modal-window";
-// @import "plugins/bu-prepress/components/component-pagination";
-// @import "plugins/bu-prepress/components/component-player-progressbar";
-// @import "plugins/bu-prepress/components/component-social-share-tools";
-// @import "plugins/bu-prepress/components/component-storycard";
-// @import "plugins/bu-prepress/components/component-storycard-vertical";
+@import "plugins/bu-prepress/components/component-actions-toolbar";
+@import "plugins/bu-prepress/components/component-article-share";
+@import "plugins/bu-prepress/components/component-author-info";
+@import "plugins/bu-prepress/components/component-button-play";
+@import "plugins/bu-prepress/components/component-cinemagraph";
+@import "plugins/bu-prepress/components/component-comment-counter";
+@import "plugins/bu-prepress/components/component-comments";
+@import "plugins/bu-prepress/components/component-edition-components";
+@import "plugins/bu-prepress/components/component-metabar";
+@import "plugins/bu-prepress/components/component-modal-window";
+@import "plugins/bu-prepress/components/component-pagination";
+@import "plugins/bu-prepress/components/component-player-progressbar";
+@import "plugins/bu-prepress/components/component-social-share-tools";
+@import "plugins/bu-prepress/components/component-storycard";
+@import "plugins/bu-prepress/components/component-storycard-vertical";
 
-// // Blocks
+// Blocks
 
-// @import "plugins/bu-prepress/blocks/block-audioplayer";
-// @import "plugins/bu-prepress/blocks/block-billboard";
-// @import "plugins/bu-prepress/blocks/block-collection-billboard";
-// @import "plugins/bu-prepress/blocks/block-collection-navigation";
-// @import "plugins/bu-prepress/blocks/block-event-details";
-// @import "plugins/bu-prepress/blocks/block-metabar";
-// @import "plugins/bu-prepress/blocks/block-parallax";
-// @import "plugins/bu-prepress/blocks/block-q-and-a";
-// @import "plugins/bu-prepress/blocks/block-relatedstories";
-// @import "plugins/bu-prepress/blocks/block-sequential-cards";
-// @import "plugins/bu-prepress/blocks/block-video-story";
+@import "plugins/bu-prepress/blocks/block-audioplayer";
+@import "plugins/bu-prepress/blocks/block-billboard";
+@import "plugins/bu-prepress/blocks/block-collection-billboard";
+@import "plugins/bu-prepress/blocks/block-collection-navigation";
+@import "plugins/bu-prepress/blocks/block-event-details";
+@import "plugins/bu-prepress/blocks/block-metabar";
+@import "plugins/bu-prepress/blocks/block-parallax";
+@import "plugins/bu-prepress/blocks/block-q-and-a";
+@import "plugins/bu-prepress/blocks/block-relatedstories";
+@import "plugins/bu-prepress/blocks/block-sequential-cards";
+@import "plugins/bu-prepress/blocks/block-video-story";
 
-// // Edition Blocks
+// Edition Blocks
 
-// @import "plugins/bu-prepress/blocks/edition/block-edition-about-publication-spacer";
-// @import "plugins/bu-prepress/blocks/edition/block-edition-audio-player";
-// @import "plugins/bu-prepress/blocks/edition/block-edition-breaking-news";
-// @import "plugins/bu-prepress/blocks/edition/block-edition-browse-sections";
-// @import "plugins/bu-prepress/blocks/edition/block-edition-calendar-events";
-// @import "plugins/bu-prepress/blocks/edition/block-edition-closeup";
-// @import "plugins/bu-prepress/blocks/edition/block-edition-contact-us";
-// @import "plugins/bu-prepress/blocks/edition/block-edition-current-issue";
-// @import "plugins/bu-prepress/blocks/edition/block-edition-edition-row";
-// @import "plugins/bu-prepress/blocks/edition/block-edition-email-promo";
-// @import "plugins/bu-prepress/blocks/edition/block-edition-featured-classnote";
-// @import "plugins/bu-prepress/blocks/edition/block-edition-featured-event";
-// @import "plugins/bu-prepress/blocks/edition/block-edition-featured-series";
-// @import "plugins/bu-prepress/blocks/edition/block-edition-featured-stories";
-// @import "plugins/bu-prepress/blocks/edition/block-edition-featured-story";
-// @import "plugins/bu-prepress/blocks/edition/block-edition-featured-tweet";
-// @import "plugins/bu-prepress/blocks/edition/block-edition-featured-video";
-// @import "plugins/bu-prepress/blocks/edition/block-edition-gallery-tease";
-// @import "plugins/bu-prepress/blocks/edition/block-edition-headlines";
-// @import "plugins/bu-prepress/blocks/edition/block-edition-listicle";
-// @import "plugins/bu-prepress/blocks/edition/block-edition-quote-teaser";
-// @import "plugins/bu-prepress/blocks/edition/block-edition-recent-issues";
-// @import "plugins/bu-prepress/blocks/edition/block-edition-reddit-facebook-live-promo";
-// @import "plugins/bu-prepress/blocks/edition/block-edition-scoreboard";
-// @import "plugins/bu-prepress/blocks/edition/block-edition-social-photo";
-// @import "plugins/bu-prepress/blocks/edition/block-edition-story-teaser";
-// @import "plugins/bu-prepress/blocks/edition/block-edition-trending-topic";
+@import "plugins/bu-prepress/blocks/edition/block-edition-about-publication-spacer";
+@import "plugins/bu-prepress/blocks/edition/block-edition-audio-player";
+@import "plugins/bu-prepress/blocks/edition/block-edition-breaking-news";
+@import "plugins/bu-prepress/blocks/edition/block-edition-browse-sections";
+@import "plugins/bu-prepress/blocks/edition/block-edition-calendar-events";
+@import "plugins/bu-prepress/blocks/edition/block-edition-closeup";
+@import "plugins/bu-prepress/blocks/edition/block-edition-contact-us";
+@import "plugins/bu-prepress/blocks/edition/block-edition-current-issue";
+@import "plugins/bu-prepress/blocks/edition/block-edition-edition-row";
+@import "plugins/bu-prepress/blocks/edition/block-edition-email-promo";
+@import "plugins/bu-prepress/blocks/edition/block-edition-featured-classnote";
+@import "plugins/bu-prepress/blocks/edition/block-edition-featured-event";
+@import "plugins/bu-prepress/blocks/edition/block-edition-featured-series";
+@import "plugins/bu-prepress/blocks/edition/block-edition-featured-stories";
+@import "plugins/bu-prepress/blocks/edition/block-edition-featured-story";
+@import "plugins/bu-prepress/blocks/edition/block-edition-featured-tweet";
+@import "plugins/bu-prepress/blocks/edition/block-edition-featured-video";
+@import "plugins/bu-prepress/blocks/edition/block-edition-gallery-tease";
+@import "plugins/bu-prepress/blocks/edition/block-edition-headlines";
+@import "plugins/bu-prepress/blocks/edition/block-edition-listicle";
+@import "plugins/bu-prepress/blocks/edition/block-edition-quote-teaser";
+@import "plugins/bu-prepress/blocks/edition/block-edition-recent-issues";
+@import "plugins/bu-prepress/blocks/edition/block-edition-reddit-facebook-live-promo";
+@import "plugins/bu-prepress/blocks/edition/block-edition-scoreboard";
+@import "plugins/bu-prepress/blocks/edition/block-edition-social-photo";
+@import "plugins/bu-prepress/blocks/edition/block-edition-story-teaser";
+@import "plugins/bu-prepress/blocks/edition/block-edition-trending-topic";
 
-// // Templates
+// Templates
 
-// @import "plugins/bu-prepress/templates/article";
-// @import "plugins/bu-prepress/templates/author";
-// @import "plugins/bu-prepress/templates/category-archive";
-// @import "plugins/bu-prepress/templates/category-landing";
-// @import "plugins/bu-prepress/templates/closeup-archive";
-// @import "plugins/bu-prepress/templates/closeup-single";
-// @import "plugins/bu-prepress/templates/collection-single";
-// @import "plugins/bu-prepress/templates/edition";
-// @import "plugins/bu-prepress/templates/issues-landing";
-// @import "plugins/bu-prepress/templates/tag-page";
+@import "plugins/bu-prepress/templates/article";
+@import "plugins/bu-prepress/templates/author";
+@import "plugins/bu-prepress/templates/category-archive";
+@import "plugins/bu-prepress/templates/category-landing";
+@import "plugins/bu-prepress/templates/closeup-archive";
+@import "plugins/bu-prepress/templates/closeup-single";
+@import "plugins/bu-prepress/templates/collection-single";
+@import "plugins/bu-prepress/templates/edition";
+@import "plugins/bu-prepress/templates/issues-landing";
+@import "plugins/bu-prepress/templates/tag-page";

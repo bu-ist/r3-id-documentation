@@ -1,0 +1,182 @@
+// =================================================================
+// Foundation Custom Properties (Includes BU Base)
+// =================================================================
+
+@use "sass:math";
+
+@import "burf-base/custom-props";
+
+// =================================================================
+// BU Base Custom Properties
+// =================================================================
+
+// See https://github.com/bu-ist/bu-base/blob/develop/styles/_semantic.scss for the latest properties.
+
+// ===================================================================
+// CSS Custom Properties (Semantic) - [ Table of Contents ]
+
+// 1. Borders
+// 2. Shadows
+// 3. Motion & Duration
+// 4. Spacing
+// 5. Typography
+// 6. Colors
+// 7. Layout
+// 8. Surface
+
+// ===================================================================
+
+
+html {
+
+//     //==========================================================================
+//     //==[ 1. Border ]===========================================================
+//     //==========================================================================
+
+//     --bu-border-color:     var(--color-neutral-300);
+//     --bu-border-style:     solid; 
+//     --bu-border-width:     1px;
+//     --bu-border:           var(--bu-border-width) var(--bu-border-style) var(--bu-border-color);
+
+//     --bu-border-radius:    var(--radius-none); // inactive
+
+//     //==========================================================================
+//     //==[ 2. Shadow ]===========================================================
+//     //==========================================================================
+
+//     --bu-shadow: var(--shadow-md); // inactive
+
+//     //==========================================================================
+//     //==[ 3. Motion & Duration ]================================================
+//     //==========================================================================
+
+//     --bu-duration: var(--duration-quick); // inactive
+//     --bu-ease-in: var(--ease-in-cubic); // inactive
+//     --bu-ease-out: var(--ease-out-cubic); // inactive
+//     --bu-ease-in-out: var(--ease-in-out-cubic); // inactive
+
+//     //==========================================================================
+//     //==[ 4. Spacing ]==========================================================
+//     //==========================================================================
+
+//     // Spacing can be used for both padding and margins.
+
+//     --bu-spacing-sm: var(--shim-8); 
+//     --bu-spacing-md: var(--size-4);
+//     --bu-spacing-lg: var(--size-7);
+
+//     --bu-spacing:        var(--size-3);
+//     --bu-spacing-half:   calc(var(--bu-spacing) * 0.5); // inactive
+//     --bu-spacing-double: calc(var(--bu-spacing) * 2); // inactive
+
+//     // Spacing (Fluid)
+
+//     --bu-spacing-fluid-sm: var(--size-fluid-2); // inactive
+//     --bu-spacing-fluid-md: var(--size-fluid-4); // inactive
+//     --bu-spacing-fluid-lg: var(--size-fluid-6); // inactive
+
+//     --bu-spacing-fluid:        var(--bu-spacing-fluid-md); // inactive
+//     --bu-spacing-fluid-half:   calc(var(--bu-spacing-fluid) * 0.5); // inactive
+//     --bu-spacing-fluid-double: calc(var(--bu-spacing-fluid) * 2); // inactive
+
+//     // Block margin spacing 
+
+//     --bu-block-spacing:        var(--bu-spacing); // inactive
+
+
+//     //==========================================================================
+//     //==[ 5. Typography ]=======================================================
+//     //==========================================================================
+
+//     // Font families
+
+//     --bu-font-serif: var(--font-transitional); // inactive
+//     --bu-font-sans: "Benton-Sans","Helvetica",sans-serif; // inactive
+//     --bu-font-mono: var(--font-monospace-code); // inactive
+
+//     // Global line height and letter spacing
+
+//     --bu-line-height: var(--line-height-3);
+//     --bu-letter-spacing: var(--letter-spacing-2); // inactive
+
+//     // Headings
+
+//     --bu-heading-color: var(--color-neutral-950);
+//     --bu-heading-font: var(--bu-font-sans);
+//     --bu-heading-size-1: var(--heading-size-1); // inactive
+//     --bu-heading-size-2: var(--heading-size-2); // inactive
+//     --bu-heading-size-3: var(--heading-size-3); // inactive
+//     --bu-heading-size-4: var(--heading-size-4); // inactive
+//     --bu-heading-size-5: var(--heading-size-5); // inactive
+//     --bu-heading-size-6: var(--heading-size-6); // inactive
+
+//     // Text (Paragraphs, body text, etc.)
+
+//     --bu-text-color: var(--color-neutral-700);
+//     --bu-text-font: var(--bu-font-sans);
+//     --bu-text-size: var(--text-size-md); 
+    
+//     // Labels (Tags, eyebrow text, etc.)
+
+//     --bu-label-color: var(--color-neutral-700);
+//     --bu-label-font: var(--bu-font-sans);
+//     --bu-label-size: var(--text-size-sm); 
+
+//     //==========================================================================
+//     //==[ 6. Colors ]===========================================================
+//     //==========================================================================
+
+//     // Basic Palette
+
+//     --bu-color-primary: #cc0000; // inactive
+//     --bu-color-accent: #cc0000; // inactive
+
+//     // Link & Focus Colors
+
+//     --bu-link-color: #0f69d7;
+//     --bu-link-color--hover: #0a4b9a;
+//     --bu-link-color--visited: #7337af;
+//     --bu-focus-color: #0f69d7;
+
+//     // Icon Colors
+
+//     --bu-icon-color: #fff;
+//     --bu-icon-color--hover: #fff;
+
+
+//     //==========================================================================
+//     //==[ 7. Layout ]===========================================================
+//     //==========================================================================
+
+//     // Masthead
+//     --bu-masthead-block-size: 120px; // inactive
+
+//     // WP
+//     --bu-wp-admin-bar-block-size: 32px; // inactive
+
+//     //==========================================================================
+//     //==[ 8. Surface ]==========================================================
+//     //==========================================================================
+
+//     // Refers to the different surfaces of components such as a BULP landing page row.
+//     // The surface foreground may apply to the background color of the cards, 
+//     // while the surface background applies to the background of the BULP row.
+
+//     --bu-surface-foreground: var(--color-neutral-0); // inactive
+//     --bu-surface-foreground-text: var(--color-neutral-900); // inactive
+//     --bu-surface-background: var(--color-neutral-400); // inactive
+//     --bu-surface-background-text: var(--color-neutral-1000); // inactive
+
+//     //==========================================================================
+//     //==[ 8. Thumbnails ]=======================================================
+//     //==========================================================================
+
+//     --bu-thumbnail-lg: 150px;
+//     --bu-thumbnail-md: 100px;
+//     --bu-thumbnail-sm: 50px;
+}
+
+// =================================================================
+// Theme Custom Properties
+// =================================================================
+
