@@ -10,22 +10,10 @@
   "example": {},
   "attributes": {
     "canEditImage": {
-      "type": "boolean",
-      "default": false
+      "type": "boolean"
     },
-    "labelsPlaceholder": {
-      "type": "array"
-    },
-    "labelsMediaPlaceholder": {
-      "type": "array"
-    },
-    "allowedTypes": {
-      "type": "string",
-      "default": "['image']"
-    },
-    "accept": {
-      "type": "string",
-      "default": "image/*"
+    "debug": {
+      "type": "boolean"
     },
     "tag": {
       "type": "string",
@@ -33,48 +21,34 @@
         "img",
         "picture",
         "figure"
-      ],
-      "default": "img"
+      ]
     },
     "size": {
-      "type": "string",
-      "default": "thumbnail"
+      "type": "string"
     },
     "altSource": {
-      "type": "string",
-      "default": "alt"
-    },
-    "canOverrideImage": {
-      "type": "boolean",
-      "default": true
-    },
-    "focalPoint": {
-      "type": "string",
-      "default": "{ x: 0.5, y: 0.5 }"
+      "type": "string"
     },
     "mediaId": {
-      "type": "string",
-      "default": ""
+      "type": "string"
     },
     "className": {
-      "type": "string",
-      "default": ""
+      "type": "string"
     },
-    "onSelect": {
-      "type": "string",
-      "default": ""
+    "canEditFocalPoint": {
+      "type": "boolean"
     },
-    "onRemove": {
-      "type": "string",
-      "default": ""
+    "focalPoint": {
+      "type": "string"
     },
-    "onChangeFocalPoint": {
-      "type": "string",
-      "default": ""
+    "label": {
+      "type": "string"
     },
-    "debug": {
-      "type": "boolean",
-      "default": false
+    "instructions": {
+      "type": "string"
+    },
+    "labels": {
+      "type": "array"
     }
   },
   "supports": {

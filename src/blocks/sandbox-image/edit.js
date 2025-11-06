@@ -23,9 +23,9 @@ import {
 	ToggleControl, // https://developer.wordpress.org/block-editor/reference-guides/components/toggle-control/
 } from '@wordpress/components';
 
-import { useSelect } from '@wordpress/data';
+// import { useSelect } from '@wordpress/data';
 
-import { store as coreStore } from '@wordpress/core-data';
+// import { store as coreStore } from '@wordpress/core-data';
 // Import our stuff.
 // import { Image } from '@bostonuniversity/block-imports';
 import { Image } from './imports/index.mjs';
@@ -42,22 +42,6 @@ import { Image } from './imports/index.mjs';
 export default function Edit( props ) {
 	const { attributes, setAttributes } = props;
 	// We could destructure the attributes, but for funsies I'm not going to this time...
-
-	// eval https://www.google.com/search?q=js+eval&oq=js+eval&gs_lcrp=EgZjaHJvbWUyCQgAEEUYORiABDIHCAEQABiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIHCAYQABiABDIHCAcQABiABDINCAgQABiGAxiABBiKBTINCAkQABiGAxiABBiKBdIBCDIyMzVqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8
-	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/Function
-	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create
-	const myOnSelectCallback = () => {
-		// the whole media element as an object
-		console.log( 'myOnSelectCallback' );
-	};
-	const myOnRemoveCallback = () => {
-		console.log( 'myOnRemoveCallback' );
-	};
-	const myOnChangeFocalPointCallback = () => {
-		console.log( 'myOnChangeFocalPointCallback' );
-	};
-	const focalPointShit = { x: 0.15, y: 0.85 }; // needs to be array format, not string
-	const my_allowedTypes = [ 'audio' ];
 
 	function StringToObjectConverter( userString ) {
 		if ( ! userString ) {
@@ -84,8 +68,8 @@ export default function Edit( props ) {
 
 		try {
 			userObject = eval( userString );
-			console.log(userObject);
-			console.log(typeof userObject);
+			console.log( userObject );
+			console.log( typeof userObject );
 			return userObject;
 		} catch ( error ) {
 			console.error( 'Error parsing userString:', error );
@@ -100,40 +84,26 @@ export default function Edit( props ) {
 			<div { ...useBlockProps() }>
 				<Image
 					// Component setup
-					canEditImage={ attributes.canEditImage } // what to return attributes.canEditImage
-					// debug={ true }
-					// tag={ attributes.tag }
-					// size={ attributes.size }
-					// altSource={ attributes.altSource }
-					// mediaId={  } // 381625 or 381626 attributes.mediaId
-					// className={ attributes.className }
+					canEditImage={ attributes.canEditImage } // works
+					debug={ true } // works
+					tag={ attributes.tag } // works
+					size={ attributes.size } // FAILS
+					altSource={ attributes.altSource } // works
+					mediaId={ 381625 } // 381625 or 381626 attributes.mediaId // use 381625 or 381626 or undefined
+					className={ attributes.className } // works
+					canSetFocalPoint={ attributes.canSetFocalPoint } // FAILS
+					focalPoint={ StringToObjectConverter(
+						attributes.focalPoint // FAILS
+					) }
 					//
 					// Placeholder overrrides
-					labelsPlaceholder={ StringToObjectConverter(
-						attributes.labelsPlaceholder
-					) }
+					label={ attributes.label } // works
+					instructions={ attributes.instructions } // works
 					//
 					// MediaPlaceholder overrrides
 					labelsMediaPlaceholder={ StringToObjectConverter(
-						attributes.labelsMediaPlaceholder
+						attributes.labelsMediaPlaceholder // FAILS
 					) }
-					// allowedTypes={ StringToArrayConverter(
-					// 	// needs to be an array; @todo seems to be working for 1 second then shows images...
-					// 	attributes.allowedTypes
-					// ) }
-					allowedTypes={ [ 'audio' ] } // this works
-					accept={ attributes.accept }
-					//
-					// LoadingSpinner overrides
-					// not planned
-					//
-					// InspectorControls overrecids, we might not need these, maybe event listener works?
-					// canOverrideImage={ attributes.canOverrideImage } // inspector panel
-					// canSetFocalPoint={true} // setting to enable or not
-					// focalPoint={ focalPointShit }
-					// onChangeFocalPointCallback={ myOnChangeFocalPointCallback }
-					// onSelectCallback={ myOnSelectCallback }
-					// onRemoveCallback={ myOnRemoveCallback }
 				/>
 			</div>
 
@@ -155,38 +125,91 @@ export default function Edit( props ) {
 								}
 							/>
 						</PanelRow>
+						<PanelRow>
+							<SelectControl
+								label="tag"
+								help="How should the media be output?"
+								value={ attributes.tag }
+								options={ [
+									{ label: 'figure', value: 'figure' },
+									{ label: 'img', value: 'img' },
+									{ label: 'picture', value: 'picture' },
+								] }
+								onChange={ ( tag ) => setAttributes( { tag } ) }
+							/>
+						</PanelRow>
+						<PanelRow>
+							<TextControl
+								label="size"
+								help="Use WordPress image size identifier: `thumbnail`, `medium`, `large`, `full`, `your-custom-size`..."
+								value={ attributes.size }
+								onChange={ ( size ) =>
+									setAttributes( { size } )
+								}
+							/>
+						</PanelRow>
+						<PanelRow>
+							<TextControl
+								label="altSource"
+								help="Where do we get the alternative text? Leave blank to allow users to enter their own text. To pull from the media object use `alt`, `caption`, `title`, or `description`."
+								value={ attributes.altSource }
+								onChange={ ( altSource ) =>
+									setAttributes( { altSource } )
+								}
+							/>
+						</PanelRow>
+						<PanelRow>
+							<TextControl
+								label="className"
+								help="Class(es) to add to the component. Default is undefined."
+								value={ attributes.className }
+								onChange={ ( className ) =>
+									setAttributes( { className } )
+								}
+							/>
+						</PanelRow>
+						<PanelRow>
+							<TextControl
+								label="mediaId"
+								help="@todo"
+								value={ attributes.mediaId }
+								onChange={ ( mediaId ) =>
+									setAttributes( { mediaId } )
+								}
+							/>
+						</PanelRow>
+						<PanelRow>
+							<ToggleControl
+								label="debug"
+								help="@todo"
+								checked={ attributes.debug }
+								onChange={ ( debug ) =>
+									setAttributes( { debug } )
+								}
+							/>
+						</PanelRow>
 						<PanelRow>Placeholder overrrides</PanelRow>
 						<PanelRow>
 							<TextControl
-								label="labelsPlaceholder"
-								help="The title and instructions to show for Placeholder."
-								value={ attributes.labelsPlaceholder }
-								onChange={ ( labelsPlaceholder ) =>
-									setAttributes( { labelsPlaceholder } )
+								label="label"
+								help="The label to show for Placeholder."
+								value={ attributes.label }
+								onChange={ ( label ) =>
+									setAttributes( { label } )
+								}
+							/>
+						</PanelRow>
+						<PanelRow>
+							<TextControl
+								label="instructions"
+								help="The instructions to show for Placeholder."
+								value={ attributes.instructions }
+								onChange={ ( instructions ) =>
+									setAttributes( { instructions } )
 								}
 							/>
 						</PanelRow>
 						<PanelRow>MediaPlaceholder overrrides</PanelRow>
-						<PanelRow>
-							<TextControl
-								label="accept"
-								help="Tells the browser which file types can be uploaded."
-								value={ attributes.accept }
-								onChange={ ( accept ) =>
-									setAttributes( { accept } )
-								}
-							/>
-						</PanelRow>
-						<PanelRow>
-							<TextControl
-								label="allowedTypes"
-								help="The types of the media to upload/select from the media library."
-								value={ attributes.allowedTypes }
-								onChange={ ( allowedTypes ) =>
-									setAttributes( { allowedTypes } )
-								}
-							/>
-						</PanelRow>
 						<PanelRow>
 							<TextControl
 								label="labelsMediaPlaceholder"
@@ -198,101 +221,26 @@ export default function Edit( props ) {
 							/>
 						</PanelRow>
 						<PanelRow>FocalPointPicker overrrides</PanelRow>
-						<PanelRow>The actual component Setup...</PanelRow>
-						<PanelRow>InspectorControls overrecids</PanelRow>
-						{ /* <SelectControl
-						label="tag"
-						help="How should the media be output?"
-						value={ attributes.tag }
-						options={ [
-							{ label: 'figure', value: 'figure' },
-							{ label: 'img', value: 'img' },
-							{ label: 'picture', value: 'picture' },
-						] }
-						onChange={ ( tag ) => setAttributes( { tag } ) }
-					/>
-					<TextControl
-						label="size"
-						help="Use WordPress image size identifier: `thumbnail`, `medium`, `large`, `full`, `your-custom-size`..."
-						value={ attributes.size }
-						onChange={ ( size ) => setAttributes( { size } ) }
-					/>
-					<TextControl
-						label="altSource"
-						help="Where do we get the alternative text? Leave blank to allow users to enter their own text. To pull from the media object use `alt`, `caption`, `title`, or `description`."
-						value={ attributes.altSource }
-						onChange={ ( altSource ) =>
-							setAttributes( { altSource } )
-						}
-					/>
-					<TextControl
-						label="allowedTypes"
-						help="@todo"
-						value={ attributes.allowedTypes }
-						onChange={ ( allowedTypes ) =>
-							setAttributes( { allowedTypes } )
-						}
-					/>
-					<ToggleControl
-						label="canOverrideImage"
-						help="Can the user change the image?"
-						checked={ attributes.canOverrideImage }
-						onChange={ ( canOverrideImage ) =>
-							setAttributes( { canOverrideImage } )
-						}
-					/>
-					<TextControl
-						label="focalPoint"
-						help="Set a specific focal point. Default is `{ x: 0.5, y: 0.5 }`. Use `false` to disable."
-						value={ attributes.focalPoint }
-						onChange={ ( focalPoint ) =>
-							setAttributes( { focalPoint } )
-						}
-					/>
-					<TextControl
-						label="className"
-						help="Class(es) to add to the component. Default is undefined."
-						value={ attributes.className }
-						onChange={ ( className ) =>
-							setAttributes( { className } )
-						}
-					/>
-					<TextControl
-						label="mediaId"
-						help="@todo"
-						value={ attributes.mediaId }
-						onChange={ ( mediaId ) => setAttributes( { mediaId } ) }
-					/>
-					<TextControl
-						label="onSelect"
-						help="@todo"
-						value={ myOnSelect }
-						onChange={ ( onSelect ) =>
-							setAttributes( { onSelect } )
-						}
-					/>
-					<TextControl
-						label="onRemove"
-						help="@todo"
-						value={ attributes.onRemove }
-						onChange={ ( onRemove ) =>
-							setAttributes( { onRemove } )
-						}
-					/>
-					<TextControl
-						label="onChangeFocalPoint"
-						help="@todo"
-						value={ attributes.onChangeFocalPoint }
-						onChange={ ( onChangeFocalPoint ) =>
-							setAttributes( { onChangeFocalPoint } )
-						}
-					/>
-					<ToggleControl
-						label="debug"
-						help="@todo"
-						checked={ attributes.debug }
-						onChange={ ( debug ) => setAttributes( { debug } ) }
-					/> */ }
+						<PanelRow>
+							<ToggleControl
+								label="canEditFocalPoint"
+								help="Can the user change the image?"
+								checked={ attributes.canEditFocalPoint }
+								onChange={ ( canEditFocalPoint ) =>
+									setAttributes( { canEditFocalPoint } )
+								}
+							/>
+						</PanelRow>
+						<PanelRow>
+							<TextControl
+								label="focalPoint"
+								help="Set a specific focal point. Default is `{ x: 0.5, y: 0.5 }`. Use `false` to disable."
+								value={ attributes.focalPoint }
+								onChange={ ( focalPoint ) =>
+									setAttributes( { focalPoint } )
+								}
+							/>
+						</PanelRow>
 					</PanelBody>
 				</InspectorControls>
 			}
