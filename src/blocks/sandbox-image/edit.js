@@ -23,9 +23,6 @@ import {
 	ToggleControl, // https://developer.wordpress.org/block-editor/reference-guides/components/toggle-control/
 } from '@wordpress/components';
 
-// import { useSelect } from '@wordpress/data';
-
-// import { store as coreStore } from '@wordpress/core-data';
 // Import our stuff.
 // import { Image } from '@bostonuniversity/block-imports';
 import { Image } from './imports/index.mjs';
@@ -43,40 +40,57 @@ export default function Edit( props ) {
 	const { attributes, setAttributes } = props;
 	// We could destructure the attributes, but for funsies I'm not going to this time...
 
-	function StringToObjectConverter( userString ) {
-		if ( ! userString ) {
-			return undefined;
-		}
-		let userObject = {};
+	// function StringToObjectConverter( userString ) {
+	// 	if ( ! userString ) {
+	// 		return undefined;
+	// 	}
+	// 	let userObject = {};
 
-		try {
-			// Wrap the object literal string in parentheses for eval() to parse it as an expression
-			userObject = eval( '(' + userString + ')' );
-			return userObject;
-		} catch ( error ) {
-			console.error( 'Error parsing userString:', error );
-			// Handle the error appropriately, e.g., set a default object or display an error message
-			return undefined;
-		}
-	}
+	// 	try {
+	// 		// Wrap the object literal string in parentheses for eval() to parse it as an expression
+	// 		userObject = eval( '(' + userString + ')' );
+	// 		return userObject;
+	// 	} catch ( error ) {
+	// 		console.error( 'Error parsing userString:', error );
+	// 		return undefined;
+	// 	}
+	// }
 
-	function StringToArrayConverter( userString ) {
-		if ( ! userString ) {
-			return undefined;
-		}
-		let userObject = {};
+	// function StringToArrayConverter( userString ) {
+	// 	if ( ! userString ) {
+	// 		return undefined;
+	// 	}
+	// 	let userObject = {};
 
-		try {
-			userObject = eval( userString );
-			console.log( userObject );
-			console.log( typeof userObject );
-			return userObject;
-		} catch ( error ) {
-			console.error( 'Error parsing userString:', error );
-			// Handle the error appropriately, e.g., set a default object or display an error message
-			return undefined;
-		}
-	}
+	// 	try {
+	// 		userObject = eval( userString );
+	// 		console.log( userObject );
+	// 		console.log( typeof userObject );
+	// 		return userObject;
+	// 	} catch ( error ) {
+	// 		console.error( 'Error parsing userString:', error );
+	// 		return undefined;
+	// 	}
+	// }
+
+	const demo_mediaId = 381625; // 381625 or 381626 - FAILS, might need reload?
+	const demo_focalPoint = { x: 0.5, y: 0.5 };
+	const demo_labelsMediaPlaceholder = {
+		title: 'my custom title',
+		instructions: 'my custom instructions',
+	};
+	const demo_sourceSizes = [
+		{
+			srcset: 'thumbnail',
+			descriptor: '200w',
+			media: '(min-width: 600px)',
+		},
+		{
+			srcset: 'full',
+			descriptor: '2x',
+			media: '(min-width: 300px)',
+		},
+	];
 
 	// replaces wp image? https://github.com/WordPress/gutenberg/blob/c54fa0beb059a2e3b2d2f5a32f26ab47598be0b6/packages/block-library/src/image/edit.js
 	return (
@@ -84,26 +98,23 @@ export default function Edit( props ) {
 			<div { ...useBlockProps() }>
 				<Image
 					// Component setup
-					canEditImage={ attributes.canEditImage } // works
-					debug={ true } // works
-					tag={ attributes.tag } // works
-					size={ attributes.size } // FAILS
-					altSource={ attributes.altSource } // works
-					mediaId={ 381625 } // 381625 or 381626 attributes.mediaId // use 381625 or 381626 or undefined
-					className={ attributes.className } // works
-					canSetFocalPoint={ attributes.canSetFocalPoint } // FAILS
-					focalPoint={ StringToObjectConverter(
-						attributes.focalPoint // FAILS
-					) }
+					canEditImage={ attributes.canEditImage }
+					debug={ true }
+					tag={ attributes.tag }
+					size={ attributes.size }
+					sourceSizes={ demo_sourceSizes }
+					altSource={ attributes.altSource }
+					mediaId={ demo_mediaId }
+					className={ attributes.className }
+					canEditFocalPoint={ attributes.canEditFocalPoint }
+					focalPoint={ demo_focalPoint }
 					//
 					// Placeholder overrrides
-					label={ attributes.label } // works
-					instructions={ attributes.instructions } // works
+					label={ attributes.label }
+					instructions={ attributes.instructions }
 					//
 					// MediaPlaceholder overrrides
-					labelsMediaPlaceholder={ StringToObjectConverter(
-						attributes.labelsMediaPlaceholder // FAILS
-					) }
+					labelsMediaPlaceholder={ demo_labelsMediaPlaceholder }
 				/>
 			</div>
 
@@ -209,7 +220,7 @@ export default function Edit( props ) {
 								}
 							/>
 						</PanelRow>
-						<PanelRow>MediaPlaceholder overrrides</PanelRow>
+						{ /* <PanelRow>MediaPlaceholder overrrides</PanelRow>
 						<PanelRow>
 							<TextControl
 								label="labelsMediaPlaceholder"
@@ -219,7 +230,7 @@ export default function Edit( props ) {
 									setAttributes( { labelsMediaPlaceholder } )
 								}
 							/>
-						</PanelRow>
+						</PanelRow> */ }
 						<PanelRow>FocalPointPicker overrrides</PanelRow>
 						<PanelRow>
 							<ToggleControl
@@ -231,7 +242,7 @@ export default function Edit( props ) {
 								}
 							/>
 						</PanelRow>
-						<PanelRow>
+						{ /* <PanelRow>
 							<TextControl
 								label="focalPoint"
 								help="Set a specific focal point. Default is `{ x: 0.5, y: 0.5 }`. Use `false` to disable."
@@ -240,7 +251,7 @@ export default function Edit( props ) {
 									setAttributes( { focalPoint } )
 								}
 							/>
-						</PanelRow>
+						</PanelRow> */ }
 					</PanelBody>
 				</InspectorControls>
 			}

@@ -1,11 +1,10 @@
 /**
- * A loading spinner to be used to indicate some activity is occuring.
+ * BU's take on the Image component.
  */
 
 // External dependencies.
 import classnames from 'classnames';
-import { useState, useEffect } from '@wordpress/element';
-// import { useSelect } from '@wordpress/data';
+import { useState } from '@wordpress/element';
 
 import {
 	MediaPlaceholder,
@@ -23,21 +22,14 @@ import {
 	Placeholder,
 } from '@wordpress/components';
 
-// import { more } from '@wordpress/icons';
-
 import { __ } from '@wordpress/i18n';
 
 // BU dependencies.
-// import { useMedia, LoadingSpinner } from '../../index.js';
 import {
 	useMedia,
 	getImageData,
 	LoadingSpinner,
 } from '@bostonuniversity/block-imports';
-// import { getMediaObj } from './getMediaObj.mjs';
-
-// Import CSS. @todo remove if not needed
-// import './editor.scss';
 
 /**
  * Returns the class list for the component based on the current settings.
@@ -62,6 +54,7 @@ export const Image = ( props ) => {
 		debug = true,
 		tag = 'img',
 		size = 'thumbnail',
+		sourceSizes = [],
 		altSource = 'alt',
 		mediaId = undefined,
 		className = undefined,
@@ -79,15 +72,13 @@ export const Image = ( props ) => {
 		...rest
 	} = props;
 
-	// /**
-	//  * STATES .. props are fixed, these aint
-	//  */
+	/**
+	 * States.
+	 */
 	const [ currentFocalPoint, setFocalPoint ] = useState( focalPoint );
-	// const [ currentMedia, setMedia ] = useState( media );
 	const [ currentMediaId, setMediaId ] = useState( mediaId );
-	// const [ altText, setAltText ] = useState( altSource );
-	// const [ imgObj, setImgObj ] = useState( undefined );
-	// // const [ hasImage, setHasImage ] = useState( currentMediaId ? true : false );
+
+	let imgObj = false;
 
 	// Fetch the media object based on the `currentMediaId`. Should this be useEffect?
 	const { mediaObj, isResolvingMedia, hasResolvedMedia } =
@@ -96,6 +87,7 @@ export const Image = ( props ) => {
 	// If Debug is set to true, output some helpful information to the console for block developers to utilize media object info in their block development.
 	if ( isResolvingMedia ) {
 		if ( debug ) {
+			// eslint-disable-next-line no-console
 			console.log( 'Image Media Fetch in Progress: ', isResolvingMedia );
 		}
 		return (
@@ -114,22 +106,24 @@ export const Image = ( props ) => {
 
 	if ( hasResolvedMedia ) {
 		if ( debug ) {
+			// eslint-disable-next-line no-console
 			console.log( 'Image Media Fetched: ', mediaObj );
 		}
 	}
 
-	/**
-	 * @todo...
-	 *
-	 * @see https://github.com/bu-ist/block-imports/tree/develop/components/LoadingSpinner
-	 * @todo this doesn't seem to update/useState?
-	 */
-	const imgObj = getImageData( mediaObj, size );
+	if ( mediaObj ) {
+		imgObj = getImageData( mediaObj, size, 'full' );
 
-	if ( debug ) {
-		console.log( 'Image Object: ', imgObj );
+		if ( debug ) {
+			// eslint-disable-next-line no-console
+			console.log( 'Image Object: ', imgObj );
+		}
+		if ( ! imgObj ) {
+			return <div>uh oh { size } not found</div>;
+		}
 	}
-	// Is an image set already? @todo state?
+
+	// Is an image set already?
 	const hasImage = imgObj ? true : false;
 
 	/**
@@ -173,7 +167,9 @@ export const Image = ( props ) => {
 		);
 	}
 
-	// alt, caption, title, description
+	/**
+	 * Build the alt text attribute.
+	 */
 	let altText = '';
 	if ( altSource === 'alt' ) {
 		altText = imgObj.alt;
@@ -186,35 +182,51 @@ export const Image = ( props ) => {
 	} else {
 		altText = altSource;
 	}
-	// stickk all this in useEffect
 
-	// srcset
-	const sources = [];
-	if ( tag === 'picture' ) {
-		const srcset = {
-			sources: [
-				{
-					srcset: getImageData( mediaObj, 'medium' ).src,
-					media: '(min-width: 600px)',
-					type: imgObj.mime_type,
-				},
-				{
-					srcset: getImageData( mediaObj, 'large' ).src,
-					media: '(min-width: 300px)',
-				},
-			],
-		};
-		for ( let i = 0; i < srcset.sources.length; i++ ) {
-			const source = srcset.sources[ i ];
-			sources.push(
+	/**
+	 * Build the image sources, if defined.
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/source#sizes
+	 */
+	if ( debug ) {
+		// eslint-disable-next-line no-console
+		console.log( 'sourceSizes: ', sourceSizes );
+	}
+	const sourcesTag = []; // tags for picture
+	let srcsetAttribute = ''; // attribute for img
+	const srcsetAttributeArray = []; // holder for srcsetAttribute before using join
+	//
+	sourceSizes.forEach( function ( imgSource ) {
+		const imgSourceObj = getImageData( mediaObj, imgSource.srcset );
+		if ( debug ) {
+			// eslint-disable-next-line no-console
+			console.log( 'imgSource: ', imgSource );
+			// eslint-disable-next-line no-console
+			console.log( 'imgSourceObj: ', imgSourceObj );
+		}
+		if ( imgSourceObj ) {
+			// for picture
+			sourcesTag.push(
 				<source
-					srcSet={ source.srcset }
-					media={ source.media }
-					type={ source.type }
+					srcSet={ imgSourceObj.src }
+					media={ imgSource.media }
+					type={ imgObj.mime_type }
 				/>
 			);
+			// for imgs
+			srcsetAttributeArray.push(
+				`${ imgSourceObj.src } ${ imgSource.descriptor }`.trim()
+			);
 		}
+	} );
+	srcsetAttribute = srcsetAttributeArray.join( ', ' );
+	if ( debug ) {
+		// eslint-disable-next-line no-console
+		console.log( 'sourcesTag: ', sourcesTag );
+		// eslint-disable-next-line no-console
+		console.log( 'srcsetAttribute: ', srcsetAttribute );
 	}
+	// }
 
 	/**
 	 * Finally, something interesting to display. We have a mediaObject, let's show it!
@@ -283,35 +295,30 @@ export const Image = ( props ) => {
 			) }
 			{ /* Always show the image. */ }
 			{ tag === 'picture' && (
-				<>
-					<h3>picture</h3>
-					<picture className={ getClasses( className ) } { ...rest }>
-						{ sources }
-						<img src={ imgObj.src } alt={ altText } />
-					</picture>
-				</>
+				<picture className={ getClasses( className ) } { ...rest }>
+					{ sourcesTag }
+					<img src={ imgObj.src } alt={ altText } />
+				</picture>
 			) }
 			{ tag === 'figure' && (
-				<>
-					<h3>figure</h3>
-					<figure className={ getClasses( className ) } { ...rest }>
-						<img src={ imgObj.src } alt={ altText } />
-						<figcaption>{ altText }</figcaption>
-					</figure>
-				</>
-			) }
-			{ tag === 'img' && (
-				<>
-					<h3>img</h3>
+				<figure className={ getClasses( className ) } { ...rest }>
 					<img
-						className={ getClasses( className ) }
 						src={ imgObj.src }
 						alt={ altText }
-						{ ...rest }
+						srcSet={ srcsetAttribute }
 					/>
-				</>
+					<figcaption>{ altText }</figcaption>
+				</figure>
+			) }
+			{ tag === 'img' && (
+				<img
+					className={ getClasses( className ) }
+					srcSet={ srcsetAttribute }
+					src={ imgObj.src }
+					alt={ altText }
+					{ ...rest }
+				/>
 			) }
 		</div>
 	);
 };
-// npx wp-scripts lint-js ./utils --fix

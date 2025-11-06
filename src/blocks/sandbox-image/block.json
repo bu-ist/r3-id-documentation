@@ -31,24 +31,18 @@
 		"className": {
 			"type": "string"
 		},
-
-
 		"canEditFocalPoint": {
 			"type": "boolean"
 		},
 		"focalPoint": {
 			"type": "string"
 		},
-
-
 		"label": {
 			"type": "string"
 		},
 		"instructions": {
 			"type": "string"
 		},
-
-
 		"labels": {
 			"type": "array"
 		}
