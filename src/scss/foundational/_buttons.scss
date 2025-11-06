@@ -1,0 +1,160 @@
+// =================================================================
+// Responsive Button Variables
+// =================================================================
+
+/// Controls the font used on all buttons and
+/// things that looks like buttons across the site.
+/// @group config
+/// @access public
+/// @since 1.0.0
+
+// $font-family-button:                       $font-family-sans-serif !default;
+
+/// Controls the font size used on all buttons and
+/// things that looks like buttons across the site.
+/// @group config
+/// @access public
+/// @since 1.0.0
+
+// $font-size-button:                         inherit !default;
+
+/// Controls the background color used on all buttons and
+/// things that looks like buttons across the site.
+/// @group config
+/// @access public
+/// @since 1.0.0
+
+// $color-button-bg:                          $color-grayscale-e !default;
+
+/// Controls the text color used on default buttons and
+/// things that looks like buttons across the site.
+/// @group config
+/// @access public
+/// @since 1.0.0
+
+// $color-button-text:                        $color-grayscale-4 !default;
+
+/// Controls the background color used on all primary buttons and
+/// things that looks like buttons across the site.
+/// @group config
+/// @access public
+/// @since 1.0.0
+
+// $color-button-primary-bg:                  #0074E0 !default;
+
+/// Controls the text color used on primary buttons and
+/// things that looks like buttons across the site.
+/// @group config
+/// @access public
+/// @since 1.0.0
+
+// $color-button-primary-text:                $color-grayscale-f !default;
+
+/// Controls the margin used on all buttons and
+/// things that looks like buttons across the site.
+/// @group config
+/// @access public
+/// @since 1.0.0
+
+// $margin-button:                            0 $margin-small $margin-small 0 !default;
+
+/// Controls the padding used on all buttons and
+/// things that looks like buttons across the site.
+/// @group config
+/// @access public
+/// @since 1.0.0
+
+// $padding-button:                           0.5em 1em !default;
+
+/// Controls the border used on all buttons and
+/// things that looks like buttons across the site.
+/// @group config
+/// @access public
+/// @since 1.0.0
+
+// $border-button:                            0;
+
+/// Controls the border radius used on all buttons and
+/// things that looks like buttons across the site.
+/// @group config
+/// @access public
+/// @since 1.0.0
+
+// $border-radius-button:                     2px !default;
+
+
+// =================================================================
+// Responsive Buttons Import
+// =================================================================
+
+@import "burf-base/buttons";
+
+// =================================================================
+// Foundation Custom Properties (Uses SASS placeholders)
+// =================================================================
+
+// %button-styles {
+//     --bu-button-background-color: #{$color-button-bg};
+//     --bu-button-border: #{$border-button};
+//     --bu-button-border-radius: #{$border-radius-button};
+//     --bu-button-text-color: #{$color-button-text};
+//     --bu-button-font-family: #{$font-family-button};
+//     --bu-button-font-size: #{$font-size-button};
+//     --bu-button-font-weight: 700;
+//     --bu-button-margin: #{$margin-button};
+//     --bu-button-padding: #{$padding-button};
+//     --bu-button-background-color--hover: #{darken($color-button-bg, 10%)};
+//     --bu-button-text-color--hover: #{$color-button-text};
+// }
+
+// %button-styles-input {
+//     --button-disabled-background: #{$color-grayscale-d};
+//     --button-disabled-text-color: #{$color-grayscale-7};
+// }
+
+// %button-styles-primary {
+//     --bu-button-primary-background-color: #{$color-button-primary-bg};
+//     --bu-button-primary-text-color: #{$color-button-primary-text};
+//     --bu-button-primary-background-color--hover: #{darken($color-button-primary-bg, 10%)};
+//     --bu-button-primary-text-color--hover: #{$color-button-primary-text};
+// }
+
+// =================================================================
+// BU Base Custom Properties (Uses mixins)
+// =================================================================
+
+//  @mixin button-base() {
+//     --bu-button-background-color:         #{$purple-gem};
+//     --bu-button-background-color--hover:  #{$royal-purple};
+//     --bu-button-border:                    none;
+//     --bu-button-border--hover:             none;
+//     --bu-button-border-radius:             var(--border-radius-none);
+//     --bu-button-text-color:                var(--color-neutral-900);
+//     --bu-button-text-color--hover:         var(--color-neutral-900);
+//     --bu-button-font-family:               var(--bu-text-font);
+//     --bu-button-font-size:                 inherit;
+//     --bu-button-icon-color:                var(--bu-button-text-color);
+//     --bu-button-icon-color--hover:         var(--bu-button-text-color--hover);
+//     --bu-button-icon-size:                 1.1em;
+//     --bu-button-padding:                   0.5em 1em;
+//     --bu-button-margin:                    0 15px 15px 0;
+// }
+
+// @mixin button-style-primary() {
+//   --bu-button-primary-background-color:          #{$blue-shadow};
+//   --bu-button-primary-background-color--hover:   #{$royal-purple};
+//   --bu-button-primary-text-color:                var(--color-neutral-0);
+//   --bu-button-primary-text-color--hover:         var(--color-neutral-0);
+// }
+
+// :where(button, .button) {
+//   @include button-base();
+// }
+
+// :where(.button-primary) {
+//   @include button-style-primary();
+// }
+
+// =================================================================
+// Custom Button Styles
+// =================================================================
