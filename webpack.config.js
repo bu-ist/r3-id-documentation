@@ -1,130 +1,47 @@
 /**
- * WEBPACK CONFIG
+ * Example webpack.config.js for a theme using BU Build Toolkit
  *
- * This file extends the default wp-scripts webpack config file found here
- *
- * @link https://webpack.js.org/concepts/ Webpack Docs
- * @link https://github.com/WordPress/gutenberg/blob/trunk/packages/scripts/config/webpack.config.js WordPress Webpack Config
- * @link https://developer.bu.edu/gutenberg/gutenberg-handbook/webpack-config-js/ BU Documentation
- *
- * Run `npm list webpack` to see current version.
+ * Uses CommonJS with async dynamic import to load the ESM toolkit.
+ * This avoids needing "type": "module" in package.json or .mjs extensions.
  */
 
-const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
-const { mergeWithRules } = require( 'webpack-merge' );
-const CopyWebpackPlugin = require( 'copy-webpack-plugin' );
-const RemoveEmptyScriptsPlugin = require( 'webpack-remove-empty-scripts' );
+// Define your theme's entry points
+const themeEntryPoints = {
+	// Styles
+	'css/normalize': './src/scss/normalize.scss', // Build a Normalize stylesheet.
+	'css/theme': './src/scss/theme.scss', // A stylesheet for the theme.
+	'css/admin': './src/scss/admin.scss', // A stylesheet for admin only styles.
+	'css/editor-styles': './src/scss/editor-styles.scss', // A stylesheet for editor only styles.
+	'css/block-editor': './src/scss/block-editor.scss', // A stylesheet for block editor only styles.
+	'css/classic-editor': './src/scss/classic-editor.scss', // A stylesheet for block editor only styles.
 
-// Import our theme paths from a separate file that can be modified in the theme.
-const {
-	themeEntryPoints,
-	sassCompiler,
-	statsConfig,
-	customSassOptions,
-} = require( './webpack.customizations' );
+	// Blocks
+	'css/blocks/blocks-bundled': './src/blocks/blocks-bundled.scss', // All individual block styles bundled into one file.
+	'css/blocks/blocks-common': './src/blocks/blocks-common.scss', // Styles common to all blocks.
 
-/**
- * Block Config for @wordpress/scripts & webpack
- *
- * Do not modify the entry points of this config as it uses the `getWebpackEntryPoints` function from wp-scripts that finds all blocks and block.json files and builds a list of entrypoints for webpack from that automagically.
- */
-const blocksConfig = {
-	module: {
-		rules: [
-			{
-				test: /\.(js|mjs)$/,
-				loader: 'babel-loader',
-				exclude: /node_modules\/(?!(@bostonuniversity)\/).*/,
-			},
-			{
-				test: /\.(sc|sa)ss$/,
-				use: [
-					{
-						loader: require.resolve( 'sass-loader' ),
-						options: {
-							sassOptions: customSassOptions,
-							implementation: require( sassCompiler ),
-						},
-					},
-				],
-			},
-		],
-	},
-	stats: statsConfig,
+	// Scripts
+	'js/theme': './src/js/theme.js', // Front-end scripts.
+	'js/admin': './src/js/admin.js', // Admin only scripts.
+	'js/block-editor': './src/js/block-editor.js', // Block editor only scripts.
+	'js/classic-editor': './src/js/classic-editor.js', // Block editor only scripts.
 };
 
-/**
- * Block Styles Config for @wordpress/scripts & webpack
- *
- * Used to compile additional stylesheets for blocks such as Decorative Styles and Shared/Common styles.
- * This config entirely replaces the default entry points from the @wordpress/scripts defaultConfig. This ensures
- * that the blocks are not processed a second time.
- */
-const themeConfig = {
-	entry: {
-		...themeEntryPoints,
-	},
-	module: {
-		rules: [
-			{
-				test: /\.(sc|sa)ss$/,
-				use: [
-					{
-						loader: require.resolve( 'css-loader' ),
-						options: {},
-					},
-					{
-						loader: require.resolve( 'sass-loader' ),
-						options: {
-							sassOptions: customSassOptions,
-							implementation: require( sassCompiler ),
-						},
-					},
-				],
-			},
-		],
-	},
-	stats: statsConfig,
-	plugins: [
-		// Grab the defaultConfig's plugins array and filter it to remove what we don't need.
-		...defaultConfig.plugins.filter(
-			// Remove CopyWebpackPlugin from the ThemeConfig so we don't copy block.json & php files into our output folder for the theme's files.
-			( plugin ) => ! ( plugin instanceof CopyWebpackPlugin )
-		),
-		new RemoveEmptyScriptsPlugin(), // Add new plugin that removes empty script files for CSS only entries
-	],
-};
+// Export an async function that returns the config
+// Webpack supports async configs that return promises
+module.exports = ( async () => {
+	const { createConfig } = await import(
+		'@bostonuniversity/bu-build-toolkit'
+	);
 
-/**
- * Now we use `webpack-merge` to combine our custom rules defined here with the base WordPress rules.
- * Export the new modified configuration for webpack and use the webpack-merge functions to merge our modified configuration in.
- * @link https://github.com/survivejs/webpack-merge?tab=readme-ov-file#mergewithrules
- */
-module.exports = [
-	mergeWithRules( {
-		module: {
-			rules: {
-				test: 'match',
-				use: {
-					loader: 'match',
-					options: 'merge',
-				},
-			},
-		},
-		stats: 'replace',
-	} )( defaultConfig, blocksConfig ),
-	mergeWithRules( {
-		entry: 'merge',
-		module: {
-			rules: {
-				test: 'match',
-				use: {
-					loader: 'match',
-					options: 'merge',
-				},
-			},
-		},
-		stats: 'replace',
-		plugins: 'replace',
-	} )( defaultConfig, themeConfig ),
-];
+	return createConfig( {
+		themeEntryPoints,
+		// Optional: Add custom SASS include paths
+		// loadPaths: [ './custom/path' ],
+		// Optional: Override SASS compiler (default is 'sass-embedded')
+		// sassCompiler: 'sass',
+		// Optional: Custom webpack stats configuration
+		// statsConfig: { preset: 'verbose', colors: true },
+		// Optional: Custom SASS options
+		// sassOptions: { outputStyle: 'compressed' },
+	} );
+} )();
