@@ -1,92 +1,84 @@
 {
-  "name": "r3-id-documentation",
-  "version": "0.4.1",
-  "description": "A block-editor enabled starter template for child themes of Responsive Framework 3.",
-  "author": {
-    "name": "Boston University",
-    "url": "https://github.com/bu-ist/r3-id-documentation"
-  },
-  "contributors": [
-    "Tim King <timking@bu.edu>"
-  ],
-  "license": "GPL-2.0-or-later",
-  "keywords": [],
-  "homepage": "https://github.com/bu-ist/r3-id-documentation",
-  "repository": "https://github.com/bu-ist/r3-id-documentation",
-  "bugs": {
-    "url": "https://github.com/bu-ist/r3-id-documentation/issues"
-  },
-  "private": true,
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ],
-  "browserify-shim": {
-    "jquery": "global:jQuery"
-  },
-  "browserify": {
-    "transform": [
-      "browserify-shim"
-    ]
-  },
-  "devDependencies": {
-    "@bostonuniversity/base": "0.1.3-alpha.2",
-    "@bostonuniversity/block-imports": "git@github.com:bu-ist/block-imports.git#develop",
-    "@bostonuniversity/burf-customizations": "6.0.0-alpha.10",
-    "@bostonuniversity/burf-tools": "6.0.0-alpha.10",
-    "@wordpress/scripts": "27.1.0",
-    "@wordpress/stylelint-config": "21.33.0",
-    "ajv": "8.17.1",
-    "browserify": "17.0.0",
-    "browserify-shim": "3.8.16",
-    "html-react-parser": "5.2.5",
-    "node-wp-i18n": "1.2.7",
-    "nodemon": "3.0.2",
-    "npm-run-all": "4.1.5",
-    "rimraf": "5.0.5",
-    "sass-embedded": "1.85.1",
-    "showdown": "2.1.0",
-    "webpack-merge": "5.10.0",
-    "webpack-remove-empty-scripts": "1.0.4",
-    "wp-version-upgrade": "1.0.3",
-    "yalc": "1.0.0-pre.53"
-  },
-  "scripts": {
-    "__SETUP__": "=========================================================================",
-    "postinstall": "composer install",
-    "check-engines": "wp-scripts check-engines",
-    "check-licenses": "wp-scripts check-licenses",
-    "__DEVELOPMENT__": "===================================================================",
-    "start": "npm-run-all --parallel watch:scripts watch:theme",
-    "watch:scripts": "wp-scripts start  --color | grep -v '^    at ' || true",
-    "watch:theme": "nodemon --watch src/theme-json dev/theme-json/compile.mjs",
-    "watch:verbose": "wp-scripts start",
-    "__BLOCKS__": "=========================================================================",
-    "new-id-block": "cd src/blocks && npx @wordpress/create-block@latest --template @bostonuniversity/create-block-templates --no-plugin",
-    "new-wp-block": "cd src/blocks && npx @wordpress/create-block@latest --no-plugin",
-    "__CLEANUP__": "=======================================================================",
-    "format": "wp-scripts format",
-    "lint": "npm-run-all lint:css lint:js lint:md lint:php lint:pkg",
-    "lint:css": "wp-scripts lint-style",
-    "lint:js": "wp-scripts lint-js",
-    "lint:js:fix": "wp-scripts lint-js --fix --ignore-pattern '/dev/'",
-    "lint:md": "wp-scripts lint-md-docs",
-    "lint:php": "dev/phpcs/lint-modified.sh",
-    "lint:php:all": "dev/phpcs/lint-all.sh",
-    "lint:pkg": "wp-scripts lint-pkg-json",
-    "__TESTING__": "=======================================================================",
-    "test:e2e": "wp-scripts test-e2e",
-    "test:unit": "wp-scripts test-unit-js",
-    "__BUILD__": "=========================================================================",
-    "build": "npm-run-all build:theme build:scripts build:i18n build:version",
-    "build:verbose": "wp-scripts build",
-    "build:theme": "node --trace-warnings dev/theme-json/compile.mjs",
-    "build:scripts": "wp-scripts build --color | grep -v '^    at ' || true",
-    "build:i18n": "npm-run-all build:clean build:wpi18n build:wpmakepot",
-    "build:clean": "rimraf languages/*",
-    "build:wpi18n": "wpi18n addtextdomain",
-    "build:wpmakepot": "wpi18n makepot --domain-path languages",
-    "build:version": "node dev/version.js"
-  }
+	"name": "r3-id-documentation",
+	"version": "0.4.1",
+	"description": "A block-editor enabled starter template for child themes of Responsive Framework 3.",
+	"author": {
+		"name": "Boston University",
+		"url": "https://github.com/bu-ist/r3-id-documentation"
+	},
+	"contributors": [
+		"Tim King <timking@bu.edu>"
+	],
+	"license": "GPL-2.0-or-later",
+	"keywords": [],
+	"homepage": "https://github.com/bu-ist/r3-id-documentation",
+	"repository": "https://github.com/bu-ist/r3-id-documentation",
+	"bugs": {
+		"url": "https://github.com/bu-ist/r3-id-documentation/issues"
+	},
+	"private": true,
+	"browserslist": [
+		"> 1%",
+		"last 2 versions",
+		"not dead"
+	],
+	"devDependencies": {
+		"@bostonuniversity/base": "0.1.3-alpha.2",
+		"@bostonuniversity/block-imports": "git@github.com:bu-ist/block-imports.git#develop",
+		"@bostonuniversity/bu-build-toolkit": "^0.1.1",
+		"@bostonuniversity/burf-customizations": "6.0.0-alpha.10",
+		"@bostonuniversity/burf-tools": "6.0.0-alpha.10",
+		"html-react-parser": "5.2.5",
+		"showdown": "2.1.0",
+		"wp-version-upgrade": "1.0.3",
+		"yalc": "1.0.0-pre.53"
+	},
+	"optionalDependencies": {
+		"sass-embedded": "^1.97.2"
+	},
+	"scripts": {
+		"__SETUP__": "=========================================================================",
+		"postinstall": "cd node_modules/@bostonuniversity/bu-build-toolkit && composer install",
+		"check-engines": "bu-build check-engines",
+		"check-licenses": "bu-build check-licenses",
+		"__DEVELOPMENT__": "===================================================================",
+		"start": "bu-build start",
+		"watch:verbose": "bu-build watch:verbose",
+		"watch:scripts": "bu-build watch:scripts",
+		"watch:theme-json": "bu-build watch:theme-json",
+		"__BLOCKS__": "=========================================================================",
+		"new-id-block": "cd src/blocks && npx @wordpress/create-block@latest --template @bostonuniversity/create-block-templates --no-plugin",
+		"new-wp-block": "cd src/blocks && npx @wordpress/create-block@latest --no-plugin",
+		"__CLEANUP__": "=======================================================================",
+		"format": "bu-build format",
+		"lint": "bu-build lint",
+		"lint:css": "bu-build lint:css",
+		"lint:js": "bu-build lint:js",
+		"lint:js:fix": "bu-build lint:js:fix",
+		"lint:md": "bu-build lint:md",
+		"lint:pkg": "bu-build lint:pkg",
+		"lint:php": "bu-build lint:php",
+		"lint:php:all": "bu-build lint:php:all",
+		"__TESTING__": "=======================================================================",
+		"test:e2e": "bu-build test:e2e",
+		"test:unit": "bu-build test:unit",
+		"__BUILD__": "=========================================================================",
+		"build": "bu-build build",
+		"build:log": "bu-build build 2>&1 | tee build.log",
+		"build:scripts": "bu-build build:scripts",
+		"build:theme-json": "bu-build build:theme-json",
+		"build:i18n": "bu-build build:i18n",
+		"build:clean": "bu-build build:clean",
+		"build:wpi18n": "bu-build build:wpi18n",
+		"build:wpmakepot": "bu-build build:wpmakepot",
+		"build:version": "bu-build build:version",
+		"build:verbose": "bu-build build:verbose"
+	},
+	"eslintConfig": {
+		"extends": "./node_modules/@bostonuniversity/bu-build-toolkit/config/.eslintrc.json"
+	},
+	"stylelint": {
+		"extends": "./node_modules/@bostonuniversity/bu-build-toolkit/config/.stylelintrc"
+	},
+	"svgo": "./node_modules/@bostonuniversity/bu-build-toolkit/config/svgo.config.js"
 }
