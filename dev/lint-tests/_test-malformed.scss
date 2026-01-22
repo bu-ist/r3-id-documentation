@@ -1,1 +1,27 @@
-h2 {display borked}
+// Test for Autoprefixer - these properties should get vendor prefixes
+// .autoprefixer-test {
+// 	display: flex;
+// 	flex-direction: column;
+// 	align-items: center;
+// 	justify-content: space-between;
+// 	user-select: none;
+// 	appearance: none;
+// 	backdrop-filter: blur(10px);
+// 	transform: rotate(45deg);
+// 	transition: all 0.3s ease;
+// }
+
+// .grid-test {
+// 	display: grid;
+// 	grid-template-columns: repeat(3, 1fr);
+// 	gap: 20px;
+// }
+
+//h2 {display borked}
+
+
+// Creates a malformed url error. In Webpack 5.104.0 this causes the source code of the related files
+// to be dumped into the console output. This should be fixed in a future version of Webpack 5 per PR#20258.
+// h2 {
+//     background-image: url(broken-image.jpg;);
+// }
