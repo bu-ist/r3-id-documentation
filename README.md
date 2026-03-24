@@ -63,8 +63,8 @@ Please update this if you have a newer version of Node and can verify the theme 
 - `npm run lint:js` - Lints js files using [eslint](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-scripts/#lint-js).
 - `npm run lint:js:fix` - Trys to fix as many issues as possible using [eslint](https://eslint.org/docs/latest/use/command-line-interface#fix-problems).
 - `npm run lint:md` - Lints md files using [markdownlint](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-scripts/#lint-md-docs).
-- `npm run lint:php` - Lints modified php files using [PHPCS](https://github.com/squizlabs/PHP_CodeSniffer).
-- `npm run lint:php:all` - Lints all php files using [PHPCS](https://github.com/squizlabs/PHP_CodeSniffer).
+- `npm run lint:php` - Lints modified php files using [PHPCS](https://github.com/PHPCSStandards/PHP_CodeSniffer).
+- `npm run lint:php:all` - Lints all php files using [PHPCS](https://github.com/PHPCSStandards/PHP_CodeSniffer).
 - `npm run lint:pkg` - Lints package.json using [npm-package-json-lint](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-scripts/#lint-pkg-json).
 
 ### Build Scripts
