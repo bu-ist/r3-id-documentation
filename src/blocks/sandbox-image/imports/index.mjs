@@ -20,6 +20,7 @@ import {
 	PanelBody,
 	PanelRow,
 	Placeholder,
+	TextControl, // https://developer.wordpress.org/block-editor/reference-guides/components/text-control/
 } from '@wordpress/components';
 
 import { __ } from '@wordpress/i18n';
@@ -56,7 +57,9 @@ export const Image = ( props ) => {
 		size = 'thumbnail',
 		sourceSizes = [],
 		altSource = 'alt',
+		altText = undefined,
 		mediaId = undefined,
+		mediaIdFallback = undefined,
 		className = undefined,
 		canEditFocalPoint = true,
 		focalPoint = { x: 0.5, y: 0.5 },
@@ -69,20 +72,73 @@ export const Image = ( props ) => {
 			instructions: 'MediaPlaceholder instructions...',
 		},
 		//
-		...rest
+		// Functions to send stuff back to the block... @todo
+		onSelectMedia = () => {},
+		onChangeFocalPoint = () => {},
+		onChangeAltText = () => {},
+		...rest // Additional properties can be passed that will be output on the IMG element such as data attributes.
 	} = props;
 
 	/**
 	 * States.
 	 */
-	const [ currentFocalPoint, setFocalPoint ] = useState( focalPoint );
-	const [ currentMediaId, setMediaId ] = useState( mediaId );
+	// const [ currentFocalPoint, onChangeFocalPoint ] = useState( focalPoint );
+	// const [ mediaId, onSelectMedia ] = useState( mediaId );
+
+	/**
+	 * If there is no image set, and the user can't edit the image show the fallback and a message (Placeholder).
+	 *
+	 * @see https://developer.wordpress.org/block-editor/reference-guides/components/Placeholder/
+	 */
+	if ( ! mediaId && ! canEditImage ) {
+		return (
+			<>
+				<img
+					className="bu-components-image-fallback"
+					src={ mediaIdFallback }
+					alt=""
+				/>
+				<Placeholder
+					// Required Props - none
+
+					// Customizable Props
+					className="bu-components-image-placeholder"
+					label={ label }
+					instructions={ instructions }
+
+					// @todo decide if any of these or other props should be defined or malleable
+				/>
+			</>
+		);
+	}
+
+	/**
+	 * If there is no image set, but the user can edit the image, show a picker (Media Placeholder).
+	 *
+	 * @see https://github.com/WordPress/gutenberg/blob/HEAD/packages/block-editor/src/components/media-placeholder/README.md
+	 */
+	if ( ! mediaId ) {
+		return (
+			<MediaPlaceholder
+				// Required Props
+				onSelect={ ( media ) => onSelectMedia( media ) }
+				// Customizable Props
+				className="bu-components-image-mediaplaceholder"
+				labels={ labels }
+				allowedTypes={ [ 'image' ] }
+				accept="image/*"
+
+				// @todo decide if any of these or other props should be defined or malleable
+			/>
+		);
+	}
 
 	let imgObj = false;
+	const myAlt = '';
 
-	// Fetch the media object based on the `currentMediaId`. Should this be useEffect?
+	// Fetch the media object based on the `mediaId`. Should this be useEffect?
 	const { mediaObj, isResolvingMedia, hasResolvedMedia } =
-		useMedia( currentMediaId ); // @todo so this returns a different object than the media picker; its a waste of resources to get the entire media object from the media picker and then call this function, but they have different structure... optimize somehow?
+		useMedia( mediaId ); // @todo so this returns a different object than the media picker; its a waste of resources to get the entire media object from the media picker and then call this function, but they have different structure... optimize somehow?
 
 	// If Debug is set to true, output some helpful information to the console for block developers to utilize media object info in their block development.
 	if ( isResolvingMedia ) {
@@ -119,68 +175,45 @@ export const Image = ( props ) => {
 			console.log( 'Image Object: ', imgObj );
 		}
 		if ( ! imgObj ) {
-			return <div>uh oh { size } not found</div>;
+			return (
+				<>
+					<img
+						className="bu-components-image-fallback"
+						src={ mediaIdFallback }
+						alt=""
+					/>
+					<Placeholder
+						// Required Props - none
+
+						// Customizable Props
+						className="bu-components-image-placeholder"
+						label="uh oh { size } not found"
+
+						// @todo decide if any of these or other props should be defined or malleable
+					/>
+				</>
+			);
+			// @todo fallback...
 		}
 	}
 
 	// Is an image set already?
-	const hasImage = imgObj ? true : false;
-
-	/**
-	 * If there is no image set, and the user can't edit the image show placeholder.
-	 *
-	 * @see https://developer.wordpress.org/block-editor/reference-guides/components/Placeholder/
-	 */
-	if ( ! hasImage && ! canEditImage ) {
-		return (
-			<Placeholder
-				// Required Props - none
-
-				// Customizable Props
-				className="bu-components-image-placeholder"
-				label={ label }
-				instructions={ instructions }
-
-				// @todo decide if any of these or other props should be defined or malleable
-			/>
-		);
-	}
-
-	/**
-	 * If there is no image set, but the user can edit the image, show Media Placeholder.
-	 *
-	 * @see https://github.com/WordPress/gutenberg/blob/HEAD/packages/block-editor/src/components/media-placeholder/README.md
-	 */
-	if ( ! hasImage ) {
-		return (
-			<MediaPlaceholder
-				// Required Props
-				onSelect={ ( media ) => setMediaId( media.id ) }
-				// Customizable Props
-				className="bu-components-image-mediaplaceholder"
-				labels={ labels }
-				allowedTypes={ [ 'image' ] }
-				accept="image/*"
-
-				// @todo decide if any of these or other props should be defined or malleable
-			/>
-		);
-	}
+	// const hasImage = imgObj ? true : false;
 
 	/**
 	 * Build the alt text attribute.
 	 */
-	let altText = '';
+	let altTextOutput = '';
 	if ( altSource === 'alt' ) {
-		altText = imgObj.alt;
+		altTextOutput = imgObj.alt;
 	} else if ( altSource === 'caption' ) {
-		altText = imgObj.caption;
+		altTextOutput = imgObj.caption;
 	} else if ( altSource === 'title' ) {
-		altText = imgObj.title;
+		altTextOutput = imgObj.title;
 	} else if ( altSource === 'description' ) {
-		altText = imgObj.description;
+		altTextOutput = imgObj.description;
 	} else {
-		altText = altSource;
+		altTextOutput = altText;
 	}
 
 	/**
@@ -188,45 +221,45 @@ export const Image = ( props ) => {
 	 *
 	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/source#sizes
 	 */
-	if ( debug ) {
-		// eslint-disable-next-line no-console
-		console.log( 'sourceSizes: ', sourceSizes );
-	}
-	const sourcesTag = []; // tags for picture
-	let srcsetAttribute = ''; // attribute for img
-	const srcsetAttributeArray = []; // holder for srcsetAttribute before using join
-	//
-	sourceSizes.forEach( function ( imgSource ) {
-		const imgSourceObj = getImageData( mediaObj, imgSource.srcset );
-		if ( debug ) {
-			// eslint-disable-next-line no-console
-			console.log( 'imgSource: ', imgSource );
-			// eslint-disable-next-line no-console
-			console.log( 'imgSourceObj: ', imgSourceObj );
-		}
-		if ( imgSourceObj ) {
-			// for picture
-			sourcesTag.push(
-				<source
-					srcSet={ imgSourceObj.src }
-					media={ imgSource.media }
-					type={ imgObj.mime_type }
-				/>
-			);
-			// for imgs
-			srcsetAttributeArray.push(
-				`${ imgSourceObj.src } ${ imgSource.descriptor }`.trim()
-			);
-		}
-	} );
-	srcsetAttribute = srcsetAttributeArray.join( ', ' );
-	if ( debug ) {
-		// eslint-disable-next-line no-console
-		console.log( 'sourcesTag: ', sourcesTag );
-		// eslint-disable-next-line no-console
-		console.log( 'srcsetAttribute: ', srcsetAttribute );
-	}
+	// if ( debug ) {
+	// 	// eslint-disable-next-line no-console
+	// 	console.log( 'sourceSizes: ', sourceSizes );
 	// }
+	// const sourcesTag = []; // tags for picture
+	// let srcsetAttribute = ''; // attribute for img
+	// const srcsetAttributeArray = []; // holder for srcsetAttribute before using join
+	// //
+	// sourceSizes.forEach( function ( imgSource ) {
+	// 	const imgSourceObj = getImageData( mediaObj, imgSource.srcset );
+	// 	if ( debug ) {
+	// 		// eslint-disable-next-line no-console
+	// 		console.log( 'imgSource: ', imgSource );
+	// 		// eslint-disable-next-line no-console
+	// 		console.log( 'imgSourceObj: ', imgSourceObj );
+	// 	}
+	// 	if ( imgSourceObj ) {
+	// 		// for picture
+	// 		sourcesTag.push(
+	// 			<source
+	// 				srcSet={ imgSourceObj.src }
+	// 				media={ imgSource.media }
+	// 				type={ imgObj.mime_type }
+	// 			/>
+	// 		);
+	// 		// for imgs
+	// 		srcsetAttributeArray.push(
+	// 			`${ imgSourceObj.src } ${ imgSource.descriptor }`.trim()
+	// 		);
+	// 	}
+	// } );
+	// srcsetAttribute = srcsetAttributeArray.join( ', ' );
+	// if ( debug ) {
+	// 	// eslint-disable-next-line no-console
+	// 	console.log( 'sourcesTag: ', sourcesTag );
+	// 	// eslint-disable-next-line no-console
+	// 	console.log( 'srcsetAttribute: ', srcsetAttribute );
+	// }
+	// // }
 
 	/**
 	 * Finally, something interesting to display. We have a mediaObject, let's show it!
@@ -247,9 +280,9 @@ export const Image = ( props ) => {
 											<MediaUploadCheck>
 												<MediaUpload
 													onSelect={ ( media ) =>
-														setMediaId( media.id )
+														onSelectMedia( media )
 													}
-													value={ currentMediaId }
+													value={ mediaId }
 													allowedTypes={ [ 'image' ] }
 													render={ ( { open } ) => (
 														<IconButton
@@ -257,6 +290,7 @@ export const Image = ( props ) => {
 															onClick={ open }
 															icon="edit"
 															isLarge
+															isPrimary // @todo deprecated; see https://github.com/WordPress/gutenberg/pull/31713
 														>
 															{ __(
 																'Edit Media'
@@ -268,8 +302,11 @@ export const Image = ( props ) => {
 											<Button
 												className="bu-components-image-media-remove-button"
 												onClick={ () =>
-													setMediaId( undefined )
+													onSelectMedia( undefined )
 												}
+												isSmall // @todo deprecated; see https://developer.wordpress.org/block-editor/reference-guides/components/button/#size
+												isSecondary // @todo deprecated; see https://github.com/WordPress/gutenberg/pull/31713
+												isDestructive
 											>
 												{ __( 'Remove Media' ) }
 											</Button>
@@ -285,8 +322,19 @@ export const Image = ( props ) => {
 									className="bu-components-image-media-edit-focalpoint"
 									label={ __( 'Focal Point Picker' ) }
 									url={ imgObj.src }
-									value={ currentFocalPoint }
-									onChange={ setFocalPoint }
+									value={ focalPoint }
+									onChange={ onChangeFocalPoint }
+								/>
+							</PanelRow>
+						) }
+						{ 'custom' === altSource && (
+							<PanelRow>
+								sumtin sumtin
+								<TextControl
+									label="my alt text"
+									help="@todo"
+									value={ myAlt }
+									onChange={ onChangeAltText }
 								/>
 							</PanelRow>
 						) }
@@ -295,27 +343,28 @@ export const Image = ( props ) => {
 			) }
 			{ /* Always show the image. */ }
 			{ tag === 'picture' && (
-				<picture className={ getClasses( className ) } { ...rest }>
-					{ sourcesTag }
-					<img src={ imgObj.src } alt={ altText } />
+				<picture className={ getClasses( className ) }>
+					{/* { sourcesTag } */}
+					<img src={ imgObj.src } alt={ altTextOutput } { ...rest } />
 				</picture>
 			) }
 			{ tag === 'figure' && (
-				<figure className={ getClasses( className ) } { ...rest }>
+				<figure className={ getClasses( className ) }>
 					<img
 						src={ imgObj.src }
-						alt={ altText }
-						srcSet={ srcsetAttribute }
+						alt={ altTextOutput }
+						// srcSet={ srcsetAttribute }
+						{ ...rest }
 					/>
-					<figcaption>{ altText }</figcaption>
+					<figcaption>{ altTextOutput }</figcaption>
 				</figure>
 			) }
 			{ tag === 'img' && (
 				<img
 					className={ getClasses( className ) }
-					srcSet={ srcsetAttribute }
+					// srcSet={ srcsetAttribute }
 					src={ imgObj.src }
-					alt={ altText }
+					alt={ altTextOutput }
 					{ ...rest }
 				/>
 			) }

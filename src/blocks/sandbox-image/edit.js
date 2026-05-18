@@ -21,7 +21,9 @@ import {
 	SelectControl, // https://developer.wordpress.org/block-editor/reference-guides/components/select-control/
 	TextControl, // https://developer.wordpress.org/block-editor/reference-guides/components/text-control/
 	ToggleControl, // https://developer.wordpress.org/block-editor/reference-guides/components/toggle-control/
+	__experimentalNumberControl as NumberControl, // https://developer.wordpress.org/block-editor/reference-guides/components/number-control/
 } from '@wordpress/components';
+import { useSelect } from '@wordpress/data';
 
 // Import our stuff.
 // import { Image } from '@bostonuniversity/block-imports';
@@ -40,57 +42,63 @@ export default function Edit( props ) {
 	const { attributes, setAttributes } = props;
 	// We could destructure the attributes, but for funsies I'm not going to this time...
 
-	// function StringToObjectConverter( userString ) {
-	// 	if ( ! userString ) {
-	// 		return undefined;
-	// 	}
-	// 	let userObject = {};
+	const siteUrl = useSelect( ( select ) => {
+		const site = select( 'core' ).getSite();
+		return site && site.url;
+	} );
 
-	// 	try {
-	// 		// Wrap the object literal string in parentheses for eval() to parse it as an expression
-	// 		userObject = eval( '(' + userString + ')' );
-	// 		return userObject;
-	// 	} catch ( error ) {
-	// 		console.error( 'Error parsing userString:', error );
-	// 		return undefined;
-	// 	}
-	// }
+	// Now you can use siteUrl in your block's logic or render function
+	console.log( 'Site URL:', siteUrl );
 
-	// function StringToArrayConverter( userString ) {
-	// 	if ( ! userString ) {
-	// 		return undefined;
-	// 	}
-	// 	let userObject = {};
+	// Testing, defined here for quick usage.
+	// const demo_focalPoint = { x: 0.5, y: 0.5 };
+	// const demo_labelsMediaPlaceholder = {
+	// 	title: 'my custom title',
+	// 	instructions: 'my custom instructions',
+	// };
+	// const demo_sourceSizes = [
+	// 	{
+	// 		srcset: 'thumbnail',
+	// 		descriptor: '200w',
+	// 		media: '(min-width: 600px)',
+	// 	},
+	// 	{
+	// 		srcset: 'full',
+	// 		descriptor: '2x',
+	// 		media: '(min-width: 300px)',
+	// 	},
+	// ];
 
-	// 	try {
-	// 		userObject = eval( userString );
-	// 		console.log( userObject );
-	// 		console.log( typeof userObject );
-	// 		return userObject;
-	// 	} catch ( error ) {
-	// 		console.error( 'Error parsing userString:', error );
-	// 		return undefined;
-	// 	}
-	// }
-
-	const demo_mediaId = 381625; // 381625 or 381626 - FAILS, might need reload?
-	const demo_focalPoint = { x: 0.5, y: 0.5 };
-	const demo_labelsMediaPlaceholder = {
-		title: 'my custom title',
-		instructions: 'my custom instructions',
+	/**
+	 * Handle updating the mediaId when changed in the Image Component.
+	 * @param {number} newMedia The new media object.
+	 */
+	const handleMediaId = ( newMedia ) => {
+		console.log( 'New media ID selected:', newMedia );
+		if ( newMedia?.id ) {
+			setAttributes( { mediaId: newMedia.id } );
+		} else {
+			setAttributes( { mediaId: undefined } );
+		}
 	};
-	const demo_sourceSizes = [
-		{
-			srcset: 'thumbnail',
-			descriptor: '200w',
-			media: '(min-width: 600px)',
-		},
-		{
-			srcset: 'full',
-			descriptor: '2x',
-			media: '(min-width: 300px)',
-		},
-	];
+
+	/**
+	 * Handle updating the focal point when changed in the Image Component.
+	 * @param {Object} newFocalPoint
+	 */
+	const handleFocalPoint = ( newFocalPoint ) => {
+		console.log( 'New focal point saved:', newFocalPoint );
+		// setAttributes( { focalPoint: newFocalPoint } );
+	};
+
+	/**
+	 * Handle updating the focal point when changed in the Image Component.
+	 * @param {Object} newBitz
+	 */
+	const handleAltText = ( newBitz ) => {
+		console.log( 'New focal point saved:', newBitz );
+		// setAttributes( { focalPoint: newBitz } );
+	};
 
 	// replaces wp image? https://github.com/WordPress/gutenberg/blob/c54fa0beb059a2e3b2d2f5a32f26ab47598be0b6/packages/block-library/src/image/edit.js
 	return (
@@ -99,22 +107,29 @@ export default function Edit( props ) {
 				<Image
 					// Component setup
 					canEditImage={ attributes.canEditImage }
-					debug={ true }
+					debug={ attributes.debug }
 					tag={ attributes.tag }
 					size={ attributes.size }
-					sourceSizes={ demo_sourceSizes }
+					sourceSizes={ attributes.sourceSizes } // UNTESTED
 					altSource={ attributes.altSource }
-					mediaId={ demo_mediaId }
+					altText={ attributes.altText }
+					mediaId={ attributes.mediaId }
+					mediaIdFallback={ attributes.mediaIdFallback }
 					className={ attributes.className }
 					canEditFocalPoint={ attributes.canEditFocalPoint }
-					focalPoint={ demo_focalPoint }
+					focalPoint={ attributes.focalPoint } // UNTESTED
 					//
 					// Placeholder overrrides
 					label={ attributes.label }
 					instructions={ attributes.instructions }
 					//
 					// MediaPlaceholder overrrides
-					labelsMediaPlaceholder={ demo_labelsMediaPlaceholder }
+					labelsMediaPlaceholder={ attributes.labelsMediaPlaceholder } // UNTESTED
+					//
+					// Functions to send stuff back to the block... @todo
+					onSelectMedia={ handleMediaId } // UNTESTED
+					onChangeFocalPoint={ handleFocalPoint } // UNTESTED
+					onChangeAltText={ handleAltText } // UNTESTED
 				/>
 			</div>
 
@@ -133,6 +148,16 @@ export default function Edit( props ) {
 								checked={ attributes.canEditImage }
 								onChange={ ( canEditImage ) =>
 									setAttributes( { canEditImage } )
+								}
+							/>
+						</PanelRow>
+						<PanelRow>
+							<ToggleControl
+								label="debug"
+								help="@todo"
+								checked={ attributes.debug }
+								onChange={ ( debug ) =>
+									setAttributes( { debug } )
 								}
 							/>
 						</PanelRow>
@@ -161,11 +186,65 @@ export default function Edit( props ) {
 						</PanelRow>
 						<PanelRow>
 							<TextControl
+								label="sourceSizes"
+								help="@todo"
+								value={ attributes.size }
+								onChange={ ( size ) =>
+									setAttributes( { size } )
+								}
+							/>
+						</PanelRow>
+						<PanelRow>
+							<SelectControl
 								label="altSource"
 								help="Where do we get the alternative text? Leave blank to allow users to enter their own text. To pull from the media object use `alt`, `caption`, `title`, or `description`."
 								value={ attributes.altSource }
+								options={ [
+									{ label: 'alt', value: 'alt' },
+									{ label: 'caption', value: 'caption' },
+									{ label: 'title', value: 'title' },
+									{
+										label: 'description',
+										value: 'description',
+									},
+									{ label: 'custom', value: 'custom' },
+								] }
 								onChange={ ( altSource ) =>
 									setAttributes( { altSource } )
+								}
+							/>
+						</PanelRow>
+
+						{ 'custom' === attributes.altSource && (
+							<PanelRow>
+								<TextControl
+									label="altText"
+									help="@todo"
+									value={ attributes.altText }
+									onChange={ ( altText ) =>
+										setAttributes( { altText } )
+									}
+								/>
+							</PanelRow>
+						) }
+
+						<PanelRow>
+							<NumberControl
+								label="mediaId"
+								help="@todo"
+								value={ attributes.mediaId }
+								onChange={ ( mediaId ) =>
+									setAttributes( { mediaId } )
+								}
+							/>
+						</PanelRow>
+						<PanelRow>
+							<TextControl
+								label="mediaIdFallback"
+								help="@todo"
+								value={ attributes.size }
+								onChange={ ( size ) =>
+									setAttributes( { size } )
 								}
 							/>
 						</PanelRow>
@@ -179,26 +258,31 @@ export default function Edit( props ) {
 								}
 							/>
 						</PanelRow>
-						<PanelRow>
-							<TextControl
-								label="mediaId"
-								help="@todo"
-								value={ attributes.mediaId }
-								onChange={ ( mediaId ) =>
-									setAttributes( { mediaId } )
-								}
-							/>
-						</PanelRow>
+						<PanelRow>FocalPointPicker overrrides</PanelRow>
 						<PanelRow>
 							<ToggleControl
-								label="debug"
-								help="@todo"
-								checked={ attributes.debug }
-								onChange={ ( debug ) =>
-									setAttributes( { debug } )
+								label="canEditFocalPoint"
+								help="Can the user change the image?"
+								checked={ attributes.canEditFocalPoint }
+								onChange={ ( canEditFocalPoint ) =>
+									setAttributes( { canEditFocalPoint } )
 								}
 							/>
 						</PanelRow>
+
+						{ attributes.canEditFocalPoint && (
+							<PanelRow>
+								<TextControl
+									label="focalPoint"
+									help="Set a specific focal point. Default is `{ x: 0.5, y: 0.5 }`. Use `false` to disable."
+									value={ attributes.focalPoint }
+									onChange={ ( focalPoint ) =>
+										setAttributes( { focalPoint } )
+									}
+								/>
+							</PanelRow>
+						) }
+
 						<PanelRow>Placeholder overrrides</PanelRow>
 						<PanelRow>
 							<TextControl
@@ -220,38 +304,17 @@ export default function Edit( props ) {
 								}
 							/>
 						</PanelRow>
-						{ /* <PanelRow>MediaPlaceholder overrrides</PanelRow>
+						<PanelRow>MediaPlaceholder overrrides</PanelRow>
 						<PanelRow>
 							<TextControl
-								label="labelsMediaPlaceholder"
+								label="labels"
 								help="The title and instructions to show for MediaPlaceholder."
 								value={ attributes.labelsMediaPlaceholder }
 								onChange={ ( labelsMediaPlaceholder ) =>
 									setAttributes( { labelsMediaPlaceholder } )
 								}
 							/>
-						</PanelRow> */ }
-						<PanelRow>FocalPointPicker overrrides</PanelRow>
-						<PanelRow>
-							<ToggleControl
-								label="canEditFocalPoint"
-								help="Can the user change the image?"
-								checked={ attributes.canEditFocalPoint }
-								onChange={ ( canEditFocalPoint ) =>
-									setAttributes( { canEditFocalPoint } )
-								}
-							/>
 						</PanelRow>
-						{ /* <PanelRow>
-							<TextControl
-								label="focalPoint"
-								help="Set a specific focal point. Default is `{ x: 0.5, y: 0.5 }`. Use `false` to disable."
-								value={ attributes.focalPoint }
-								onChange={ ( focalPoint ) =>
-									setAttributes( { focalPoint } )
-								}
-							/>
-						</PanelRow> */ }
 					</PanelBody>
 				</InspectorControls>
 			}

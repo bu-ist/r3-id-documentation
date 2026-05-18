@@ -10,10 +10,12 @@
   "example": {},
   "attributes": {
     "canEditImage": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": false
     },
     "debug": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": false
     },
     "tag": {
       "type": "string",
@@ -21,34 +23,70 @@
         "img",
         "picture",
         "figure"
-      ]
+      ],
+      "default": "img"
     },
     "size": {
-      "type": "string"
+      "type": "string",
+      "default": "thumbnail"
+    },
+    "sourceSizes": {
+      "type": "array",
+      "default": "[]"
     },
     "altSource": {
-      "type": "string"
+      "type": "string",
+      "enum": [
+        "alt",
+        "caption",
+        "title",
+        "description",
+        "custom"
+      ],
+      "default": "alt"
+    },
+    "altText": {
+      "type": "string",
+      "default": ""
     },
     "mediaId": {
-      "type": "string"
+      "type": "integer"
+    },
+    "mediaIdFallback": {
+      "type": "integer"
     },
     "className": {
       "type": "string"
     },
     "canEditFocalPoint": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": "false"
     },
     "focalPoint": {
-      "type": "string"
+      "type": "object",
+      "default": [
+        {
+          "x": 0.5,
+          "y": 0.5
+        }
+      ]
     },
     "label": {
-      "type": "string"
+      "type": "string",
+      "default": "Placeholder label..."
     },
     "instructions": {
-      "type": "string"
+      "type": "string",
+      "default": "Placeholder instructions..."
     },
     "labels": {
-      "type": "array"
+      "type": "object",
+      "default": [
+        {
+          "title": "MediaPlaceholder label...",
+          "instructions": "MediaPlaceholder instructions..."
+        }
+      ]
     }
   },
   "supports": {

@@ -86,15 +86,31 @@ The sizes to use for img srcset or picture source.
 
 ### altSource
 
-The source of the alt attribute for `picture` and `img` tags or figcaption for `picture`. The values alt, caption, title, or description will pull from that field in the media library. Any other text, including `""` will be what is displayed.
+The source of the alt attribute for `picture` and `img` tags or figcaption for `picture`. The values alt, caption, title, or description will pull from that field in the media library. Custom will display the text entered in the altText prop.
 
-- Type: `String` alt | caption | title | description | user input
+- Type: `String` alt | caption | title | description | custom
 - Required: No
 - Default: alt
 
+### altText
+
+If altSource is set to custom, this text will be displayed.
+
+- Type: `String`
+- Required: No
+- Default: ""
+
 ### mediaId
 
-The ID of the media object to use.
+The ID of the media object to use. Example - a profile might use the featured image.
+
+- Type: `Number`
+- Required: No
+- Default: undefined
+
+### mediaIdFallback
+
+The ID of the media object to use if mediaId fails. Example - if a profile is attempting to use the featured image and none exists, use a generic avatar. Maybe this should be a path?
 
 - Type: `Number`
 - Required: No
